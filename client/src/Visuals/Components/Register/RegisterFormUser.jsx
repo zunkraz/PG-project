@@ -8,6 +8,7 @@ export default function RegisterForm(){
         password:"",
         confirmPassword:""
     })
+    const [checked, setChecked]= useState(false)
     const [error, setError]= useState({})
 
     function handleChange(e){
@@ -17,9 +18,17 @@ export default function RegisterForm(){
                 [name]:value
         })
     }
+    function handleChangeCheckbox(e){
+        setChecked(!checked)
+        
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
+        if(!checked) {
+            alert("Por favor indica que aceptas los Términos y Condiciones");
+            return false
+        }
         if(validate(newUser, setError)){
             console.log(newUser);
             setNewuser({
@@ -32,7 +41,7 @@ export default function RegisterForm(){
             e.target.reset();
             // fetch("url", {
             //     method:"POST", 
-            //     body: JSON.stringify( input ),
+            //     body: JSON.stringify( newUser ),
             //     headers:{
             //         'Content-Type': 'application/json'
             //         }
@@ -56,8 +65,6 @@ export default function RegisterForm(){
                 onChange={handleChange}
                 required/>
                 <span>{error.email}</span>
-                </div>
-                <div>
                 <input type="text"
                 name="username"
                 placeholder="Usuario" 
@@ -77,6 +84,10 @@ export default function RegisterForm(){
                 onChange={handleChange}
                 required/>
                 <span>{error.password}</span>
+                </div>
+                <div>
+                <label for="acceptT">Acepto los términos y condiciones del servicio</label>
+                <input type="checkbox"  name="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
                 </div>
                 <input type="submit" value="Registrarse"/>
             </form>
