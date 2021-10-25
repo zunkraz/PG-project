@@ -1,0 +1,13 @@
+
+.FooterPrimaryDiv{
+    background-color: rgba(128, 128, 128, 0.2);
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.FooterListPrimaryDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

@@ -1,5 +1,5 @@
 import './App.css';
-import Footer from './Components/Footer/Footer';
+import Footer from './Components/FooterComponents/Footer/Footer';
 // Footer for test
 
 
