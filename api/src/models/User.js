@@ -28,7 +28,7 @@ const user = mongoose.Schema(
             default: false,
         },
         professions: [{type: Schema.Types.ObjectId, ref: 'professions'}],
-        disponibilidad: [{type: String}],
+        availability: [{type: String}],
         isActive: {
             type: Boolean
         }
