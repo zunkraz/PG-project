@@ -18,6 +18,8 @@ server.use((req, res, next) => {
     next();
   });
 
+server.use('/', routes);
+
   // Error catching endware.
 server.use((err, req, res, next) => {
     const status = err.status || 500;
@@ -26,6 +28,5 @@ server.use((err, req, res, next) => {
     res.status(status).send(message);
   });
 
-server.use('/', routes);
 
 module.exports = server;
