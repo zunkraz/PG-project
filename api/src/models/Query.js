@@ -7,10 +7,12 @@ const query = mongoose.Schema(
             required: true,
         },
         costumerId: {
-            type: Schema.Types.ObjectId
+            type: Schema.Types.ObjectId,
+            required: true,
         },
-        profesionalId: {
-            type: Schema.Types.ObjectId
+        professionalId: {
+            type: Schema.Types.ObjectId,
+            required: true,
         },       
     },
     { timestamp: true }
