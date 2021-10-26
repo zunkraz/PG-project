@@ -1,0 +1,22 @@
+
+.FooterEndDiv{
+    position: relative;
+    bottom: -5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.FooterEndLogo{
+    color: rgba(0, 0, 0, 0.7);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: x-large;
+    margin-left: 5vh;
+}
+
+.FooterEndBtnPrimaryDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
