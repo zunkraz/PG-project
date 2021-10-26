@@ -12,9 +12,8 @@ const Nav = () => {
                 <li><Link to='#'>Profesionales</Link></li>
                 <li> <Link to='#'>Soporte</Link></li>
             </ul>
-
         </header>
-     );
+    );
 }
- 
+
 export default Nav;

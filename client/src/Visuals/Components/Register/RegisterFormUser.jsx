@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import validate from "./validations";
+import validate from "../../../Tools/validations";
 
 export default function RegisterForm(){
     const [newUser, setNewuser]= useState({
