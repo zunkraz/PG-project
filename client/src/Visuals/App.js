@@ -1,5 +1,8 @@
 import './App.css';
+
+import Footer from './Components/Footer/Footer';
 import Home from './Containers/Pages/Home';
+
 // Footer for test
 
 
@@ -8,6 +11,7 @@ function App() {
     <div className="App">
       <Home/>
     </div>
+
   );
 }
 
