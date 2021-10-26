@@ -1,0 +1,148 @@
+
+
+.FooterPrimaryDiv{
+    background-color:rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh 0px;
+}
+
+.FooterListPrimaryDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.FooterEndPrimaryDiv{
+    width: 80%;
+}
+
+.SellerDiv{
+    height: 40vh;
+    width: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.SellerLogo{
+    font-weight: bold;
+    font-size: x-large;
+    color: aliceblue;
+}
+
+.SellerText{
+    color: rgb(173, 173, 173);
+    font-weight: 600;
+}
+
+.SellerSubmit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SellerSubmit input{
+    background-color: transparent;
+    border: transparent;
+    height: 5vh;
+    width: 34vh;
+    border-bottom: 2px solid white;
+    color: white;
+    font-weight: bold;
+    margin-right: 1vh;
+}.SellerSubmit input::placeholder{
+    padding-left: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.SellerSubmit button{
+    color: white;
+    font-weight: 400;
+    font-size: larger;
+    background-color: red;
+    border: transparent;
+    height: 5vh;
+    width: 5vh;
+}
+
+
+.ContactDiv{
+    width: 40vh;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ContactTitle{
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 3vh;
+    color: aliceblue;
+}
+
+.ContactLink{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 30vh;
+    color: rgb(173, 173, 173);
+}
+
+.ContactLink a{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.ContactLink span{
+    margin-left: 2vh;
+}
+
+.FooterListDiv{
+    display: flex;
+    flex-direction: column;
+}
+.FooterListTitle{
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 3vh;
+    color: aliceblue;
+}
+
+.FooterListTex{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.FooterListTex a{
+    color: rgb(173, 173, 173);
+    text-decoration: none;
+}
+
+
+.FooterEndDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(253, 253, 253);
+    margin-top: 4vh;
+    border-top: 2px solid gray;
+    padding-top: 4vh;
+}
+
+.FooterEndTitle{
+    font-weight: bold;
+}
+
+.FooterEndText{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
