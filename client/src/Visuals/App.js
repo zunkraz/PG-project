@@ -1,17 +1,15 @@
-import './App.css';
-
-import Footer from './Components/Footer/Footer';
+import React from 'react';
 import Home from './Containers/Pages/Home';
+import './App.css';
+import { Route } from 'react-router';
 
 // Footer for test
 
-
 function App() {
   return (
-    <div className="App">
+    <Route path='/'>
       <Home/>
-    </div>
-
+    </Route>
   );
 }
 

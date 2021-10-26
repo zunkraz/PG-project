@@ -1,6 +1,5 @@
 import React from 'react'
-import FooterEndBtn from '../FooterEndBtn/FooterEndBtn'
-import './FooterEnd.css'
+import FooterEndBtn from './FooterEndBtn'
 
 function FooterEnd() {
 

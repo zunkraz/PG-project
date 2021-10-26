@@ -1,5 +1,4 @@
 import React from 'react'
-import './FooterListSpan.css'
 
 function FooterListSpan({index, text, url}) {
     return (

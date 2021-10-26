@@ -1,7 +1,6 @@
 import React from 'react'
-import FooterEnd from '../FooterEnd/FooterEnd'
-import FooterList from '../FooterList/FooterList'
-import './Footer.css'
+import FooterEnd from './FooterEnd'
+import FooterList from './FooterList'
 
 function Footer() {
 

@@ -1,5 +1,6 @@
 import React from 'react'
-import Footer from '../../Components/FooterComponents/Footer/Footer'
+import Footer from '../../Components/FooterComponents/Footer'
+import Nav from '../../Components/NavComponent/Nav'
 
 function Home() {
     return (

@@ -1,6 +1,5 @@
 import React from 'react'
-import FooterListSpan from '../FooterListSpan/FooterListSpan'
-import './FooterList.css'
+import FooterListSpan from './FooterListSpan'
 
 
 function FooterList({Title, Contain}) {

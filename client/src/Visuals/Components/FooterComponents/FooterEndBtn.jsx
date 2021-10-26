@@ -1,5 +1,4 @@
 import React from 'react'
-import './FooterEndBtn.css'
 
 function FooterEndBtn({name, url, src, alt}) {
     return (
