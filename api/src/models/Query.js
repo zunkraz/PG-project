@@ -6,7 +6,7 @@ const query = mongoose.Schema(
             type: Number,
             required: true,
         },
-        costumerId: {
+        customerId: {
             type: Schema.Types.ObjectId,
             required: true,
         },
