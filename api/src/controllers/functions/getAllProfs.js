@@ -4,9 +4,9 @@ module.exports = async (req, res, next) => {
     try{
         let users = (await User.find({}))
         .map(u => {
-            const {userName,name,lastName,category,likes,dislikes,img} = u
+            const {username,name,lastName,category,likes,dislikes,img} = u
             return {
-                userName,
+                username,
                 name,
                 lastName,
                 category,
