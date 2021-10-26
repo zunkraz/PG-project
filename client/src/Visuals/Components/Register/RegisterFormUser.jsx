@@ -30,7 +30,6 @@ export default function RegisterForm(){
             return false
         }
         if(validate(newUser, setError)){
-            console.log(newUser);
             setNewuser({
                 email:"",
                 username:"",
