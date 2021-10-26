@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Home from './Containers/Pages/Home';
 import './App.css';
@@ -8,8 +9,11 @@ import Login from './Containers/Pages/Login';
 import Dashboard from './Containers/Pages/Dashboard';
 import Register from './Containers/Pages/Register';
 import Professionals from './Containers/Pages/Professionals';
+import Supports from './Containers/Pages/Supports'
 
-// Footer for test
+
+
+
 
 function App() {
   return (
@@ -30,6 +34,9 @@ function App() {
         </Route>
         <Route path='/professionals'>
           <Professionals/>
+        </Route>
+        <Route path='/supports'>
+          <Supports/>
         </Route>
       </Switch>
         <Footer/>
