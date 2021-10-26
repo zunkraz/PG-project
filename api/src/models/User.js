@@ -2,7 +2,15 @@ const mongoose = require('mongoose');
 
 const user = mongoose.Schema(
     {
-        userName: {
+        name: {
+            type: String,
+            required: true,
+        },
+        lastName: {
+            type: String,
+            required: true,
+        },
+        username: {
             type: String,
             required: true,
             unique: true
@@ -17,20 +25,45 @@ const user = mongoose.Schema(
             type: String,
             required: true,
         },
+        professionalRegistration: {
+            type: Number,
+            required: true,
+            unique: true,
+        },
+        country: {
+            type: String,
+            required: true,
+        },
+        likes: {
+            type: Number,
+        },
+        dislikes: {
+            type: Number,
+        },
         isAdmin: {
             type: Boolean,
             required: true,
             default: false,
         },
-        isProfesional: {
+        isProfessional: {
             type: Boolean,
             required: true,
             default: false,
         },
         professions: [{type: Schema.Types.ObjectId, ref: 'professions'}],
-        disponibilidad: [{type: String}],
+        schedule: [{
+            date: {
+                type: Date,
+                require: true,
+            },
+            available: {
+                type: Boolean,
+                 default: true
+            },
+        }],
         isActive: {
-            type: Boolean
+            type: Boolean,
+            default: true,
         }
     },
     { timestamp: true }
