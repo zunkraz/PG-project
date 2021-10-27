@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
             isAdmin,
             isProfesional
         });
-        await User.save(newUser)
+        await newUser.save()
         return res.send(newUser)
         
     }catch(err){
