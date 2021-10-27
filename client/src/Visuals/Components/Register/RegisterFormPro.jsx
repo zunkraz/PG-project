@@ -1,15 +1,23 @@
 import React, {useState} from "react";
 import validate from "../../../Tools/validations";
 
-export default function RegisterFormUser(){
+export default function RegisterFormPro(){
     const [newUser, setNewuser]= useState({
+        isProfesional:true,
         email:"",
         userName:"",
         password:"",
-        confirmPassword:""
+        confirmPassword:"",
+        name:"",
+        lastName:"",
+        telNum1:"",
+        professions:"",
+        matNum:""
     })
     const [checked, setChecked]= useState(false)
+    const [profchecked, setProfchecked]= useState(false)
     const [error, setError]= useState({})
+    const professionslist=["Abogacía", "Arquitecto", "Contador", "Veterinario"]
 
     function handleChange(e){
         const {value, name}=e.target
@@ -20,7 +28,9 @@ export default function RegisterFormUser(){
     }
     function handleChangeCheckbox(e){
         setChecked(!checked)
-        
+    }
+    function handleChangeCheckboxprof(e){
+        setProfchecked(!profchecked)
     }
 
     function handleSubmit(e) {
@@ -34,7 +44,12 @@ export default function RegisterFormUser(){
                 email:"",
                 userName:"",
                 password:"",
-                confirmPassword:""
+                confirmPassword:"",
+                name:"",
+                lastName:"",
+                telNum1:"",
+                telNum2:"",
+                matNum:""
             })
             setError({})
             e.target.reset();
@@ -48,6 +63,7 @@ export default function RegisterFormUser(){
             //     .then(res => res.json())
             //     .catch(error => console.error('Error:', error))
             //     .then(response => console.log('Success:', response));
+
             alert('Te has registrado existosamente!');
         }
       }
@@ -55,8 +71,8 @@ export default function RegisterFormUser(){
     return (
         <div class="uk-padding uk-margin-left uk-flex uk-flex-center">
             <form onSubmit={handleSubmit} class="uk-form-horizontal uk-margin-small" autoComplete="off">
-                <h2>Informacion personal - Cliente</h2>
-                <div >
+                <h2>Informacion personal - Profesional</h2>
+                <div class="uk-margin">
                     <input class="uk-input uk-form-width-large uk-margin-right" type="email"
                     name="email"
                     placeholder="Correo electronico"
@@ -83,6 +99,46 @@ export default function RegisterFormUser(){
                     required/>
                 </div>
                 <span class="uk-alert-danger">{error.password}</span>
+                <div class="uk-margin">
+                    <input class="uk-input uk-form-width-large uk-margin-right" type="text"
+                    name="name"
+                    placeholder="Nombre"
+                    onChange={handleChange}
+                    required/>
+                    <input class="uk-input uk-form-width-large"  type="text"
+                    name="lastName"
+                    placeholder="Apellido" 
+                    onChange={handleChange}
+                    required/>
+                </div>
+                <span class="uk-alert-danger">{error.name}</span>
+                <div class="uk-margin">
+                    <input class="uk-input uk-form-width-large uk-margin-right" type="tel"
+                    name="telNum1"
+                    placeholder="Telefono"
+                    onChange={handleChange}
+                    required/>
+                </div>
+                <span class="uk-alert-danger">{error.phone}</span>
+                <select name="professions" class="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
+                        <option value="">- Seleccionar profesión -</option>
+                        {professionslist.map(e=>{
+                            return(<option name={e} key={professionslist.indexOf(e)} value={e}>
+                                {e}
+                                </option>)
+                        })}
+                    </select>
+                <div>
+                    <div class="uk-width-1-2">
+                    <label for="prof-check" class="uk-padding-right">Eres profesional certificado?</label>
+                    <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="prof-check" checked={profchecked} onChange={handleChangeCheckboxprof}/>
+                    </div>
+                    {profchecked && <input class="uk-input uk-form-width-large uk-margin"  type="text"
+                    name="matNum"
+                    placeholder="Nro de matricula" 
+                    onChange={handleChange}
+                    required/>}
+                </div>
                 <div>
                 <label htmlFor="acceptT">Acepto los términos y condiciones del servicio</label>
                 <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
