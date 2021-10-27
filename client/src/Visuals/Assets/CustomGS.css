@@ -191,7 +191,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid white;
     margin-top: 5vh;
 }
 
@@ -201,15 +200,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border: 2px solid rgba(128, 128, 128, 0.3);
     padding: 2vh;
-    max-height: 20vh;
     overflow-y: scroll;
     border-radius: 1vh;
     margin-left: 3vh;
     color: rgba(0, 0, 0, 0.8);
     font-weight: 600;
     width: 20vh;
+    height: 20vh;
+    max-height: 20vh;
 }
 
 .WeekTipsCard::-webkit-scrollbar {
@@ -233,4 +232,28 @@
 .WeekTipsCard::-webkit-scrollbar-track:hover,
 .WeekTipsCard::-webkit-scrollbar-track:active {
     background: transparent;
+}
+
+.PaginationBtnDiv button{
+    border: transparent;
+    height: 10vh;
+    width: 10vh;
+    border-radius: 20vh;
+    background-color: rgba(128, 128, 128, 0.1);
+    margin: 0px 10vh;
+    transition: 0.5s;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.PaginationBtnDiv button:hover{
+    transform: scale(1.5);
+    background-color: rgba(128, 128, 128, 0.00);
+    cursor: pointer;
+}
+
+.PaginationBtnDiv button:disabled{
+    background-color: transparent;
+    color: transparent;
 }

@@ -27,14 +27,14 @@ function WeekTips() {
         {"id": "3",
         "text": "Para ayudar a una persona que está afrontando un problema de salud mental, es importante escuchar, comprender y , sobre todo, estar al lado"},
         
-        // {"id": "4",
-        // "text": "Esta alianza entre las nuevas tecnologías y la asistencia sanitaria es indispensable para hacer frente a un reto como el de la salud mental"},
+        {"id": "4",
+        "text": "Esta alianza entre las nuevas tecnologías y la asistencia sanitaria es indispensable para hacer frente a un reto como el de la salud mental"},
         
-        // {"id": "5",
-        // "text": "Tener un contador en tu vida siempre genera utilidades"},
+        {"id": "5",
+        "text": "Tener un contador en tu vida siempre genera utilidades"},
         
-        // {"id": "6",
-        // "text": "Una buena gestión de tu contabilidad te permitirá tomar nuevas decisiones que hagan crecer tu negocio"}
+        {"id": "6",
+        "text": "Una buena gestión de tu contabilidad te permitirá tomar nuevas decisiones que hagan crecer tu negocio"}
     ]
     
     const numOfPages = Math.ceil(tipsArray.length/3)
@@ -45,8 +45,14 @@ function WeekTips() {
         return tipsArray.slice(init, end)
     }
 
-    const changePage = page=>settipPage(page)
+    const dwPage = ()=>{
+        (tipPage>0&&tipPage!==tipsArray.length) && settipPage(tipPage--)
+    }
+    const upPage = ()=>{
+        (tipPage>0 && tipPage!==tipsArray.length) && settipPage(tipPage++)
+    }
 
+    
 
     return (
         <div className='WeekTipsDiv'>
@@ -57,9 +63,9 @@ function WeekTips() {
                 <PaginationBtn pag={tipPage} 
                                 pages={numOfPages} 
                                 simbol={'<'}
-                                workFunction={changePage} 
-                                active={numOfPages>1?true:false}/>
-                {console.log(showPage(tipsArray, tipPage))}
+                                workFunction={dwPage} 
+                                active={tipPage==1?true:false}/>
+                
                 {showPage(tipsArray, tipPage)?.map(elem=>{
                     return <WeekTipsCard key={elem.id} text={elem.text}/>
                 })}
@@ -67,8 +73,8 @@ function WeekTips() {
                 <PaginationBtn pag={tipPage} 
                                 pages={numOfPages} 
                                 simbol={'>'} 
-                                workFunction={changePage}
-                                active={numOfPages<tipsArray.length?true:false}/>
+                                workFunction={upPage}
+                                active={tipPage===numOfPages?true:false}/>
             </div>
         </div>
     )

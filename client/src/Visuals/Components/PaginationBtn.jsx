@@ -1,9 +1,9 @@
 import React from 'react'
 
-function PaginationBtn({simbol, workFunction}) {
+function PaginationBtn({simbol, workFunction, active}) {
     return (
-        <div>
-            <button onClick={workFunction} >{simbol}</button>
+        <div className='PaginationBtnDiv'>
+            <button onClick={workFunction} disabled={active}>{simbol}</button>
         </div>
     )
 }
