@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const review = new Schema(
     {
         rate: {
-            type: Number,
+            type: String,
+            enum: ['Good', 'Bad'],
             required: true,
         },
         userId: {

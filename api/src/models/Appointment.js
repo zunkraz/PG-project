@@ -13,16 +13,14 @@ const appointment = new Schema(
             enum: ['attended', 'pending'],
             default: 'pending',
         },
-        duration: {
+        cost: {
             type: Number,
-            default: 1,
+            required: true,
         },
-        available: {
+        paid: {
             type: Boolean,
-            default: true,
-        },
-        total: {
-            type: Number,
+            required: true,
+            default: false,
         },
         customerId: {
             type: Schema.Types.ObjectId, 

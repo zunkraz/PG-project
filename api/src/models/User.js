@@ -7,7 +7,7 @@ const user = new Schema(
             type: String,
             required: true,
         },
-        lastName: {
+        lastname: {
             type: String,
             required: true,
         },
@@ -27,13 +27,14 @@ const user = new Schema(
             required: true,
         },
         professionalRegistration: {
-            type: Number,
-            required: true,
+            type: String,
             unique: true,
+        },
+        img: {
+            type: String
         },
         country: {
             type: String,
-            required: true,
         },
         likes: {
             type: Number,
@@ -43,12 +44,10 @@ const user = new Schema(
         },
         isAdmin: {
             type: Boolean,
-            required: true,
             default: false,
         },
         isProfessional: {
             type: Boolean,
-            required: true,
             default: false,
         },
         category: [{type: Schema.Types.ObjectId, ref: 'categories'}],
@@ -56,7 +55,6 @@ const user = new Schema(
         schedule: [{
             date: {
                 type: String,
-                require: true,
             },
             available: {
                 type: Boolean,

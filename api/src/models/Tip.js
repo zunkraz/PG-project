@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const tip = new Schema(
     {
         text: {
-            type: Number,
+            type: String,
             required: true,
         },     
     },

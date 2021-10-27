@@ -7,9 +7,13 @@ const category = new Schema (
             type: String,
             required: true,
         },
-        cost: {
+        img: {
+            type: String,
+            requerid: true,
+        },
+        searchCount: {
             type: Number,
-            required: true,
+            default: 0,
         },
         professionalId: [{type: Schema.Types.ObjectId, ref: 'users'}],       
     },
