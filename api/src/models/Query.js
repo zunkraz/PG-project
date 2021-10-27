@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 
-const query = mongoose.Schema(
+const query = new mongoose.Schema(
     {
         cost: {
             type: Number,
             required: true,
         },
         customerId: {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
         professionalId: {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
         },       
     },

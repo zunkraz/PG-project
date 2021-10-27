@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const user = mongoose.Schema(
+const user = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -50,7 +50,7 @@ const user = mongoose.Schema(
             required: true,
             default: false,
         },
-        category: [{type: Schema.Types.ObjectId, ref: 'professions'}],
+        category: [{type: mongoose.Schema.Types.ObjectId, ref: 'professions'}],
         schedule: [{
             date: {
                 type: Date,
