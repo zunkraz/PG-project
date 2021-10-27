@@ -1,17 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function FooterContact() {
+
+    const contactLinks = [
+        {name: 'Instagram', url:'#', class: 'instagram'},
+        {name: 'Twitter', url:'#', class: 'twitter'},
+        {name: 'Facebook', url:'#', class: 'facebook'},
+        {name: 'Whatsapp', url:'#', class: 'whatsapp'},
+        {name: 'Youtube', url:'#', class: 'youtube'},
+    ]
+
     return (
         <div className='ContactDiv'>
             <div className='ContactTitle'>
                 <span>Contactanos!</span>
             </div>
             <div className='ContactLink'>
-                <a href="#" uk-icon="icon: instagram"> <span>Instagram</span> </a>
-                <a href="#" uk-icon="icon: twitter"> <span>Twitter</span> </a>
-                <a href="#" uk-icon="icon: facebook"> <span>Facebook</span> </a>
-                <a href="#" uk-icon="icon: whatsapp"> <span>Whatsapp</span> </a>
-                <a href="#" uk-icon="icon: youtube"> <span>Youtube</span> </a>
+                {contactLinks?.map((elem,index)=>{
+                    return <Link key={index} to={elem.url} uk-icon={`icon:${elem.class}`}><span>{elem.name}</span></Link>
+                })}
             </div>
         </div>
     )
