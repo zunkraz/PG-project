@@ -69,6 +69,11 @@
     border: transparent;
     height: 5vh;
     width: 5vh;
+    transition: 0.5s;
+}
+.SellerSubmit button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 
@@ -101,7 +106,15 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
 }
+
+.ContactLink a:hover{
+    text-decoration: none;
+    color: red;
+}
+
 .ContactLink span{
     margin-left: 2vh;
 }
@@ -126,6 +139,10 @@
 .FooterListTex a{
     color: rgb(173, 173, 173);
     text-decoration: none;
+    transition: 0.5s;
+}
+.FooterListTex a:hover{
+    color: red;
 }
 
 
@@ -145,4 +162,75 @@
 
 .FooterEndText{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.WeekTipsDiv{
+    background-color: rgba(128, 128, 128, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    padding: 5vh 20vh;
+}
+
+.WeekTipsTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.WeekTipsTitle span{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-bottom: 3px solid red;
+}
+
+.WeekTipsCardsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    margin-top: 5vh;
+}
+
+.WeekTipsCard{
+    background-color: rgba(128, 128, 128, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px solid rgba(128, 128, 128, 0.3);
+    padding: 2vh;
+    max-height: 20vh;
+    overflow-y: scroll;
+    border-radius: 1vh;
+    margin-left: 3vh;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    width: 20vh;
+}
+
+.WeekTipsCard::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+}.WeekTipsCard::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.2);;
+    border-radius: 4px;
+}
+.WeekTipsCard::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.3);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.WeekTipsCard::-webkit-scrollbar-thumb:active {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+.WeekTipsCard::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+.WeekTipsCard::-webkit-scrollbar-track:hover,
+.WeekTipsCard::-webkit-scrollbar-track:active {
+    background: transparent;
 }

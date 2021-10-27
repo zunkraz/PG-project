@@ -8,21 +8,21 @@ import FooterContact from './FooterContact'
 function Footer() {
 
     const utilLink = [
-        {name:'Politica de privacidad',url:'https://www.google.com.ar/'},
-        {name:'Terminos y condiciones',url:'https://www.google.com.ar/'},
-        {name:'Reclamos',url:'https://www.google.com.ar/'},
-        {name:'Soporte',url:'https://www.google.com.ar/'},
-        {name:'Servicio Tecnico',url:'https://www.google.com.ar/'},
-        {name:'Derechos de propiedad intelectual',url:'https://www.google.com.ar/'},
+        {name:'Politica de privacidad',url:'#'},
+        {name:'Terminos y condiciones',url:'#'},
+        {name:'Reclamos',url:'#'},
+        {name:'Soporte',url:'#'},
+        {name:'Servicio Tecnico',url:'#'},
+        {name:'Derechos de propiedad intelectual',url:'#'},
     ]
 
     const info = [
-        {name:'Nosotros',url:'https://www.google.com.ar/'},
-        {name:'Noticias',url:'https://www.google.com.ar/'},
-        {name:'Colecciones',url:'https://www.google.com.ar/'},
-        {name:'Servicios',url:'https://www.google.com.ar/'},
-        {name:'Inversiones',url:'https://www.google.com.ar/'},
-        {name:'Proyectos',url:'https://www.google.com.ar/'}
+        {name:'Nosotros',url:'#'},
+        {name:'Noticias',url:'#'},
+        {name:'Colecciones',url:'#'},
+        {name:'Servicios',url:'#'},
+        {name:'Inversiones',url:'#'},
+        {name:'Proyectos',url:'#'}
     ]
 
 
