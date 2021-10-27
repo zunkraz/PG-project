@@ -44,7 +44,6 @@ const user = new Schema(
         },
         cost: {
             type: Number,
-            required: true,
         },
         isAdmin: {
             type: Boolean,
