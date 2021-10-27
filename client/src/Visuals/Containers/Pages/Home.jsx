@@ -1,12 +1,17 @@
 import React from 'react'
+
+import Slogan from '../../Components/SloganComponents/Slogan'
 import WeekTips from '../../Components/WeekTipsComponents/WeekTips'
+
 
 
 function Home() {
     return (
         <div>
-            HOME COMPONENTS HERE
+
+            <Slogan />
             <WeekTips/>
+
         </div>
     )
 }
