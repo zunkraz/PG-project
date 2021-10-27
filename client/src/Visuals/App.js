@@ -1,6 +1,10 @@
 import './App.css';
+import './Assets/css/app.settings.css';
+import './Assets/css/app.core.css';
+import './Assets/css/app.actions.css';
+import './Assets/css/app.custom.css';
 
-import Footer from './Components/Footer/Footer';
+import Footer from './Components/FooterComponents/Footer/Footer';
 import Home from './Containers/Pages/Home';
 
 // Footer for test
@@ -9,9 +13,8 @@ import Home from './Containers/Pages/Home';
 function App() {
   return (
     <div className="App">
-      <Home/>
+      <Home />
     </div>
-
   );
 }
 

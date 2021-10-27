@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu&display=swap');
 
 :root {
 	/* Fonts */
-	--font-main:			'Maven Pro', sans-serif;
+	--font-main:			'Ubuntu', sans-serif;
 	--font-default:			'Open Sans', sans-serif;
 	
 	/* Content Adjust */
@@ -13,14 +13,14 @@
 	--content-adjust-561:	  89px;
 
 	/* Colors SRC */
-	--color-main-src:		255, 0, 0;
-	--color-alt-src:		242, 214, 112;
+	--color-main-src:		255,  33,  79;
+	--color-alt-src:		 23,  61,  80;
 	--color-extra1-src:		254, 214, 212;
-	--color-extra2-src:		248, 159, 5;
-	--color-extra3-src:		255, 255, 1;
-	--color-extra4-src:		255, 255, 1;
+	--color-extra2-src:		248, 159,   5;
+	--color-extra3-src:		255, 255,   1;
+	--color-extra4-src:		255, 255,   1;
 	--color-light-src:		255, 255, 255;
-	--color-dark-src:		0, 0, 0;
+	--color-dark-src:		0,     0,   0;
 
 	/* Color Main */
 	--color-main:			rgba(var(--color-main-src),  1);

@@ -1,3 +1,16 @@
+.position-middle-parent {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%,-50%);
+    margin-top: -2px;
+}
+.position-middle-parent > div {
+    transform: rotate(45deg);
+}
+.position-middle-parent > div > span {
+    transform: rotate(-45deg);
+}
 input {
     width: 100%;
     color: inherit!important;
@@ -81,9 +94,9 @@ button {
     perspective-origin: 50% 50%;
 }
 */
-.bg-component-home, .bg-component-countries {
+.bg-component-facts {
 	background: 
-		url(https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80) no-repeat center center;
+		url(https://images.unsplash.com/photo-1521791136064-7986c2920216?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80) no-repeat center center;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;

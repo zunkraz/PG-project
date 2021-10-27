@@ -1,3 +1,13 @@
+.action-professional {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-light);    
+}
+.action-professional:hover {
+	background-color: transparent;
+    border: solid 2px var(--color-main);
+	color: var(--color-main);    
+}
 .action-home {
 	background-color: transparent;
     border: solid 2px var(--color-light);
