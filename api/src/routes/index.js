@@ -1,9 +1,13 @@
-const { Router } = require('express')
-const router = Router()
+const { Router } = require('express');
+const router = Router();
 
 //Aquí importamos todas las rutas, solo puse un ejemplo
-const profesionales = require('./profesionales')
+const professionals = require('./professionals');
+const tips = require('./tips');
+const reviews = require('./reviews');
 
-router.use('/profesionales', profesionales)
+router.use('/tips', tips);
+router.use('/professionals', professionals);
+router.use('/reviews', reviews);
 
-module.exports = router
+module.exports = router;

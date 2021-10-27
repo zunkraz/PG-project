@@ -15,22 +15,23 @@ const appointment = new Schema(
         },
         duration: {
             type: Number,
-            default: 30,
+            default: 1,
         },
         available: {
             type: Boolean,
             default: true,
         },
-        cost: {
+        total: {
             type: Number,
-            required: true,
         },
         customerId: {
-            type: Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId, 
+            ref: 'users',
             required: true,
         },
         professionalId: {
-            type: Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId, 
+            ref: 'users',
             required: true,
         },       
     },
