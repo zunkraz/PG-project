@@ -12,7 +12,7 @@ export default function Register(){
     }
     return(
         <div class="uk-background-muted">
-            <h2 class="uk-margin-left uk-padding">Registrarse</h2>
+            <h2 class="uk-margin-left uk-padding">Registro</h2>
             <div class="uk-grid">
                 <button class="uk-button uk-button-danger uk-width-1-2" name="cliente" onClick={handleClick}>Nuevo Cliente</button>
                 <button class="uk-button uk-button-danger uk-width-1-2" name="profesional" onClick={handleClick}>Nuevo Profesional</button>

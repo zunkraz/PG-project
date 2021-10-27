@@ -48,14 +48,13 @@ export default function RegisterFormUser(){
             //     .then(res => res.json())
             //     .catch(error => console.error('Error:', error))
             //     .then(response => console.log('Success:', response));
-            console.log("go")
             alert('Te has registrado existosamente!');
         }
       }
 
     return (
         <div class="uk-padding uk-margin-left uk-flex uk-flex-center">
-            <form onSubmit={handleSubmit} class="uk-form-horizontal uk-margin-small" autocomplete="off">
+            <form onSubmit={handleSubmit} class="uk-form-horizontal uk-margin-small" autoComplete="off">
                 <h2>Informacion personal - Cliente</h2>
                 <div >
                     <input class="uk-input uk-form-width-large uk-margin-right" type="email"
@@ -85,7 +84,7 @@ export default function RegisterFormUser(){
                 </div>
                 <span class="uk-alert-danger">{error.password}</span>
                 <div>
-                <label for="acceptT">Acepto los términos y condiciones del servicio</label>
+                <label htmlFor="acceptT">Acepto los términos y condiciones del servicio</label>
                 <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
                 </div>
                 <input class="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
