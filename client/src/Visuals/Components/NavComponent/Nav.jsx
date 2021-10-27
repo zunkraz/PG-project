@@ -31,7 +31,7 @@ const Nav = () => {
                 uk-navbar-item 
                 uk-logo 
                 uk-margin-sm-left" 
-                to="#"
+                to="/"
                 >Logo</Link>
 
             <ul 

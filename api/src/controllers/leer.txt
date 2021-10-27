@@ -1,3 +1,1 @@
-La carpeta controllers tiene un archivo index, que lee todos los archivos de controllers/functions y los exporta en un solo module.exports, para mantener la organización
-
-Las funciones las escribimos en archivos diferentes, dentro de la carpeta controllers/functions, cada una con un único module.exports y con el mismo nombre del archivo la importamos en la ruta que se requiera
+Dentro de esta carpeta metemos los controladores de cada ruta

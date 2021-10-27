@@ -51,7 +51,7 @@ const user = new Schema(
             required: true,
             default: false,
         },
-        category: [{type: Schema.Types.ObjectId, ref: 'professions'}],
+        category: [{type: mongoose.Schema.Types.ObjectId, ref: 'professions'}],
         schedule: [{
             date: {
                 type: Date,
