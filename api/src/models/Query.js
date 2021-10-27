@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const query = mongoose.Schema(
+const query = new Schema(
     {
         cost: {
             type: Number,
@@ -13,11 +14,15 @@ const query = mongoose.Schema(
         professionalId: {
             type: Schema.Types.ObjectId,
             required: true,
-        },       
+        },
+        paid: {
+            typeof: Boolean,
+            default: false,
+        }   
     },
     { timestamp: true }
 )
 
-const Query = mongoose.model('Query', query);
+const Query = mongoose.model('Querys', query);
 
 module.exports = Query;
