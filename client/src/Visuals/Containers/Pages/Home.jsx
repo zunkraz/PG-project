@@ -1,10 +1,11 @@
 import React from 'react'
+import Slogan from '../../Components/SloganComponents/Slogan'
 
 
 function Home() {
     return (
         <div>
-            HOME COMPONENTS HERE
+            <Slogan />
         </div>
     )
 }
