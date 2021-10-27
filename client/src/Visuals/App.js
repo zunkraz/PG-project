@@ -26,19 +26,19 @@ function App() {
         <Route exact path='/'>
           <Home/>
         </Route>
-        <Route path='/login'>
+        <Route path='/ingresar'>
           <Login/>
         </Route>
-        <Route path='/dashboard'>
+        <Route path='/profesional'>
           <Dashboard/>
         </Route>
-        <Route path='/register'>
+        <Route path='/registro'>
           <Register/>
         </Route>
-        <Route path='/professionals'>
+        <Route path='/profesionales'>
           <Professionals/>
         </Route>
-        <Route path='/supports'>
+        <Route path='/soporte'>
           <Supports/>
         </Route>
       </Switch>
