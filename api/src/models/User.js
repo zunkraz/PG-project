@@ -51,17 +51,8 @@ const user = new Schema(
             required: true,
             default: false,
         },
-        category: [{type: Schema.Types.ObjectId, ref: 'professions'}],
-        schedule: [{
-            date: {
-                type: Date,
-                require: true,
-            },
-            available: {
-                type: Boolean,
-                 default: true
-            },
-        }],
+        category: [{type: Schema.Types.ObjectId, ref: 'categories'}],
+        schedule: [{type: Schema.Types.ObjectId, ref: 'appointments'}],
         isActive: {
             type: Boolean,
             default: true,
