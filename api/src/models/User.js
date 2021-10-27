@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const user = new mongoose.Schema(
+const user = new Schema(
     {
         name: {
             type: String,
@@ -50,10 +51,11 @@ const user = new mongoose.Schema(
             required: true,
             default: false,
         },
-        category: [{type: mongoose.Schema.Types.ObjectId, ref: 'professions'}],
+        category: [{type: Schema.Types.ObjectId, ref: 'categories'}],
+        appointments: [{type: Schema.Types.ObjectId, ref: 'appointments'}],
         schedule: [{
             date: {
-                type: Date,
+                type: String,
                 require: true,
             },
             available: {
@@ -69,6 +71,6 @@ const user = new mongoose.Schema(
     { timestamp: true }
 )
 
-const User = mongoose.model('User', user);
+const User = mongoose.model('Users', user);
 
 module.exports = User;
