@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu&display=swap');
+
+:root {
+	/* Fonts */
+	--font-main:			'Ubuntu', sans-serif;
+	--font-default:			'Open Sans', sans-serif;
+	
+	/* Content Adjust */
+	--content-adjust:		 137px;
+	--content-adjust-1599:	 124px;
+	--content-adjust-1199:	  91px;
+	--content-adjust-959:	 102px;
+	--content-adjust-561:	  89px;
+
+	/* Colors SRC */
+	--color-main-src:		255,  33,  79;
+	--color-alt-src:		 23,  61,  80;
+	--color-extra1-src:		254, 214, 212;
+	--color-extra2-src:		248, 159,   5;
+	--color-extra3-src:		255, 255,   1;
+	--color-extra4-src:		255, 255,   1;
+	--color-light-src:		255, 255, 255;
+	--color-dark-src:		0,     0,   0;
+
+	/* Color Main */
+	--color-main:			rgba(var(--color-main-src),  1);
+	--color-main-a80: 		rgba(var(--color-main-src), .8);
+	--color-main-a60: 		rgba(var(--color-main-src), .6);
+	--color-main-a40: 		rgba(var(--color-main-src), .4);
+	--color-main-a20: 		rgba(var(--color-main-src), .2);
+
+	/* Color Alt */
+	--color-alt:			rgba(var(--color-alt-src), 1);
+	--color-alt-a80:		rgba(var(--color-alt-src),.8);
+	--color-alt-a60:		rgba(var(--color-alt-src),.6);
+	--color-alt-a40:		rgba(var(--color-alt-src),.4);
+	--color-alt-a20:		rgba(var(--color-alt-src),.2);
+
+	/* Color Extra 1 */
+	--color-extra1:			rgba(var(--color-extra1-src), 1);
+	--color-extra1-a80:		rgba(var(--color-extra1-src),.8);
+	--color-extra1-a60:		rgba(var(--color-extra1-src),.6);
+	--color-extra1-a40:		rgba(var(--color-extra1-src),.4);
+	--color-extra1-a20:		rgba(var(--color-extra1-src),.2);
+
+	/* Color Extra 2 */
+	--color-extra2:			rgba(var(--color-extra2-src), 1);
+	--color-extra2-a80:		rgba(var(--color-extra2-src),.8);
+	--color-extra2-a60:		rgba(var(--color-extra2-src),.6);
+	--color-extra2-a40:		rgba(var(--color-extra2-src),.4);
+	--color-extra2-a20:		rgba(var(--color-extra2-src),.2);
+
+	/* Color Extra 3 */
+	--color-extra3:			rgba(var(--color-extra3-src), 1);
+	--color-extra3-a80:		rgba(var(--color-extra3-src),.8);
+	--color-extra3-a60:		rgba(var(--color-extra3-src),.6);
+	--color-extra3-a40:		rgba(var(--color-extra3-src),.4);
+	--color-extra3-a20:		rgba(var(--color-extra3-src),.2);
+
+	/* Color Extra 4 */
+	--color-extra4:			rgba(var(--color-extra4-src), 1);
+	--color-extra4-a80:		rgba(var(--color-extra4-src),.8);
+	--color-extra4-a60:		rgba(var(--color-extra4-src),.6);
+	--color-extra4-a40:		rgba(var(--color-extra4-src),.4);
+	--color-extra4-a20:		rgba(var(--color-extra4-src),.2);
+
+	/* Color Light */
+	--color-light:			rgba(var(--color-light-src), 1);
+	--color-light-a80:		rgba(var(--color-light-src),.8);
+	--color-light-a60:		rgba(var(--color-light-src),.8);
+	--color-light-a40:		rgba(var(--color-light-src),.8);
+	--color-light-a20:		rgba(var(--color-light-src),.8);
+
+	/* Color Dark */
+	--color-dark:			rgba(var(--color-dark-src), 1);
+	--color-dark-a80:		rgba(var(--color-dark-src),.8);
+	--color-dark-a60:		rgba(var(--color-dark-src),.6);
+	--color-dark-a40:		rgba(var(--color-dark-src),.4);
+	--color-dark-a20:		rgba(var(--color-dark-src),.2);
+
+	/* Color Primary */
+	--color-primary:		rgb(30,135,240);
+	--color-primary-a80:	rgba(30,135,240, .80);
+	--color-primary-a60:	rgba(30,135,240, .60);
+	--color-primary-a40:	rgba(30,135,240, .40);
+	--color-primary-a20:	rgba(30,135,240, .20);
+
+	/* Color Success */
+	--color-success:		rgb(0,180,80,.8);
+	--color-success-a80:	rgba(0,180,80, .80);
+	--color-success-a60:	rgba(0,180,80, .60);
+	--color-success-a40:	rgba(0,180,80, .40);
+	--color-success-a20:	rgba(0,180,80, .20);
+
+	/* Color Warning */
+	--color-warning:		rgb(250,160,90);
+	--color-warning-a80:	rgba(250,160,90, .80);
+	--color-warning-a60:	rgba(250,160,90, .60);
+	--color-warning-a40:	rgba(250,160,90, .40);
+	--color-warning-a20:	rgba(250,160,90, .20);
+
+	/* Color Danger */
+	--color-danger:			rgb(180,0,0);
+	--color-danger-a80:		rgba(180,0,0, .80);
+	--color-danger-a60:		rgba(180,0,0, .60);
+	--color-danger-a40:		rgba(180,0,0, .40);
+	--color-danger-a20:		rgba(180,0,0, .20);
+
+	--color-whatsapp: 		#4DC247;
+	--color-facebook: 		#3B5998;
+	--color-instagram: 		#DD2A7B;
+	--color-twitter: 		#0084b4;
+	--color-youtube: 		#FF0000;
+	--color-maps:			#dd4c40;
+	--color-paypal: 		#222d65;
+	
+	--color-box-shadow-xs:	rgba(0,0,0, .1);
+	--color-box-shadow-sm:	rgba(0,0,0, .3);
+	--color-box-shadow-md:	rgba(0,0,0, .5);
+	--color-box-shadow-lg:	rgba(0,0,0, .7);
+	--color-box-shadow-xl:	rgba(0,0,0, .9);
+
+	--color-text-shadow-xs:	rgba(0,0,0, .1);
+	--color-text-shadow-sm:	rgba(0,0,0, .3);
+	--color-text-shadow-md:	rgba(0,0,0, .5);
+	--color-text-shadow-lg:	rgba(0,0,0, .7);
+	--color-text-shadow-xl:	rgba(0,0,0, .9);
+}

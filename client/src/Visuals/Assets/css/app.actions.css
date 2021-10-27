@@ -1,0 +1,127 @@
+.action-professional {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-light);    
+}
+.action-professional:hover {
+	background-color: transparent;
+    border: solid 2px var(--color-main);
+	color: var(--color-main);    
+}
+.action-home {
+	background-color: transparent;
+    border: solid 2px var(--color-light);
+	color: var(--color-dark);    
+}
+.action-home:hover {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-dark);    
+}
+.action-github {
+    background-size: cover;
+}
+.action-github:hover {
+    background-size: cover;
+    background-color:  var(--color-main);
+}
+.action-github-nav {
+    background-size: cover;
+    background-color: var(--color-light);
+}
+.action-github-nav:hover {
+    background-color:  var(--color-main);
+}
+.action-linkedin {
+	background-size: cover;
+}
+.action-linkedin:hover {
+    background-size: cover;
+    background-color:  var(--color-main);
+}
+.action-linkedin-nav {
+    background-color:  var(--color-light);
+}
+.action-linkedin-nav:hover {
+    background-color:  var(--color-main);
+}
+
+/* Action Nav */
+.action-nav {
+	background-color: var(--color-light);
+	color: var(--color-dark);
+}
+.action-nav:hover {
+	background-color: var(--color-main);
+	color: var(--color-dark);    
+}
+
+/* Action Search */
+.action-search {
+	background-color: var(--color-light);
+    border: solid 1px var(--color-light);
+	color: var(--color-dark);    
+}
+.action-search:hover {
+	background-color: var(--color-main);
+    border: solid 1px var(--color-main);
+	color: var(--color-dark);    
+}
+
+/* Action Country */
+.action-country {
+	background-color: transparent;
+    border: solid 1px var(--color-light);
+	color: var(--color-light);    
+}
+.action-country:hover {
+	background-color: var(--color-main);
+    border: solid 1px var(--color-main);
+	color: var(--color-dark);     
+}
+
+/* Action Pagination */
+.action-pagination {
+	background-color: var(--color-light);
+	color: var(--color-dark);    
+}
+.action-pagination:hover {
+	background-color: var(--color-main);
+	color: var(--color-dark);   
+}
+
+/* Action Add */
+.action-add-country {
+
+
+
+		background-size: cover;
+	background-color: var(--color-light);
+    border: solid 1px var(--color-light); 
+}
+.action-add-country:hover {
+	background-color: var(--color-main);
+    border: solid 1px var(--color-main);
+}
+
+/* Action Remove */
+.action-remove-country {
+	background-size: cover;
+	background-color: var(--color-light);
+    border: solid 1px var(--color-light);   
+}
+.action-remove-country:hover {
+	background-size: cover;
+	background-color: var(--color-danger);
+    border: solid 1px var(--color-danger);
+}
+.action-create {
+	background-color: transparent;
+    border: solid 1px var(--color-light);
+	color: var(--color-light)!important;    
+}
+.action-create:hover {
+	background-color: var(--color-main);
+    border: solid 1px var(--color-main);
+	color: var(--color-dark)!important;   
+}
