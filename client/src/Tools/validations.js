@@ -34,7 +34,7 @@ export default function validate(newUser, setError){
         errors["password"] = "La contraseña debe contener al menos 6 caracteres";
       }
     } 
-    if (typeof newUser["telNum1"] !== undefined) {
+    if (newUser["telNum1"] && typeof newUser["telNum1"] !== undefined) {
       var patternphone = new RegExp( /^[0-9]{8,30}$/);
       if (!patternphone.test(newUser["telNum1"])) {
         isValid = false;

@@ -48,7 +48,7 @@ export default function RegisterFormUser(){
             //     .then(res => res.json())
             //     .catch(error => console.error('Error:', error))
             //     .then(response => console.log('Success:', response));
-
+            console.log("go")
             alert('Te has registrado existosamente!');
         }
       }
