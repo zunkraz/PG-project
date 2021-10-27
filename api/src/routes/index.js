@@ -9,7 +9,7 @@ const reviews = require('./reviews');
 
 router.use('/tips', tips);
 router.use('/professionals', professionals);
-router.use('./users', users);
+router.use('/users', users);
 router.use('/reviews', reviews);
 
 module.exports = router;
