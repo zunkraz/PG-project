@@ -1,17 +1,15 @@
 import React from 'react'
-import FooterListSpan from '../FooterListSpan/FooterListSpan'
-import './FooterList.css'
-
+import { Link } from 'react-router-dom';
 
 function FooterList({Title, Contain}) {
     return (
         <div className='FooterListDiv'>
-            <div className='TitleFooterList'>
-                <h4>{Title}</h4>
+            <div className='FooterListTitle'>
+                <span>{Title}</span>
             </div>
             <div className='FooterListTex'>
                 {Contain?.map((elem, index)=>{
-                    return <FooterListSpan index={index} text={elem.name} url={elem.url}/>
+                    return <Link key={index} to={elem.url}><span>{elem.name}</span></Link>
                 })}
             </div>
         </div>
