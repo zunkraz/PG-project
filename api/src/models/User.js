@@ -42,6 +42,10 @@ const user = new Schema(
         dislikes: {
             type: Number,
         },
+        cost: {
+            type: Number,
+            required: true,
+        },
         isAdmin: {
             type: Boolean,
             default: false,
