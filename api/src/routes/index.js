@@ -6,10 +6,12 @@ const professionals = require('./professionals');
 const tips = require('./tips');
 const reviews = require('./reviews');
 const categories = require('./categories');
+const users = require('./users');
 
 router.use('/tips', tips);
 router.use('/professionals', professionals);
 router.use('/reviews', reviews);
 router.use('/categories', categories);
+router.use('/users', users);
 
 module.exports = router;
