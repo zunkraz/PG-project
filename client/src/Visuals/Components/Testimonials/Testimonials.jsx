@@ -1,8 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-
+import React from 'react';
+import Testimony from './Testimony';
 
 const Testimonials = () => {
+    const data = [
+        {
+            user: "Juan Pablo Lozano",
+            testimony: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum enim arcu, condimentum in sollicitudin at, pharetra at mauris. Nam bibendum ex sed lorem condimentum luctus."
+        },
+        {
+            user: "Adriana Cejas",
+            testimony: "Quisque sed nulla et sapien suscipit porttitor. Mauris faucibus efficitur consequat. Sed fermentum mollis nisl, id malesuada ipsum auctor et."
+        },
+        {
+            user: "Nohelia Rincon",
+            testimony: "Aliquam erat volutpat. Vestibulum at eros sit amet neque euismod fringilla. Curabitur orci justo, elementum ut malesuada non, consectetur a tellus."
+        },
+        {
+            user: "Agustin Ecker",
+            testimony: "Sed nibh elit, blandit non venenatis vitae, gravida sed mauris. Nunc suscipit laoreet lobortis. In eget placerat elit. In id scelerisque magna. Donec in posuere nisi."
+        },
+    ]
     return (
         <div>
             <div className="wrapper padd-xl bg-color-main-a20">
@@ -15,11 +32,16 @@ const Testimonials = () => {
                     </div>
                 </section>
             </div>
-            <div className="wrapper padd-xl-tb bg-color-main flex-center">
-                <div className="col-1-2@xl padd-lg">
-                    <div className="padd-xl text-center text-italic font-xl border-top-color-main border-4x position-relative bg-color-light-a20 border-radius-md">                      
-                        "Vivamus facilisis est iaculis neque ornare faucibus. Nulla sagittis turpis massa, eleifend sollicitudin nisl gravida id. Curabitur tortor ipsum, condimentum a sapien at, laoreet dignissim nisi."
-                    </div>
+            <div data-uk-slider className="wrapper padd-xl-tb bg-color-main">
+                <ul class="uk-slider-items">
+                    {
+                        data && data.map(function (testimonyData, index) {
+                            return <Testimony key={index} data={testimonyData} />
+                        })
+                    } 
+                </ul>
+                <div class="wrapper flex-center">
+                    <ul class="uk-slider-nav uk-dotnav"></ul>
                 </div>
             </div>
         </div>
