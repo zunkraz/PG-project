@@ -56,7 +56,7 @@ export default function RegisterFormPro(){
             })
             setError({})
             e.target.reset();
-            console.log(newUser)
+            
             createUser(newUser)
             setDone(true)
         }
