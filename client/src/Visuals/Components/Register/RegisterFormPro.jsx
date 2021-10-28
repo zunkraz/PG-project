@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import validate from "../../../Tools/validations";
 
 export default function RegisterFormPro(){
@@ -17,7 +18,8 @@ export default function RegisterFormPro(){
     const [checked, setChecked]= useState(false)
     const [profchecked, setProfchecked]= useState(false)
     const [error, setError]= useState({})
-    const professionslist=["Abogacía", "Arquitecto", "Contador", "Veterinario"]
+    const professionslist=["Abogacía", "Arquitecto", "Contador", "Medicina general", "Psicologia", "Veterinario"]
+    const [done, setDone]= useState(false)
 
     function handleChange(e){
         const {value, name}=e.target
@@ -63,11 +65,11 @@ export default function RegisterFormPro(){
             //     .then(res => res.json())
             //     .catch(error => console.error('Error:', error))
             //     .then(response => console.log('Success:', response));
-
-            alert('Te has registrado existosamente!');
+            setDone(true)
         }
       }
-
+    
+    if(!done){
     return (
         <div class="uk-padding uk-margin-left uk-flex uk-flex-center">
             <form onSubmit={handleSubmit} class="uk-form-horizontal uk-margin-small" autoComplete="off">
@@ -146,5 +148,17 @@ export default function RegisterFormPro(){
                 <input class="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
             </form>
         </div>
-    )
+    )}
+    if(done){
+        return (
+            <div class="w-full p-24 flex flex-col justify-center content-center">
+                <h1 class="text-3xl flex justify-center">Te has registrado exitosamente!</h1>
+                <div class="flex justify-center py-12">
+                <Link to="/">
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded ">Volver al inicio</button>
+                </Link>
+                </div>
+            </div>
+        )
+    }
 }
