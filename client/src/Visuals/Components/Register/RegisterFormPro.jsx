@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import validate from "../../../Tools/validations";
+import { createUser } from "../../../ApiReq/users";
 
 export default function RegisterFormPro(){
     const [newUser, setNewuser]= useState({
         isProfesional:true,
         email:"",
-        userName:"",
+        username:"",
         password:"",
         confirmPassword:"",
         name:"",
@@ -44,7 +45,7 @@ export default function RegisterFormPro(){
         if(validate(newUser, setError)){
             setNewuser({
                 email:"",
-                userName:"",
+                username:"",
                 password:"",
                 confirmPassword:"",
                 name:"",
@@ -55,16 +56,8 @@ export default function RegisterFormPro(){
             })
             setError({})
             e.target.reset();
-            // fetch("url", {
-            //     method:"POST", 
-            //     body: JSON.stringify( newUser ),
-            //     headers:{
-            //         'Content-Type': 'application/json'
-            //         }
-            //     })
-            //     .then(res => res.json())
-            //     .catch(error => console.error('Error:', error))
-            //     .then(response => console.log('Success:', response));
+            
+            createUser(newUser)
             setDone(true)
         }
       }
@@ -81,13 +74,13 @@ export default function RegisterFormPro(){
                     onChange={handleChange}
                     required/>
                     <input class="uk-input uk-form-width-large"  type="text"
-                    name="userName"
+                    name="username"
                     placeholder="Usuario" 
                     onChange={handleChange}
                     required/>
                 </div>
                 <span class="uk-alert-danger">{error.email}</span>
-                <span class="uk-alert-danger">{error.userName}</span>
+                <span class="uk-alert-danger">{error.username}</span>
                 <div class="uk-margin">
                     <input class="uk-input uk-form-width-large uk-margin-right"  type="password"
                     name="password"
@@ -125,7 +118,7 @@ export default function RegisterFormPro(){
                 <select name="category" class="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
                         <option value="">- Seleccionar profesión -</option>
                         {categorylist.map(e=>{
-                            return(<option name={e} key={categorylist.indexOf(e)} value={e}>
+                            return(<option name={e} key={categorylist.indexOf(e)} value={"617aa0cdcd1fa1ebd069ff21"}>
                                 {e}
                                 </option>)
                         })}

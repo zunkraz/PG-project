@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import validate from "../../../Tools/validations";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { createUser } from "../../../ApiReq/users";
 
 export default function RegisterFormUser(){
     const [newUser, setNewuser]= useState({
@@ -45,7 +46,7 @@ export default function RegisterFormUser(){
             })
             setError({})
             e.target.reset();
-            
+            createUser(newUser)
             setDone(true)
         }
       }
