@@ -1,6 +1,7 @@
 import {
     GET_CATEGORIES,
-    GET_TIPS
+    GET_TIPS,
+    GET_REVIEWS
 } from '../../constants'
 import {
     getCategories, 
