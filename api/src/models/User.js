@@ -13,7 +13,7 @@ const user = new Schema(
         },
         username: {
             type: String,
-            required: true,
+            // required: true,
             unique: true
         },
         email: {
@@ -28,7 +28,8 @@ const user = new Schema(
         },
         professionalRegistration: {
             type: String,
-            // unique: true,
+            unique: false,
+            required: false,
         },
         img: {
             type: String
@@ -74,6 +75,6 @@ const user = new Schema(
     { timestamp: true }
 )
 
-const User = mongoose.model('Users', user);
+const User = mongoose.model('users', user);
 
 module.exports = User;
