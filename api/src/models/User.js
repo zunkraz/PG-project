@@ -56,8 +56,8 @@ const user = new Schema(
             type: Boolean,
             default: false,
         },
-        category: [{type: Schema.Types.ObjectId, ref: 'Categories'}],
-        appointments: [{type: Schema.Types.ObjectId, ref: 'Appointments'}],
+        category: [{type: Schema.Types.ObjectId, ref: 'categories'}],
+        appointments: [{type: Schema.Types.ObjectId, ref: 'appointments'}],
         schedule: [{
             date: {
                 type: String,
