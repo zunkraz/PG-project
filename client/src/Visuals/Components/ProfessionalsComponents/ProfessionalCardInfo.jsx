@@ -9,7 +9,8 @@ function ProfessionalCardInfo({biography, professionalData, schedule}) {
         setproInfo(e.target.name)
     }
     
-    
+    // comentario para commit
+
     return (
         <div>
             {proInfo}
