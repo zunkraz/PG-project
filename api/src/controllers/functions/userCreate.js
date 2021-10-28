@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
             category,
             professionalRegistration,
         });
-        await newUser.save()
+        await User.save(newUser)
         return res.send(newUser)
         
     }catch(err){
