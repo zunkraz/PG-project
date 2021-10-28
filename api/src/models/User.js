@@ -28,7 +28,6 @@ const user = new Schema(
         },
         professionalRegistration: {
             type: String,
-            unique: true,
         },
         img: {
             type: String
