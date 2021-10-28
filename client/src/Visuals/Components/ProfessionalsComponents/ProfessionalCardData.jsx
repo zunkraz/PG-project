@@ -2,9 +2,9 @@ import React from 'react'
 
 function ProfessionalCardData({img, likes, dislikes, sessions}) {
     return (
-        <div>
-            <div>
-                <img src={img} alt='Professional Img'/>
+        <div class='bg-green-200 h-auto'>
+            <div class='bg-yellow-200'>
+                <img class='p-3' src={img} alt='Professional Img'/>
             </div>
             <div>
                 <span>{likes}</span>

@@ -20,7 +20,7 @@ function ProfessionalCardInfo({biography, professionalData, schedule}) {
                 <button name='profile' 
                         onClick={changeState}
                     >Perfil Laboral</button>
-                <button name='schedule' 
+                <button name='schedule'
                         onClick={changeState}
                     >Agenda</button>
             </div>

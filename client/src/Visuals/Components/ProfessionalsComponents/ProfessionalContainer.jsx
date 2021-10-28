@@ -61,13 +61,16 @@ function ProfessionalContainer() {
 
     return (
         <div>
-            <div>
-                <span>{`${professional.name} ${professional.lastName}`}</span>
-                <span>{professional.category}</span>
+            <div class='flex flex-col '>
+                <span class='text-red-400 font-sans text-4xl pt-6 pb-3 
+                            text-center text-opacity-900 uppercase 
+                            font-extrabold'>{`${professional.name}  ${professional.lastName}`}</span>
+                <span class='font-serif text-3xl tracking-wider 
+                            text-gray-600 pb-6 text-center 
+                            font-bold uppercase'>{professional.category}</span>
             </div>
-            <div>
-                <div>
-                    <div>
+            <div class='container mx-auto md:container md:mx-auto center px-4 flex '>
+                <div class='w-4/5'>
                         <ProfessionalCardComponent  img={professional.img} 
                                                     likes={professional.likes} 
                                                     dislikes={professional.dislikes}
@@ -77,9 +80,8 @@ function ProfessionalContainer() {
                                                     schedule={professional.schedule}
                                                     data={professional.similarProfessionals}
                                 />
-                    </div>
                 </div>
-                <div>
+                <div class='w-1/5'>
                     <ProfessionalOpinionsComponents opinions={professional.opinions}/>
                 </div>
             </div>

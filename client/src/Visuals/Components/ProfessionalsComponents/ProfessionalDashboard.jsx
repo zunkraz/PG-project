@@ -4,7 +4,7 @@ import ProfessionalContainer from './ProfessionalContainer'
 function ProfessionalDashboard() {
 
     return (
-        <div>
+        <div class='bg-gray-100'>
             <ProfessionalContainer/>
         </div>
     )
