@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Home from './Containers/Pages/Home';
+import Home from './Containers/Home';
 import './App.css';
 import './Assets/css/app.settings.css';
 import './Assets/css/app.core.css';
@@ -9,11 +9,11 @@ import './Assets/css/app.custom.css';
 import { Route, Switch  } from 'react-router';
 import Footer from '..//Visuals/Components/FooterComponents/Footer'
 import Nav from '../Visuals/Components/NavComponent/Nav'
-import Login from './Containers/Pages/Login';
-import Dashboard from './Containers/Pages/Dashboard';
-import Register from './Containers/Pages/Register';
-import Professionals from './Containers/Pages/Professionals';
-import Supports from './Containers/Pages/Supports'
+import Login from './Containers/Login';
+import Dashboard from './Containers/Dashboard';
+import Register from './Containers/Register';
+import Professionals from './Containers/Professionals';
+import Supports from './Containers/Supports'
 
 
 
@@ -26,19 +26,19 @@ function App() {
         <Route exact path='/'>
           <Home/>
         </Route>
-        <Route path='/login'>
+        <Route path='/ingresar'>
           <Login/>
         </Route>
-        <Route path='/dashboard'>
+        <Route path='/profesional'>
           <Dashboard/>
         </Route>
-        <Route path='/register'>
+        <Route path='/registro'>
           <Register/>
         </Route>
-        <Route path='/professionals'>
+        <Route path='/profesionales'>
           <Professionals/>
         </Route>
-        <Route path='/supports'>
+        <Route path='/soporte'>
           <Supports/>
         </Route>
       </Switch>
