@@ -1,7 +1,7 @@
 const router = require ('express').Router();
-const {userCreate} = require('../controllers/index')
+const {userCreate, getUsersToForm } = require('../controllers/index')
 
 router.post('/', userCreate)
-// router.get()
+router.get('/', getUsersToForm)
 
 module.exports = router;
