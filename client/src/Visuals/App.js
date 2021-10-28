@@ -14,6 +14,7 @@ import Dashboard from './Containers/Dashboard';
 import Register from './Containers/Register';
 import Professionals from './Containers/Professionals';
 import Supports from './Containers/Supports'
+import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 
 
 
@@ -29,7 +30,13 @@ function App() {
         <Route path='/ingresar'>
           <Login/>
         </Route>
-        <Route path='/profesional'>
+        <Route exact path='/profesional/'>
+          <ProfessionalDashboard/>
+        </Route>
+        <Route path='/profesional/:id'
+                    render={({match})=><ProfessionalDashboard match={match}/>}
+                />
+        <Route path='/miperfil/'>
           <Dashboard/>
         </Route>
         <Route path='/registro'>
