@@ -2,7 +2,8 @@ const User = require('./../../models/User')
 
 module.exports = async (req,res,next) => {
     try{
-        const {username,password} = req.query;
+        const {username} = req.query;
+        const {password} = req.body;
         let user = await User.findOne({username:username}, 'password')
 
         let msg 
