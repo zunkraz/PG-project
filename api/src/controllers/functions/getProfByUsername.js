@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
         let user = await User.findOne({
             username:username,
             isProfessional:true
-        }).populate("categories")
+        }).populate("category")
 
         if(!user) throw new Error('404')
         return res.send(user)
