@@ -8,7 +8,7 @@ const Nav = () => {
         {title:'Crea tu cuenta!',url:'/registro'},
         {title:'Soporte',url:'/soporte'},
         {title:'Iniciar Sesion',url:'/ingresar'},
-        {title:'Mi Perfil',url:'/profesional'},
+        {title:'Mi Perfil',url:'/miperfil'},
 
     ]
     let items = btns.map( (data,index) => {

@@ -257,3 +257,7 @@
     background-color: transparent;
     color: transparent;
 }
+
+.ProfessionalCard img{
+    width: 200px;
+}
