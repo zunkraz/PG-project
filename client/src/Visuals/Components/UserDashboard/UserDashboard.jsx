@@ -1,17 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function UserDashboard() {
     return (
         <div>
-            <div>
-                USER CARD Y OTROS
-            </div>
-            <div>
-                USER RATIOS
-            </div>
-            <div>
-                POSIBLE SPAM HERE
-            </div>
+            USER / PROFESIONAL DETAILS ACCOUNT 
+            <Link to='/profesional'> {'==>'}  PROFESIONAL COMPONENT  {'<=='} </Link>
         </div>
     )
 }
