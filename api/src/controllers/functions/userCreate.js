@@ -1,13 +1,13 @@
 const User = require('../../models/User');
 
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
     try{
         // const queryUsername = await User.findOne({username: body.username})
         // const queryEmail = await User.findOne({email: body.email})
         // if(queryUsername) throw new Error('username')
         // if(queryEmail) throw new Error('email')
     
-        const {name, lastname, username, email, password, isProfesional, category, professionalRegistration} = req.body;
+        const {name, lastname, username, email, password, isProfessional, category, professionalRegistration} = req.body;
 
         let newUser = User.create({
             name,
@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
             username,
             email,
             password,
-            isProfesional,
+            isProfessional,
             category,
             professionalRegistration,
         });
@@ -23,6 +23,6 @@ module.exports = async (req, res) => {
         return res.send(newUser)
         
     }catch(err){
-        res.status(500).send(err)
+        next(res.status(500).send(err))
     }
 };
