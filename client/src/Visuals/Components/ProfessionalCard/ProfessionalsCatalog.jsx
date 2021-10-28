@@ -13,6 +13,7 @@ export default function ProfesionalsCatalog(){
                 img={p.img}
                 category= {p.category}
                 likes= {p.likes}
+                dislikes= {p.dislikes}
                 />
 
             </li>)
