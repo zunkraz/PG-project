@@ -45,7 +45,7 @@ router.put ('/appointment/:id',(req,res,next)=>{
 
 //CATEGORY CREATE
 router.post('/category', (req,res,next)=>{
-  let {newCategory} = req.body;
+  let newCategory = req.body;
   categoryCreate(newCategory)
     .then(result => res.json(result))
     .catch(err => next(err));
