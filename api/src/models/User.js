@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const user = new mongoose.Schema(
+const user = new Schema(
     {
         name: {
             type: String,
             required: true,
         },
-        lastName: {
+        lastname: {
             type: String,
             required: true,
         },
@@ -26,35 +27,39 @@ const user = new mongoose.Schema(
             required: true,
         },
         professionalRegistration: {
-            type: Number,
-            required: true,
+            type: String,
             unique: true,
+        },
+        img: {
+            type: String
         },
         country: {
             type: String,
-            required: true,
         },
         likes: {
             type: Number,
+            default: 0,
         },
         dislikes: {
+            type: Number,
+            default: 0,
+        },
+        cost: {
             type: Number,
         },
         isAdmin: {
             type: Boolean,
-            required: true,
             default: false,
         },
         isProfessional: {
             type: Boolean,
-            required: true,
             default: false,
         },
-        category: [{type: mongoose.Schema.Types.ObjectId, ref: 'professions'}],
+        category: [{type: Schema.Types.ObjectId, ref: 'categories'}],
+        appointments: [{type: Schema.Types.ObjectId, ref: 'appointments'}],
         schedule: [{
             date: {
-                type: Date,
-                require: true,
+                type: String,
             },
             available: {
                 type: Boolean,
@@ -69,6 +74,6 @@ const user = new mongoose.Schema(
     { timestamp: true }
 )
 
-const User = mongoose.model('User', user);
+const User = mongoose.model('Users', user);
 
 module.exports = User;
