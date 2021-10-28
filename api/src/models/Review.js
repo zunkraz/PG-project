@@ -20,6 +20,6 @@ const review = new Schema(
     { timestamp: true }
 )
 
-const Review = mongoose.model('Reviews', review);
+const Review = mongoose.model('reviews', review);
 
 module.exports = Review;

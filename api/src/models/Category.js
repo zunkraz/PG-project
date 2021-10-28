@@ -20,6 +20,6 @@ const category = new Schema (
     { timestamp: true }
 )
 
-const Category = mongoose.model('Categories', category);
+const Category = mongoose.model('categories', category);
 
 module.exports = Category;

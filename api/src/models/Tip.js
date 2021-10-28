@@ -11,6 +11,6 @@ const tip = new Schema(
     { timestamp: true }
 )
 
-const Tip = mongoose.model('Tips', tip);
+const Tip = mongoose.model('tips', tip);
 
 module.exports = Tip;
