@@ -1,5 +1,5 @@
 import axios from 'axios';
-import BASIC_URL from '../constants';
+import {BASIC_URL} from '../constants';
 
 export async function createUser(user) {
     const data = await axios.post(`${BASIC_URL}/users`, user);

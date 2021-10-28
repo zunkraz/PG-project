@@ -5,11 +5,11 @@ const user = new Schema(
     {
         name: {
             type: String,
-            required: true,
+            // required: true,
         },
         lastname: {
             type: String,
-            required: true,
+            // required: true,
         },
         username: {
             type: String,
@@ -28,7 +28,7 @@ const user = new Schema(
         },
         professionalRegistration: {
             type: String,
-            unique: true,
+            // unique: true,
         },
         img: {
             type: String
