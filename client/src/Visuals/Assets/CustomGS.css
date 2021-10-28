@@ -257,3 +257,11 @@
     background-color: transparent;
     color: transparent;
 }
+
+.ProfessionalCard img{
+    width: 350px;
+}
+
+.ProfessionalSimilarCard{
+    width: 200px;
+}

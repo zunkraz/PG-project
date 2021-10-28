@@ -32,7 +32,7 @@ const Testimonials = () => {
                     </div>
                 </section>
             </div>
-            <div className="wrapper padd-xl-tb bg-color-main flex-center 123" ukSlider={"uk-slider"}>
+            <div data-uk-slider className="wrapper padd-xl-tb bg-color-main">
                 <ul class="uk-slider-items">
                     {
                         data && data.map(function (testimonyData, index) {
@@ -40,8 +40,9 @@ const Testimonials = () => {
                         })
                     } 
                 </ul>
-                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                <div class="wrapper flex-center">
+                    <ul class="uk-slider-nav uk-dotnav"></ul>
+                </div>
             </div>
         </div>
     );

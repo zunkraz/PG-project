@@ -15,7 +15,7 @@ function Home() {
             <FeaturedProfessions/>
             <WeekTips/>
             <FeaturedProfessionals/>
-            <Testimonials/>            
+            <Testimonials/> 
         </div>
     )
 }

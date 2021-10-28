@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => {
     const btns = [
-        {title:'Profesionales',url:'/ingresar'},
-        {title:'Crea tu cuenta!',url:'registro'},
-        {title:'Soporte',url:'/profesional'},
-        {title:'Iniciar Sesion',url:'profesionales'},
-        {title:'Mi Perfil',url:'soporte'},
+        {title:'Profesionales',url:'/profesionales'},
+        {title:'Crea tu cuenta!',url:'/registro'},
+        {title:'Soporte',url:'/soporte'},
+        {title:'Iniciar Sesion',url:'/ingresar'},
+        {title:'Mi Perfil',url:'/miperfil'},
 
     ]
     let items = btns.map( (data,index) => {
