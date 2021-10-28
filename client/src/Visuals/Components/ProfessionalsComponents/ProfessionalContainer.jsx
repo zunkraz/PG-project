@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfessionalCardComponent from './ProfessionalCardComponent'
 import ProfessionalOpinionsComponents from './ProfessionalOpinionsComponents'
+import SimilarProfessionals from './SimilarProfessionals'
 
 
 
@@ -50,7 +51,12 @@ function ProfessionalContainer() {
                     'Me atendio rapido, sin problemas', 
                     'Llego un ratito tarde pero muy buen profesional',
                     'Muy buena onda, 10/10'
-                ]
+                ],
+        similarProfessionals: [
+            {name:'Carlos', lastName:'Terrabusi', category:'Abogado' ,img:'https://www.keithandthegirl.com/Show/Pictures/1GF0MHSQ6NM6G5S0LTW1-Display.jpg'},
+            {name:'Jesica', lastName:'Borla', category:'Abogado' ,img:'https://th.bing.com/th/id/OIP.ia5VD2nduOpahuhdqyerRAHaEr?pid=ImgDet&w=1200&h=758&rs=1'},
+            {name:'Guillermo', lastName:'Zeemo', category:'Abogado' ,img:'https://img.minutoneuquen.com/u/fotografias/fotosnoticias/2020/2/19/211483.jpg'},
+        ]
     }
 
     return (
@@ -69,6 +75,7 @@ function ProfessionalContainer() {
                                                     biography={professional.biography}
                                                     professionalData={professional.professionalData}
                                                     schedule={professional.schedule}
+                                                    data={professional.similarProfessionals}
                                 />
                     </div>
                 </div>

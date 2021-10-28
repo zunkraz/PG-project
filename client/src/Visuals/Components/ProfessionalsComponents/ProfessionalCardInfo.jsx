@@ -22,7 +22,7 @@ function ProfessionalCardInfo({biography, professionalData, schedule}) {
                     >Perfil Laboral</button>
                 <button name='schedule' 
                         onClick={changeState}
-                    >Horarios</button>
+                    >Agenda</button>
             </div>
             <div className={proInfo}>
                 {proInfo==='bio' && <span>{biography}</span>}
