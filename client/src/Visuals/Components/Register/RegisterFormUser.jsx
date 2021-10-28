@@ -1,11 +1,15 @@
 import React, {useState} from "react";
 import validate from "../../../Tools/validations";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { createUser } from "../../../ApiReq/users";
 
 export default function RegisterFormUser(){
     const [newUser, setNewuser]= useState({
         email:"",
-        userName:"",
+        username:"",
+        name:"",
+        lastname:"",
         password:"",
         confirmPassword:""
     })
@@ -34,22 +38,15 @@ export default function RegisterFormUser(){
         if(validate(newUser, setError)){
             setNewuser({
                 email:"",
-                userName:"",
+                username:"",
+                name:"",
+                lastname:"",
                 password:"",
                 confirmPassword:""
             })
             setError({})
             e.target.reset();
-            // fetch("url", {
-            //     method:"POST", 
-            //     body: JSON.stringify( newUser ),
-            //     headers:{
-            //         'Content-Type': 'application/json'
-            //         }
-            //     })
-            //     .then(res => res.json())
-            //     .catch(error => console.error('Error:', error))
-            //     .then(response => console.log('Success:', response));
+            createUser(newUser)
             setDone(true)
         }
       }
@@ -57,23 +54,36 @@ export default function RegisterFormUser(){
     if(!done){
     return (
         <div class="uk-padding uk-margin-left uk-flex uk-flex-center">
-            <form onSubmit={handleSubmit} class="uk-form-horizontal uk-margin-small" autoComplete="off">
+            <form onSubmit={handleSubmit} class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off">
                 <h2>Informacion personal - Cliente</h2>
-                <div >
+                <div class="mb-4">
                     <input class="uk-input uk-form-width-large uk-margin-right" type="email"
                     name="email"
                     placeholder="Correo electronico"
                     onChange={handleChange}
                     required/>
                     <input class="uk-input uk-form-width-large"  type="text"
-                    name="userName"
+                    name="username"
                     placeholder="Usuario" 
                     onChange={handleChange}
                     required/>
                 </div>
                 <span class="uk-alert-danger">{error.email}</span>
-                <span class="uk-alert-danger">{error.userName}</span>
-                <div class="uk-margin">
+                <span class="uk-alert-danger">{error.username}</span>
+                <div class="mb-4">
+                    <input class="uk-input uk-form-width-large uk-margin-right" type="text"
+                    name="name"
+                    placeholder="Nombre"
+                    onChange={handleChange}
+                    required/>
+                    <input class="uk-input uk-form-width-large"  type="text"
+                    name="lastname"
+                    placeholder="Apellido" 
+                    onChange={handleChange}
+                    required/>
+                </div>
+                <span class="uk-alert-danger">{error.name}</span>
+                <div class="mb-4">
                     <input class="uk-input uk-form-width-large uk-margin-right"  type="password"
                     name="password"
                     placeholder="Contraseña" 
@@ -86,7 +96,7 @@ export default function RegisterFormUser(){
                     required/>
                 </div>
                 <span class="uk-alert-danger">{error.password}</span>
-                <div>
+                <div class="mb-4">
                 <label htmlFor="acceptT">Acepto los términos y condiciones del servicio</label>
                 <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
                 </div>

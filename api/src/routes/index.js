@@ -8,6 +8,7 @@ const reviews = require('./reviews');
 const categories = require('./categories');
 const admin = require('./admin');
 const users = require('./users');
+const login = require('./login');
 
 
 router.use('/tips', tips);
@@ -16,5 +17,6 @@ router.use('/reviews', reviews);
 router.use('/categories', categories);
 router.use('/admin', admin);    //ruta que falta proteger con middleware
 router.use('/users', users);
+router.use('/login', login); //esta ruta valida el inicio de sesión
 
 module.exports = router;

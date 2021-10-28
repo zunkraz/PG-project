@@ -2,7 +2,7 @@ import React from 'react'
 
 const FeaturedProfessional = ({data}) => {
     return (
-        <div className="col-1-5@xl padd-lg">
+        <div className="col-1-5@xl col-1-5@lg col-1-5@md col-1-5@sm padd-lg">
             <div className="">
                 <img src={data.img}/>
             </div>

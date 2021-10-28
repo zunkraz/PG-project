@@ -1,6 +1,6 @@
 import {
 
-} from './actions';
+} from '../actions/actions';
 
 const initialState={
     

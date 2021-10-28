@@ -12,10 +12,10 @@ function Home() {
     return (
         <div>
             <Slogan />
+            <FeaturedProfessions/>
             <WeekTips/>
-            {/* <FeaturedProfessionals/> */}
-            {/* <Testimonials/> */}
-            {/* <FeaturedProfessions/> */}
+            <FeaturedProfessionals/>
+            <Testimonials/>
         </div>
     )
 }
