@@ -9,7 +9,7 @@ const category = new Schema (
         },
         img: {
             type: String,
-            requerid: true,
+            required: true,
         },
         searchCount: {
             type: Number,
