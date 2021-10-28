@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import validate from "../../../Tools/validations";
+import { createUser } from "../../../ApiReq/users";
 
 export default function RegisterFormPro(){
     const [newUser, setNewuser]= useState({
@@ -55,16 +56,8 @@ export default function RegisterFormPro(){
             })
             setError({})
             e.target.reset();
-            // fetch("url", {
-            //     method:"POST", 
-            //     body: JSON.stringify( newUser ),
-            //     headers:{
-            //         'Content-Type': 'application/json'
-            //         }
-            //     })
-            //     .then(res => res.json())
-            //     .catch(error => console.error('Error:', error))
-            //     .then(response => console.log('Success:', response));
+            console.log(newUser)
+            createUser(newUser)
             setDone(true)
         }
       }
@@ -125,7 +118,7 @@ export default function RegisterFormPro(){
                 <select name="category" class="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
                         <option value="">- Seleccionar profesión -</option>
                         {categorylist.map(e=>{
-                            return(<option name={e} key={categorylist.indexOf(e)} value={e}>
+                            return(<option name={e} key={categorylist.indexOf(e)} value={"617aa0cdcd1fa1ebd069ff21"}>
                                 {e}
                                 </option>)
                         })}
