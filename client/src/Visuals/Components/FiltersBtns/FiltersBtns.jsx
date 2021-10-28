@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import '../../Assets/CustomAR.css'
 const FiltersBtns = () => {
 
@@ -47,7 +48,6 @@ return setInvalid(true);
 
 const handleSubmit = e => {
     e.preventDefault();
-    alert( `Buscas ${data.name} por precios de: ${data.country}`)
     // Aqui van los despachos de acciones para filtrar y mandar a la ruta professionals
     // Aqui van los despachos de acciones para filtrar y mandar a la ruta professionals
     // Aqui van los despachos de acciones para filtrar y mandar a la ruta professionals
@@ -90,12 +90,14 @@ const handleSubmit = e => {
                 </select>
             </div>
           
-            <input 
-            className=" btnFiltersBtns bg-red-400 p-3 text-lg"
-            type="submit" 
-            value="Buscar"
-            disabled={invalid}
-            />
+            <Link to='./profesionales'>
+                <input 
+                    className=" btnFiltersBtns bg-red-400 p-3 text-lg"
+                    type="submit" 
+                    value="Buscar"
+                    disabled={invalid}
+                />
+            </Link>
         </div>
 
             </form>
