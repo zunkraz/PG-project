@@ -23,6 +23,6 @@ module.exports = async (req, res, next) => {
         return res.send(newUser)
         
     }catch(err){
-        next(res.status(500).send(err))
+        next(err)
     }
 };
