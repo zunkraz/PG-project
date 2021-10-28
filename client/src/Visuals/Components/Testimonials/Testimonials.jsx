@@ -4,7 +4,7 @@ import Testimony from './Testimony';
 const Testimonials = () => {
     const data = [
         {
-            user: "Juan Lozano",
+            user: "Juan Pablo Lozano",
             testimony: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum enim arcu, condimentum in sollicitudin at, pharetra at mauris. Nam bibendum ex sed lorem condimentum luctus."
         },
         {
