@@ -9,7 +9,7 @@ const categories = [
     {name: 'Veterinaria'},
     {name: 'Psicologia'},
 ];
-const ranges = [
+const countries = [
     {country: 'Argentina'},
     {country: 'Colombia'},
     {country: 'Venezuela'},
@@ -21,7 +21,7 @@ const categoriesRender = categories.map(data => {
     const opt = <option value={data.name}>{data.name}</option>;
     return opt;
 });
-const rangesRender = ranges.map(data => {
+const countriesRender = countries.map(data => {
     const opt = <option value={data.country}>{data.country}</option>;
     return opt;
 });
@@ -86,7 +86,7 @@ const handleSubmit = e => {
                     className='inputsFiltersBtns uk-input uk-form-width-large' 
                 >
                 <option value="">Seleccionar País</option>
-                 {rangesRender}
+                 {countriesRender}
                 </select>
             </div>
           
