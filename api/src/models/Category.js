@@ -15,7 +15,7 @@ const category = new Schema (
             type: Number,
             default: 0,
         },
-        professionalId: [{type: Schema.Types.ObjectId, ref: 'users'}],       
+        professionalId: [{type: Schema.Types.ObjectId, ref: 'Users'}],       
     },
     { timestamp: true }
 )
