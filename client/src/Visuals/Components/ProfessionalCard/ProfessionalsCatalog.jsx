@@ -31,7 +31,7 @@ export default function ProfesionalsCatalog(){
     return (
         <div class="my-5">
         <ul class="flex flex-wrap">
-         {displayProfs}
+        {displayProfs}
         </ul>
         <ReactPaginate
             breakLabel="..."
