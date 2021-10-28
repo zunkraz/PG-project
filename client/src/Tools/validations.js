@@ -10,14 +10,14 @@ export default function validate(newUser, setError){
         errors["email"] = "Por favor ingresa un email válido";
       }
     }
-    if (typeof newUser["name"] !== undefined && typeof newUser["lastName"] !== undefined) {
+    if (typeof newUser["name"] !== undefined && typeof newUser["lastname"] !== undefined) {
         
       var patternname = new RegExp( /^[a-zA-Z ]{2,30}$/);
       if (!patternname.test(newUser["name"])) {
         isValid = false;
         errors["name"] = "Por favor ingresa un nombre válido";
       }
-      if (!patternname.test(newUser["lastName"])) {
+      if (!patternname.test(newUser["lastname"])) {
         isValid = false;
         errors["name"] = "Por favor ingresa un nombre válido";
       }

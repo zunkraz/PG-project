@@ -10,15 +10,15 @@ export default function RegisterFormPro(){
         password:"",
         confirmPassword:"",
         name:"",
-        lastName:"",
+        lastname:"",
         telNum1:"",
-        professions:"",
-        matNum:""
+        category:"",
+        professionalRegistration:""
     })
     const [checked, setChecked]= useState(false)
     const [profchecked, setProfchecked]= useState(false)
     const [error, setError]= useState({})
-    const professionslist=["Abogacía", "Arquitecto", "Contador", "Medicina general", "Psicologia", "Veterinario"]
+    const categorylist=["Abogacía", "Arquitecto", "Contador", "Medicina general", "Psicologia", "Veterinario"]
     const [done, setDone]= useState(false)
 
     function handleChange(e){
@@ -48,10 +48,10 @@ export default function RegisterFormPro(){
                 password:"",
                 confirmPassword:"",
                 name:"",
-                lastName:"",
+                lastname:"",
                 telNum1:"",
                 telNum2:"",
-                matNum:""
+                professionalRegistration:"",
             })
             setError({})
             e.target.reset();
@@ -72,7 +72,7 @@ export default function RegisterFormPro(){
     if(!done){
     return (
         <div class="uk-padding uk-margin-left uk-flex uk-flex-center">
-            <form onSubmit={handleSubmit} class="uk-form-horizontal uk-margin-small" autoComplete="off">
+            <form onSubmit={handleSubmit} class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off">
                 <h2>Informacion personal - Profesional</h2>
                 <div class="uk-margin">
                     <input class="uk-input uk-form-width-large uk-margin-right" type="email"
@@ -108,7 +108,7 @@ export default function RegisterFormPro(){
                     onChange={handleChange}
                     required/>
                     <input class="uk-input uk-form-width-large"  type="text"
-                    name="lastName"
+                    name="lastname"
                     placeholder="Apellido" 
                     onChange={handleChange}
                     required/>
@@ -122,10 +122,10 @@ export default function RegisterFormPro(){
                     required/>
                 </div>
                 <span class="uk-alert-danger">{error.phone}</span>
-                <select name="professions" class="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
+                <select name="category" class="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
                         <option value="">- Seleccionar profesión -</option>
-                        {professionslist.map(e=>{
-                            return(<option name={e} key={professionslist.indexOf(e)} value={e}>
+                        {categorylist.map(e=>{
+                            return(<option name={e} key={categorylist.indexOf(e)} value={e}>
                                 {e}
                                 </option>)
                         })}
@@ -136,7 +136,7 @@ export default function RegisterFormPro(){
                     <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="prof-check" checked={profchecked} onChange={handleChangeCheckboxprof}/>
                     </div>
                     {profchecked && <input class="uk-input uk-form-width-large uk-margin"  type="text"
-                    name="matNum"
+                    name="professionalRegistration"
                     placeholder="Nro de matricula" 
                     onChange={handleChange}
                     required/>}
