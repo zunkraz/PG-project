@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import RegisterFormUser from "../../Components/Register/RegisterFormUser";
-import RegisterFormPro from "../../Components/Register/RegisterFormPro";
+import RegisterFormUser from "../Components/Register/RegisterFormUser";
+import RegisterFormPro from "../Components/Register/RegisterFormPro";
 
 export default function Register(){
     const [active, setActive] = useState("cliente");
