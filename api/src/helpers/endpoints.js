@@ -61,3 +61,6 @@
 'localhost:3001/tips'
 // POST NEW TIP (PENDING ADMIN APPROVAL, body: text)
 'localhost:3001/tips'
+
+// -------------LOG IN ROUTES------------------
+'localhost:3001/login'
