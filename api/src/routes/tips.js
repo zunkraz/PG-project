@@ -9,10 +9,10 @@ router.get('/',(req,res,next)=>{
 });
 
 router.post('/', (req, res, next) => {
-  const {text} = req.body;
+  const text = req.body;
   postTips(text)
     .then(result => res.json(result))
     .catch(err => next(err))
 });
 
-module.exports = router;
+module.exports = router; 
