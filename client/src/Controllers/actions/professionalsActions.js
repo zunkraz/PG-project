@@ -1,4 +1,5 @@
 import {getProfessionals, getProfessionalByUsername} from '../../ApiReq/professionals'
+import { GET_PROFESSIONALS, GET_PROF_BY_USER} from './../../constants'
 
 export function getAllProfs(){
     return function(dispatch){

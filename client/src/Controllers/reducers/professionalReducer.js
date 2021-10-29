@@ -1,4 +1,4 @@
-import { GET_PROFESSIONALS, GET_PROF_BY_USER} from constants
+import { GET_PROFESSIONALS, GET_PROF_BY_USER} from './../../constants'
 
 const initialState = {
     professionals: [],
