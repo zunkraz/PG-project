@@ -20,56 +20,71 @@ const user = new Schema(
             type: String,
             required: true,
             unique: true,
-            lowercase: true,
+            lowercase: true
         },
         password: {
             type: String,
-            required: true,
+            required: true
         },
-        professionalRegistration: {
-            type: String,
-            unique: false,
-            required: false,
+        country: {
+            type: String
+        },
+        state: {
+            type: String
+        },
+        city: {
+            type: String
+        },
+        birthdate: {
+            type: Date,
         },
         img: {
             type: String
         },
-        country: {
-            type: String,
-        },
-        likes: {
-            type: Number,
-            default: 0,
-        },
-        dislikes: {
-            type: Number,
-            default: 0,
-        },
-        cost: {
-            type: Number,
-        },
         isAdmin: {
             type: Boolean,
-            default: false,
+            default: false
         },
         isProfessional: {
             type: Boolean,
-            default: false,
+            default: false
+        },
+        professionalRegistration: {
+            type: String,
+            unique: false,
+            required: false
+        },
+        cost: {
+            type: Number
         },
         category: [{type: Schema.Types.ObjectId, ref: 'categories'}],
+        degree: {
+            type: String
+        },
+        bankaccount: {
+            type: String
+        },
         appointments: [{type: Schema.Types.ObjectId, ref: 'appointments'}],
         schedule: [{
             date: {
-                type: String,
+                type: String
             },
             available: {
                 type: Boolean,
-                 default: true
+                default: true
             },
         }],
+        likes: {
+            type: Number,
+            default: 0
+        },
+        dislikes: {
+            type: Number,
+            default: 0
+        },
         isActive: {
             type: Boolean,
-            default: true,
+            default: true
         }
     },
     { timestamp: true }
