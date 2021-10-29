@@ -161,9 +161,9 @@ function UserDashboard() {
                 </div>
                 <div>
                     {tip && <AddPostComponent addPost={addPost}/>}
-                    <h5 class=' flex justify-center uppercase mt-20 
+                    {flag===false && <h5 class=' flex justify-center uppercase mt-20 
                                 text-4xl font-semibold tracking-widest
-                                text-gray-500 bg-gray-200'>Post Publicados</h5>
+                                text-gray-500 bg-gray-200'>Post Publicados</h5>}
                     {flag===false && <ProfessionalPostsContainer    posts={tipsArray}/>}
                 </div>
             </div>
