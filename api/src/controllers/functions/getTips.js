@@ -1,5 +1,8 @@
 const Tip = require ('./../../models/Tip');
 
 module.exports = () => {
-  return Tip.aggregate([{$sample: {size: 4}}])
-}
+  return Tip.aggregate([
+    {$match:{isApproved:true}},
+    {$sample: {size: 4}}
+  ])
+};
