@@ -9,9 +9,11 @@ function SimilarProfessionals({data}) {
     console.log(data)
     
     return (
-        <div>
-            <h5>Profesionales Similares</h5>
-            <div>
+        <div class=''>
+            <div class='font-semibold pt-3 pb-2 font-xl bg-gray-400 text-center'>
+                <h5 class='text-white text-semibold uppercase tracking-widest'>Profesionales Similares</h5>
+            </div>
+            <div class='flex items-center justify-around h-72'>
                 {data.map((elem,index)=>{
                     return <ProfessionalCardTemplate    key={index} 
                                                         name={elem.name}
