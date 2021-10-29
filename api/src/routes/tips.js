@@ -5,7 +5,7 @@ const {getTips, postTips} = require('../controllers/index.js');
 router.get('/',(req,res,next)=>{
   getTips()
     .then(result => res.json(result))
-    .catch(err => next({message: err}));
+    .catch(err => next(err))
 });
 
 router.post('/', (req, res, next) => {
@@ -15,4 +15,4 @@ router.post('/', (req, res, next) => {
     .catch(err => next(err))
 });
 
-module.exports = router; 
+module.exports = router;
