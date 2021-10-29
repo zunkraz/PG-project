@@ -1,4 +1,6 @@
 import React from 'react'
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
 
 const FeaturedProfessional = ({data}) => {
     return (
@@ -13,8 +15,12 @@ const FeaturedProfessional = ({data}) => {
                 <div className="text-bold text-center font-lg font-main">{data.name} {data.lastName}</div>
                 <div className="text-bold text-center">{data.category}</div>
                 <div className="mrg-lg-t flex-center">
-                    <div className="padd-lg-r">Like {data.likes}</div>
-                    <div className="padd-lg-l">Dislike {data.dislikes}</div>
+                    <div className="padd-lg-r">
+                        <FaIcons.FaThumbsUp/> {data.likes}
+                    </div>
+                    <div className="padd-lg-l">
+                        <FaIcons.FaThumbsDown/> {data.dislikes}
+                    </div>
                 </div>
                 <div className="mrg-lg-t padd-md border-radius-sm action action-professional">
                     Ver Profesional
