@@ -1,7 +1,6 @@
 import React from 'react'
 import ProfessionalCardComponent from './ProfessionalCardComponent'
 import ProfessionalOpinionsComponents from './ProfessionalOpinionsComponents'
-import SimilarProfessionals from './SimilarProfessionals'
 
 
 
@@ -84,7 +83,7 @@ function ProfessionalContainer() {
                                 />
                 </div>
                 <div class='w-1/5'>
-                    <ProfessionalOpinionsComponents opinions={professional.opinions}/>
+                    <ProfessionalOpinionsComponents data={professional.opinions}/>
                 </div>
             </div>
         </div>
