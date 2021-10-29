@@ -6,3 +6,4 @@ export const GET_REVIEWS = 'GET_REVIEWS';
 export const GET_TIPS = 'GET_TIPS';
 export const GET_PROFESSIONALS = "GET_PROFESSIONALS"
 export const GET_PROF_BY_USER = "GET_PROF_BY_USER"
+export const GET_USERS = "GET_USERS"

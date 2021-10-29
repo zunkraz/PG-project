@@ -7,11 +7,11 @@ export async function createUser(user) {
 }
 
 export async function getUsers() {
-    const data = await axios.get(`${BASIC_URL}/users`);
+    const data = (await axios.get(`${BASIC_URL}/users`)).data;
     return data;
 }
 
 export async function getSingleUser(id) {
-    const data = await axios.get(`${BASIC_URL}/users/:${id}`);
+    const data = (await axios.get(`${BASIC_URL}/users/:${id}`)).data;
     return data;
 }
