@@ -61,7 +61,7 @@ const user = new Schema(
         degree: {
             type: String
         },
-        bankaccount: {
+        bankAccount: {
             type: String
         },
         appointments: [{type: Schema.Types.ObjectId, ref: 'appointments'}],
