@@ -57,7 +57,7 @@ function WeekTips() {
     return (
         <div className='WeekTipsDiv'>
             <div className='WeekTipsTitle'>
-                <span>Week Tips</span>
+                <span>Week Tips 2</span>
             </div>
             <div className='WeekTipsCardsContainer'>
                 <PaginationBtn pag={tipPage} 
