@@ -167,9 +167,6 @@ function UserDashboard() {
                     {flag===false && <ProfessionalPostsContainer    posts={tipsArray}/>}
                 </div>
             </div>
-            <div>
-                
-            </div>
         </div>
     )
 }
