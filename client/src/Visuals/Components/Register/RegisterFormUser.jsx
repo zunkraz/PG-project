@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import validate from "../../../Tools/validations";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import {useSelector} from "react-redux"
 import { createUser } from "../../../ApiReq/users";
 
 export default function RegisterFormUser(){
@@ -16,6 +16,8 @@ export default function RegisterFormUser(){
     const [checked, setChecked]= useState(false)
     const [error, setError]= useState({})
     const [done, setDone]= useState(false)
+
+    const userData= useSelector((state) => {return state.userReducer.users})
 
     function handleChange(e){
         const {value, name}=e.target
@@ -35,7 +37,7 @@ export default function RegisterFormUser(){
             alert("Por favor indica que aceptas los Términos y Condiciones");
             return false
         }
-        if(validate(newUser, setError)){
+        if(validate(newUser, setError, userData)){
             setNewuser({
                 email:"",
                 username:"",

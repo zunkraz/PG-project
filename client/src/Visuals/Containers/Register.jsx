@@ -1,9 +1,14 @@
 import React, {useState} from "react";
 import RegisterFormUser from "../Components/Register/RegisterFormUser";
 import RegisterFormPro from "../Components/Register/RegisterFormPro";
+import { useDispatch } from "react-redux";
+import { getAllUsers } from "../../Controllers/actions/userActions";
 
 export default function Register(){
     const [active, setActive] = useState("cliente");
+
+    const dispatch = useDispatch()
+    dispatch(getAllUsers())
 
     function handleClick(e){
         const name= e.target.name
