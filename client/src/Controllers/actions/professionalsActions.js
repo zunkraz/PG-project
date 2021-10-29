@@ -2,8 +2,8 @@ import {getProfessionals, getProfessionalByUsername} from '../../ApiReq/professi
 import { GET_PROFESSIONALS, GET_PROF_BY_USER} from './../../constants'
 
 export function getAllProfs(){
-    return function(dispatch){
-        const data = getProfessionals();
+    return async function(dispatch){
+        const data = await getProfessionals();
         return dispatch({
             type: GET_PROFESSIONALS,
             payload: data
@@ -12,8 +12,8 @@ export function getAllProfs(){
 };
 
 export function getProfByUser(username){
-    return function(dispatch){
-        const data = getProfessionalByUsername(username);
+    return async function(dispatch){
+        const data = await getProfessionalByUsername(username);
         return dispatch({
             type: GET_PROF_BY_USER,
             payload: data

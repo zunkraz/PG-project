@@ -10,8 +10,8 @@ import {
 } from '../../ApiReq/constantInfo'
 
 export function getCat(){
-    return function(dispatch){
-        let data = getCategories();
+    return async function(dispatch){
+        let data = await getCategories();
         return dispatch({
             type: GET_CATEGORIES,
             payload: data
@@ -20,8 +20,8 @@ export function getCat(){
 };
 
 export function getAllTips(){
-    return function(dispatch){
-        let data = getTips()
+    return async function(dispatch){
+        let data = await getTips()
         return dispatch({
             type: GET_TIPS,
             payload: data
@@ -30,8 +30,8 @@ export function getAllTips(){
 }
 
 export function getAllReviews(){
-    return function(dispatch){
-        let data = getReviews()
+    return async function(dispatch){
+        let data = await getReviews()
         return dispatch({
             type:GET_REVIEWS,
             payload:data
