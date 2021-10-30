@@ -1,6 +1,16 @@
-export default function validate(newUser, setError){
+export default function validate(newUser, setError, userData){
     let errors = {};
     let isValid = true;
+
+    if(userData.find(user=> user.email===newUser["email"])){
+      isValid = false;
+      errors["email"] = "El email ya esta en uso";
+    }
+
+    if(userData.find(user=> user.username===newUser["username"])){
+      isValid = false;
+      errors["username"] = "El usuario ya existe";
+    }
 
     if (typeof newUser["email"] !== undefined) {
         

@@ -55,26 +55,34 @@ function WeekTips() {
     
 
     return (
-        <div className='WeekTipsDiv'>
-            <div className='WeekTipsTitle'>
-                <span>Week Tips 2</span>
-            </div>
-            <div className='WeekTipsCardsContainer'>
-                <PaginationBtn pag={tipPage} 
-                                pages={numOfPages} 
-                                simbol={'<'}
-                                workFunction={dwPage} 
-                                active={tipPage==1?true:false}/>
-                
-                {showPage(tipsArray, tipPage)?.map(elem=>{
-                    return <WeekTipsCard key={elem.id} text={elem.text}/>
-                })}
-
-                <PaginationBtn pag={tipPage} 
-                                pages={numOfPages} 
-                                simbol={'>'} 
-                                workFunction={upPage}
-                                active={tipPage===numOfPages?true:false}/>
+        <div className="wrapper bg-component-week-tips">
+            <div className="wrapper bg-color-alt-a40">
+                {/*
+                <div className="wrapper">
+                    <section>
+                        <div className="text-center text-bold font-main font-color-light font-2x">
+                            Tips de la Semana
+                        </div>
+                    </section>
+                </div>
+                */}
+                <div 
+                    data-uk-slideshow="autoplay:true; animation:slide; ratio:5:1"
+                    className="wrapper position-relative"
+                    tabindex="-1"
+                >
+                    <ul className="uk-slideshow-items">
+                        {
+                            tipsArray && tipsArray.map(element => {
+                                return <WeekTipsCard key={element.id} text={element.text} />
+                            })
+                        }             
+                    </ul>
+                    {/*
+                    <a className="uk-position-center-left uk-position-small uk-hidden-hover bg-t1" href="#" data-uk-slidenav-previous data-uk-slideshow-item="previous"></a>
+                    <a className="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next data-uk-slideshow-item="next"></a>
+                    */}
+                </div>
             </div>
         </div>
     )

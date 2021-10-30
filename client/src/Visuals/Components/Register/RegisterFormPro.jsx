@@ -2,10 +2,11 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import validate from "../../../Tools/validations";
 import { createUser } from "../../../ApiReq/users";
+import {useSelector} from "react-redux"
 
 export default function RegisterFormPro(){
     const [newUser, setNewuser]= useState({
-        isProfesional:true,
+        isProfessional:true,
         email:"",
         username:"",
         password:"",
@@ -19,8 +20,10 @@ export default function RegisterFormPro(){
     const [checked, setChecked]= useState(false)
     const [profchecked, setProfchecked]= useState(false)
     const [error, setError]= useState({})
-    const categorylist=["Abogacía", "Arquitecto", "Contador", "Medicina general", "Psicologia", "Veterinario"]
     const [done, setDone]= useState(false)
+
+    const userData= useSelector((state) => {return state.userReducer.users})
+    const categorylist= useSelector(state => state.constantInfoReducer.categories)
 
     function handleChange(e){
         const {value, name}=e.target
@@ -42,7 +45,7 @@ export default function RegisterFormPro(){
             alert("Por favor indica que aceptas los Términos y Condiciones");
             return false
         }
-        if(validate(newUser, setError)){
+        if(validate(newUser, setError, userData)){
             setNewuser({
                 email:"",
                 username:"",
@@ -118,14 +121,14 @@ export default function RegisterFormPro(){
                 <select name="category" class="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
                         <option value="">- Seleccionar profesión -</option>
                         {categorylist.map(e=>{
-                            return(<option name={e} key={categorylist.indexOf(e)} value={"617aa0cdcd1fa1ebd069ff21"}>
-                                {e}
+                            return(<option name={e.name} key={e._id} value={e._id}>
+                                {e.name}
                                 </option>)
                         })}
                     </select>
                 <div>
                     <div class="uk-width-1-2">
-                    <label for="prof-check" class="uk-padding-right">Eres profesional certificado?</label>
+                    <label htmlFor="prof-check" class="uk-padding-right">Eres profesional certificado?</label>
                     <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="prof-check" checked={profchecked} onChange={handleChangeCheckboxprof}/>
                     </div>
                     {profchecked && <input class="uk-input uk-form-width-large uk-margin"  type="text"

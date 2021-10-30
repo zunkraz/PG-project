@@ -1,14 +1,20 @@
 import axios from 'axios'
 import {BASIC_URL} from '../constants'
 
-export async function getCategories(){
-    return (await axios.get(`${BASIC_URL}/categories`)).data
+export function getCategories(){
+    return axios.get(`${BASIC_URL}/categories`)
+    .then(r=>r.data)
+    .catch(r=>r.response.data)
 }
 
-export async function getTips(){
-    return (await axios.get(`${BASIC_URL}/tips`)).data
+export function getTips(){
+    return axios.get(`${BASIC_URL}/tips`)
+    .then(r=>r.data)
+    .catch(r=>r.response.data)
 }
 
-export async function getReviews(){
-    return (await axios.get(`${BASIC_URL}/reviews`)).data
+export function getReviews(){
+    return axios.get(`${BASIC_URL}/reviews`)
+    .then(r=>r.data)
+    .catch(r=>r.response.data)
 }

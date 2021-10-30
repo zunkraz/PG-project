@@ -5,7 +5,7 @@ import { thumbsup, thumbsdown } from "../../Assets/icons";
 
 export default function ProfessionalCard({id, name, lastName, category, likes, dislikes, img}){
     return (
-        <div class="w-80 h-96 rounded overflow-hidden shadow-lg m-10">
+        <div class="w-64 h-96 rounded overflow-hidden shadow-lg m-10">
             <Link to={`/professionals/${id}`} style={{ "textDecoration": "none" }}>
             <div class="h-1/2" >
                 <img class="object-contain h-48 w-full" src={img} alt=""/>

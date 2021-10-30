@@ -1,36 +1,38 @@
 import React, { useState } from "react";
 import ProfessionalCard from "./ProfessionalCard";
 import ReactPaginate from "react-paginate"
+import { useSelector } from "react-redux";
 
 export default function ProfesionalsCatalog(){
-    const [profs, setProf] = useState(professionals)
     const [pageNumber, setPageNumber]= useState(0)
+    const profis= useSelector(state=>state.professionalReducer.professionals)
 
-    const profPerPage= 9
+    const profPerPage= profis.length<8 ? profis.length : 8
     const pageVisited= pageNumber * profPerPage
+    
 
-    const displayProfs= profs.slice(pageVisited, pageVisited + profPerPage).map(p=>{
-        return(<li key={professionals.indexOf(p)}>
-            <ProfessionalCard key={professionals.indexOf(p)}
-            id={professionals.indexOf(p)}
+    const displayProfs= profis.slice(pageVisited, pageVisited + profPerPage).map(p=>{
+        return(<li>
+            <ProfessionalCard key={p._id}
+            id={p._id}
             name={p.name}
-            lastName= {p.lastName}
-            img={p.img}
-            category= {p.category}
+            lastName= {p.lastname}
+            img={professionals[0].img}
+            category= {p.category[0] ? p.category[0].name : null}
             likes= {p.likes}
             dislikes= {p.dislikes}
             />
 
         </li>)
     })
-    const pageCount= Math.ceil(profs.length / profPerPage)
+    const pageCount= Math.ceil(profis.length / profPerPage)
     const changePage= ({selected})=>{
         setPageNumber(selected)
     }
 
     return (
         <div class="my-5">
-        <ul class="flex flex-wrap">
+        <ul class="flex flex-wrap justify-center">
         {displayProfs}
         </ul>
         <ReactPaginate
