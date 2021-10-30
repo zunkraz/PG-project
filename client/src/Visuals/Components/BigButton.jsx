@@ -1,9 +1,12 @@
 import React from 'react'
 
-function BigButton({onClickFunction, text, cssClass}) {
+function BigButton({onClickFunction, text, cssClass, disactive, cssDisactive, textLog, textNoLog}) {
     return (
         <div>
-            <button className={cssClass} onClick={onClickFunction}>{text}</button>
+            <button disabled={disactive}
+                    className={disactive?cssDisactive:cssClass}
+                    onClick={onClickFunction}
+            ><span className={disactive?textNoLog:textLog}>{text}</span></button>
         </div>
     )
 }
