@@ -20,10 +20,10 @@ export default function RegisterFormPro(){
     const [checked, setChecked]= useState(false)
     const [profchecked, setProfchecked]= useState(false)
     const [error, setError]= useState({})
-    const categorylist=["Abogacía", "Arquitecto", "Contador", "Medicina general", "Psicologia", "Veterinario"]
     const [done, setDone]= useState(false)
 
     const userData= useSelector((state) => {return state.userReducer.users})
+    const categorylist= useSelector(state => state.constantInfoReducer.categories)
 
     function handleChange(e){
         const {value, name}=e.target
@@ -121,8 +121,8 @@ export default function RegisterFormPro(){
                 <select name="category" class="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
                         <option value="">- Seleccionar profesión -</option>
                         {categorylist.map(e=>{
-                            return(<option name={e} key={categorylist.indexOf(e)} value={"617aa0cdcd1fa1ebd069ff21"}>
-                                {e}
+                            return(<option name={e.name} key={e._id} value={e._id}>
+                                {e.name}
                                 </option>)
                         })}
                     </select>
