@@ -6,14 +6,16 @@ import {useDispatch, useSelector} from "react-redux";
 function AdminPanel(){
   const dispatch = useDispatch()
   const usersAdmin = useSelector(state=>state.adminReducer.adminUsers);
+  const userDeleted = useSelector(state=>state.adminReducer.userDeleted);
+  const userModified = useSelector(state=>state.adminReducer.userModified);
   useEffect(()=>{
-    //axios.get(`${BASIC_URL}/admin/users`).then(users => setUsersAdmin(users.data)).catch(err => console.log(err))
-  dispatch(getAdminUsers())
-  },[]);
+  dispatch(getAdminUsers());
+  },[userDeleted,userModified]);
 
-  let userOnPage = {isAdmin:true};  //para restringir lo que se muestra(?)
+  //const userOnPage = useSelector(state=>state.sessionReducer.status); descomentar cuando ya este implementado
+  const userLoggedIn = {isAdmin:true};
 
-  if (userOnPage.isAdmin) return (
+  if (userLoggedIn.isAdmin) return (
     <div>
       <h1 className='text-bold font-main font-1x'>Panel de Administrador</h1>
       <div className="flex flex-col ">

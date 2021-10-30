@@ -1,24 +1,25 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {delAdminUser, getAdminUsers, putAdminUser} from '../../../Controllers/actions/adminActions'
+import React from 'react';
+import {useDispatch} from "react-redux";
+import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions'
 
 function UserRow({user}){
   const dispatch = useDispatch();
-  const userDeleted = useSelector(state=>state.adminReducer.userDeleted);
-  const userModified = useSelector(state=>state.adminReducer.userModified);
-  useEffect(()=>{
-    dispatch(getAdminUsers())
-  },[userDeleted,userModified]);
 
   function handleUserDelete(username){
-    return dispatch(delAdminUser(username))
+    if(window.confirm(`Desea eliminar a ${username}?`)) {
+      dispatch(delAdminUser(username));}
+    else {console.log('Ok no lo elimino.')}
   }
   function handleResetPassword(username){
-    return dispatch(putAdminUser(username,{password:'123456'}))
+    if(window.confirm(`Desea resetear el password de ${username}?`)) {
+      dispatch(putAdminUser(username, {password: '123456'}));
+    } else {console.log('Ok no lo cambio.')}
   }
   function handleChangeRole(username,isAdmin){
-    if(isAdmin) dispatch(putAdminUser(username,{isAdmin:false}))
-    else dispatch(putAdminUser(username,{isAdmin:true}))
+    if(window.confirm(`Desea cambiar el rol de ${username}?`)) {
+      if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}))
+      else dispatch(putAdminUser(username, {isAdmin: true}))
+    } else {console.log('Ok no lo cambio.')}
   }
   return (
     <tbody className="bg-white divide-y divide-gray-200">
