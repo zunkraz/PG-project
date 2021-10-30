@@ -20,7 +20,6 @@ export default function RegisterFormPro(){
     const [checked, setChecked]= useState(false)
     const [profchecked, setProfchecked]= useState(false)
     const [error, setError]= useState({})
-    // const categorylist=["Abogacía", "Arquitecto", "Contador", "Medicina general", "Psicologia", "Veterinario"]
     const [done, setDone]= useState(false)
 
     const userData= useSelector((state) => {return state.userReducer.users})
