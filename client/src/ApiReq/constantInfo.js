@@ -16,5 +16,5 @@ export function getTips(){
 export function getReviews(){
     return axios.get(`${BASIC_URL}/reviews`)
     .then(r=>r.data)
-    .catch(r.response.data)
+    .catch(r=>r.response.data)
 }
