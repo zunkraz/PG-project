@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 
-function LoginFormComponents({classLogBtn, classSelectBtn, logIn, handleFields, tagUser, tagPass, tagRePass}) {
+function LoginFormComponents({logIn, handleFields, tagUser, tagPass, tagRePass, UserCanLog}) {
 
     const [flag, setflag] = useState(false)
     const [inputName, setinputName] = useState('username')
@@ -24,6 +24,26 @@ function LoginFormComponents({classLogBtn, classSelectBtn, logIn, handleFields, 
     const classBtnPass = 'font-xl' 
     const textPassShow = <FaRegEye/>
     const textPassHide = <FaRegEyeSlash/>
+
+    const classSelectBtn = `bg-gray-200 px-8 py-4 w-96 mt-5 rounded-xl font-semibold 
+                            text-3xl uppercase tracking-widest text-gray-100 
+                            cursor-pointer hover:bg-gray-400 duration-1000
+                            border-2 border-gray-200 shadow-xl ring-4 ring-gray-300 ring-opacity-50`
+
+    const classLogBtn=`bg-red-400 px-8 py-4 w-96 mt-5 rounded-xl font-semibold 
+                text-3xl uppercase tracking-widest text-gray-100 
+                cursor-pointer hover:bg-red-300 duration-1000
+                border-2 border-gray-200 shadow-xl `
+
+    const classNoLogBtn=`bg-gray-200 px-8 py-4 w-96 mt-5 rounded-xl font-semibold 
+    text-3xl uppercase tracking-widest text-gray-100 shadow-xl text-white
+    cursor-not-allowed `
+
+    const textLog='text-white'
+    const textNoLog='text-gray-400'
+
+
+
     const handleShowPass = ()=>{
         setpassEye(!passEye)
     }
@@ -31,17 +51,19 @@ function LoginFormComponents({classLogBtn, classSelectBtn, logIn, handleFields, 
         setpassEye2(!passEye2)
     }
     return (
-        <div class='flex flex-col'>
+        <div className='flex flex-col'>
             {flag===false &&
-                <div class='flex flex-col'>
-                    <span>Loguearte con</span>
-                    <div class='flex flex-col'>
+                <div className='flex flex-col'>
+                    <span className='flex justify-center items-center 
+                                    text-2xl font-semibold text-gray-500
+                                    mb-5'>Loguearte con</span>
+                    <div className='flex flex-col'>
                         <button onClick={handleFlag}
-                                class={classSelectBtn}
+                                className={classSelectBtn}
                                 name='username'
                             >Usuario</button>
                         <button onClick={handleFlag}
-                                class={classSelectBtn}
+                                className={classSelectBtn}
                                 name='email'
                             >E-Mail</button>
                     </div>
@@ -54,7 +76,7 @@ function LoginFormComponents({classLogBtn, classSelectBtn, logIn, handleFields, 
                 name={inputName}
                 type={'text'}
                 placeholder={inputName==='username'?'Ingrese su Nombre de Usuario':'Ingrese su Correo Electrónico'}
-                classInput={tagUser?classDanger:classInput}
+                classInput={tagUser?classInput:classDanger}
                 classLabel={classLabel}
                 classDiv={classDiv}
                 />
@@ -65,7 +87,7 @@ function LoginFormComponents({classLogBtn, classSelectBtn, logIn, handleFields, 
                 name={'password'}
                 type={passEye?'text':'password'}
                 placeholder={'Ingrese su Contraseña'}
-                classInput={tagPass?classDanger:classInput}
+                classInput={tagPass?classInput:classDanger}
                 classLabel={classLabel}
                 classDiv={classDiv}
                 classPass={classPass}
@@ -80,7 +102,7 @@ function LoginFormComponents({classLogBtn, classSelectBtn, logIn, handleFields, 
                 name={'repassword'}
                 type={passEye2?'text':'password'}
                 placeholder={'Repita su Contraseña'}
-                classInput={tagRePass?classDanger:classInput}
+                classInput={tagRePass?classInput:classDanger}
                 classLabel={classLabel}
                 classDiv={classDiv}
                 classPass={classPass}
@@ -90,7 +112,14 @@ function LoginFormComponents({classLogBtn, classSelectBtn, logIn, handleFields, 
                 />
             }
             {flag &&
-                <BigButton onClickFunction={logIn} text={'Ingresar'} cssClass={classLogBtn}/>
+                <BigButton  disactive={UserCanLog} 
+                            onClickFunction={logIn} 
+                            text={'Ingresar'} 
+                            cssClass={classLogBtn}
+                            cssDisactive={classNoLogBtn}
+                            textLog={textLog}
+                            textNoLog={textNoLog}
+                            />
             }
             <div class='flex items-center justify-center mt-10 text-2xl font-semibold  '>
                 {flag &&
