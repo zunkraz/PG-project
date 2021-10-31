@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 export default function ProfesionalsCatalog(){
     const [pageNumber, setPageNumber]= useState(0)
-    const profis= useSelector(state=>state.professionalReducer.professionals)
+    const profis= useSelector(state=>state.professionalReducer.professionalsRender)
 
     const profPerPage= profis.length<8 ? profis.length : 8
     const pageVisited= pageNumber * profPerPage

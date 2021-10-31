@@ -16,10 +16,15 @@ import Professionals from './Containers/Professionals';
 import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 import AdminPanel from "./Containers/AdminPanel";
-
-
+import {useDispatch} from 'react-redux'
+import { getCat } from '../Controllers/actions/constantInfoActions';
 
 function App() {
+
+  const dispatch = useDispatch()
+  dispatch(getCat())
+
+
   return (
     <div>
         <Nav/>

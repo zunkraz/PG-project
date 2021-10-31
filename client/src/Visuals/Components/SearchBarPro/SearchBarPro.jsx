@@ -1,16 +1,20 @@
 import React, {useState} from 'react';
 import FiltersFields from './FilterFields';
 import NameSearch from './NameSearch';
-
+import {useSelector, useDispatch} from 'react-redux'
+import { filterProfessional } from '../../../Controllers/actions/professionalsActions';
 const SearchBarPro = () => {
-    const [data, setData] = useState({
+const dispatch = useDispatch();
+const professionals = useSelector(state => state.professionalReducer.professionals)
+
+const [data, setData] = useState({
         name: '',
         profesion: '',
         country: '',
         min: '',
         max: '',
         likes: '',
-    });
+});
 
     const [optionView, setOptionView] = useState({
         optionViewBtnOne:true,
@@ -19,7 +23,7 @@ const SearchBarPro = () => {
 const {optionViewBtnOne,optionViewBtnTwo} = optionView;
 
 const [error, setError] = useState(false);
-const [errorSubmit,setErrorSubmit] = useState(false)
+const [errorSubmit,setErrorSubmit] = useState(false);
     // FUNCIONES START FUNCIONES START FUNCIONES START FUNCIONES START
 
 const handleChange = e => {
@@ -45,6 +49,7 @@ const handleSubmit = e => {
     }else{
         // Aqui despacho la acción
         setErrorSubmit(false);
+        dispatch(filterProfessional(data,professionals))
         setData({
             name: '',
             profesion: '',
@@ -53,7 +58,7 @@ const handleSubmit = e => {
             max: '',
             likes: '',
         })
-        return alert('Alerta desde handle Submit')
+       
     }
 }
 

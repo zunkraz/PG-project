@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import '../../Assets/CustomAR.css'
-const FiltersBtns = () => {
+import {useSelector} from 'react-redux'
 
-const categories = [
-    {name: 'Abogacia'},
-    {name: 'Medicina general'},
-    {name: 'Veterinaria'},
-    {name: 'Psicologia'},
-];
+const FiltersBtns = () => {
+    
+const categories = useSelector(state => state.constantInfoReducer.categories);
+
 const countries = [
     {country: 'Argentina'},
     {country: 'Colombia'},
