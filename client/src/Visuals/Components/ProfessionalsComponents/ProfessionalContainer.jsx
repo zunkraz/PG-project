@@ -45,8 +45,8 @@ function ProfessionalContainer({username}) {
                     {date: 'Jueves', available: true},
                     {date: 'Viernes', available: false},
                 ], /*(Arreglo de fechas disponibles y no disponibles)*/
-        biography: 'Me gradue de Henry a mediados del año pasado, desde ese momento de dedico a viajar por el mundo siendo el doble de la Roca Jhonson mientras brindo asesorias en esta gran plataforma',
-        professionalData: [{name:'Matricula :',text:'234531456', verified:true},{name:'Graduado de : ', text:'Henry con Honores', verified:false}, {name:'Cursos : ', text:'Fabricación de Mayonesa casera, React-Redux',verified:true}],
+        biography: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        professionalData: [{name:'Matricula :',text:'234531456', verified:true},{name:'Graduado de : ', text:'Henry con Honores', verified:false}, {name:'Cursos : ', text:'Primeros auxilios, React-Redux',verified:true}],
         opinions: [ 'Excelente profesional, lo recomiendo',
                     'Me atendio rapido, sin problemas', 
                     'Llego un ratito tarde pero muy buen profesional',
