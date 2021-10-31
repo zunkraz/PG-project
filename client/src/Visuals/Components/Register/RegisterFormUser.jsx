@@ -57,50 +57,68 @@ export default function RegisterFormUser(){
     return (
         <div class="uk-padding uk-margin-left uk-flex uk-flex-center">
             <form onSubmit={handleSubmit} class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off">
-                <h2>Informacion personal - Cliente</h2>
-                <div class="mb-4">
-                    <input class="uk-input uk-form-width-large uk-margin-right" type="email"
-                    name="email"
-                    placeholder="Correo electronico"
-                    onChange={handleChange}
-                    required/>
-                    <input class="uk-input uk-form-width-large"  type="text"
-                    name="username"
-                    placeholder="Usuario" 
-                    onChange={handleChange}
-                    required/>
+                <h2 class="p-2 text-2xl">Informacion personal - Cliente</h2>
+                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="email" class="p-2"> Correo electronico </label>
+                        <input class="uk-input uk-form-width-large" type="email"
+                        name="email" id="email"
+                        placeholder="Correo electronico"
+                        onChange={handleChange}
+                        required/>
+                    </div>
+                    <div class="uk-flex uk-flex-column uk-form-width-large">
+                        <label htmlFor="username" class="p-2"> Nombre de usuario </label>
+                        <input class="uk-input uk-form-width-large"  type="text"
+                        name="username" id="username"
+                        placeholder="Usuario" 
+                        onChange={handleChange}
+                        required/>
+                    </div>
                 </div>
                 <span class="uk-alert-danger">{error.email}</span>
                 <span class="uk-alert-danger">{error.username}</span>
-                <div class="mb-4">
-                    <input class="uk-input uk-form-width-large uk-margin-right" type="text"
-                    name="name"
-                    placeholder="Nombre"
-                    onChange={handleChange}
-                    required/>
-                    <input class="uk-input uk-form-width-large"  type="text"
-                    name="lastname"
-                    placeholder="Apellido" 
-                    onChange={handleChange}
-                    required/>
+                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="name" class="p-2"> Nombre </label>
+                        <input class="uk-input uk-form-width-large" type="text"
+                        name="name" id="name"
+                        placeholder="Nombre"
+                        onChange={handleChange}
+                        required/>
+                    </div>
+                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="lastname" class="p-2"> Apellido </label>
+                        <input class="uk-input uk-form-width-large"  type="text"
+                        name="lastname" id="lastname"
+                        placeholder="Apellido" 
+                        onChange={handleChange}
+                        required/>
+                    </div>
                 </div>
                 <span class="uk-alert-danger">{error.name}</span>
-                <div class="mb-4">
-                    <input class="uk-input uk-form-width-large uk-margin-right"  type="password"
-                    name="password"
-                    placeholder="Contraseña" 
-                    onChange={handleChange}
-                    required/>
-                    <input class="uk-input uk-form-width-large"  type="password"
-                    name="confirmPassword"
-                    placeholder="Confirmar contraseña" 
-                    onChange={handleChange}
-                    required/>
+                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="password" class="p-2"> Contraseña </label>
+                        <input class="uk-input uk-form-width-large"  type="password"
+                        name="password" id="password"
+                        placeholder="Contraseña" 
+                        onChange={handleChange}
+                        required/>
+                    </div>
+                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="confirmPassword" class="p-2"> Confirmar contraseña </label>
+                        <input class="uk-input uk-form-width-large"  type="password"
+                        name="confirmPassword" id="confirmPassword"
+                        placeholder="Confirmar contraseña" 
+                        onChange={handleChange}
+                        required/>
+                    </div>
                 </div>
                 <span class="uk-alert-danger">{error.password}</span>
                 <div class="mb-4">
-                <label htmlFor="acceptT">Acepto los términos y condiciones del servicio</label>
-                <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
+                <label htmlFor="acceptT" class="p-2">Acepto los términos y condiciones del servicio</label>
+                <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" id="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
                 </div>
                 <input class="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
             </form>
