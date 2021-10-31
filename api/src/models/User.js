@@ -27,7 +27,7 @@ const user = new Schema(
             required: true
         },
         country: {
-            type: String
+            type: Schema.Types.ObjectId, ref: 'countries'
         },
         state: {
             type: String
