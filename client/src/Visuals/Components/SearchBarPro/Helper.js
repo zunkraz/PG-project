@@ -23,7 +23,7 @@ export function Filter(obj,arr){
     }
     //Likes Funciona colocar valor de regla
     if(likes){
-        let val = 7;
+        let val = 10;
         switch (likes) {
             case 'Iniciado':
                
@@ -31,11 +31,11 @@ export function Filter(obj,arr){
                 break;
             case 'Intermedio':
                 
-                arr = arr.filter(e => e.likes > val && e.likes < Math.pow(val,2));
+                arr = arr.filter(e => e.likes > val && e.likes < Math.pow(val/2,2));
                 break;
             case 'Popular':
               
-                arr = arr.filter(e => e.likes > Math.pow(val,2));
+                arr = arr.filter(e => e.likes > Math.pow(val/2,2));
                 break;
             default:
                 break;
