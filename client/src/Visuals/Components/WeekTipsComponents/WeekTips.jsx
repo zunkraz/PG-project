@@ -55,7 +55,7 @@ function WeekTips() {
     
 
     return (
-        <div className="wrapper bg-component-week-tips">
+        <div className="wrapper bg-component-week-tips cursor-pointer">
             <div className="wrapper bg-color-alt-a40">
                 {/*
                 <div className="wrapper">

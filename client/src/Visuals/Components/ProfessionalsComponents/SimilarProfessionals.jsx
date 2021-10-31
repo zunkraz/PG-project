@@ -6,14 +6,14 @@ function SimilarProfessionals({data}) {
     
     // console.log(Object.keys(data))
     // console.log(typeof data)
-    console.log(data)
+    //console.log(data)
     
     return (
-        <div class=''>
-            <div class='font-semibold pt-3 pb-2 font-xl bg-gray-400 text-center'>
-                <h5 class='text-white text-semibold uppercase tracking-widest'>Profesionales Similares</h5>
+        <div className=''>
+            <div className='font-semibold pt-3 pb-2 font-xl bg-gray-400 text-center'>
+                <h5 className='text-white text-semibold uppercase tracking-widest'>Profesionales Similares</h5>
             </div>
-            <div class='flex items-center justify-around h-72'>
+            <div className='flex items-center justify-around h-72'>
                 {data.map((elem,index)=>{
                     return <ProfessionalCardTemplate    key={index} 
                                                         name={elem.name}

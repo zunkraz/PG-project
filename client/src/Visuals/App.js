@@ -15,7 +15,7 @@ import Register from './Containers/Register';
 import Professionals from './Containers/Professionals';
 import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
-
+import AdminPanel from "./Containers/AdminPanel";
 
 
 
@@ -47,6 +47,9 @@ function App() {
         </Route>
         <Route path='/soporte'>
           <Supports/>
+        </Route>
+        <Route path='/admin'>
+          <AdminPanel/>
         </Route>
       </Switch>
         <Footer/>
