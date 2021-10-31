@@ -17,10 +17,10 @@
 	--color-alt-src:		197,   7,  67;
 	--color-extra1-src:		255, 133, 173;
 	--color-extra2-src:		255, 194, 215;
-	--color-extra3-src:		255, 255,   1;
-	--color-extra4-src:		255, 255,   1;
+	--color-extra3-src:		 40,  40,  40;
+	--color-extra4-src:		120, 120, 120;
 	--color-light-src:		255, 255, 255;
-	--color-dark-src:		0,     0,   0;
+	--color-dark-src:		  0,   0,   0;
 
 	/* Color Main */
 	--color-main:			rgba(var(--color-main-src),  1);
