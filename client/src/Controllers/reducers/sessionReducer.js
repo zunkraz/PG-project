@@ -1,5 +1,5 @@
 import {
-    CHECK_LOGIN
+    CHECK_LOGIN, CLEAN_USER_LOGIN
 } from './../../constants';
 
 const initialState = {
@@ -12,6 +12,11 @@ export default function sessionReducer(state=initialState, {type,payload}){
             return {
                 ...state,
                 status: payload
+            }
+        case CLEAN_USER_LOGIN:
+            return {
+                ...state,
+                status:{}
             }
         default: 
         return {...state}
