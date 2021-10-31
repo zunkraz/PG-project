@@ -6,7 +6,7 @@ function SimilarProfessionals({data}) {
     
     // console.log(Object.keys(data))
     // console.log(typeof data)
-    console.log(data)
+    //console.log(data)
     
     return (
         <div className=''>
