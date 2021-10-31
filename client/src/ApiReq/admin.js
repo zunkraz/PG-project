@@ -10,13 +10,13 @@ export function getAllUsers(){
 };
 
 export function deleteUser(username){
-    return axios.delete(`${url}/user/${username}`)
+    return axios.delete(`${url}/users/${username}`)
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }
 
 export function putUser(username,info){
-    return axios.put(`${url}/user/${username}`, info)
+    return axios.put(`${url}/users/${username}`, info)
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }
