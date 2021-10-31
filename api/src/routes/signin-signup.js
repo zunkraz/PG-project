@@ -8,26 +8,28 @@ router.post('/signup', passport.authenticate('signup', {session: false}), async(
 });
 
 router.post('/signin', async(req, res, next) => {
-    console.log('entra');
     passport.authenticate('signin', async(error, user, info) => {
-        console.log('tambien');
         try {
-            if(error || user) {
+            if(error) {
                 const err = new Error('new error');
                 return next(err);
             }
-            req.login(user, {session: false}, (errr) => {
-                if(errr) return next(errr);
-                const {_id, email} = user;
-                const body = { _id, email };
-                const token = jwt.sign({user: body}, process.env.SECRET);
-
-                return res.status(200).json({...user, token});
-            })
+            if(user){
+                req.login(user, {session: false}, (er) => {
+                    if(er) return next(er);
+                    const {_id, email} = user;
+                    const body = { _id, email };
+                    console.log('userrrr',user);
+                    const token = jwt.sign({user: body}, process.env.SECRET);
+    
+                    return res.status(200).json({...body, token});
+                })
+            }
+            return res.status(404).json(info);
         } catch (e) {
             next(e);
         }
-    }), (req, res, next)
+    }) (req, res, next)
 });
 
 module.exports = router;

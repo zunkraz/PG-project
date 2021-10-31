@@ -16,11 +16,8 @@ const LocalStrat = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const User = require('../../models/User');
 const passport = require('passport');
-// const JWTStrategy = require('passpotr-jwt').Strategy;
-// const ExtractJWT = require('passport.jwt').ExtractJWT;
-
-
-// const authenticateUser = 
+const JWTStrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJWT;
 
 passport.use('signup', new LocalStrat({
     usernameField: 'email',
@@ -45,14 +42,13 @@ passport.use('signup', new LocalStrat({
 }));
 
 passport.use('signin', new LocalStrat({
-    usernameField: 'email'
+    usernameField: 'email',
+    passwordField: 'password'
 }, async(email, password, done) => {
-    console.log(email, password);
     const user = await User.findOne({email});
     if(!user) return done(null, false, {message: 'Email incorrecto'});
     try {
-        if( await bcrypt.compare(password, user.password)) {
-            console.log('done');
+        if(bcrypt.compare(password, user.password)) {
             return done(null, user);
         }
         else return done(null, false, {message:'Contraseña incorrecta'});
@@ -66,5 +62,5 @@ passport.use('signin', new LocalStrat({
 //     passwordField: 'password'
 // }, authenticateUser));
 
-// passport.serializeUser((user, done) => done(null, user._id));
-// passport.deserializeUser((id, done) => done(null, User.findById(id)));
+passport.serializeUser((user, done) => done(null, user.email));
+passport.deserializeUser((email, done) => done(null, ));
