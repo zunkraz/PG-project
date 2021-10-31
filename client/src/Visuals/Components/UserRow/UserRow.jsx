@@ -1,26 +1,26 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions'
+import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions';
 
 function UserRow({user}){
   const dispatch = useDispatch();
 
   function handleUserDelete(username){
-    if(window.confirm(`Desea eliminar a ${username}?`)) {
-      dispatch(delAdminUser(username));}
-    else {console.log('Ok no lo elimino.')}
+    if(window.confirm(`Desea eliminar a ${username}?`)) dispatch(delAdminUser(username));
+    else console.log('Ok no lo elimino.');
   }
   function handleResetPassword(username){
     if(window.confirm(`Desea resetear el password de ${username}?`)) {
       dispatch(putAdminUser(username, {password: '123456'}));
-    } else {console.log('Ok no lo cambio.')}
+    } else console.log('Ok no lo cambio.');
   }
   function handleChangeRole(username,isAdmin){
     if(window.confirm(`Desea cambiar el rol de ${username}?`)) {
-      if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}))
-      else dispatch(putAdminUser(username, {isAdmin: true}))
-    } else {console.log('Ok no lo cambio.')}
+      if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}));
+      else dispatch(putAdminUser(username, {isAdmin: true}));
+    } else console.log('Ok no lo cambio.');
   }
+
   return (
     <tbody className="bg-white divide-y divide-gray-200">
     <tr>
@@ -54,16 +54,16 @@ function UserRow({user}){
           Regular</span>}
     </td>
     <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-      <a onClick={()=>handleUserDelete(user.username)} className="text-red-600 hover:text-indigo-900">❌</a>
+      <a onClick={()=>handleUserDelete(user.username)}>❌</a>
     </td>
       <td className="px-10 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <a onClick={()=>handleResetPassword(user.username)} className="text-indigo-600 hover:text-Green-900">♻</a>
+        <a onClick={()=>handleResetPassword(user.username)}>♻</a>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <a onClick={()=>handleChangeRole(user.username,user.isAdmin)} className="text-indigo-600 hover:text-purple-900">👥</a>
+        <a onClick={()=>handleChangeRole(user.username,user.isAdmin)}>👥</a>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <a onClick={()=>alert('Proximamente')} className="text-indigo-600 hover:text-indigo-900">✏</a>
+        <a onClick={()=>alert('Próximamente')}>✏</a>
       </td>
   </tr>
   </tbody>)
