@@ -8,8 +8,8 @@ const reviews = require('./reviews');
 const categories = require('./categories');
 const admin = require('./admin');
 const users = require('./users');
-const login = require('./login');
 const countries = require('./countries');
+const login = require('./signin-signup');
 
 
 router.use('/tips', tips);
