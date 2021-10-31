@@ -6,11 +6,15 @@ const tip = new Schema(
         text: {
             type: String,
             required: true,
-        },     
+        },
+        isApproved:{
+            type: Boolean,
+            default: false,
+        }     
     },
     { timestamp: true }
 )
 
-const Tip = mongoose.model('Tips', tip);
+const Tip = mongoose.model('tips', tip);
 
 module.exports = Tip;

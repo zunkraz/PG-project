@@ -9,23 +9,23 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
     const contratado = ()=>{alert('Profesional Contratado!')}
 
     return (
-        <div class='mx-5 p-5 flex flex-col'>
-            <div class='flex'>
-                <div class='w-2/6'>
+        <div className='mx-5 p-5 flex flex-col'>
+            <div className='flex'>
+                <div className='w-2/6'>
                     <ProfessionalCardData   img={img}
                                             likes={likes}
                                             dislikes={dislikes}
                                             sessions={sessions}
                             />
                 </div>
-                <div class='bg-pink-300 w-4/6 ml-10'>
+                <div className='w-4/6 ml-10'>
                     <ProfessionalCardInfo   biography={biography}
                                             professionalData={professionalData}
                                             schedule={schedule}
                             />
                 </div>
             </div>
-            <div class=''>
+            <div className='mt-10'>
                 <BigButton  onClickFunction={contratado}
                             text='CONTRATAR'
                             cssClass='bg-green-300 w-3/5 p-8 rounded-3xl mt-10 mb-10 text-2xl font-semibold tracking-widest w-4/5 ml-24'

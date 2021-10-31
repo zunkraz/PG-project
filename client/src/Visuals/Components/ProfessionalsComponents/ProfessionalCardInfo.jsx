@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { FcCheckmark, FcCancel } from "react-icons/fc";
+
+
 
 function ProfessionalCardInfo({biography, professionalData, schedule}) {
     
@@ -9,28 +12,39 @@ function ProfessionalCardInfo({biography, professionalData, schedule}) {
         setproInfo(e.target.name)
     }
     
+
     // comentario para commit
 
+    const bioclass = 'text-gray-500 font-semibold flex items-start justify-center text-xl'
+    const profileclass = 'text-gray-800 font-bold text-xl flex justify-start mb-2'
+    const profileP='text-gray-500 font-semibold text-lg ml-4'
+    const scheduleclass = 'flex justify-start items-center text-green-600 text-2xl font-semibold mb-1' 
+
+
     return (
-        <div>
-            {proInfo}
-            <div>
+        <div className='flex flex-col'>
+            <div className=' flex items-center justify-around border-b-8 border-double border-red-300 pt-2 pb-2'>
                 <button name='bio' 
+                        className='bg-gray-300 p-1 font-medium rounded-md h-10 w-24'
                         onClick={changeState}
                     >Biography</button>
                 <button name='profile' 
+                        className='bg-gray-300 p-1 font-medium rounded-md h-10 w-36'
                         onClick={changeState}
                     >Perfil Laboral</button>
                 <button name='schedule'
+                        className='bg-gray-300 p-1 font-medium rounded-md h-10 w-24'
                         onClick={changeState}
                     >Agenda</button>
             </div>
-            <div className={proInfo}>
-                {proInfo==='bio' && <span>{biography}</span>}
-                {proInfo==='profile' && <span>{professionalData}</span>}
+            <div className='h-72 flex flex-col p-5'>
+                {proInfo==='bio' && <span className={bioclass}>{biography}</span>}
+                {proInfo==='profile' && professionalData?.map((elem, index)=>{
+                    return <span key={index} className={profileclass}>{elem.name}<p className={profileP}>{elem.text}</p>{elem.verified?<FcCheckmark class='font-xl'/>:''}</span>
+                })}
                 {proInfo==='schedule' && schedule?.map((elem, index)=>{
                     /*{date: 'Viernes', available: false}*/
-                    return <span key={index}>{elem.available?elem.date:''}</span>
+                    return <span key={index} className={scheduleclass}><p>{elem.available?<FcCheckmark className='mr-4'/>:<FcCancel class='mr-4'/>}</p>{elem.date}</span>
                 })}
             </div>
         </div>

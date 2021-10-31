@@ -9,7 +9,7 @@ const categories = [
     {name: 'Veterinaria'},
     {name: 'Psicologia'},
 ];
-const ranges = [
+const countries = [
     {country: 'Argentina'},
     {country: 'Colombia'},
     {country: 'Venezuela'},
@@ -21,7 +21,7 @@ const categoriesRender = categories.map(data => {
     const opt = <option value={data.name}>{data.name}</option>;
     return opt;
 });
-const rangesRender = ranges.map(data => {
+const countriesRender = countries.map(data => {
     const opt = <option value={data.country}>{data.country}</option>;
     return opt;
 });
@@ -61,49 +61,60 @@ const handleSubmit = e => {
 }
 
     return ( 
-        <div className='w-full'>
-            <form 
-            onSubmit={handleSubmit}
-            >
-        <div className=' flex justify-center flex-col space-y-2.5 text-center '>
-            <h3 className="uk-card-title">Busca lo que necesitas</h3>
+        <form onSubmit={handleSubmit} >
+            <div className="width-100 text-bold text-center font-color-main font-main">
+                <span class="element-xl-lg-md font-2x">Consultas profesionales a un click!</span>
+                <span class="element-sm-xs font-xl">Consultas profesionales a un click!</span>
+            </div>
             <div>
+                <label class="wrapper padd-md-tb font-xl font-color-light font-main">
+                    Profesionales
+                </label>
                 <select
                     onChange={handleChange}
                     name='name'
                     value={data.name}
-                    className='inputsFiltersBtns uk-input uk-form-width-large'
+                    className='inputsFiltersBtns* uk-select width-100 bg-color-transparent border-color-light pg-custom'
                 >
-                <option value="">Seleccionar Profesión</option>
-                  {categoriesRender}
+                    <option value="">Seleccionar Profesión</option>
+                    {categoriesRender}
                 </select>
-            </div>
+            </div>                
             <div>
+                <label class="wrapper mrg-md-t padd-md-tb font-xl font-color-light font-main">
+                    Países
+                </label>
                 <select
                     onChange={handleChange}
                     name='country'
                     value={data.country}
-                    className='inputsFiltersBtns uk-input uk-form-width-large' 
+                    className='inputsFiltersBtns* uk-select width-100 bg-color-transparent border-color-light pg-custom' 
                 >
-                <option value="">Seleccionar País</option>
-                 {rangesRender}
+                    <option value="">Seleccionar País</option>
+                    {countriesRender}
                 </select>
-            </div>
-          
-            <Link to='./profesionales'>
-                <input 
-                    className=" btnFiltersBtns bg-red-400 p-3 text-lg"
-                    type="submit" 
-                    value="Buscar"
-                    disabled={invalid}
-                />
-            </Link>
-        </div>
-
-            </form>
-        
-        </div>
-     );
+            </div>    
+            <div>  
+                <Link to='./profesionales'>
+                    {/*
+                    <input 
+                        className=" btnFiltersBtns mrg-lg-t padd-md-tb font-main font-xl text-bold action action-slogan"
+                        type="submit" 
+                        value="Buscar"
+                        disabled={invalid}
+                    />
+                    */}
+                    <button 
+                        className="btnFiltersBtns* width-100 mrg-xl-t padd-md-tb font-main font-xl action action-slogan"
+                        type="submit" 
+                        disabled={invalid}
+                    >
+                        Buscar  
+                    </button>             
+                </Link>
+            </div>  
+        </form>
+    );
 }
  
 export default FiltersBtns;

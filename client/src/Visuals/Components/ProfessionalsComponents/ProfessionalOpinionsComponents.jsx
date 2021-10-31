@@ -1,14 +1,14 @@
 import React from 'react'
 
-function ProfessionalOpinionsComponents({opinions}) {
+function ProfessionalOpinionsComponents({data}) {
     return (
-        <div class= 'm-5'>
-            <div class='bg-yellow-100 text-center mb-5 font-xl font-semibold'>
-                <span class='text-gray-500'>Opiniones</span>
+        <div className= 'm-5'>
+            <div className='border-b-8 border-double border-red-300 mb-5 text-center pb-5 font-xl font-semibold'>
+                <span className='text-gray-500'>Opiniones</span>
             </div>
-            <div class='bg-green-200 p-2 h-full max-h max-w-screen-md'>
-                {opinions?.map((elem,index)=>{
-                    return <div class='bg-yellow-100 mb-8' 
+            <div className='bg-red-300 p-3 rounded-xl h-full max-h max-w-screen-md font-lg'>
+                {data?.map((elem,index)=>{
+                    return <div className='bg-white mb-8 rounded-xl p-2' 
                                 key={index}><span>{elem}</span></div>
                 })}
             </div>

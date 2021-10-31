@@ -27,7 +27,7 @@ function Footer() {
 
 
     return (
-        <div className='FooterPrimaryDiv'>
+        <div className='wrapper FooterPrimaryDiv'>
             <div className='FooterListPrimaryDiv'>
                 <FooterNewSeller/>
                 <FooterList Title={'Links Útiles'} Contain={utilLink}/>

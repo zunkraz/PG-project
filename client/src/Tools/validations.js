@@ -1,6 +1,16 @@
-export default function validate(newUser, setError){
+export default function validate(newUser, setError, userData){
     let errors = {};
     let isValid = true;
+
+    if(userData.find(user=> user.email===newUser["email"])){
+      isValid = false;
+      errors["email"] = "El email ya esta en uso";
+    }
+
+    if(userData.find(user=> user.username===newUser["username"])){
+      isValid = false;
+      errors["username"] = "El usuario ya existe";
+    }
 
     if (typeof newUser["email"] !== undefined) {
         
@@ -10,14 +20,14 @@ export default function validate(newUser, setError){
         errors["email"] = "Por favor ingresa un email válido";
       }
     }
-    if (typeof newUser["name"] !== undefined && typeof newUser["lastName"] !== undefined) {
+    if (typeof newUser["name"] !== undefined && typeof newUser["lastname"] !== undefined) {
         
       var patternname = new RegExp( /^[a-zA-Z ]{2,30}$/);
       if (!patternname.test(newUser["name"])) {
         isValid = false;
         errors["name"] = "Por favor ingresa un nombre válido";
       }
-      if (!patternname.test(newUser["lastName"])) {
+      if (!patternname.test(newUser["lastname"])) {
         isValid = false;
         errors["name"] = "Por favor ingresa un nombre válido";
       }
