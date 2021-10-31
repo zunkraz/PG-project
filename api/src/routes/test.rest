@@ -1,0 +1,12 @@
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+    "name": "Gaston",
+    "lastname": "Socco",
+    "username": "GastonS",
+    "email": "elmantecas@gmail.com",
+    "password": 123456,
+    "country": "Argentina"
+}
+
