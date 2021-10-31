@@ -4,6 +4,7 @@ import { TiThumbsUp , TiThumbsDown } from "react-icons/ti";
 
 
 function PersonalCardUser({img, likes, dislikes, sessions, isVerified,category}) {
+    //
     return (
         <div className='h-auto w-80 pt-4'>
             <div className='flex justify-center bg-gray-0 rounded-2xl justify-center '>
