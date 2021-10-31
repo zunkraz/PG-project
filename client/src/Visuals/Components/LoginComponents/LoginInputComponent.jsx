@@ -1,7 +1,14 @@
 import React from 'react'
 import BigButton from '../BigButton'
 
-function LoginInputComponent({handleChange, text, name, type, placeholder, classInput, classLabel, classDiv, classPass, classBtnPass, handleShowPass, textPassBtn}) {
+function LoginInputComponent({handleChange, text, name, type, placeholder, classInput, classLabel, classDiv, classPass, classBtnPass, handleShowPass, textPassBtn, passField, setPassField}) {
+    
+
+    const handleInputChange=(e)=>{
+        setPassField && setPassField(e.target.value)
+        handleChange(e)
+    }
+
     return (
         <div className={classDiv}>
             <div className={classPass}>
@@ -12,7 +19,8 @@ function LoginInputComponent({handleChange, text, name, type, placeholder, class
                     name={name}
                     placeholder={placeholder}
                     className={classInput} 
-                    onChange={handleChange}
+                    onChange={handleInputChange}
+                    value={passField}
                 />
         </div>
     )

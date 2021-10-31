@@ -124,28 +124,28 @@ function UserDashboard() {
     ]
     
     return (
-        <div class='flex flex-col'>
-            <div class='flex flex-col items-center justify-center mt-2 mb-4'>
-                <button class=' bg-red-300 pl-2 pr-2 rounded-xl'
+        <div className='flex flex-col'>
+            <div className='flex flex-col items-center justify-center mt-2 mb-4'>
+                <button className=' bg-red-300 pl-2 pr-2 rounded-xl'
                         onClick={changeState} >Change Type Of User</button>
-                {flag?<span class='font-lg'>Normal</span>:<span class='font-lg'>Professional</span>}
+                {flag?<span className='font-lg'>Normal</span>:<span className='font-lg'>Professional</span>}
             </div>
-            <div class='text-red-400 font-sans text-4xl h-28
+            <div className='text-red-400 font-sans text-4xl h-28
                             text-center text-opacity-900 uppercase 
                             font-extrabold items-center flex justify-center
                             border-b-8 border-double border-red-300 ml-14 mr-14 mb-4 '>
-                {flag?<span>{user.name}</span>:<span>{userPro.name}<p class='text-gray-400 text-2xl'>{userPro.profession}</p></span>}
+                {flag?<span>{user.name}</span>:<span>{userPro.name}<p className='text-gray-400 text-2xl'>{userPro.profession}</p></span>}
                 {}
             </div>
-            <div class='flex flex-col'>
-                <div class='flex justify-around items-start  pt-4 miPerfilCustomHeight'>
+            <div className='flex flex-col'>
+                <div className='flex justify-around items-start  pt-4 miPerfilCustomHeight'>
                     <div>
                         <PersonalDashboardContainer user={flag?user:userPro}/>
-                        {flag===false && <button  class='bg-green-300 w-80 p-1 font-lg font-bold uppercase' 
+                        {flag===false && <button  className='bg-green-300 w-80 p-1 font-lg font-bold uppercase' 
                                         onClick={changeTipFlag}
                                     >Agregar post</button>}
                     </div>
-                    <div class='border-gray-200 bg-gray-100 border-8 
+                    <div className='border-gray-200 bg-gray-100 border-8 
                                 rounded-2xl border-solid pt-2 pl-10 pr-10 '>
                         <PersonalInformationContainer   personalInfo={flag?user.personalData:userPro.personalData}
                                                         professionalData={flag===false && userPro.professionalData}
@@ -153,7 +153,7 @@ function UserDashboard() {
                                                         userInfo={userInfo}
                                         />
                     </div>
-                    <div class='bg-gray-100 rounded-3xl'>
+                    <div className='bg-gray-100 rounded-3xl'>
                         <PersonalTaskComponent  data={flag?pendienteNormal:pendientePro} 
                                                 
                                     />
@@ -161,7 +161,7 @@ function UserDashboard() {
                 </div>
                 <div>
                     {tip && <AddPostComponent addPost={addPost}/>}
-                    {flag===false && <h5 class=' flex justify-center uppercase mt-20 
+                    {flag===false && <h5 className=' flex justify-center uppercase mt-20 
                                 text-4xl font-semibold tracking-widest
                                 text-gray-500 bg-gray-200'>Post Publicados</h5>}
                     {flag===false && <ProfessionalPostsContainer    posts={tipsArray}/>}
