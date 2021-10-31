@@ -4,14 +4,18 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const server = express();
 const routes = require('./routes/index');
+const passport = require('passport');
 
 dotenv.config();
 
+require('./controllers/auth/authentication');
+
 server.name = 'API';
 
+server.use(passport.initialize());
 server.use(morgan('dev'));
-server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-server.use(bodyParser.json({ limit: '50mb' }));
+server.use(express.urlencoded({ extended: true, limit: '50mb' }));
+server.use(bodyParser.json());
 server.use(express.json());
 server.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
