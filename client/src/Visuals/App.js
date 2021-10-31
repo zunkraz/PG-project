@@ -33,9 +33,9 @@ function App() {
         <Route exact path='/profesional/'>
           <ProfessionalDashboard/>
         </Route>
-        <Route path='/profesional/:id'
-                    render={({match})=><ProfessionalDashboard match={match}/>}
-                />
+        <Route path='/profesionales/:username'>
+                    <ProfessionalDashboard/>
+        </Route>        
         <Route path='/miperfil/'>
           <Dashboard/>
         </Route>

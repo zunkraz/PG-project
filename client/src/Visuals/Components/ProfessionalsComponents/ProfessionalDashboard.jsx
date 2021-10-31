@@ -1,11 +1,19 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router'
+import { getProfByUser } from '../../../Controllers/actions/professionalsActions'
 import ProfessionalContainer from './ProfessionalContainer'
 
+
 function ProfessionalDashboard() {
+    const {username}= useParams()
+    const dispatch= useDispatch()
+    dispatch(getProfByUser(username))
+    
 
     return (
         <div class='bg-gray-100'>
-            <ProfessionalContainer/>
+            <ProfessionalContainer username={username}/>
         </div>
     )
 
