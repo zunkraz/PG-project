@@ -9,7 +9,7 @@ function Dashboard() {
     return (
         <div>
             <UserDashboard/>
-            <Link class='flex bg-green-200 justify-center 
+            <Link className='flex bg-green-200 justify-center 
                         cursor-pointer h-20 items-center font-xl font-semibold hover:no-underline hover:text-red-400 duration-300' 
                         to='/profesional'> {'==>'}  PROFESIONAL COMPONENT  {'<=='} </Link>
         </div>

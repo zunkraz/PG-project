@@ -117,9 +117,9 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog,
                             textNoLog={textNoLog}
                             />
             }
-            <div class='flex items-center justify-center mt-10 text-2xl font-semibold  '>
+            <div className='flex items-center justify-center mt-10 text-2xl font-semibold  '>
                 {flag &&
-                    <Link class='hover:no-underline hover:text-red-400 duration-700' to={'/registro'}>Crea tu cuenta!</Link>
+                    <Link className='hover:no-underline hover:text-red-400 duration-700' to={'/registro'}>Crea tu cuenta!</Link>
                 }
             </div>
         </div>

@@ -18,29 +18,29 @@ function ProfessionalCardInfo({biography, professionalData, schedule}) {
     const scheduleclass = 'flex justify-start items-center text-green-600 text-2xl font-semibold mb-1' 
 
     return (
-        <div class='flex flex-col'>
-            <div class=' flex items-center justify-around border-b-8 border-double border-red-300 pt-2 pb-2'>
+        <div className='flex flex-col'>
+            <div className=' flex items-center justify-around border-b-8 border-double border-red-300 pt-2 pb-2'>
                 <button name='bio' 
-                        class='bg-gray-300 p-1 font-medium rounded-md h-10 w-24'
+                        className='bg-gray-300 p-1 font-medium rounded-md h-10 w-24'
                         onClick={changeState}
                     >Biography</button>
                 <button name='profile' 
-                        class='bg-gray-300 p-1 font-medium rounded-md h-10 w-36'
+                        className='bg-gray-300 p-1 font-medium rounded-md h-10 w-36'
                         onClick={changeState}
                     >Perfil Laboral</button>
                 <button name='schedule'
-                        class='bg-gray-300 p-1 font-medium rounded-md h-10 w-24'
+                        className='bg-gray-300 p-1 font-medium rounded-md h-10 w-24'
                         onClick={changeState}
                     >Agenda</button>
             </div>
             <div className='h-72 flex flex-col p-5'>
-                {proInfo==='bio' && <span class={bioclass}>{biography}</span>}
+                {proInfo==='bio' && <span className={bioclass}>{biography}</span>}
                 {proInfo==='profile' && professionalData?.map((elem, index)=>{
-                    return <span key={index} class={profileclass}>{elem.name}<p class={profileP}>{elem.text}</p>{elem.verified?<FcCheckmark class='font-xl'/>:''}</span>
+                    return <span key={index} className={profileclass}>{elem.name}<p className={profileP}>{elem.text}</p>{elem.verified?<FcCheckmark class='font-xl'/>:''}</span>
                 })}
                 {proInfo==='schedule' && schedule?.map((elem, index)=>{
                     /*{date: 'Viernes', available: false}*/
-                    return <span key={index} class={scheduleclass}><p>{elem.available?<FcCheckmark class='mr-4'/>:<FcCancel class='mr-4'/>}</p>{elem.date}</span>
+                    return <span key={index} className={scheduleclass}><p>{elem.available?<FcCheckmark className='mr-4'/>:<FcCancel class='mr-4'/>}</p>{elem.date}</span>
                 })}
             </div>
         </div>
