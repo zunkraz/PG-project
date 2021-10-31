@@ -76,24 +76,21 @@ button {
     transform: rotateX(90deg) translateZ(-150px);
     z-index: -1;
 }
-/*
-.stage {
-    width: 8rem;
-    height: 8rem;
-    display: inline-block;
-    margin: 20px;
-    -webkit-perspective: 1200px;
-    -moz-perspective: 1200px;
-    -ms-perspective: 1200px;
-    -o-perspective: 1200px;
-    perspective: 1200px;
-    -webkit-perspective-origin: 50% 50%;
-    -moz-perspective-origin: 50% 50%;
-    -ms-perspective-origin: 50% 50%;
-    -o-perspective-origin: 50% 50%;
-    perspective-origin: 50% 50%;
+input.pg-custom, select.pg-custom {
+    color: var(--color-light)!important;
 }
-*/
+select.pg-custom:focus {
+    background-color: transparent;
+}
+
+.bg-component-slogan {
+	background: 
+		url(https://images.pexels.com/photos/1438084/pexels-photo-1438084.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1920) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 .bg-component-week-tips {
 	background: 

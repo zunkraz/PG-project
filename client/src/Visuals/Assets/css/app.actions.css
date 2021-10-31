@@ -8,15 +8,15 @@
     border: solid 2px var(--color-main);
 	color: var(--color-main);    
 }
-.action-home {
+.action-slogan {
 	background-color: transparent;
-    border: solid 2px var(--color-light);
-	color: var(--color-dark);    
+    border: solid 1px var(--color-light);
+	color: var(--color-light)!important;    
 }
-.action-home:hover {
+.action-slogan:hover {
 	background-color: var(--color-main);
-    border: solid 2px var(--color-main);
-	color: var(--color-dark);    
+    border: solid 1px var(--color-light);
+	color: var(--color-light)!important;    
 }
 .action-github {
     background-size: cover;
