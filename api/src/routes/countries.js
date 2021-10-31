@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {postCountry, getAllCountries, getOneCountry} = require('../controllers/index');
-const Country = require('../models/Country');
+// const Country = require('../models/Country');
 
 
 router.post('/', (req, res, next) => {

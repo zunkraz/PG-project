@@ -2,7 +2,7 @@ const User = require('../../models/User');
 
 module.exports = (username) => {
     
-    return User.find({username})
+    return User.findOne({username})
     .populate(
         "country", 'name'
     )
