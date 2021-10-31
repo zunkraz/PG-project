@@ -56,7 +56,7 @@ function LoginComponentsContainer() {
             return
         }
         if(e.target.name==='email'){
-            console.log(e.target.value)
+            //console.log(e.target.value)
             if(userMails.includes(e.target.value)){
                 setUserFind('User Coincidence')
                 cleanErrors('userReady')
@@ -121,7 +121,7 @@ function LoginComponentsContainer() {
     }
     const [showErrorText, setShowErrorText] = useState(false)
     const UserLog = useSelector(state=> state.sessionReducer.status)
-
+    console.log(UserLog)
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userFields.userReady, password: userFields.password}))
         setShowErrorText(true)
