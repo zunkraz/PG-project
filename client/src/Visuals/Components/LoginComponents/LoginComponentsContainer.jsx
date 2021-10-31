@@ -1,9 +1,8 @@
 import React , { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
-import { checkLoginAction } from '../../../Controllers/actions/loginAction'
+import { checkLoginAction, cleanLoginCheck } from '../../../Controllers/actions/loginAction'
 import { getAllUsers } from '../../../Controllers/actions/userActions'
-import LoginFailed from './LoginFailed.Jsx'
 
 import LoginFormComponents from './LoginFormComponents'
 
@@ -21,24 +20,22 @@ function LoginComponentsContainer() {
     const users = useSelector(state => state.userReducer.users)
     const userNames = users.map(elem=>elem.username)
     const userMails = users.map(elem=>elem.email)
-    console.log(userNames)
-    console.log(userMails)
+    // console.log(userNames)
+    // console.log(userMails)
 
     const [userFind, setUserFind] = useState('')
-    const [Pass, setPass] = useState()
     const [passVerified, setPassVerified] = useState('')
     const [UserCanLog, setUserCanLog] = useState(true)
+    const [passError, setPassError] = useState(false)
 
-    console.log('USER FIND => '+ userFind)
-    console.log('USER PASS => ' + passVerified)
+    // console.log('USER FIND => '+ userFind)
+    // console.log('USER PASS => ' + passVerified)
     
     const [userFields, setuserFields] = useState({
         userReady:'',
         password:''
     })
     const handleFields=(e)=>{
-        console.log('name => '+ e.target.name)
-        console.log('value => '+ e.target.value)
 
         if(e.target.name==='username'){
             setuserFields({
@@ -75,18 +72,15 @@ function LoginComponentsContainer() {
             return
         }
         if(e.target.name==='password'){
-            setPass(e.target.value)
-            return
-        }
-        if(e.target.name==='repassword'){
-            if(e.target.value===Pass){
+            if(e.target.value.length>3){
                 setPassVerified('Password Verified')
                 cleanErrors('password')
                 setuserFields({
                     ...userFields, password:e.target.value
                 })
                 setUserCanLog(false)
-            }else if(e.target.value!==Pass){
+                setShowErrorText(false)
+            }else{
                 setPassVerified('')
                 handleErrors(e.target.name)
                 setuserFields({
@@ -115,6 +109,7 @@ function LoginComponentsContainer() {
             setErrors({
                 ...errors, password:'' 
             })
+            setPassError(false)
             return
         }
     }
@@ -124,39 +119,51 @@ function LoginComponentsContainer() {
             ...errors, [prop]:''
         })
     }
+    const [showErrorText, setShowErrorText] = useState(false)
+    const UserLog = useSelector(state=> state.sessionReducer.status)
+
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userFields.userReady, password: userFields.password}))
+        setShowErrorText(true)
     }
 
-    const UserLog = useSelector(state=> state.sessionReducer.status)
-    console.log('User Logged => ')
-    console.log(UserLog)
+    if(UserLog === 'Las contraseñas no coinciden'){
+        setPassError(true)
+        setuserFields({
+            ...userFields, password:''
+        })
+        dispatch(cleanLoginCheck())
+        setShowErrorText(true)
+    }
+
+    // console.log('User Logged => ')
+    //console.log(UserLog)
+    //console.log(passError)
     
-    console.log('USER CAN LOG =>> ' + UserCanLog)
+    // console.log('USER CAN LOG =>> ' + UserCanLog)
 
-    console.log('User Fields =>> ')
-    console.log(userFields)
+    // console.log('User Fields =>> ')
+    // console.log(userFields)
 
-    console.log('User Errors =>>')
-    console.log(errors)
+    // console.log('User Errors =>>')
+    // console.log(errors)
 
 
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
             {!UserLog.length &&
                 <LoginFormComponents    handleFields={handleFields}
-                                    logIn={logIn}
-                                    tagUser={userFind}
-                                    tagPass={passVerified}
-                                    tagRePass={passVerified}
-                                    UserCanLog={UserCanLog}
+                                        logIn={logIn}
+                                        tagUser={userFind}
+                                        tagPass={passVerified}
+                                        UserCanLog={UserCanLog}
+                                        passError={passError}
+                                        UserLog={UserLog}
+                                        showError={showErrorText}
                                     />
             }
             {(UserLog.length && UserLog==='Correcto') && 
                 <Redirect to='/miperfil'/>
-            }
-            {(UserLog.length && UserLog==='Las contraseñas no coinciden') && 
-                <LoginFailed/>
             }
         </div>
     )

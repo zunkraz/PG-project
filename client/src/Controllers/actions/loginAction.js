@@ -1,5 +1,5 @@
 import {getLogin} from '../../ApiReq/login';
-import {CHECK_LOGIN} from '../../constants';
+import {CHECK_LOGIN, CLEAN_USER_LOGIN} from '../../constants';
 
 export function checkLoginAction(userData){
     return async function(dispatch){
@@ -10,3 +10,9 @@ export function checkLoginAction(userData){
         });
     };
 };
+
+export function cleanLoginCheck(){
+    return {
+            type:CLEAN_USER_LOGIN
+        }
+}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 
-function LoginFormComponents({logIn, handleFields, tagUser, tagPass, tagRePass, UserCanLog}) {
+function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog, passError, passClean, showError}) {
 
     const [flag, setflag] = useState(false)
     const [inputName, setinputName] = useState('username')
@@ -14,7 +14,6 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, tagRePass, 
         setflag(!flag)
     }
     const [passEye, setpassEye] = useState(false)
-    const [passEye2, setpassEye2] = useState(false)
 
     const classInput='bg-gray-100 border-2 border-gray-300 px-5 py-2 '
     const classDanger='ring-4 ring-red-500 ring-opacity-50 bg-gray-100 px-5 py-2 '
@@ -39,17 +38,24 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, tagRePass, 
     text-3xl uppercase tracking-widest text-gray-100 shadow-xl text-white
     cursor-not-allowed `
 
+    const wrogPassClass = 'flex items-center justify-center text-2xl mt-4 duration-700 text-red-500'
+
     const textLog='text-white'
     const textNoLog='text-gray-400'
 
-
+    //Clean Field
+    const [passField, setPassField] = useState()
+    
+    const handleClickCheck=()=>{
+        setPassField('')
+        logIn()
+    }
 
     const handleShowPass = ()=>{
         setpassEye(!passEye)
     }
-    const handleShowPass2 = ()=>{
-        setpassEye2(!passEye2)
-    }
+
+    console.log(showError)
     return (
         <div className='flex flex-col'>
             {flag===false &&
@@ -69,7 +75,6 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, tagRePass, 
                     </div>
                 </div>
             }
-            {/*classPass, classBtnPass, handleShowPass, textPassTn, passEye*/}
             {flag &&
                 <LoginInputComponent    handleChange={handleFields} 
                 text={inputName==='username'?'Nombre de Usuario':'Correo Electrónico'} 
@@ -87,33 +92,24 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, tagRePass, 
                 name={'password'}
                 type={passEye?'text':'password'}
                 placeholder={'Ingrese su Contraseña'}
-                classInput={tagPass?classInput:classDanger}
+                classInput={tagPass || passError ?classInput:classDanger}
                 classLabel={classLabel}
                 classDiv={classDiv}
                 classPass={classPass}
                 handleShowPass={handleShowPass}
                 textPassBtn={passEye?textPassHide:textPassShow}
                 classBtnPass={classBtnPass}
+                passClean={passClean}
+                passField={passField}
+                setPassField={setPassField}
                 />
             }
-            {flag &&
-                <LoginInputComponent    handleChange={handleFields} 
-                text={'Repita su Contraseña'} 
-                name={'repassword'}
-                type={passEye2?'text':'password'}
-                placeholder={'Repita su Contraseña'}
-                classInput={tagRePass?classInput:classDanger}
-                classLabel={classLabel}
-                classDiv={classDiv}
-                classPass={classPass}
-                handleShowPass={handleShowPass2}
-                textPassBtn={passEye2?textPassHide:textPassShow}
-                classBtnPass={classBtnPass}
-                />
+            {showError===true &&
+                <span className={wrogPassClass}>Contraseña incorrecta</span>
             }
             {flag &&
                 <BigButton  disactive={UserCanLog} 
-                            onClickFunction={logIn} 
+                            onClickFunction={handleClickCheck} 
                             text={'Ingresar'} 
                             cssClass={classLogBtn}
                             cssDisactive={classNoLogBtn}
