@@ -1,12 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import ProfessionalCardComponent from './ProfessionalCardComponent'
 import ProfessionalOpinionsComponents from './ProfessionalOpinionsComponents'
 
 
 
 
-function ProfessionalContainer() {
-
+function ProfessionalContainer({username}) {
+    const profData= useSelector(state=> state.professionalReducer.profDetail)
     /* funciones necesarias
 
     getProfessional : {
@@ -37,15 +38,15 @@ function ProfessionalContainer() {
         likes: 253,
         dislikes: 23,
         sessions: 233,
-        img: 'https://i.pinimg.com/736x/87/19/d8/8719d87ae0cfca2b23c297993c156a23--dwayne-the-rock-my-rock.jpg',
+        img: "https://media.istockphoto.com/photos/confident-businessman-portrait-isolated-picture-id455586761?s=612x612",
         schedule: [ {date: 'Lunes', available: true},
                     {date: 'Martes', available: true},
                     {date: 'Miercoles', available: false},
                     {date: 'Jueves', available: true},
                     {date: 'Viernes', available: false},
                 ], /*(Arreglo de fechas disponibles y no disponibles)*/
-        biography: 'Me gradue de Henry a mediados del año pasado, desde ese momento de dedico a viajar por el mundo siendo el doble de la Roca Jhonson mientras brindo asesorias en esta gran plataforma',
-        professionalData: [{name:'Matricula :',text:'234531456', verified:true},{name:'Graduado de : ', text:'Henry con Honores', verified:false}, {name:'Cursos : ', text:'Fabricación de Mayonesa casera, React-Redux',verified:true}],
+        biography: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        professionalData: [{name:'Matricula :',text:'234531456', verified:true},{name:'Graduado de : ', text:'Henry con Honores', verified:false}, {name:'Cursos : ', text:'Primeros auxilios, React-Redux',verified:true}],
         opinions: [ 'Excelente profesional, lo recomiendo',
                     'Me atendio rapido, sin problemas', 
                     'Llego un ratito tarde pero muy buen profesional',
@@ -57,24 +58,26 @@ function ProfessionalContainer() {
             {name:'Guillermo', lastName:'Zeemo', category:'Abogado' ,img:'https://img.minutoneuquen.com/u/fotografias/fotosnoticias/2020/2/19/211483.jpg'},
         ]
     }
-
+    if(username===profData.username){
     return (
         <div>
             <div className='flex flex-col '>
                 <span className='text-red-400 font-sans text-4xl pt-6 pb-3 
                             text-center text-opacity-900 uppercase 
                             font-extrabold 
-                            border-b-8 border-double border-red-300 m-5'>{`${professional.name}  ${professional.lastName}`}</span>
-                <span className='font-serif text-3xl tracking-wider 
+                            border-b-8 border-double border-red-300 m-5'>{`${profData.name}  ${profData.lastname}`}</span>
+                <span class='font-serif text-3xl tracking-wider 
+
                             text-gray-600 pb-6 text-center 
                             font-bold 
-                            uppercase'>{professional.category}</span>
+                            uppercase'>{profData.category[0].name}</span>
             </div>
-            <div className='container mx-auto md:container md:mx-auto center px-4 flex '>
-                <div className='w-4/5'>
-                        <ProfessionalCardComponent  img={professional.img} 
-                                                    likes={professional.likes} 
-                                                    dislikes={professional.dislikes}
+
+            <div class='container mx-auto md:container md:mx-auto center px-4 flex '>
+                <div class='w-4/5'>
+                        <ProfessionalCardComponent  img={profData.img ? profData.img : professional.img} 
+                                                    likes={profData.likes} 
+                                                    dislikes={profData.dislikes}
                                                     sessions={professional.sessions}
                                                     biography={professional.biography}
                                                     professionalData={professional.professionalData}
@@ -87,7 +90,10 @@ function ProfessionalContainer() {
                 </div>
             </div>
         </div>
-    )
+    )}
+    else{
+        return <div className="flex justify-center text-3xl h-full p-80">Cargando...</div>
+    }
 }
 
 export default ProfessionalContainer
