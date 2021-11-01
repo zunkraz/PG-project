@@ -20,8 +20,8 @@ export function FeaturedProfessionals() {
                     <div className="text-bold font-main font-2x">
                         Profesionales Destacados
                     </div>
-                    <div className="mrg-lg-t">
-                        Quisque placerat, sem tempus porta posuere, metus odio feugiat nunc, ut rhoncus nunc dui eget massa. Vivamus laoreet ullamcorper felis at egestas. Vivamus varius erat sit amet massa viverra sodales. Sed erat risus, posuere sit amet ullamcorper sit amet, efficitur ut leo.
+                    <div className="mrg-lg-t font-lg">
+                        Los profesionales con mejor de reputación merecen ser reconocidos, agéndate con ellos a solo un click!
                     </div>
                 </section>
             </div>

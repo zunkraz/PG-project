@@ -19,8 +19,8 @@ const Testimonials = () => {
                         <div className="text-bold font-color-light font-main font-2x">
                             <span className="padd-md-b padd-lg-r border-bottom-color-main">Lo que dicen nuestros clientes</span>
                         </div>
-                        <div className="mrg-lg-t font-color-light">
-                            Maecenas facilisis diam orci, quis iaculis risus suscipit eu. Phasellus fringilla iaculis lacus at dapibus. Mauris et augue a nibh elementum suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut elementum urna vitae odio faucibus, a interdum lacus dictum. Integer convallis accumsan ornare. Curabitur convallis nibh non imperdiet volutpat.
+                        <div className="mrg-lg-t font-color-light font-lg">
+                            Lo más importante para nosotros es la satisfacción de nuestros clientes, deja tu opinión y forma parte de LATAM EXPONENTIAL. 
                         </div>
                     </section>
                 </div>
