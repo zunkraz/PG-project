@@ -3,7 +3,8 @@ const router = Router();
 const {getCategories,updateCategCount} = require('../controllers/index.js');
 
 router.get('/',(req,res,next)=>{
-  getCategories()
+  let {feat} = req.query;
+  getCategories(feat)
     .then(result => res.json(result))
     .catch(err => next(err));
 });

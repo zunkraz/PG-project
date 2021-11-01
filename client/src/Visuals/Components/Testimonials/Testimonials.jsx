@@ -6,10 +6,9 @@ const Testimonials = () => {
     const [reviews,setReviews] = useState([])
 
     useEffect(()=>{
-        if(!reviews.length){
-            getReviews().then(data=>setReviews(data))
-        }
-    })
+        getReviews().then(data=>setReviews(data))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return (
         <div className="wrapper bg-component-testimonials">

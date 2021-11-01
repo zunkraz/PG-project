@@ -10,6 +10,7 @@ function AdminPanel(){
   const userModified = useSelector(state=>state.adminReducer.userModified);
   useEffect(()=>{
   dispatch(getAdminUsers());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[userDeleted,userModified]);
 
   //const userOnPage = useSelector(state=>state.sessionReducer.status); descomentar cuando ya este implementado
