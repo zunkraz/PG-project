@@ -1,25 +1,16 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import Testimony from './Testimony';
+import {getReviews} from '../../../ApiReq/constantInfo'
 
 const Testimonials = () => {
-    const data = [
-        {
-            user: "Juan Pablo Lozano",
-            testimony: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum enim arcu, condimentum in sollicitudin at, pharetra at mauris. Nam bibendum ex sed lorem condimentum luctus."
-        },
-        {
-            user: "Adriana Cejas",
-            testimony: "Quisque sed nulla et sapien suscipit porttitor. Mauris faucibus efficitur consequat. Sed fermentum mollis nisl, id malesuada ipsum auctor et."
-        },
-        {
-            user: "Nohelia Rincon",
-            testimony: "Aliquam erat volutpat. Vestibulum at eros sit amet neque euismod fringilla. Curabitur orci justo, elementum ut malesuada non, consectetur a tellus."
-        },
-        {
-            user: "Agustin Ecker",
-            testimony: "Sed nibh elit, blandit non venenatis vitae, gravida sed mauris. Nunc suscipit laoreet lobortis. In eget placerat elit. In id scelerisque magna. Donec in posuere nisi."
-        },
-    ]
+    const [reviews,setReviews] = useState([])
+
+    useEffect(()=>{
+        if(!reviews.length){
+            getReviews().then(data=>setReviews(data))
+        }
+    })
+
     return (
         <div className="wrapper bg-component-testimonials">
             <div className="wrapper bg-color-dark-a60 padd-xl">
@@ -36,7 +27,7 @@ const Testimonials = () => {
                 <div data-uk-slider className="wrapper padd-xl-tb">
                     <ul class="uk-slider-items">
                         {
-                            data && data.map(function (testimonyData, index) {
+                            reviews.length && reviews.map(function (testimonyData, index) {
                                 return <Testimony key={index} data={testimonyData} />
                             })
                         } 

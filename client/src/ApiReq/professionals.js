@@ -2,7 +2,6 @@ import axios from 'axios';
 import {BASIC_URL} from './../constants';
 
 export function getProfessionals(featured){
-    console.log('apireq',featured)
     return axios.get(`${BASIC_URL}/professionals?featured=${featured}`)
     .then(r=>r.data.map(u=>{
         return {...u,fullname:u.name+' '+u.lastname}
