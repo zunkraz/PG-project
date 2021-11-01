@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Slogan from '../Components/SloganComponents/Slogan'
 import WeekTips from '../Components/WeekTipsComponents/WeekTips'
 
@@ -7,16 +7,20 @@ import FeaturedProfessionals from '../Components/FeaturedProfessionals/FeaturedP
 import Testimonials from '../Components/Testimonials/Testimonials'
 
 import { getAllProfs } from '../../Controllers/actions/professionalsActions'
-import { getAllCountries} from '../../Controllers/actions/constantInfoActions'
+import { getAllCategories, getAllCountries} from '../../Controllers/actions/constantInfoActions'
 import {useDispatch} from "react-redux"
 
 
 function Home() {
 
-
     const dispatch= useDispatch()
-    dispatch(getAllProfs());
-    dispatch(getAllCountries());
+
+    useEffect(() => {
+        dispatch(getAllCategories());
+        dispatch(getAllCountries());
+        dispatch(getAllProfs());
+    },[dispatch])
+
 
     return (
         <div>
@@ -30,3 +34,4 @@ function Home() {
 }
 
 export default Home
+

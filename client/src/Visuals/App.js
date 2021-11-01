@@ -20,10 +20,8 @@ import {useDispatch} from 'react-redux'
 import { getCat } from '../Controllers/actions/constantInfoActions';
 import Cart from './Components/Cart/Cart';
 
-function App() {
 
-  const dispatch = useDispatch()
-  dispatch(getCat())
+function App() {
 
 
   return (
@@ -36,11 +34,11 @@ function App() {
         <Route path='/ingresar'>
           <Login/>
         </Route>
-        <Route exact path='/profesional/'>
+        {/* <Route exact path='/profesional/'>
           <ProfessionalDashboard/>
-        </Route>
+        </Route> */}
         <Route path='/profesionales/:username'>
-                    <ProfessionalDashboard/>
+          <ProfessionalDashboard/>
         </Route>        
         <Route path='/miperfil/:username'
           render={({match})=><Dashboard match={match}/>}>
