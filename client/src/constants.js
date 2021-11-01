@@ -7,6 +7,7 @@ export const GET_TIPS = 'GET_TIPS';
 export const GET_PROFESSIONALS = "GET_PROFESSIONALS";
 export const GET_PROF_BY_USER = "GET_PROF_BY_USER";
 export const GET_USERS = "GET_USERS";
+export const GET_COUNTRIES = "GET_COUNTRIES"
 
 export const GET_ADMIN_USERS = 'GET_ADMIN_USERS';
 export const DELETE_ADMIN_USERS = 'DELETE_ADMIN_USERS';
