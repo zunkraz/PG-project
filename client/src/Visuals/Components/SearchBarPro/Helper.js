@@ -1,6 +1,5 @@
 export function Filter(obj,arr){
     const {name,profesion, country, min,max, likes} = obj
-    
     //Primero filtramos por nombre
     //hay que colocar la regex para los acentos
     if(name){
@@ -19,31 +18,37 @@ export function Filter(obj,arr){
         arr = arr.filter(e => e.category[0].name === profesion);
     }
     if(country){
-        arr = arr.filter(e => e.country === country);
+     
+        arr = arr.filter(e => e.country.name === country);
+      
     }
+
     //Likes Funciona colocar valor de regla
     if(likes){
-        let val = 10;
+        const likesTotal = arr.map(e => e.likes).reduce((a,b) => a + b, 0)
+        const dislikesTotal = arr.map(e => e.dislikes).reduce((a,b) => a + b, 0)
+       //Los valores de likes y dislikes son demasiado altos. 
+        let val = (likesTotal+dislikesTotal)/2;
         switch (likes) {
             case 'Iniciado':
                
-                arr = arr.filter(e => e.likes < val)
+                arr = arr.filter(e => e.likes < (val/3))
                 break;
             case 'Intermedio':
                 
-                arr = arr.filter(e => e.likes > val && e.likes < Math.pow(val/2,2));
+                arr = arr.filter(e => e.likes > (val/3) && e.likes < (val/2));
                 break;
             case 'Popular':
               
-                arr = arr.filter(e => e.likes > Math.pow(val/2,2));
+                arr = arr.filter(e => e.likes > (val/2));
                 break;
             default:
                 break;
         }
     }
-    if(min && max){
-        console.log(200)
-    }
+    // if(min && max){
+    //     console.log(200)
+    // }
         
      return arr
 }

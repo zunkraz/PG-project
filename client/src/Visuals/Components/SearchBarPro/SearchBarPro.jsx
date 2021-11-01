@@ -3,6 +3,7 @@ import FiltersFields from './FilterFields';
 import NameSearch from './NameSearch';
 import {useSelector, useDispatch} from 'react-redux'
 import { filterProfessional } from '../../../Controllers/actions/professionalsActions';
+
 const SearchBarPro = () => {
 const dispatch = useDispatch();
 const professionals = useSelector(state => state.professionalReducer.professionals)
@@ -43,7 +44,7 @@ const handleCliks = () => {
 }
 const handleSubmit = e => {
     e.preventDefault()
-    // console.log(Object.values(data).map(e => e === ''))
+   
     if(error === true || !Object.values(data).map(e => e === '').includes(false)){
         return setErrorSubmit(true)
     }else{
@@ -109,6 +110,7 @@ const handleSubmit = e => {
         />
        
         </form>
+       
         {errorSubmit && <div><h3>Verifique sus campos</h3></div>}
     </aside>
      );
