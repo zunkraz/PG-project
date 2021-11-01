@@ -16,13 +16,10 @@ import Professionals from './Containers/Professionals';
 import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 import AdminPanel from "./Containers/AdminPanel";
-import {useDispatch} from 'react-redux'
-import { getCat } from '../Controllers/actions/constantInfoActions';
+// import {useDispatch} from 'react-redux'
+// import { getCat } from '../Controllers/actions/constantInfoActions';
 
 function App() {
-
-  const dispatch = useDispatch()
-  dispatch(getCat())
 
 
   return (
@@ -35,11 +32,11 @@ function App() {
         <Route path='/ingresar'>
           <Login/>
         </Route>
-        <Route exact path='/profesional/'>
+        {/* <Route exact path='/profesional/'>
           <ProfessionalDashboard/>
-        </Route>
+        </Route> */}
         <Route path='/profesionales/:username'>
-                    <ProfessionalDashboard/>
+          <ProfessionalDashboard/>
         </Route>        
         <Route path='/miperfil/:username'
           render={({match})=><Dashboard match={match}/>}>
