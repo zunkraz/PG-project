@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 export default function ProfesionalsCatalog(){
     const [pageNumber, setPageNumber]= useState(0)
     const profis= useSelector(state=>state.professionalReducer.professionalsRender)
+    const error= useSelector(state=>state.professionalReducer.error)
 
     const profPerPage= profis.length<8 ? profis.length : 8
     const pageVisited= pageNumber * profPerPage
@@ -32,7 +33,7 @@ export default function ProfesionalsCatalog(){
     }
     
 
-    if(profis.length===0){
+    if(error){
         return <div className="flex justify-center text-xl h-full p-40">No se encontraron resultados con ese criterio de busqueda</div>
     }
     else {return (
