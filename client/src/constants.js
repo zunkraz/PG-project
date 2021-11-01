@@ -22,3 +22,4 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const FILTER_PROF = 'FILTER_PROF';
 export const DATA_NOT_FOUND = 'DATA_NOT_FOUND';
+
