@@ -11,7 +11,7 @@ export async function getUsers() {
     return data;
 }
 
-export async function getSingleUser(id) {
-    const data = (await axios.get(`${BASIC_URL}/users/:${id}`)).data;
+export async function getSingleUser(username) {
+    const data = (await axios.get(`${BASIC_URL}/users/${username}`)).data;
     return data;
 }
