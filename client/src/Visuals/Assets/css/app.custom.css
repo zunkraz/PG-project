@@ -121,6 +121,12 @@ select.pg-custom:focus {
     background-attachment: fixed;
 }
 
+.bg-component-footer {
+	background-image: url(../media/bg-component-footer.png);
+    background-position: repeat center center;
+    background-size: 120px 120px;
+}
+
 .uk-dotnav > * > * {
 	display: block;
 	box-sizing: border-box;
