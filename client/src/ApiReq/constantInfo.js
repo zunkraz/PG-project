@@ -18,3 +18,9 @@ export function getReviews(){
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }
+
+export function getCountries(){
+    return axios.get(`${BASIC_URL}/countries`)
+    .then(r=>r.data)
+    .catch(r=>r.response.data)
+}

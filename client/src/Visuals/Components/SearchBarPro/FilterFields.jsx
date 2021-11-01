@@ -1,21 +1,12 @@
 import React, {useEffect} from 'react'
+import {useSelector} from 'react-redux'
 
-const FiltersFields = ({data,handleChange,error,setError}) => {
+const FiltersFields = ({data,handleChange,setError}) => {
 
+const categories = useSelector(state => state.constantInfoReducer.categories);
+const countries = useSelector(state => state.constantInfoReducer.countries)
 
-    const categories = [
-        {name: 'Abogacia'},
-        {name: 'Medicina general'},
-        {name: 'Veterinaria'},
-        {name: 'Psicologia'},
-    ];
-    const countries = [
-        {country: 'Argentina'},
-        {country: 'Colombia'},
-        {country: 'Venezuela'},
-        {country: 'Perú'},
-        {country: 'Indiferente'},
-    ]
+    
     const likes = [
         {range:'Iniciado'},
         {range:'Intermedio'},
@@ -23,12 +14,12 @@ const FiltersFields = ({data,handleChange,error,setError}) => {
     ]
 
 
-    const categoriesRender = categories.map((data,index) => {
-        const opt = <option key={index} value={data.name}>{data.name}</option>;
+    const categoriesRender = categories.map(data => {
+        const opt = <option  value={data.name}>{data.name}</option>;
         return opt;
     });
     const countriesRender = countries.map((data,index) => {
-        const opt = <option key={index} value={data.country}>{data.country}</option>;
+        const opt = <option key={index} value={data.name}>{data.name}</option>;
         return opt;
     });
     const likesRender = likes.map((data,index) => {
@@ -90,7 +81,7 @@ useEffect(() => {
             </select>  
         </div>
 
-        <div>
+        {/* <div>
         <h3>Escoge tu presupuesto</h3>
         {error && <h3>Los montos no son válidos</h3>}
           <div>
@@ -113,7 +104,7 @@ useEffect(() => {
                 className='uk-width-1-6@s uk-input'
             />
           </div>
-        </div>
+        </div> */}
     </div>
      );
 }

@@ -6,8 +6,8 @@ import './Assets/css/app.settings.css';
 import './Assets/css/app.core.css';
 import './Assets/css/app.actions.css';
 import './Assets/css/app.custom.css';
-import { Route, Switch  } from 'react-router';
-import Footer from '..//Visuals/Components/FooterComponents/Footer'
+import { Redirect, Route, Switch  } from 'react-router';
+import Footer from '../Visuals/Components/FooterComponents/Footer'
 import Nav from '../Visuals/Components/NavComponent/Nav'
 import Login from './Containers/Login';
 import Dashboard from './Containers/Dashboard';
@@ -16,10 +16,15 @@ import Professionals from './Containers/Professionals';
 import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 import AdminPanel from "./Containers/AdminPanel";
-
-
+import {useDispatch} from 'react-redux'
+import { getCat } from '../Controllers/actions/constantInfoActions';
 
 function App() {
+
+  const dispatch = useDispatch()
+  dispatch(getCat())
+
+
   return (
     <div>
         <Nav/>
@@ -33,11 +38,11 @@ function App() {
         <Route exact path='/profesional/'>
           <ProfessionalDashboard/>
         </Route>
-        <Route path='/profesional/:id'
-                    render={({match})=><ProfessionalDashboard match={match}/>}
-                />
-        <Route path='/miperfil/'>
-          <Dashboard/>
+        <Route path='/profesionales/:username'>
+                    <ProfessionalDashboard/>
+        </Route>        
+        <Route path='/miperfil/:username'
+          render={({match})=><Dashboard match={match}/>}>
         </Route>
         <Route path='/registro'>
           <Register/>
