@@ -39,7 +39,7 @@ export default function professionalReducer(state=initialState,{type,payload}){
             console.log(initialState.professionals)
             return{
                 ...state,
-                professionalsRender:initialState.professionals,
+                professionalsRender:state.professionals,
                 error:false
             }
         default:
