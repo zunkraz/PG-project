@@ -2,12 +2,14 @@ import {
     GET_CATEGORIES,
     GET_TIPS,
     GET_REVIEWS,
+    GET_COUNTRIES
 } from './../../constants'
 
 const initialState = {
     categories: [],
     tips: [],
     reviews: [],
+    countries: []
 }
 
 export default function constantInfoReducer(state=initialState,{type,payload}){
@@ -26,6 +28,11 @@ export default function constantInfoReducer(state=initialState,{type,payload}){
             return {
                 ...state,
                 reviews: payload
+            }
+        case GET_COUNTRIES:
+            return {
+                ...state,
+                countries: payload
             }
         default:
             return {...state}
