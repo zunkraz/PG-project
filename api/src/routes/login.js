@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { getLogin } = require('../controllers/index.js')
+const getLogin = require('../controllers/functions/getLogin');
 
 //esta ruta es : /login
 
