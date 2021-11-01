@@ -2,7 +2,7 @@ const User = require('./models/User');
 const mongoose =require('mongoose');
 const bcrypt = require('bcrypt');
 
-mongoose.connect('mongodb+srv://adria:cOz7DgGHSUfzLxf0@cluster0.9wurk.mongodb.net/PG-henry?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGO_URI);
 
 const users = [
     new User({
