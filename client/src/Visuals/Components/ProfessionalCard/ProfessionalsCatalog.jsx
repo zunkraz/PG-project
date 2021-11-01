@@ -30,8 +30,12 @@ export default function ProfesionalsCatalog(){
     const changePage= ({selected})=>{
         setPageNumber(selected)
     }
+    console.log(profis)
 
-    return (
+    if(profis.length===0){
+        return <div className="flex justify-center text-xl h-full p-40">No se encontraron resultados con ese criterio de busqueda</div>
+    }
+    else {return (
         <div className="my-5">
         <ul className="flex flex-wrap justify-center">
         {displayProfs}
@@ -50,5 +54,5 @@ export default function ProfesionalsCatalog(){
             renderOnZeroPageCount={null}
         />
         </div>
-    )
+    )}
 }
