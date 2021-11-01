@@ -10,7 +10,7 @@ export default function cartReducer(state=initialState, action){
         case ADD_TO_CART:
             return {
                 ...state,
-                appointments: action.payload
+                appointments: [...state.appointments, action.payload]
             };
         case REMOVE_FROM_CART:
             return {
