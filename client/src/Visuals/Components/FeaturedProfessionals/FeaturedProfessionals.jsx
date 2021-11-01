@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import FeaturedProfessional from './FeaturedProfessional';
-import {getProfessionals} from '../../../ApiReq/professionals'
+import {getProfessionals} from '../../../ApiReq/professionals';
 
 export function FeaturedProfessionals() {
 
-    let [professionals,setProfessionals] = useState([])
+    let [professionals,setProfessionals] = useState([]);
     
     useEffect(()=>{
-        if(!professionals.length){
-            getProfessionals('true')
-            .then(data => setProfessionals(data))
-        }
-    })
+       getProfessionals('true')
+            .then(data => setProfessionals(data));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     return (
         <div>
