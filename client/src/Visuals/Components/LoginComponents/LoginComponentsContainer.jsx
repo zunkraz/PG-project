@@ -142,8 +142,8 @@ function LoginComponentsContainer() {
     
     // console.log('USER CAN LOG =>> ' + UserCanLog)
 
-    // console.log('User Fields =>> ')
-    // console.log(userFields)
+    console.log('User Fields =>> ')
+    console.log(userFields)
 
     // console.log('User Errors =>>')
     // console.log(errors)

@@ -6,7 +6,7 @@ import './Assets/css/app.settings.css';
 import './Assets/css/app.core.css';
 import './Assets/css/app.actions.css';
 import './Assets/css/app.custom.css';
-import { Route, Switch  } from 'react-router';
+import { Redirect, Route, Switch  } from 'react-router';
 import Footer from '../Visuals/Components/FooterComponents/Footer'
 import Nav from '../Visuals/Components/NavComponent/Nav'
 import Login from './Containers/Login';
@@ -41,8 +41,8 @@ function App() {
         <Route path='/profesionales/:username'>
                     <ProfessionalDashboard/>
         </Route>        
-        <Route path='/miperfil/'>
-          <Dashboard/>
+        <Route path='/miperfil/:username'
+          render={({match})=><Dashboard match={match}/>}>
         </Route>
         <Route path='/registro'>
           <Register/>
