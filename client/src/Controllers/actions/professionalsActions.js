@@ -24,13 +24,14 @@ export function getProfByUser(username){
 export function filterProfessional(obj,arr){
     return async function(dispatch){
         const data = Filter(obj,arr)
-
-        if(data){
+        
+        if(data.length){
             return dispatch({
                 type: FILTER_PROF,
                 payload: data 
             })
         }else{
+       
             return dispatch({
                 type: DATA_NOT_FOUND, 
             }) 

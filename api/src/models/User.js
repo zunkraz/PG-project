@@ -90,6 +90,12 @@ const user = new Schema(
     { timestamp: true }
 )
 
+user.pre('save', function (next) {
+    this.name = this.name.charAt(0).toUpperCase() + this.name.slice(1).toLowerCase();
+    this.lastname = this.lastname.charAt(0).toUpperCase() + this.lastname.slice(1).toLowerCase();
+    next();
+});
+
 const User = mongoose.model('users', user);
 
 module.exports = User;

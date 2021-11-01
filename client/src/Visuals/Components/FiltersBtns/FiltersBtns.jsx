@@ -1,32 +1,28 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import '../../Assets/CustomAR.css'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import { filterProfessional } from '../../../Controllers/actions/professionalsActions';
 
 const FiltersBtns = () => {
-    
+let history = useHistory();
+const dispatch = useDispatch();
 const categories = useSelector(state => state.constantInfoReducer.categories);
-
-const countries = [
-    {country: 'Argentina'},
-    {country: 'Colombia'},
-    {country: 'Venezuela'},
-    {country: 'Perú'},
-    {country: 'Indiferente'},
-]
+const professionals = useSelector(state => state.professionalReducer.professionals);
+const countries = useSelector(state => state.constantInfoReducer.countries)
 
 const categoriesRender = categories.map(data => {
     const opt = <option value={data.name}>{data.name}</option>;
     return opt;
 });
 const countriesRender = countries.map(data => {
-    const opt = <option value={data.country}>{data.country}</option>;
+    const opt = <option value={data.name}>{data.name}</option>;
     return opt;
 });
 
 const [data, setData] = useState({
     country: '',
-    name: '',
+    profesion: '',
 });
 const [invalid, setInvalid] = useState(true)
 
@@ -37,7 +33,6 @@ const handleChange = e => {
     })
 }
 useEffect(() => {
-    console.log(Object.values(data).map(e => e === ""))
     if(Object.values(data).map(e => e === "")[1] === false){
     return setInvalid(false);
     }
@@ -46,16 +41,13 @@ return setInvalid(true);
 
 const handleSubmit = e => {
     e.preventDefault();
-    // Aqui van los despachos de acciones para filtrar y mandar a la ruta professionals
-    // Aqui van los despachos de acciones para filtrar y mandar a la ruta professionals
-    // Aqui van los despachos de acciones para filtrar y mandar a la ruta professionals
-    // Aqui van los despachos de acciones para filtrar y mandar a la ruta professionals
-    // Aqui van los despachos de acciones para filtrar y mandar a la ruta professionals
+    dispatch(filterProfessional(data,professionals))
     setData({
         country: '',
-        name: '', 
-    })
-    setInvalid(true)
+        profesion: '', 
+    });
+    setInvalid(true);
+    history.push('./profesionales')
 }
 
     return ( 
@@ -70,8 +62,8 @@ const handleSubmit = e => {
                 </label>
                 <select
                     onChange={handleChange}
-                    name='name'
-                    value={data.name}
+                    name='profesion'
+                    value={data.profesion}
                     className='inputsFiltersBtns* uk-select width-100 bg-color-transparent border-color-light pg-custom'
                 >
                     <option value="">Seleccionar Profesión</option>
@@ -93,23 +85,12 @@ const handleSubmit = e => {
                 </select>
             </div>    
             <div>  
-                <Link to='./profesionales'>
-                    {/*
                     <input 
-                        className=" btnFiltersBtns mrg-lg-t padd-md-tb font-main font-xl text-bold action action-slogan"
+                        className="btnFiltersBtns* width-100 mrg-xl-t padd-md-tb font-main font-xl action action-slogan"
                         type="submit" 
                         value="Buscar"
                         disabled={invalid}
                     />
-                    */}
-                    <button 
-                        className="btnFiltersBtns* width-100 mrg-xl-t padd-md-tb font-main font-xl action action-slogan"
-                        type="submit" 
-                        disabled={invalid}
-                    >
-                        Buscar  
-                    </button>             
-                </Link>
             </div>  
         </form>
     );
