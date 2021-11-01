@@ -19,7 +19,6 @@ export default function Register(){
     }
     return(
         <div className="uk-background-muted">
-            <h2 className="uk-margin-left uk-padding">Registro</h2>
             <div className="uk-grid">
                 <button className="uk-button uk-button-danger uk-width-1-2" name="cliente" onClick={handleClick}>Nuevo Cliente</button>
                 <button className="uk-button uk-button-danger uk-width-1-2" name="profesional" onClick={handleClick}>Nuevo Profesional</button>

@@ -1,14 +1,10 @@
 import React, {useEffect} from 'react'
+import {useSelector} from 'react-redux'
 
 const FiltersFields = ({data,handleChange,error,setError}) => {
 
+const categories = useSelector(state => state.constantInfoReducer.categories);
 
-    const categories = [
-        {name: 'Abogacia'},
-        {name: 'Medicina general'},
-        {name: 'Veterinaria'},
-        {name: 'Psicologia'},
-    ];
     const countries = [
         {country: 'Argentina'},
         {country: 'Colombia'},
@@ -23,8 +19,8 @@ const FiltersFields = ({data,handleChange,error,setError}) => {
     ]
 
 
-    const categoriesRender = categories.map((data,index) => {
-        const opt = <option key={index} value={data.name}>{data.name}</option>;
+    const categoriesRender = categories.map(data => {
+        const opt = <option  value={data.name}>{data.name}</option>;
         return opt;
     });
     const countriesRender = countries.map((data,index) => {
