@@ -6,9 +6,18 @@ import FeaturedProfessions from '../Components/FeaturedProfessions/FeaturedProfe
 import FeaturedProfessionals from '../Components/FeaturedProfessionals/FeaturedProfessionals'
 import Testimonials from '../Components/Testimonials/Testimonials'
 
+import { getAllProfs } from '../../Controllers/actions/professionalsActions'
+import { getAllCountries} from '../../Controllers/actions/constantInfoActions'
+import {useDispatch} from "react-redux"
 
 
 function Home() {
+
+
+    const dispatch= useDispatch()
+    dispatch(getAllProfs());
+    dispatch(getAllCountries());
+
     return (
         <div>
             <Slogan />
