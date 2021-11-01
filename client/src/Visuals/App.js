@@ -18,6 +18,7 @@ import ProfessionalDashboard from './Components/ProfessionalsComponents/Professi
 import AdminPanel from "./Containers/AdminPanel";
 import {useDispatch} from 'react-redux'
 import { getCat } from '../Controllers/actions/constantInfoActions';
+import Cart from './Components/Cart/Cart';
 
 function App() {
 
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route path='/admin'>
           <AdminPanel/>
+        </Route>
+        <Route path="/carrito">
+          <Cart/>
         </Route>
       </Switch>
         <Footer/>

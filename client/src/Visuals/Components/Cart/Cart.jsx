@@ -1,28 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import CardElement from "./CartElement";
 
 export default function Cart(){
-
-    const elements= orders.map(o=><li className="mb-2">
+    
+    const order= useSelector(state=>state.cartReducer.appointments)
+    const elements= order.map(o=><li className="mb-2">
         <CardElement name={o.name}
-        date={o.date}
-        sessions={o.sessions}
-        price={o.price}
+        date={o.appointment.date}
+        sessions={o.appointment.sessions}
+        price={o.appointment.sessions[0]*10}
         />
     </li>)
-
-    const suma= 20
+    
+    let suma= 0
+    order.forEach(o=> suma += o.appointment.sessions[0]*10)
     return (
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4 divide-y ">
-            <div className="grid grid-cols-4 gap-4 mb-2 ">
+            <div className="grid grid-cols-5 gap-4 mb-2 ">
                 <p className="text-xl">Consultoria virtual con:</p>
                 <p className="text-xl">Fecha</p>
                 <p className="text-xl"> Cantidad de sesiones</p>
                 <p className="text-xl">Precio</p>
+                <p className="text-xl">Eliminar</p>
             </div>
-            <ul className="py-4">
+            {elements.length>0 ? <ul className="py-4">
                 {elements}
-            </ul>
+            </ul>: <p className="text-2xl flex justify-center py-6">Tu carrito esta vacio</p>}
             <div className="grid grid-cols-4 gap-4 my-4 py-5">
                 <p className="col-span-3 text-2xl">Total</p>
                 <p className="text-2xl">${suma}</p>
@@ -34,5 +38,3 @@ export default function Cart(){
     )
 
 }
-
-const orders=[{name:"Carlos avila", date:"Lunes", sessions:"1", price:"10"}, {name:"Marcos avila", date:"Martes", sessions:"2", price:"10"}]
