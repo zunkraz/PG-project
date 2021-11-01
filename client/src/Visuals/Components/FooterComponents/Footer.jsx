@@ -27,14 +27,24 @@ function Footer() {
 
 
     return (
-        <div className='wrapper FooterPrimaryDiv'>
-            <div className='FooterListPrimaryDiv'>
-                <FooterNewSeller/>
-                <FooterList Title={'Links Útiles'} Contain={utilLink}/>
-                <FooterList Title={'Informacion'} Contain={info}/>
-                <FooterContact/>
+        <div className="wrapper bg-color-extra3 bg-component-footer border-top-color-extra4">
+            <div className="padd-xl-tb wrapper">
+                <section>
+                    <div className='col-1-4@xl col-1-4@lg col-1-4@md padd-lg'>
+                        <FooterNewSeller/>
+                    </div>
+                    <div className='col-1-4@xl col-1-4@lg col-1-4@md padd-lg'>
+                        <FooterList Title={'Links Útiles'} Contain={utilLink}/>
+                    </div>
+                    <div className='col-1-4@xl col-1-4@lg col-1-4@md padd-lg'>
+                        <FooterList Title={'Información'} Contain={info}/>
+                    </div>
+                    <div className='col-1-4@xl col-1-4@lg col-1-4@md padd-lg'>
+                        <FooterContact/>
+                    </div>
+                </section>
             </div>
-            <div className='FooterEndPrimaryDiv'>
+            <div className="wrapper">
                 <FooterEnd/>
             </div>
         </div>
