@@ -11,7 +11,7 @@ import {
     getCountries
 } from '../../ApiReq/constantInfo'
 
-export function getCat(){
+export function getAllCategories(){
     return async function(dispatch){
         let data = await getCategories();
         return dispatch({
