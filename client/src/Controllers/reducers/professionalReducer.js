@@ -1,5 +1,5 @@
 
-import { GET_PROFESSIONALS, GET_PROF_BY_USER, FILTER_PROF,DATA_NOT_FOUND} from './../../constants'
+import { GET_PROFESSIONALS,CLEAR_FILTERS, GET_PROF_BY_USER, FILTER_PROF,DATA_NOT_FOUND} from './../../constants'
 
 const initialState = {
     professionals: [],
@@ -35,10 +35,12 @@ export default function professionalReducer(state=initialState,{type,payload}){
                 ...state,
                 error:true
             }
-        case FILTER_PROF:
+        case CLEAR_FILTERS:
+            console.log(initialState.professionals)
             return{
                 ...state,
-                professionals:payload
+                professionalsRender:state.professionals,
+                error:false
             }
         default:
             return {...state}

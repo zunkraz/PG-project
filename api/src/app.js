@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
 const server = express();
 const routes = require('./routes/index');
 const passport = require('passport');
