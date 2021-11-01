@@ -44,7 +44,7 @@ const handleCliks = () => {
 }
 const handleSubmit = e => {
     e.preventDefault()
-    // console.log(Object.values(data).map(e => e === ''))
+   
     if(error === true || !Object.values(data).map(e => e === '').includes(false)){
         return setErrorSubmit(true)
     }else{
