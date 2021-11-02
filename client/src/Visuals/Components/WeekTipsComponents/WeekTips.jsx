@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
-import PaginationBtn from '../PaginationBtn';
+//import PaginationBtn from '../PaginationBtn';
 import WeekTipsCard from './WeekTipsCard'
 import {getAllTips} from '../../../Controllers/actions/constantInfoActions'
 
 function WeekTips() {
-    let [tipPage, settipPage] = useState(1);
+    //let [tipPage, settipPage] = useState(1);
     const dispatch = useDispatch();
     const tipsStore = useSelector(state=>state.constantInfoReducer.tips);
     useEffect(()=>{
@@ -13,19 +13,19 @@ function WeekTips() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-    const numOfPages = Math.ceil(tipsStore.length/3)
-    const showPage = (tipsStore, tipPage)=>{
-        const init = (tipPage-1)*3
-        const end = tipPage*3
-        return tipsStore.slice(init, end)
-    }
+    //const numOfPages = Math.ceil(tipsStore.length/3)
+    // const showPage = (tipsStore, tipPage)=>{
+    //     const init = (tipPage-1)*3
+    //     const end = tipPage*3
+    //     return tipsStore.slice(init, end)
+    // }
 
-    const dwPage = ()=>{
-        (tipPage>0&&tipPage!==tipsStore.length) && settipPage(tipPage--)
-    }
-    const upPage = ()=>{
-        (tipPage>0 && tipPage!==tipsStore.length) && settipPage(tipPage++)
-    }
+    // const dwPage = ()=>{
+    //     (tipPage>0&&tipPage!==tipsStore.length) && settipPage(tipPage--)
+    // }
+    // const upPage = ()=>{
+    //     (tipPage>0 && tipPage!==tipsStore.length) && settipPage(tipPage++)
+    // }
 
     return (
         <div className="wrapper bg-component-week-tips cursor-pointer">
