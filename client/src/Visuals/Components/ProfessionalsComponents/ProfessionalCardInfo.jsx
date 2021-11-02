@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { FcCheckmark, FcCancel } from "react-icons/fc";
-
+import { FcCheckmark } from "react-icons/fc";
+import Schedule from '../Schedule/Schedule';
 
 
 function ProfessionalCardInfo({biography, professionalData, schedule}) {
@@ -38,10 +38,7 @@ function ProfessionalCardInfo({biography, professionalData, schedule}) {
                 {proInfo==='profile' && professionalData?.map((elem, index)=>{
                     return <span key={index} className={profileclass}>{elem.name}<p className={profileP}>{elem.text}</p>{elem.verified?<FcCheckmark class='font-xl'/>:''}</span>
                 })}
-                {proInfo==='schedule' && schedule?.map((elem, index)=>{
-                    /*{date: 'Viernes', available: false}*/
-                    return <span key={index} className={scheduleclass}><p>{elem.available?<FcCheckmark className='mr-4'/>:<FcCancel class='mr-4'/>}</p>{elem.date}</span>
-                })}
+                {proInfo==='schedule' && <Schedule />}
             </div>
         </div>
     )
