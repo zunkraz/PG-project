@@ -22,8 +22,8 @@ export default function RegisterFormUser(){
     function handleChange(e){
         const {value, name}=e.target
         setNewuser({
-                ...newUser,
-                [name]:value
+            ...newUser,
+            [name]:value
         })
         if(userData.find(user=> user.email===value)){
             setError({...error, ["email"] : "El email ya esta en uso"})
@@ -31,14 +31,14 @@ export default function RegisterFormUser(){
         else if(userData.find(user=> user.username===value)){
             setError({...error, ["username"] : "El usuario ya existe"})
         }
-        else {if(!userData.find(user=> user.email===value) && error.email!=="") {setError({...error, ["email"] : ""})}
+        else {
+            if(!userData.find(user=> user.email===value) && error.email!=="") {setError({...error, ["email"] : ""})}
             else if(!userData.find(user=> user.username===value)) {setError({...error, ["username"] : ""})}
+        }
     }
-    
-    }
+
     function handleChangeCheckbox(e){
-        setChecked(!checked)
-        
+        setChecked(!checked)    
     }
 
     function handleSubmit(e) {
@@ -71,61 +71,85 @@ export default function RegisterFormUser(){
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="email" className="p-2"> Correo electronico </label>
-                        <input className="uk-input uk-form-width-large" type="email"
-                        name="email" id="email"
-                        placeholder="Correo electronico"
+                        <input
+                        className="uk-input uk-form-width-large"
+                        type="email"
+                        name="email"
+                        id="email"
+                        autoComplete="off"
+                        placeholder="Ingresa tu email..."
                         onChange={handleChange}
                         required/>
+                        {
+                            error.email ? <span className="uk-alert-danger">{error.email}</span> : null
+                        }
                     </div>
                     <div className="uk-flex uk-flex-column uk-form-width-large">
                         <label htmlFor="username" className="p-2"> Nombre de usuario </label>
-                        <input className="uk-input uk-form-width-large"  type="text"
-                        name="username" id="username"
-                        placeholder="Usuario" 
+                        <input
+                        className="uk-input uk-form-width-large"
+                        type="text"
+                        name="username"
+                        id="username"
+                        autoComplete="off"
+                        placeholder="Ingresa tu nombre de usuario..." 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.username ? <span className="uk-alert-danger">{error.username}</span> : null
+                        }
                     </div>
                 </div>
-                <span className="uk-alert-danger">{error.email}</span>
-                <span className="uk-alert-danger">{error.username}</span>
+                
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="name" className="p-2"> Nombre </label>
-                        <input className="uk-input uk-form-width-large" type="text"
-                        name="name" id="name"
-                        placeholder="Nombre"
+                        <input
+                        className="uk-input uk-form-width-large"
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Ingresa tu nombre..."
+                        autoComplete="off"
                         onChange={handleChange}
                         required/>
+                        {
+                            error.name ? <span className="uk-alert-danger">{error.name}</span> : null
+                        }
                     </div>
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="lastname" className="p-2"> Apellido </label>
                         <input className="uk-input uk-form-width-large"  type="text"
                         name="lastname" id="lastname"
-                        placeholder="Apellido" 
+                        placeholder="Ingresa tu apellido..." 
                         onChange={handleChange}
                         required/>
                     </div>
                 </div>
-                <span className="uk-alert-danger">{error.name}</span>
+                
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="password" className="p-2"> Contraseña </label>
                         <input className="uk-input uk-form-width-large"  type="password"
                         name="password" id="password"
-                        placeholder="Contraseña" 
+                        placeholder="Ingresa tu contraseña..." 
                         onChange={handleChange}
                         required/>
+
                     </div>
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="confirmPassword" className="p-2"> Confirmar contraseña </label>
                         <input className="uk-input uk-form-width-large"  type="password"
                         name="confirmPassword" id="confirmPassword"
-                        placeholder="Confirmar contraseña" 
+                        placeholder="Confirma tu contraseña..." 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.password ? <span className="uk-alert-danger">{error.password}</span> : null
+                        }
                     </div>
                 </div>
-                <span className="uk-alert-danger">{error.password}</span>
+                
                 <div className="mb-4">
                 <label htmlFor="acceptT" className="p-2">Acepto los términos y condiciones del servicio</label>
                 <input className="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" id="acceptT" checked={checked} onChange={handleChangeCheckbox}/>

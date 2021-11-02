@@ -142,14 +142,14 @@ function LoginComponentsContainer({Joined, setUsername, setLogin}) {
 
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
-            console.log('PRE JOINED => '+ userNames[userIndex])
+            //console.log('PRE JOINED => '+ userNames[userIndex])
             setUsername(userNames[userIndex])
             Joined(userNames[userIndex])
-        console.log({username:userNames[userIndex], password: userFields.password})
+        //console.log({username:userNames[userIndex], password: userFields.password})
         setShowErrorText(true)
     }
-    console.log('USERLOG =>')
-    console.log(UserLog)
+    //console.log('USERLOG =>')
+    //console.log(UserLog)
     
 
     
@@ -183,10 +183,10 @@ function LoginComponentsContainer({Joined, setUsername, setLogin}) {
 
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
-            {(UserLog.length && UserLog==='Correcto') && 
+            {(UserLog.length && UserLog==='Correcto') ? 
                 <Redirect to={`/miperfil/${userNames[userIndex]}`}/>
-            }
-            {(!UserLog.length && UserLog!=='Correcto') &&
+            :
+            ( UserLog!=='Correcto') &&
                 <LoginFormComponents    handleFields={handleFields}
                                         logIn={logIn}
                                         tagUser={userFind}
