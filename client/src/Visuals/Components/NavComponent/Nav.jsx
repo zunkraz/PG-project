@@ -32,12 +32,12 @@ const Nav = ({Logout, login, username}) => {
     <header>
 
         <nav 
-            className="width-100 uk-navbar-container uk-margin" 
+            className="uk-navbar-container uk-margin" 
             data-uk-navbar 
             uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
             >
             
-            <div className="uk-navbar bg-color-light">
+            <div className="uk-navbar bg-color-light width-100">
             
             <Link 
                 className="
