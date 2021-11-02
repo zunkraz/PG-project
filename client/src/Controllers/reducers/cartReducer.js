@@ -15,7 +15,8 @@ export default function cartReducer(state=initialState, action){
         case REMOVE_FROM_CART:
             return {
                 ...state,
-                appointments: state.appointments.filter(a => a.id !== action.payload)
+                appointments: state.appointments.filter(a => a.appointment.date !== action.payload)
+                
             }
         default:
             return state;
