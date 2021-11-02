@@ -20,6 +20,8 @@ import {useDispatch} from 'react-redux'
 import { getCat } from '../Controllers/actions/constantInfoActions';
 import Cart from './Components/Cart/Cart';
 
+
+
 function App() {
   const history = useHistory()
   const dispatch = useDispatch()
