@@ -183,10 +183,10 @@ function LoginComponentsContainer({Joined, setUsername, setLogin}) {
 
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
-            {(UserLog.length && UserLog==='Correcto') && 
+            {(UserLog.length && UserLog==='Correcto') ? 
                 <Redirect to={`/miperfil/${userNames[userIndex]}`}/>
-            }
-            {(!UserLog.length && UserLog!=='Correcto') &&
+            :
+            ( UserLog!=='Correcto') &&
                 <LoginFormComponents    handleFields={handleFields}
                                         logIn={logIn}
                                         tagUser={userFind}

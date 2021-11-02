@@ -1,5 +1,6 @@
 import React   from 'react'
 import { Link } from 'react-router-dom';
+import logoMain from "../../Assets/media/logo-main.svg";
 
 
 const Nav = ({Logout, login, username}) => {
@@ -36,7 +37,7 @@ const Nav = ({Logout, login, username}) => {
             uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
             >
             
-            <div className="uk-navbar">
+            <div className="uk-navbar bg-color-light">
             
             <Link 
                 className="
@@ -44,7 +45,7 @@ const Nav = ({Logout, login, username}) => {
                 uk-logo 
                 uk-margin-sm-left" 
                 to="/"
-                >Logo</Link>
+                ><img src={logoMain} alt="LatamExponential"/></Link>
 
             <ul 
                 className="uk-navbar-nav 

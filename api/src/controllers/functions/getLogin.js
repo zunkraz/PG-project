@@ -2,7 +2,6 @@ const User = require('./../../models/User')
 const bcrypt = require('bcrypt');
 
 module.exports = async (req,res,next) => {
-    console.log(req.query);
     try{
         const {username,password} = req.query;
         let user = await User.findOne({username:username}, 'password')
