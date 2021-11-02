@@ -18,10 +18,10 @@ function Dashboard({match}) {
     },[!userData])
     
     
+    
     return (
         <div>
-            
-            {userData.isAdmin?<Redirect to='/admin'/>:<UserDashboard userData={userData}/>}
+            {!window.localStorage.login?<Redirect to='/'/>:userData.isAdmin?<Redirect to='/admin'/>:<UserDashboard userData={userData}/>}
             
         </div>
     )

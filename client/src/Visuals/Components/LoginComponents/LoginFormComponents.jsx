@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 
-function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog, passError, passClean, showError}) {
+function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog, passError, passClean, showError, Joined}) {
 
     const [flag, setflag] = useState(false)
     const [inputName, setinputName] = useState('username')
     const handleFlag=(e)=>{
+
         setinputName(e.target.name)
         setflag(!flag)
     }
@@ -55,7 +56,7 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog,
         setpassEye(!passEye)
     }
 
-    console.log(showError)
+    //console.log(showError)
     return (
         <div className='flex flex-col'>
             {flag===false &&

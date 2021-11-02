@@ -5,7 +5,7 @@ import { getProfByUser } from '../../../Controllers/actions/professionalsActions
 import ProfessionalContainer from './ProfessionalContainer'
 
 
-function ProfessionalDashboard() {
+function ProfessionalDashboard({login}) {
     const {username}= useParams()
     const dispatch= useDispatch()
     dispatch(getProfByUser(username))
@@ -13,7 +13,7 @@ function ProfessionalDashboard() {
 
     return (
         <div class='bg-gray-100'>
-            <ProfessionalContainer username={username}/>
+            <ProfessionalContainer username={username} login={login}/>
         </div>
     )
 

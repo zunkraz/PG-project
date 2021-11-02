@@ -2,7 +2,7 @@ import React from 'react'
 import PersonalCardUser from './PersonalCardUser'
 
 function PersonalDashboardContainer({user}) {
-    console.log(user)
+    //console.log(user)
     return (
         <div className='bg-gray-100 rounded-3xl '>
                 <PersonalCardUser   img={user.img} 

@@ -1,15 +1,25 @@
-import React  from 'react'
+import React   from 'react'
 import { Link } from 'react-router-dom';
 
 
-const Nav = () => {
+const Nav = ({Logout, login, username}) => {
+    //console.log('USERNAME => '+ username)
+    //console.log('LOGIN => '+login)
+
+    //let username = localStorage.username//.getItem('username');
+    
+    const alterJoinDash = login?{title:'Mi Perfil',url:`/miperfil/${username}`}:{title:'Iniciar Sesion',url:'/ingresar'}
+    const alterCreate = !login && {title:'Crea tu cuenta!',url:'/registro'}
+    const alterShop = login && {title:"Carrito", url:'/carrito'}
+    //window.localStorage.login?{title:'Mi Perfil',url:`/miperfil/${username}`}:{title:'Iniciar Sesion',url:'/ingresar'}
+    //const alterDashOut = window.localStorage.login?{title:'Salir',url:'/'}:{title:`Hola ${username}!`}
+
     const btns = [
         {title:'Profesionales',url:'/profesionales'},
-        {title:'Crea tu cuenta!',url:'/registro'},
-        {title:'Soporte',url:'/soporte'},
-        {title:'Iniciar Sesion',url:'/ingresar'},
-        {title:'Mi Perfil',url:'/miperfil'},
-
+        alterCreate,
+        alterShop,
+        //{title:'Soporte',url:'/soporte'},
+        alterJoinDash,
     ]
     let items = btns.map( (data,index) => {
         let item = 
@@ -26,6 +36,7 @@ const Nav = () => {
             >
             
             <div className="uk-navbar">
+            
             <Link 
                 className="
                 uk-navbar-item 
@@ -36,13 +47,16 @@ const Nav = () => {
 
             <ul 
                 className="uk-navbar-nav 
-                       uk-position-right
-                       uk-margin-medium-right
-                       uk-visible@m"
+                        uk-position-right
+                        uk-margin-medium-right
+                        uk-visible@m"
             >
                 {items}
+                {login && <button   onClick={Logout}
+                                                        className='flex items-center justify-center'
+                                                        ><p className='text-gray-400 uppercase'>Salir</p></button>}
             </ul>
-    
+            
 {/* /////////////////////////////////////// */}
     
         <button 
@@ -61,11 +75,12 @@ const Nav = () => {
             </div>
         </div>
 {/* ///////////////////////////////             */}
+            
             </div>
         </nav>
     </header>
-   
-     );
+    
+        );
     }
     
     export default Nav;

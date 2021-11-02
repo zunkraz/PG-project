@@ -6,7 +6,9 @@ import ProfessionalCardData from './ProfessionalCardData'
 import ProfessionalCardInfo from './ProfessionalCardInfo'
 import SimilarProfessionals from './SimilarProfessionals'
 
-function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, professionalData, schedule, data, name}) {
+
+
+function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, professionalData, schedule, data, name, login}) {
     const [hireform, setHire]= useState(false)
     const [appointment, setAppo]= useState()
     const dispatch= useDispatch()
@@ -47,10 +49,11 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
                 </div>
             </div>
             <div className='mt-10'>
-                <BigButton  onClickFunction={showForm}
+                {login && <BigButton  onClickFunction={contratado}
                             text='CONTRATAR'
                             cssClass='bg-green-300 w-3/5 p-8 rounded-3xl mt-10 mb-10 text-2xl font-semibold tracking-widest w-4/5 ml-24'
-                    />
+                    />}
+                
                 {hireform && (<form onSubmit={contratado} className="w-4/5 ml-24">
                     <label htmlFor="meeting-date" className="text-lg">Fecha</label>
                     <input id="meeting-date" type="datetime-local" name="date" onChange={handleChange} className="my-5"/>
@@ -59,6 +62,7 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
                     <input type="submit" value="Reservar"  className="uk-button uk-button-danger uk-margin"/>
                 </form>)}
                 {/* <SimilarProfessionals data={data}/> */}
+
             </div>
         </div>
     )
