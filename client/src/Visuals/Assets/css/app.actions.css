@@ -18,12 +18,13 @@
     border: solid 1px var(--color-light);
 	color: var(--color-light)!important;    
 }
-.action-github {
-    background-size: cover;
+.action-footer-link {
+	text-decoration: none;
+	color: var(--color-light);
 }
-.action-github:hover {
-    background-size: cover;
-    background-color:  var(--color-main);
+.action-footer-link:hover {
+	text-decoration: none;
+    color: var(--color-main);
 }
 .action-github-nav {
     background-size: cover;
@@ -48,12 +49,12 @@
 
 /* Action Nav */
 .action-nav {
-	background-color: var(--color-light);
-	color: var(--color-dark);
+	font-family: var(--font-main)!important;
+	color: var(--color-extra4)!important;    
 }
 .action-nav:hover {
-	background-color: var(--color-main);
-	color: var(--color-dark);    
+	font-family: var(--font-main)!important;
+	color: var(--color-main)!important;    
 }
 
 /* Action Search */

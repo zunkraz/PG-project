@@ -1,4 +1,5 @@
 const User = require('./../../models/User')
+const bcrypt = require('bcrypt');
 
 module.exports = async (req,res,next) => {
     try{
@@ -7,7 +8,8 @@ module.exports = async (req,res,next) => {
 
         let msg 
         let stat
-        if(password === user.password){
+        if(!user) return res.status(404).send({message:'User not found'});
+        if(await bcrypt.compare(password, user.password)){
             msg = 'Correcto'
             stat = 200
         }else{

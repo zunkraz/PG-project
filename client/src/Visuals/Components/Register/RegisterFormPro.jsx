@@ -15,7 +15,8 @@ export default function RegisterFormPro(){
         lastname:"",
         telNum1:"",
         category:"",
-        professionalRegistration:""
+        professionalRegistration:"",
+        country:""
     })
     const [checked, setChecked]= useState(false)
     const [profchecked, setProfchecked]= useState(false)
@@ -24,6 +25,7 @@ export default function RegisterFormPro(){
 
     const userData= useSelector((state) => {return state.userReducer.users})
     const categorylist= useSelector(state => state.constantInfoReducer.categories)
+    const countries = useSelector(state=>state.constantInfoReducer.countries)
 
     function handleChange(e){
         const {value, name}=e.target
@@ -31,7 +33,15 @@ export default function RegisterFormPro(){
                 ...newUser,
                 [name]:value
         })
-    }
+        if(userData.find(user=> user.email===value)){
+            setError({...error, ["email"] : "El email ya esta en uso"})
+        }
+        else if(userData.find(user=> user.username===value)){
+            setError({...error, ["username"] : "El usuario ya existe"})
+        }
+        else {if(!userData.find(user=> user.email===value) && error.email!=="") {setError({...error, ["email"] : ""})}
+             else if(!userData.find(user=> user.username===value)) {setError({...error, ["username"] : ""})}
+    }}
     function handleChangeCheckbox(e){
         setChecked(!checked)
     }
@@ -67,81 +77,81 @@ export default function RegisterFormPro(){
     
     if(!done){
     return (
-        <div class="uk-padding uk-margin-left uk-flex uk-flex-center">
-            <form onSubmit={handleSubmit} class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off">
-                <h2 class="p-2 text-2xl">Informacion personal - Profesional</h2>
-                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="email" class="p-2"> Correo electronico </label>
-                        <input class="uk-input uk-form-width-large" type="email"
+        <div className="uk-padding uk-margin-left uk-flex uk-flex-center">
+            <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off">
+                <h2 className="p-2 text-2xl">Informacion personal - Profesional</h2>
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="email" className="p-2"> Correo electronico </label>
+                        <input className="uk-input uk-form-width-large" type="email"
                         name="email" id="email"
                         placeholder="Correo electronico"
                         onChange={handleChange}
                         required/>
                     </div>
-                    <div class="uk-flex uk-flex-column uk-form-width-large">
-                        <label htmlFor="username" class="p-2"> Nombre de usuario </label>
-                        <input class="uk-input uk-form-width-large"  type="text"
+                    <div className="uk-flex uk-flex-column uk-form-width-large">
+                        <label htmlFor="username" className="p-2"> Nombre de usuario </label>
+                        <input className="uk-input uk-form-width-large"  type="text"
                         name="username" id="username"
                         placeholder="Usuario" 
                         onChange={handleChange}
                         required/>
                     </div>
                 </div>
-                <span class="uk-alert-danger">{error.email}</span>
-                <span class="uk-alert-danger">{error.username}</span>
-                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="password" class="p-2"> Contraseña </label>
-                        <input class="uk-input uk-form-width-large"  type="password"
+                <span className="uk-alert-danger">{error.email}</span>
+                <span className="uk-alert-danger">{error.username}</span>
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="password" className="p-2"> Contraseña </label>
+                        <input className="uk-input uk-form-width-large"  type="password"
                         name="password" id="password"
                         placeholder="Contraseña" 
                         onChange={handleChange}
                         required/>
                     </div>
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="confirmPassword" class="p-2"> Confirmar contraseña </label>
-                        <input class="uk-input uk-form-width-large"  type="password"
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="confirmPassword" className="p-2"> Confirmar contraseña </label>
+                        <input className="uk-input uk-form-width-large"  type="password"
                         name="confirmPassword" id="confirmPassword"
                         placeholder="Confirmar contraseña" 
                         onChange={handleChange}
                         required/>
                     </div>
                 </div>
-                <span class="uk-alert-danger">{error.password}</span>
-                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="name" class="p-2"> Nombre </label>
-                        <input class="uk-input uk-form-width-large" type="text"
+                <span className="uk-alert-danger">{error.password}</span>
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="name" className="p-2"> Nombre </label>
+                        <input className="uk-input uk-form-width-large" type="text"
                         name="name" id="name"
                         placeholder="Nombre"
                         onChange={handleChange}
                         required/>
                     </div>
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="lastname" class="p-2"> Apellido </label>
-                        <input class="uk-input uk-form-width-large"  type="text"
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="lastname" className="p-2"> Apellido </label>
+                        <input className="uk-input uk-form-width-large"  type="text"
                         name="lastname" id="lastname"
                         placeholder="Apellido" 
                         onChange={handleChange}
                         required/>
                     </div>
                 </div>
-                <span class="uk-alert-danger">{error.name}</span>
-                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="telNum1" class="p-2"> Telefono </label>
-                        <input class="uk-input uk-form-width-large uk-margin-right" type="tel"
+                <span className="uk-alert-danger">{error.name}</span>
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="telNum1" className="p-2"> Telefono </label>
+                        <input className="uk-input uk-form-width-large uk-margin-right" type="tel"
                         name="telNum1" id="telNum1"
                         placeholder="Telefono"
                         onChange={handleChange}
                         required/>
                     </div>
                 </div>
-                <span class="uk-alert-danger">{error.phone}</span>
-                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <label htmlFor="category" class="p-2"/>
-                    <select name="category" id="category" class="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
+                <span className="uk-alert-danger">{error.phone}</span>
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <label htmlFor="category" className="p-2"/>
+                    <select name="category" id="category" className="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
                             <option value="">- Seleccionar profesión -</option>
                             {categorylist.map(e=>{
                                 return(<option name={e.name} key={e._id} value={e._id}>
@@ -150,32 +160,43 @@ export default function RegisterFormPro(){
                             })}
                     </select>
                 </div>
-                <div class="mb-4">
-                    <div class="uk-width-1-2">
-                    <label htmlFor="prof-check" class="uk-padding-right p-2">Eres profesional certificado?</label>
-                    <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="prof-check" checked={profchecked} onChange={handleChangeCheckboxprof}/>
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <label htmlFor="category" className="p-2"/>
+                    <select name="country" id="country" className="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
+                            <option value="">- Seleccionar país -</option>
+                            {countries.map(e=>{
+                                return(<option name={e.name} key={e._id} value={e._id}>
+                                    {e.name}
+                                    </option>)
+                            })}
+                    </select>
+                </div>
+                <div className="mb-4">
+                    <div className="uk-width-1-2">
+                    <label htmlFor="prof-check" className="uk-padding-right p-2">Eres profesional certificado?</label>
+                    <input className="uk-checkbox uk-margin-left"  type="checkbox"  name="prof-check" checked={profchecked} onChange={handleChangeCheckboxprof}/>
                     </div>
-                    {profchecked && <input class="uk-input uk-form-width-large uk-margin"  type="text"
+                    {profchecked && <input className="uk-input uk-form-width-large uk-margin"  type="text"
                     name="professionalRegistration"
                     placeholder="Nro de matricula" 
                     onChange={handleChange}
                     required/>}
                 </div>
                 <div>
-                <label htmlFor="acceptT" class="mb-4 p-2">Acepto los términos y condiciones del servicio</label>
-                <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
+                <label htmlFor="acceptT" className="mb-4 p-2">Acepto los términos y condiciones del servicio</label>
+                <input className="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
                 </div>
-                <input class="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
+                <input className="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
             </form>
         </div>
     )}
     if(done){
         return (
-            <div class="w-full p-24 flex flex-col justify-center content-center">
-                <h1 class="text-3xl flex justify-center">Te has registrado exitosamente!</h1>
-                <div class="flex justify-center py-12">
-                <Link to="/">
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded ">Volver al inicio</button>
+            <div className="w-full p-24 flex flex-col justify-center content-center">
+                <h1 className="text-3xl flex justify-center">Te has registrado exitosamente!</h1>
+                <div className="flex justify-center py-12">
+                <Link to="/ingresar">
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded ">Iniciar sesion</button>
                 </Link>
                 </div>
             </div>

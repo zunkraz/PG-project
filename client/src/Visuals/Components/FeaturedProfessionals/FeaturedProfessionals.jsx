@@ -1,64 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import FeaturedProfessional from './FeaturedProfessional';
+import {getProfessionals} from '../../../ApiReq/professionals';
 
 export function FeaturedProfessionals() {
 
-    const professionals = [
-        {
-            name: "Ricardo",
-            lastName: "Montaner",
-            category: "Arquitecto",
-            likes: 25,
-            dislikes: 4,
-            img: "https://media.istockphoto.com/photos/confident-businessman-portrait-isolated-picture-id455586761?s=612x612",
-        },
-        {
-            name: "Paulina",
-            lastName: "Rubio",
-            category: "Profesora",
-            likes: 75,
-            dislikes: 14,
-            img: "https://media.istockphoto.com/photos/portrait-of-young-cheerful-african-american-woman-picture-id1207862195?s=612x612",
-        },
-        {
-            name: "Ricardo",
-            lastName: "Arjona",
-            category: "Abogado",
-            likes: 23,
-            dislikes: 8,
-            img: "https://media.istockphoto.com/photos/portrait-of-serious-mid-adult-man-picture-id805011368?s=612x612",
-        },
-        {
-            name: "Andres",
-            lastName: "Cepeda",
-            category: "Contador",
-            likes: 84,
-            dislikes: 21,
-            img: "https://media.istockphoto.com/photos/mature-businessman-portrait-isolated-picture-id455586203?s=612x612",
-        },
-        {
-            name: "Julieta",
-            lastName: "Venegas",
-            category: "Gamer",
-            likes: 61,
-            dislikes: 19,
-            img: "https://media.istockphoto.com/photos/m-taking-this-business-to-the-top-picture-id460078235?s=612x612",
-        },
-    ];
+    let [professionals,setProfessionals] = useState([]);
+    
+    useEffect(()=>{
+       getProfessionals('true')
+            .then(data => setProfessionals(data));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     return (
         <div>
-            <div className="wrapper padd-xl bg-color-dark-a20">
+            <div className="wrapper padd-xl bg-color-light">
                 <section>
                     <div className="text-bold font-main font-2x">
-                        Profesionales Destacados
+                        <span className="border-bottom-color-main padd-md-b padd-lg-r">Profesionales Destacados</span>
                     </div>
-                    <div className="mrg-lg-t">
-                        Quisque placerat, sem tempus porta posuere, metus odio feugiat nunc, ut rhoncus nunc dui eget massa. Vivamus laoreet ullamcorper felis at egestas. Vivamus varius erat sit amet massa viverra sodales. Sed erat risus, posuere sit amet ullamcorper sit amet, efficitur ut leo.
+                    <div className="mrg-lg-t font-lg">
+                        Los profesionales con mejor de reputación merecen ser reconocidos, agéndate con ellos a solo un click!
                     </div>
                 </section>
             </div>
-            <div className="wrapper padd-xl-tb bg-color-dark-a40">
+            <div className="wrapper padd-xl-tb bg-color-dark-a20">
                 <section>
                     {
                         professionals && professionals.map(function (professionalData, index) {

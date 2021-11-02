@@ -22,13 +22,23 @@ export default function RegisterFormUser(){
     function handleChange(e){
         const {value, name}=e.target
         setNewuser({
-                ...newUser,
-                [name]:value
+            ...newUser,
+            [name]:value
         })
+        if(userData.find(user=> user.email===value)){
+            setError({...error, ["email"] : "El email ya esta en uso"})
+        }
+        else if(userData.find(user=> user.username===value)){
+            setError({...error, ["username"] : "El usuario ya existe"})
+        }
+        else {
+            if(!userData.find(user=> user.email===value) && error.email!=="") {setError({...error, ["email"] : ""})}
+            else if(!userData.find(user=> user.username===value)) {setError({...error, ["username"] : ""})}
+        }
     }
+
     function handleChangeCheckbox(e){
-        setChecked(!checked)
-        
+        setChecked(!checked)    
     }
 
     function handleSubmit(e) {
@@ -55,82 +65,106 @@ export default function RegisterFormUser(){
     
     if(!done){
     return (
-        <div class="uk-padding uk-margin-left uk-flex uk-flex-center">
-            <form onSubmit={handleSubmit} class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off">
-                <h2 class="p-2 text-2xl">Informacion personal - Cliente</h2>
-                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="email" class="p-2"> Correo electronico </label>
-                        <input class="uk-input uk-form-width-large" type="email"
-                        name="email" id="email"
-                        placeholder="Correo electronico"
+        <div className="uk-padding uk-margin-left uk-flex uk-flex-center">
+            <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" autoComplete="off">
+                <h2 className="p-2 text-2xl">Informacion personal - Cliente</h2>
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="email" className="p-2"> Correo electronico </label>
+                        <input
+                        className="uk-input uk-form-width-large"
+                        type="email"
+                        name="email"
+                        id="email"
+                        autoComplete="off"
+                        placeholder="Ingresa tu email..."
                         onChange={handleChange}
                         required/>
+                        {
+                            error.email ? <span className="uk-alert-danger">{error.email}</span> : null
+                        }
                     </div>
-                    <div class="uk-flex uk-flex-column uk-form-width-large">
-                        <label htmlFor="username" class="p-2"> Nombre de usuario </label>
-                        <input class="uk-input uk-form-width-large"  type="text"
-                        name="username" id="username"
-                        placeholder="Usuario" 
+                    <div className="uk-flex uk-flex-column uk-form-width-large">
+                        <label htmlFor="username" className="p-2"> Nombre de usuario </label>
+                        <input
+                        className="uk-input uk-form-width-large"
+                        type="text"
+                        name="username"
+                        id="username"
+                        autoComplete="off"
+                        placeholder="Ingresa tu nombre de usuario..." 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.username ? <span className="uk-alert-danger">{error.username}</span> : null
+                        }
                     </div>
                 </div>
-                <span class="uk-alert-danger">{error.email}</span>
-                <span class="uk-alert-danger">{error.username}</span>
-                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="name" class="p-2"> Nombre </label>
-                        <input class="uk-input uk-form-width-large" type="text"
-                        name="name" id="name"
-                        placeholder="Nombre"
+                
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="name" className="p-2"> Nombre </label>
+                        <input
+                        className="uk-input uk-form-width-large"
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Ingresa tu nombre..."
+                        autoComplete="off"
                         onChange={handleChange}
                         required/>
+                        {
+                            error.name ? <span className="uk-alert-danger">{error.name}</span> : null
+                        }
                     </div>
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="lastname" class="p-2"> Apellido </label>
-                        <input class="uk-input uk-form-width-large"  type="text"
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="lastname" className="p-2"> Apellido </label>
+                        <input className="uk-input uk-form-width-large"  type="text"
                         name="lastname" id="lastname"
-                        placeholder="Apellido" 
+                        placeholder="Ingresa tu apellido..." 
                         onChange={handleChange}
                         required/>
                     </div>
                 </div>
-                <span class="uk-alert-danger">{error.name}</span>
-                <div class="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="password" class="p-2"> Contraseña </label>
-                        <input class="uk-input uk-form-width-large"  type="password"
+                
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="password" className="p-2"> Contraseña </label>
+                        <input className="uk-input uk-form-width-large"  type="password"
                         name="password" id="password"
-                        placeholder="Contraseña" 
+                        placeholder="Ingresa tu contraseña..." 
                         onChange={handleChange}
                         required/>
+
                     </div>
-                    <div class="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="confirmPassword" class="p-2"> Confirmar contraseña </label>
-                        <input class="uk-input uk-form-width-large"  type="password"
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                        <label htmlFor="confirmPassword" className="p-2"> Confirmar contraseña </label>
+                        <input className="uk-input uk-form-width-large"  type="password"
                         name="confirmPassword" id="confirmPassword"
-                        placeholder="Confirmar contraseña" 
+                        placeholder="Confirma tu contraseña..." 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.password ? <span className="uk-alert-danger">{error.password}</span> : null
+                        }
                     </div>
                 </div>
-                <span class="uk-alert-danger">{error.password}</span>
-                <div class="mb-4">
-                <label htmlFor="acceptT" class="p-2">Acepto los términos y condiciones del servicio</label>
-                <input class="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" id="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
+                
+                <div className="mb-4">
+                <label htmlFor="acceptT" className="p-2">Acepto los términos y condiciones del servicio</label>
+                <input className="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" id="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
                 </div>
-                <input class="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
+                <input className="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
             </form>
         </div>
     )}
     if(done){
         return (
-            <div class="w-full p-24 flex flex-col justify-center content-center">
-                <h1 class="text-3xl flex justify-center">Te has registrado exitosamente!</h1>
-                <div class="flex justify-center py-12">
-                <Link to="/" style={{ "textDecoration": "none", "color":"white" }} >
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded ">Volver al inicio</button>
+            <div className="w-full p-24 flex flex-col justify-center content-center">
+                <h1 className="text-3xl flex justify-center">Te has registrado exitosamente!</h1>
+                <div className="flex justify-center py-12">
+                <Link to="/ingresar" style={{ "textDecoration": "none", "color":"white" }} >
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded ">Iniciar sesion</button>
                 </Link>
                 </div>
             </div>

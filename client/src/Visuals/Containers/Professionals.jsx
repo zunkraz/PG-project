@@ -1,19 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SearchBarPro from '../Components/SearchBarPro/SearchBarPro'
 import ProfesionalsCatalog from '../Components/ProfessionalCard/ProfessionalsCatalog'
-import {useDispatch} from "react-redux"
+import {useDispatch,useSelector} from "react-redux"
 import { getAllProfs } from '../../Controllers/actions/professionalsActions'
+import { getAllCategories, getAllCountries } from '../../Controllers/actions/constantInfoActions'
 
-function Profesionals() {
+
+export default function Profesionals() {
     const dispatch= useDispatch()
-    dispatch(getAllProfs())
+
+    const professionals =
+    useSelector(state => state.professionalReducer.professionals);
+
+    const countries = 
+    useSelector(state => state.constantInfoReducer.countries)
+
+    const categories = 
+    useSelector(state => state.constantInfoReducer.categories)
+
+    useEffect(() => {
+        if(!professionals.length || !countries.length || !categories.length) {
+            dispatch(getAllProfs())
+            dispatch(getAllCountries())
+            dispatch(getAllCategories())
+        }
+    }, []);
+
     return (
         <div>
-            Professionals Components Here
             <SearchBarPro />
             <ProfesionalsCatalog/>
         </div>
     )
 }
-
-export default Profesionals

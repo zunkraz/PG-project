@@ -54,16 +54,16 @@ function UserRow({user}){
           Regular</span>}
     </td>
     <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-      <a onClick={()=>handleUserDelete(user.username)}>❌</a>
+      <button onClick={()=>handleUserDelete(user.username)}>❌</button>
     </td>
       <td className="px-10 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <a onClick={()=>handleResetPassword(user.username)}>♻</a>
+        <button onClick={()=>handleResetPassword(user.username)}>♻</button>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <a onClick={()=>handleChangeRole(user.username,user.isAdmin)}>👥</a>
+        <button onClick={()=>handleChangeRole(user.username,user.isAdmin)}>👥</button>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <a onClick={()=>alert('Próximamente')}>✏</a>
+        <button onClick={()=>alert('Próximamente')}>✏</button>
       </td>
   </tr>
   </tbody>)

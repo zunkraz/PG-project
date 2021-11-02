@@ -1,15 +1,17 @@
 import {
     GET_CATEGORIES,
     GET_TIPS,
-    GET_REVIEWS
+    GET_REVIEWS,
+    GET_COUNTRIES
 } from '../../constants'
 import {
     getCategories, 
     getTips,
-    getReviews
+    getReviews,
+    getCountries
 } from '../../ApiReq/constantInfo'
 
-export function getCat(){
+export function getAllCategories(){
     return async function(dispatch){
         let data = await getCategories();
         return dispatch({
@@ -35,6 +37,16 @@ export function getAllReviews(){
         return dispatch({
             type:GET_REVIEWS,
             payload:data
+        })
+    }
+}
+
+export function getAllCountries(){
+    return async function(dispatch){
+        let data = await getCountries()
+        return dispatch({
+            type:GET_COUNTRIES,
+            payload: data
         })
     }
 }

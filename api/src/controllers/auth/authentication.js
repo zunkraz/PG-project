@@ -47,8 +47,11 @@ passport.use('signin', new LocalStrat({
 }, async(email, password, done) => {
     const user = await User.findOne({email});
     if(!user) return done(null, false, {message: 'Email incorrecto'});
+    console.log(user.password);
+    console.log(password);
+
     try {
-        if(bcrypt.compare(password, user.password)) {
+        if(await bcrypt.compare(password, user.password)) {
             return done(null, user);
         }
         else return done(null, false, {message:'Contraseña incorrecta'});

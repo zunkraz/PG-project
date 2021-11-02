@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom';
 
 function FooterList({Title, Contain}) {
     return (
-        <div className='FooterListDiv'>
-            <div className='FooterListTitle'>
-                <span>{Title}</span>
+        <React.Fragment>
+            <div className="text-bold font-color-light font-main font-xl">
+                <span className="padd-md-b padd-lg-r border-bottom-color-main">{Title}</span>
             </div>
-            <div className='FooterListTex'>
-                {Contain?.map((elem, index)=>{
-                    return <Link key={index} to={elem.url}><span>{elem.name}</span></Link>
-                })}
-            </div>
-        </div>
+            <ul classname="horizontal-list mrg-lg-t">
+                {
+                    Contain?.map((elem, index)=>{
+                        return  <li key={index} className="mrg-md-t">
+                                    <Link to={elem.url} className="action action-footer-link">
+                                        {elem.name}
+                                    </Link>
+                                </li>
+                    })
+                }
+            </ul>                
+        </React.Fragment>
     )
 }
 
