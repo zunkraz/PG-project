@@ -1,5 +1,6 @@
 import React   from 'react'
 import { Link } from 'react-router-dom';
+import logoMain from "../../Assets/media/logo-main.svg";
 
 
 const Nav = ({Logout, login, username}) => {
@@ -31,12 +32,12 @@ const Nav = ({Logout, login, username}) => {
     <header>
 
         <nav 
-            className="uk-navbar-container uk-margin" 
-            uk-navbar 
+            className="width-100 uk-navbar-container uk-margin" 
+            data-uk-navbar 
             uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
             >
             
-            <div className="uk-navbar">
+            <div className="uk-navbar bg-color-light">
             
             <Link 
                 className="
@@ -44,7 +45,9 @@ const Nav = ({Logout, login, username}) => {
                 uk-logo 
                 uk-margin-sm-left" 
                 to="/"
-                >Logo</Link>
+                >
+                <img src={logoMain}/>
+            </Link>
 
             <ul 
                 className="uk-navbar-nav 
@@ -67,7 +70,7 @@ const Nav = ({Logout, login, username}) => {
         uk-icon="icon: table">
         </button>
 
-        <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+        <div id="offcanvas-nav" data-uk-offcanvas="overlay: true">
             <div className="uk-offcanvas-bar">
                 <ul className="uk-nav uk-nav-default">  
                     <li className="uk-nav-header">Menu</li>
