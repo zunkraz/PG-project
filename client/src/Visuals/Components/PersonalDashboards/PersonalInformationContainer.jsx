@@ -18,9 +18,10 @@ function PersonalInformationContainer({personalInfo, changeUserState, userInfo, 
     
     const getValue=(data)=>{
         if(data){
+            console.log(data)
             return{
                 profession: personalInfo.category[0].name,
-                country: personalInfo.country.name,
+                //country: personalInfo.country.name,
                 professionalRegistration: personalInfo.professionalRegistration,
                 appointments: personalInfo.appointments,
                 img: personalInfo.img,
