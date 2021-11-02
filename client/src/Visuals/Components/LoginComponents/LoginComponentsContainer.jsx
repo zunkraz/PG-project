@@ -129,9 +129,11 @@ function LoginComponentsContainer({Joined, setUsername}) {
     const UserLog = useSelector(state=> state.sessionReducer.status)
     //console.log(UserLog)
     const logIn = ()=>{
-        setUsername(userNames[userIndex])
-        Joined(userNames[userIndex])
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
+        if(UserLog==='Correcto'){
+            setUsername(userNames[userIndex])
+            Joined(userNames[userIndex])
+        }
         console.log({username:userNames[userIndex], password: userFields.password})
         setShowErrorText(true)
     }
