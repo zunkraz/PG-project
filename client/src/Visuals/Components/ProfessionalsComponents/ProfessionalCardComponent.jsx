@@ -4,7 +4,7 @@ import { addToCart } from '../../../Controllers/actions/cartActions'
 import BigButton from '../BigButton'
 import ProfessionalCardData from './ProfessionalCardData'
 import ProfessionalCardInfo from './ProfessionalCardInfo'
-import SimilarProfessionals from './SimilarProfessionals'
+//import SimilarProfessionals from './SimilarProfessionals'
 
 
 
