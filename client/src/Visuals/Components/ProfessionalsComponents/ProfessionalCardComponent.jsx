@@ -4,7 +4,7 @@ import { addToCart } from '../../../Controllers/actions/cartActions'
 import BigButton from '../BigButton'
 import ProfessionalCardData from './ProfessionalCardData'
 import ProfessionalCardInfo from './ProfessionalCardInfo'
-import SimilarProfessionals from './SimilarProfessionals'
+//import SimilarProfessionals from './SimilarProfessionals'
 
 
 
@@ -12,6 +12,7 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
     const [hireform, setHire]= useState(false)
     const [appointment, setAppo]= useState()
     const dispatch= useDispatch()
+    
     const contratado = (e)=>{
         e.preventDefault()
         dispatch(addToCart({
@@ -49,7 +50,7 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
                 </div>
             </div>
             <div className='mt-10'>
-                {login && <BigButton  onClickFunction={contratado}
+                {login && <BigButton  onClickFunction={showForm}
                             text='CONTRATAR'
                             cssClass='bg-green-300 w-3/5 p-8 rounded-3xl mt-10 mb-10 text-2xl font-semibold tracking-widest w-4/5 ml-24'
                     />}
