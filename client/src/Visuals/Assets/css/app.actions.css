@@ -49,12 +49,12 @@
 
 /* Action Nav */
 .action-nav {
-	background-color: var(--color-light);
-	color: var(--color-dark);
+	font-family: var(--font-main)!important;
+	color: var(--color-extra4)!important;    
 }
 .action-nav:hover {
-	background-color: var(--color-main);
-	color: var(--color-dark);    
+	font-family: var(--font-main)!important;
+	color: var(--color-main)!important;    
 }
 
 /* Action Search */

@@ -33,11 +33,15 @@ const Nav = ({Logout, login, username}) => {
 
         <nav 
             className="uk-navbar-container uk-margin" 
-            uk-navbar 
+            data-uk-navbar 
             uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
             >
             
+
             <div className="uk-navbar bg-color-light">
+
+//             <div className="uk-navbar bg-color-light width-100">
+
             
             <Link 
                 className="
@@ -45,7 +49,13 @@ const Nav = ({Logout, login, username}) => {
                 uk-logo 
                 uk-margin-sm-left" 
                 to="/"
+
                 ><img src={logoMain} alt="LatamExponential"/></Link>
+
+//                 >
+//                 <img src={logoMain}/>
+//             </Link>
+
 
             <ul 
                 className="uk-navbar-nav 
@@ -68,7 +78,7 @@ const Nav = ({Logout, login, username}) => {
         uk-icon="icon: table">
         </button>
 
-        <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+        <div id="offcanvas-nav" data-uk-offcanvas="overlay: true">
             <div className="uk-offcanvas-bar">
                 <ul className="uk-nav uk-nav-default">  
                     <li className="uk-nav-header">Menu</li>
