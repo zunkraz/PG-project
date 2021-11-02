@@ -1,10 +1,10 @@
 import React from 'react'
 import LoginComponentsContainer from '../Components/LoginComponents/LoginComponentsContainer'
 
-function Login() {
+function Login({Joined, setUsername, setLogin}) {
     return (
         <div>
-            <LoginComponentsContainer/>
+            <LoginComponentsContainer Joined={Joined} setUsername={setUsername} setLogin={setLogin}/>
         </div>
     )
 }

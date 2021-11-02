@@ -32,7 +32,7 @@ function PersonalCardUser({img, likes, dislikes, sessions, isVerified, professio
                     <span className=' font-lg text-gray-800 font-semibold'>Sesiones Completadas :</span>
                 }
                 {professional && 
-                    <p className='font-lg font-bold text-green-600 ml-4'>{ Math.floor(random*1000/dislikes) /*sessions*/}</p>
+                    <p className='font-lg font-bold text-green-600 ml-4'>{ Math.floor(random*1000/likes + 5) /*sessions*/}</p>
                 }
                 
                 {/* {category==='Normal'?

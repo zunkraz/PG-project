@@ -3,7 +3,6 @@ const User = require('./../../models/User')
 module.exports = async (req, res, next) => {
     try{
         const {featured} = req.query
-        console.log(featured)
         let users = await User.find({isProfessional:true}, 'username name lastname category country likes dislikes img')
         .populate('category', 'id name')
         .populate('country', 'name')

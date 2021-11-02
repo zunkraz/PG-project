@@ -8,18 +8,20 @@ import LoginFormComponents from './LoginFormComponents'
 
 
 
-function LoginComponentsContainer() {
+function LoginComponentsContainer({Joined, setUsername, setLogin}) {
 
     //funcion que llame el listado de usernames y mails
     const dispatch = useDispatch()
     
     useEffect(() => {
         dispatch(getAllUsers())
-    },[])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const users = useSelector(state => state.userReducer.users)
     const userNames = users.map(elem=>elem.username)
     const userMails = users.map(elem=>elem.email)
+    const [userIndex, setUserIndex] = useState()
     // console.log(userNames)
     // console.log(userMails)
 
@@ -42,10 +44,12 @@ function LoginComponentsContainer() {
                 ...userFields, userReady:e.target.value
             })
                 if(userNames.includes(e.target.value)){
+                    setUserIndex(userNames.indexOf(e.target.value))
                     setUserFind('User Coincidence')
                     cleanErrors('userReady')
                     return
                 }else if(!userNames.includes(e.target.value)){
+                    setUserIndex({})
                     setUserFind('')
                     handleErrors(e.target.name)
                 }
@@ -56,8 +60,9 @@ function LoginComponentsContainer() {
             return
         }
         if(e.target.name==='email'){
-            //console.log(e.target.value)
+            console.log(e.target.value)
             if(userMails.includes(e.target.value)){
+                setUserIndex(userMails.indexOf(e.target.value))
                 setUserFind('User Coincidence')
                 cleanErrors('userReady')
                 setuserFields({
@@ -65,6 +70,7 @@ function LoginComponentsContainer() {
                 })
                 return
             }else if(!userNames.includes(e.target.value)){
+                setUserIndex({})
                 setUserFind('')
                 handleErrors(e.target.name)
             }
@@ -121,20 +127,32 @@ function LoginComponentsContainer() {
     }
     const [showErrorText, setShowErrorText] = useState(false)
     const UserLog = useSelector(state=> state.sessionReducer.status)
-    console.log(UserLog)
-    const logIn = ()=>{
-        dispatch(checkLoginAction({username:userFields.userReady, password: userFields.password}))
-        setShowErrorText(true)
-    }
+    //console.log(UserLog)
 
     if(UserLog === 'Las contraseñas no coinciden'){
         setPassError(true)
+        setLogin(false)
         setuserFields({
             ...userFields, password:''
         })
         dispatch(cleanLoginCheck())
         setShowErrorText(true)
     }
+
+
+    const logIn = ()=>{
+        dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
+            console.log('PRE JOINED => '+ userNames[userIndex])
+            setUsername(userNames[userIndex])
+            Joined(userNames[userIndex])
+        console.log({username:userNames[userIndex], password: userFields.password})
+        setShowErrorText(true)
+    }
+    console.log('USERLOG =>')
+    console.log(UserLog)
+    
+
+    
 
     // console.log('User Logged => ')
     //console.log(UserLog)
@@ -147,11 +165,28 @@ function LoginComponentsContainer() {
 
     // console.log('User Errors =>>')
     // console.log(errors)
-
+    //console.log(UserLog)
+    //console.log('local storage => '+ window.localStorage.login)
+    // const Joined=()=>{
+    //     if(!window.localStorage.login && UserLog==='Correcto')console.log('LOGEANDO')
+    // }
+    //window.localStorage.login = true : window.localStorage.login = ''
+    /* 
+    const Joined = () => {
+        window.localStorage.login = true;
+    }
+    
+    const Logout = () => {
+        window.localStorage.login = '';
+    }
+    */
 
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
-            {!UserLog.length &&
+            {(UserLog.length && UserLog==='Correcto') && 
+                <Redirect to={`/miperfil/${userNames[userIndex]}`}/>
+            }
+            {(!UserLog.length && UserLog!=='Correcto') &&
                 <LoginFormComponents    handleFields={handleFields}
                                         logIn={logIn}
                                         tagUser={userFind}
@@ -160,10 +195,8 @@ function LoginComponentsContainer() {
                                         passError={passError}
                                         UserLog={UserLog}
                                         showError={showErrorText}
+                                        Joined={Joined}
                                     />
-            }
-            {(UserLog.length && UserLog==='Correcto') && 
-                <Redirect to='/miperfil'/>
             }
         </div>
     )

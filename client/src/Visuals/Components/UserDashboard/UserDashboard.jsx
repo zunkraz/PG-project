@@ -136,9 +136,9 @@ function UserDashboard({userData}) {
                             font-extrabold items-center flex justify-center
                             border-b-8 border-double border-red-300 ml-14 mr-14 mb-4 '
                         >
-                {!userData.isProfessional && <span>{`${userData.name} ${userData.lastname}`}</span>}
-                {userData.isProfessional?<span>{`${userData.name} ${userData.lastname}`}<p className='text-gray-400 text-2xl'
-                                >{userData.category[0].name}</p></span>:<span>{userData.name}</span>}
+                {userData.isProfessional?
+                <span>{`${userData.name} ${userData.lastname}`}<p className='text-gray-400 text-2xl'>{userData.category[0].name}</p></span>
+                :<span>{`${userData.name} ${userData.lastname}`}</span>}
                 {/* {userData.isProfessional && <span>{userData.name}<p className='text-gray-400 text-2xl'>{userData.category[0].name}</p></span>} */}
                 {}
             </div>

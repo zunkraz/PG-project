@@ -6,7 +6,7 @@ import ProfessionalOpinionsComponents from './ProfessionalOpinionsComponents'
 
 
 
-function ProfessionalContainer({username}) {
+function ProfessionalContainer({username, login}) {
     const profData= useSelector(state=> state.professionalReducer.profDetail)
     /* funciones necesarias
 
@@ -83,6 +83,9 @@ function ProfessionalContainer({username}) {
                                                     professionalData={professional.professionalData}
                                                     schedule={professional.schedule}
                                                     data={professional.similarProfessionals}
+                                                    name={profData.name+" " +profData.lastname}
+                                                    login={login}
+
                                 />
                 </div>
                 <div className='w-1/5'>

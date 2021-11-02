@@ -6,7 +6,7 @@ import { FaMarker } from "react-icons/fa";
 
 function PersonalInformationContainer({personalInfo, changeUserState, userInfo, professionalData}) {
 
-    console.log(personalInfo)
+    //console.log(personalInfo)
     //console.log(userInfo)
 
     const userNormalInfo={
@@ -18,6 +18,7 @@ function PersonalInformationContainer({personalInfo, changeUserState, userInfo, 
     
     const getValue=(data)=>{
         if(data){
+            console.log(data)
             return{
                 profession: personalInfo.category[0].name,
                 country: personalInfo.country.name,
@@ -33,7 +34,7 @@ function PersonalInformationContainer({personalInfo, changeUserState, userInfo, 
     const userProfInfo = getValue(personalInfo.isProfessional)
 
     //console.log(userNormalInfo)
-    console.log(userProfInfo)
+    //console.log(userProfInfo)
 
 
     /*
@@ -69,7 +70,7 @@ function PersonalInformationContainer({personalInfo, changeUserState, userInfo, 
                             <div className='flex flex-col'>
                                 {
                                     Object.keys(userNormalInfo)?.map((elem, index)=>{
-                                        console.log(`${elem} : ${userNormalInfo[elem]}`)
+                                        //console.log(`${elem} : ${userNormalInfo[elem]}`)
                                         return (
                                             <div key={index+1} className='flex border-b-4 justify-between'>
                                                 {elem==='username'&& <span key={index+1*2} className='capitalize mr-4 flex
