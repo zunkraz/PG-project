@@ -8,7 +8,7 @@ import SimilarProfessionals from './SimilarProfessionals'
 
 
 
-function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, professionalData, schedule, data, name}) {
+function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, professionalData, schedule, data, name, login}) {
     const [hireform, setHire]= useState(false)
     const [appointment, setAppo]= useState()
     const dispatch= useDispatch()
