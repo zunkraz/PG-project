@@ -21,6 +21,8 @@ import { getAllCategories } from '../Controllers/actions/constantInfoActions';
 import Cart from './Components/Cart/Cart';
 import { cleanLoginCheck } from '../Controllers/actions/loginAction';
 
+
+
 function App() {
   const history = useHistory()
   const dispatch = useDispatch()
