@@ -17,13 +17,14 @@ import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 import AdminPanel from "./Containers/AdminPanel";
 import {useDispatch} from 'react-redux'
-import { getCat } from '../Controllers/actions/constantInfoActions';
+import { getAllCategories } from '../Controllers/actions/constantInfoActions';
 import Cart from './Components/Cart/Cart';
+import { cleanLoginCheck } from '../Controllers/actions/loginAction';
 
 function App() {
   const history = useHistory()
   const dispatch = useDispatch()
-  dispatch(getCat())
+  dispatch(getAllCategories())
 
   const [username, setUsername] = useState('')
   console.log('APP USERNAME => ' + username)
