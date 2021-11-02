@@ -65,7 +65,7 @@ function App() {
           <ProfessionalDashboard/>
         </Route>
         <Route path='/profesionales/:username'>
-                    <ProfessionalDashboard/>
+                    <ProfessionalDashboard login={login}/>
         </Route>        
         <Route path='/miperfil/:username'
           render={({match})=><Dashboard match={match}/>}>
