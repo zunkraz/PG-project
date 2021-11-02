@@ -8,6 +8,7 @@ const initialState = {
 export default function cartReducer(state=initialState, action){
     switch (action.type){
         case ADD_TO_CART:
+            console.log('reduxxx');
             return {
                 ...state,
                 appointments: [...state.appointments, action.payload]
@@ -15,7 +16,7 @@ export default function cartReducer(state=initialState, action){
         case REMOVE_FROM_CART:
             return {
                 ...state,
-                appointments: state.appointments.filter(a => a.appointment.date !== action.payload)
+                appointments: state.appointments.filter(a => a.date !== action.payload)
                 
             }
         default:
