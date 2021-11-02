@@ -15,7 +15,8 @@ export default function RegisterFormPro(){
         lastname:"",
         telNum1:"",
         category:"",
-        professionalRegistration:""
+        professionalRegistration:"",
+        country:""
     })
     const [checked, setChecked]= useState(false)
     const [profchecked, setProfchecked]= useState(false)
@@ -24,6 +25,7 @@ export default function RegisterFormPro(){
 
     const userData= useSelector((state) => {return state.userReducer.users})
     const categorylist= useSelector(state => state.constantInfoReducer.categories)
+    const countries = useSelector(state=>state.constantInfoReducer.countries)
 
     function handleChange(e){
         const {value, name}=e.target
@@ -152,6 +154,17 @@ export default function RegisterFormPro(){
                     <select name="category" id="category" className="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
                             <option value="">- Seleccionar profesión -</option>
                             {categorylist.map(e=>{
+                                return(<option name={e.name} key={e._id} value={e._id}>
+                                    {e.name}
+                                    </option>)
+                            })}
+                    </select>
+                </div>
+                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                    <label htmlFor="category" className="p-2"/>
+                    <select name="country" id="country" className="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
+                            <option value="">- Seleccionar país -</option>
+                            {countries.map(e=>{
                                 return(<option name={e.name} key={e._id} value={e._id}>
                                     {e.name}
                                     </option>)
