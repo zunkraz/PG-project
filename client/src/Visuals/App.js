@@ -18,7 +18,7 @@ import ProfessionalDashboard from './Components/ProfessionalsComponents/Professi
 import AdminPanel from "./Containers/AdminPanel";
 import {useDispatch} from 'react-redux'
 import { getCat } from '../Controllers/actions/constantInfoActions';
-import { cleanLoginCheck } from '../Controllers/actions/loginAction';
+import Cart from './Components/Cart/Cart';
 
 function App() {
   const history = useHistory()
@@ -51,6 +51,7 @@ function App() {
     //localStorage.removeItem('username');
   }
 
+
   return (
     <div>
         <Nav Logout={Logout} login={login} username={username}/>
@@ -61,11 +62,11 @@ function App() {
         <Route path='/ingresar'>
           <Login Joined={Joined} setUsername={setUsername}/>
         </Route>
-        <Route exact path='/profesional/'>
+        {/* <Route exact path='/profesional/'>
           <ProfessionalDashboard/>
-        </Route>
+        </Route> */}
         <Route path='/profesionales/:username'>
-                    <ProfessionalDashboard login={login}/>
+          <ProfessionalDashboard login={login}/>
         </Route>        
         <Route path='/miperfil/:username'
           render={({match})=><Dashboard match={match}/>}>
@@ -81,6 +82,9 @@ function App() {
         </Route>
         <Route path='/admin'>
           <AdminPanel/>
+        </Route>
+        <Route path="/carrito">
+          <Cart/>
         </Route>
       </Switch>
         <Footer/>

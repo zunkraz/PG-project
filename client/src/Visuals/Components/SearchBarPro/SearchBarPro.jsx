@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import FiltersFields from './FilterFields';
 import NameSearch from './NameSearch';
 import {useSelector, useDispatch} from 'react-redux'
-import { filterProfessional } from '../../../Controllers/actions/professionalsActions';
+import { filterProfessional, getAllProfs } from '../../../Controllers/actions/professionalsActions';
 
 const SearchBarPro = () => {
 const dispatch = useDispatch();
@@ -107,10 +107,16 @@ const handleSubmit = e => {
         <input 
         type="submit" 
         value="Buscar"
+        className="uk-button uk-button-danger uk-margin"
         />
        
         </form>
-       
+        <input 
+        type="button" 
+        value="Restablecer"
+        onClick={() => dispatch(getAllProfs())}
+        className="uk-button uk-button-danger uk-margin"
+        />
         {errorSubmit && <div><h3>Verifique sus campos</h3></div>}
     </aside>
      );
