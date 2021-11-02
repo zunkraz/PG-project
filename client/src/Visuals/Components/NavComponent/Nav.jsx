@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 
 const Nav = ({Logout, login, username}) => {
-    //console.log('USERNAME => '+ username)
-    //console.log('LOGIN => '+login)
+    console.log('USERNAME => '+ username)
+    console.log('LOGIN => '+login)
+    
 
     //let username = localStorage.username//.getItem('username');
     

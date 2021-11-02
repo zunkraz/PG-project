@@ -8,7 +8,7 @@ import LoginFormComponents from './LoginFormComponents'
 
 
 
-function LoginComponentsContainer({Joined, setUsername}) {
+function LoginComponentsContainer({Joined, setUsername, setLogin}) {
 
     //funcion que llame el listado de usernames y mails
     const dispatch = useDispatch()
@@ -128,19 +128,10 @@ function LoginComponentsContainer({Joined, setUsername}) {
     const [showErrorText, setShowErrorText] = useState(false)
     const UserLog = useSelector(state=> state.sessionReducer.status)
     //console.log(UserLog)
-    const logIn = ()=>{
-        dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
-        if(UserLog==='Correcto'){
-            setUsername(userNames[userIndex])
-            Joined(userNames[userIndex])
-        }
-        console.log({username:userNames[userIndex], password: userFields.password})
-        setShowErrorText(true)
-    }
-    
 
     if(UserLog === 'Las contraseñas no coinciden'){
         setPassError(true)
+        setLogin(false)
         setuserFields({
             ...userFields, password:''
         })
@@ -148,18 +139,33 @@ function LoginComponentsContainer({Joined, setUsername}) {
         setShowErrorText(true)
     }
 
+
+    const logIn = ()=>{
+        dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
+            console.log('PRE JOINED => '+ userNames[userIndex])
+            setUsername(userNames[userIndex])
+            Joined(userNames[userIndex])
+        console.log({username:userNames[userIndex], password: userFields.password})
+        setShowErrorText(true)
+    }
+    console.log('USERLOG =>')
+    console.log(UserLog)
+    
+
+    
+
     // console.log('User Logged => ')
     //console.log(UserLog)
     //console.log(passError)
     
     // console.log('USER CAN LOG =>> ' + UserCanLog)
 
-    //console.log('User Fields =>> ')
+    console.log('User Fields =>> ')
     console.log(userFields)
 
     // console.log('User Errors =>>')
     // console.log(errors)
-    console.log(UserLog)
+    //console.log(UserLog)
     //console.log('local storage => '+ window.localStorage.login)
     // const Joined=()=>{
     //     if(!window.localStorage.login && UserLog==='Correcto')console.log('LOGEANDO')

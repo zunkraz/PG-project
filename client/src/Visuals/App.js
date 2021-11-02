@@ -6,7 +6,7 @@ import './Assets/css/app.settings.css';
 import './Assets/css/app.core.css';
 import './Assets/css/app.actions.css';
 import './Assets/css/app.custom.css';
-import { Redirect, Route, Switch, useHistory  } from 'react-router';
+import { Redirect, Route, Switch, useHistory  } from 'react-router-dom';
 import Footer from '../Visuals/Components/FooterComponents/Footer'
 import Nav from '../Visuals/Components/NavComponent/Nav'
 import Login from './Containers/Login';
@@ -35,8 +35,9 @@ function App() {
   
   //console.log(window.localStorage)
   const Joined = (username) => {
-    console.log('IN JOINED => '+username)
     setLogin(true)
+    console.log('JOINED LOGIN => ' + login)
+    console.log('IN JOINED => '+username)
     window.localStorage.login = true;
     localStorage.setItem('username', username);
     //console.log('INGRESANDO')
@@ -63,7 +64,7 @@ function App() {
           <Home/>
         </Route>
         <Route path='/ingresar'>
-          <Login Joined={Joined} setUsername={setUsername}/>
+          <Login Joined={Joined} setUsername={setUsername} setLogin={setLogin}/>
         </Route>
         {/* <Route exact path='/profesional/'>
           <ProfessionalDashboard/>
