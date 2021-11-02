@@ -23,7 +23,7 @@ export default function RegisterFormPro(){
     const [error, setError]= useState({})
     const [done, setDone]= useState(false)
 
-    const userData= useSelector((state) => {return state.userReducer.users})
+    const userData= useSelector(state => state.userReducer.users)
     const categorylist= useSelector(state => state.constantInfoReducer.categories)
     const countries = useSelector(state=>state.constantInfoReducer.countries)
 
@@ -33,15 +33,31 @@ export default function RegisterFormPro(){
                 ...newUser,
                 [name]:value
         })
-        if(userData.find(user=> user.email===value)){
-            setError({...error, ["email"] : "El email ya esta en uso"})
+        if (name==="email"){
+            if(userData.find(user=> user.email===value)){
+                setError({...error, ["email"] : "El email ya esta en uso"})
+            }
+            else setError({...error, ["email"] : ""})
         }
-        else if(userData.find(user=> user.username===value)){
-            setError({...error, ["username"] : "El usuario ya existe"})
+        if (name==="username"){
+            if(userData.find(user=> user.username===value)){
+                setError({...error, ["username"] : "El usuario ya existe"})
+            }
+            else setError({...error, ["username"] : ""})
         }
-        else {if(!userData.find(user=> user.email===value) && error.email!=="") {setError({...error, ["email"] : ""})}
-             else if(!userData.find(user=> user.username===value)) {setError({...error, ["username"] : ""})}
-    }}
+        if (name==="confirmPassword"){
+            if(newUser.password && value!==newUser.password){
+                setError({...error, ["password"]:"Las contraseñas no coinciden."})
+            }
+            else setError({...error, ["password"]:""})
+        }
+        if (name==="password"){
+            if(newUser.confirmPassword && value!==newUser.confirmPassword){
+                setError({...error, ["password"]:"Las contraseñas no coinciden."})
+            }
+            else setError({...error, ["password"]:""})
+        }
+    }
     function handleChangeCheckbox(e){
         setChecked(!checked)
     }
@@ -85,27 +101,31 @@ export default function RegisterFormPro(){
                         <label htmlFor="email" className="p-2"> Correo electronico </label>
                         <input className="uk-input uk-form-width-large" type="email"
                         name="email" id="email"
-                        placeholder="Correo electronico"
+                        placeholder="Ingresa tu email"
                         onChange={handleChange}
                         required/>
+                        {
+                            error.email ? <span className="uk-alert-danger">{error.email}</span> : null
+                        }
                     </div>
                     <div className="uk-flex uk-flex-column uk-form-width-large">
                         <label htmlFor="username" className="p-2"> Nombre de usuario </label>
                         <input className="uk-input uk-form-width-large"  type="text"
                         name="username" id="username"
-                        placeholder="Usuario" 
+                        placeholder="Ingresa tu nombre de usuario" 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.username ? <span className="uk-alert-danger">{error.username}</span> : null
+                        }
                     </div>
                 </div>
-                <span className="uk-alert-danger">{error.email}</span>
-                <span className="uk-alert-danger">{error.username}</span>
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="password" className="p-2"> Contraseña </label>
+                        <label htmlFor="password" className="p-2"> Contraseña - (minimo 6 caracteres)</label>
                         <input className="uk-input uk-form-width-large"  type="password"
                         name="password" id="password"
-                        placeholder="Contraseña" 
+                        placeholder="Ingresa tu contraseña"  
                         onChange={handleChange}
                         required/>
                     </div>
@@ -116,53 +136,60 @@ export default function RegisterFormPro(){
                         placeholder="Confirmar contraseña" 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.password ? <span className="uk-alert-danger">{error.password}</span> : null
+                        }
                     </div>
                 </div>
-                <span className="uk-alert-danger">{error.password}</span>
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="name" className="p-2"> Nombre </label>
                         <input className="uk-input uk-form-width-large" type="text"
                         name="name" id="name"
-                        placeholder="Nombre"
+                        placeholder="Ingresa tu nombre" 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.name ? <span className="uk-alert-danger">{error.name}</span> : null
+                        }
                     </div>
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="lastname" className="p-2"> Apellido </label>
                         <input className="uk-input uk-form-width-large"  type="text"
                         name="lastname" id="lastname"
-                        placeholder="Apellido" 
+                        placeholder="Ingresa tu apellido" 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.lastname ? <span className="uk-alert-danger">{error.lastname}</span> : null
+                        }
                     </div>
                 </div>
-                <span className="uk-alert-danger">{error.name}</span>
-                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
+                <div className=" uk-flex uk-flex-row uk-flex-wrap">
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="telNum1" className="p-2"> Telefono </label>
                         <input className="uk-input uk-form-width-large uk-margin-right" type="tel"
                         name="telNum1" id="telNum1"
-                        placeholder="Telefono"
+                        placeholder="Ingresa tu telefono" 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.phone ? <span className="uk-alert-danger">{error.phone}</span> : null
+                        }
+                    </div>
+                    <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
+                    <label htmlFor="category-choice" className="p-2">Categoría</label>
+                    <input list="category" id="category-choice" className="uk-input uk-form-width-large uk-margin-bottom" autoComplete="off"/>
+                    <datalist name="categories" id="category" className="uk-width-1-1" onChange={handleChange} required >
+                            {categorylist.map(e=>{
+                                return(<option name={e._id} value={e.name} className="uk-width-1-1"/>)
+                            })}
+                    </datalist>
                     </div>
                 </div>
-                <span className="uk-alert-danger">{error.phone}</span>
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
                     <label htmlFor="category" className="p-2"/>
-                    <select name="category" id="category" className="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
-                            <option value="">- Seleccionar profesión -</option>
-                            {categorylist.map(e=>{
-                                return(<option name={e.name} key={e._id} value={e._id}>
-                                    {e.name}
-                                    </option>)
-                            })}
-                    </select>
-                </div>
-                <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
-                    <label htmlFor="category" className="p-2"/>
-                    <select name="country" id="country" className="uk-select uk-width-1-1 uk-margin-bottom" onChange={handleChange} required >
+                    <select name="country" id="country" className="uk-select uk-width-1-1 uk-margin-right uk-margin-bottom" onChange={handleChange} required >
                             <option value="">- Seleccionar país -</option>
                             {countries.map(e=>{
                                 return(<option name={e.name} key={e._id} value={e._id}>
