@@ -26,7 +26,6 @@ import { cleanLoginCheck } from '../Controllers/actions/loginAction';
 function App() {
   const history = useHistory()
   const dispatch = useDispatch()
-  dispatch(getAllCategories())
 
   const [username, setUsername] = useState('')
   console.log('APP USERNAME => ' + username)
