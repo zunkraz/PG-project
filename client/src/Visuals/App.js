@@ -6,7 +6,7 @@ import './Assets/css/app.settings.css';
 import './Assets/css/app.core.css';
 import './Assets/css/app.actions.css';
 import './Assets/css/app.custom.css';
-import { Redirect, Route, Switch, useHistory  } from 'react-router-dom';
+import { Route, Switch, useHistory  } from 'react-router-dom';
 import Footer from '../Visuals/Components/FooterComponents/Footer'
 import Nav from '../Visuals/Components/NavComponent/Nav'
 import Login from './Containers/Login';
@@ -17,10 +17,8 @@ import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 import AdminPanel from "./Containers/AdminPanel";
 import {useDispatch} from 'react-redux'
-import { getAllCategories } from '../Controllers/actions/constantInfoActions';
 import Cart from './Components/Cart/Cart';
 import { cleanLoginCheck } from '../Controllers/actions/loginAction';
-
 
 
 function App() {
@@ -65,9 +63,6 @@ function App() {
         <Route path='/ingresar'>
           <Login Joined={Joined} setUsername={setUsername} setLogin={setLogin}/>
         </Route>
-        {/* <Route exact path='/profesional/'>
-          <ProfessionalDashboard/>
-        </Route> */}
         <Route path='/profesionales/:username'>
           <ProfessionalDashboard login={login}/>
         </Route>        
