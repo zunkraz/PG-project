@@ -179,12 +179,14 @@ export default function RegisterFormPro(){
                     </div>
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                     <label htmlFor="category-choice" className="p-2">Categoría</label>
-                    <input list="category" id="category-choice" className="uk-input uk-form-width-large uk-margin-bottom" autoComplete="off"/>
-                    <datalist name="categories" id="category" className="uk-width-1-1" onChange={handleChange} required >
+                    <select name="category" id="category" className="uk-select uk-form-width-large uk-margin-bottom" onChange={handleChange} required >
+                            <option value="">- Seleccionar profesión -</option>
                             {categorylist.map(e=>{
-                                return(<option name={e._id} value={e.name} className="uk-width-1-1"/>)
+                                return(<option name={e.name} key={e._id} value={e._id}>
+                                    {e.name}
+                                    </option>)
                             })}
-                    </datalist>
+                    </select>
                     </div>
                 </div>
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
