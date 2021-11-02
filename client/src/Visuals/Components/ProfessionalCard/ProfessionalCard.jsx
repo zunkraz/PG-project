@@ -1,29 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { thumbsup, thumbsdown } from "../../Assets/icons";
-
+import ImageComponent from "../ImageComponent";
+import * as FaIcons from 'react-icons/fa';
 
 export default function ProfessionalCard({username, name, lastName, category, likes, dislikes, img}){
     return (
-        <div className="w-64 h-96 rounded overflow-hidden shadow-lg m-10">
+        <div className="border-color-extra4-a20 border-radius-sm overflow-hidden box-shadow-xs">
             <Link to={`/profesionales/${username}`} style={{ "textDecoration": "none" }}>
-            <div className="h-1/2" >
-                <img className="object-contain h-48 w-full" src={img} alt=""/>
-            </div>
-            <div className="h-1/4 px-6 py-4 space-y-2">
-                <h4 className="font-bold text-xl mb-2">{name} {lastName}</h4>
-                <p className="text-l mb-2"> {category} </p>
-            </div>
-            <div className="h-1/6 object-bottom px-6 py-4 space-y-2 flex flex-row justify-between content-end">
-                <div className="flex flex-col">
-                    <p className="inline-flex"> {thumbsup} {likes}</p> 
-                    <p className="inline-flex"> {thumbsdown} {dislikes}</p>
-                </div>
-                    <p className="inline-flex">10$ por hora</p>
-            </div>
+                <ImageComponent img={img} ratio={"ratio-1-1"}/>
             </Link>
-        </div>
-        
+            <div className="padd-xl-t padd-lg-lr padd-lg-b border-top-color-main position-relative bg-color-light">
+        	    <div className="position-middle-parent">
+                    <div className="icon-xl border-radius-sm bg-color-main flex-center">
+                        <span></span>
+                    </div>
+                </div>               
+                <div className="text-bold text-center font-lg font-main">{name} {lastName}</div>
+                <div className="text-bold text-center font-main">{category}</div>
+                <div className="wrapper mrg-lg-t">
+                    <div className="col-1-2@xl col-1-2@lg col-1-2@md text-center">
+                        <div className="flex-center font-xl font-color-extra1">
+                            <FaIcons.FaThumbsUp/>
+                        </div>
+                        <div className="padd-md text-bold font-main">{likes}</div>
+                    </div>
+                    <div className="col-1-2@xl col-1-2@lg col-1-2@md text-center">
+                        <div className="flex-center font-xl font-color-extra1">
+                            <FaIcons.FaThumbsDown/>
+                        </div>                        
+                        <div className="padd-md text-bold font-main">{dislikes}</div>
+                    </div>                      
+                </div>
+                <div className="wrapper padd-lg-b">                
+                    <Link to={`/profesionales/${username}`}  style={{ "textDecoration": "none" }}>
+                        <div className="mrg-lg-t padd-md border-radius-sm action action-professional">
+                            Ver Profesional
+                        </div>
+                    </Link>
+                </div>
+            </div>
+        </div>        
     )
 }
 
