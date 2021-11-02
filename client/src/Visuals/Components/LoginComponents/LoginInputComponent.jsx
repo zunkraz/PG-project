@@ -15,7 +15,8 @@ function LoginInputComponent({handleChange, text, name, type, placeholder, class
                 <label className={classLabel}>{text}</label>
                 <BigButton onClickFunction={handleShowPass} text={textPassBtn} cssClass={classBtnPass}/>
             </div>
-            <input  type={type} 
+            <input  type={type}
+                    autocomplete="off" 
                     name={name}
                     placeholder={placeholder}
                     className={classInput} 
