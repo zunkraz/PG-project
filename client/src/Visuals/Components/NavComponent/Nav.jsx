@@ -37,7 +37,11 @@ const Nav = ({Logout, login, username}) => {
             uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
             >
             
-            <div className="uk-navbar bg-color-light width-100">
+
+            <div className="uk-navbar bg-color-light">
+
+//             <div className="uk-navbar bg-color-light width-100">
+
             
             <Link 
                 className="
@@ -45,9 +49,13 @@ const Nav = ({Logout, login, username}) => {
                 uk-logo 
                 uk-margin-sm-left" 
                 to="/"
-                >
-                <img src={logoMain}/>
-            </Link>
+
+                ><img src={logoMain} alt="LatamExponential"/></Link>
+
+//                 >
+//                 <img src={logoMain}/>
+//             </Link>
+
 
             <ul 
                 className="uk-navbar-nav 

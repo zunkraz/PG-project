@@ -16,6 +16,5 @@ module.exports = async (body) => {
         category,
         professionalRegistration,
     });
-    console.log(newUser);
     return newUser.save()
 };
