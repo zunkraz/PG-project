@@ -12,11 +12,11 @@ const professionals = useSelector(state => state.professionalReducer.professiona
 const countries = useSelector(state => state.constantInfoReducer.countries)
 
 const categoriesRender = categories.map(data => {
-    const opt = <option value={data.name}>{data.name}</option>;
+    const opt = <option key={data.name} value={data.name}>{data.name}</option>;
     return opt;
 });
 const countriesRender = countries.map(data => {
-    const opt = <option value={data.name}>{data.name}</option>;
+    const opt = <option key={data.name} value={data.name}>{data.name}</option>;
     return opt;
 });
 
@@ -53,11 +53,11 @@ const handleSubmit = e => {
     return ( 
         <form onSubmit={handleSubmit} >
             <div className="width-100 text-bold text-center font-color-main font-main">
-                <span class="element-xl-lg-md font-2x">Consultas profesionales a un click!</span>
-                <span class="element-sm-xs font-xl">Consultas profesionales a un click!</span>
+                <span className="element-xl-lg-md font-2x">Consultas profesionales a un click!</span>
+                <span className="element-sm-xs font-xl">Consultas profesionales a un click!</span>
             </div>
             <div>
-                <label class="wrapper padd-md-tb font-xl font-color-light font-main">
+                <label className="wrapper padd-md-tb font-xl font-color-light font-main">
                     Profesionales
                 </label>
                 <select
@@ -71,7 +71,7 @@ const handleSubmit = e => {
                 </select>
             </div>                
             <div>
-                <label class="wrapper mrg-md-t padd-md-tb font-xl font-color-light font-main">
+                <label className="wrapper mrg-md-t padd-md-tb font-xl font-color-light font-main">
                     Países
                 </label>
                 <select
