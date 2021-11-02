@@ -9,10 +9,10 @@ const Slogan = () => {
                     <div className='col-2-3@xl col-2-3@lg col-2-3@md padd-xl'>
                         <div className="element-xl-lg-md">
                             <div className='font-3x font-main font-color-light'>
-                                Lorem ipsum dolor sit amet adipiscing elit...
+                                Soluciones al instante
                             </div>
                             <div className='mrg-xl-t font-xl font-main font-color-light'>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                Consulta a profesionales desde la comodidad de tu hogar, sin retrasos por el tráfico, ni por cambios climáticos, elige, seleciona una cita y soluciona el problema que no te deja dormir
                             </div>
                         </div>
                         <div className="element-sm-xs">

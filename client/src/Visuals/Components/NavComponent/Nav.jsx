@@ -30,36 +30,31 @@ const Nav = ({Logout, login, username}) => {
     })
     return ( 
     <header>
-
         <nav 
             className="uk-navbar-container uk-margin" 
             data-uk-navbar 
             uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
             >
-            
-            <div className="uk-navbar bg-color-light">
-          
-            <Link 
-                className="
-                uk-navbar-item 
-                uk-logo 
-                uk-margin-sm-left" 
-                to="/"
-                ><img src={logoMain} alt="LatamExponential"/></Link>
+            <div className="uk-navbar bg-color-light width-100">
+                <Link 
+                    className="
+                    uk-navbar-item 
+                    uk-logo 
+                    uk-margin-sm-left" 
+                    to="/"
+                    ><img src={logoMain} alt="LatamExponential"/></Link>
 
-            <ul 
-                className="uk-navbar-nav 
-                        uk-position-right
-                        uk-margin-medium-right
-                        uk-visible@m"
-            >
-                {items}
-                {login && <button   onClick={Logout}
-                                                        className='flex items-center justify-center'
-                                                        ><p className='text-gray-400 uppercase'>Salir</p></button>}
-            </ul>
-            
-{/* /////////////////////////////////////// */}
+                <ul 
+                    className="uk-navbar-nav 
+                            uk-position-right
+                            uk-margin-medium-right
+                            uk-visible@m"
+                >
+                    {items}
+                    {login && <button   onClick={Logout}
+                                                            className='flex items-center justify-center'
+                                                            ><p className='text-gray-400 uppercase'>Salir</p></button>}
+
     
         <button 
         className="uk-button uk-button-default uk-hidden@m uk-position-right" 
@@ -74,9 +69,22 @@ const Nav = ({Logout, login, username}) => {
                     <li className="uk-nav-header">Menu</li>
                     {items}             
                 </ul>
-            </div>
-        </div>
-{/* ///////////////////////////////             */}
+        
+                <button 
+                className="uk-button uk-button-default uk-hidden@m uk-position-right" 
+                type="button" 
+                uk-toggle="target: #offcanvas-nav"  
+                uk-icon="icon: table">
+                </button>
+
+                <div id="offcanvas-nav" data-uk-offcanvas="overlay: true">
+                    <div className="uk-offcanvas-bar">
+                        <ul className="uk-nav uk-nav-default">  
+                            <li className="uk-nav-header">Menu</li>
+                            {items}             
+                        </ul>
+                    </div>
+                </div>
             
             </div>
         </nav>
