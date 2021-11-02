@@ -15,7 +15,8 @@ function LoginComponentsContainer({Joined, setUsername}) {
     
     useEffect(() => {
         dispatch(getAllUsers())
-    }, /* eslint-disable-next-line react-hooks/exhaustive-deps*/)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const users = useSelector(state => state.userReducer.users)
     const userNames = users.map(elem=>elem.username)
