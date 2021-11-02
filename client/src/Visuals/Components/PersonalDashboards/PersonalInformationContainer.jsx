@@ -21,7 +21,7 @@ function PersonalInformationContainer({personalInfo, changeUserState, userInfo, 
             console.log(data)
             return{
                 profession: personalInfo.category[0].name,
-                //country: personalInfo.country.name,
+                country: personalInfo.country.name,
                 professionalRegistration: personalInfo.professionalRegistration,
                 appointments: personalInfo.appointments,
                 img: personalInfo.img,
