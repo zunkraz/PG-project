@@ -22,16 +22,13 @@ function LoginComponentsContainer({Joined, setUsername, setLogin}) {
     const userNames = users.map(elem=>elem.username)
     const userMails = users.map(elem=>elem.email)
     const [userIndex, setUserIndex] = useState()
-    // console.log(userNames)
-    // console.log(userMails)
+
 
     const [userFind, setUserFind] = useState('')
     const [passVerified, setPassVerified] = useState('')
     const [UserCanLog, setUserCanLog] = useState(true)
     const [passError, setPassError] = useState(false)
 
-    // console.log('USER FIND => '+ userFind)
-    // console.log('USER PASS => ' + passVerified)
     
     const [userFields, setuserFields] = useState({
         userReady:'',
@@ -60,7 +57,7 @@ function LoginComponentsContainer({Joined, setUsername, setLogin}) {
             return
         }
         if(e.target.name==='email'){
-            console.log(e.target.value)
+          
             if(userMails.includes(e.target.value)){
                 setUserIndex(userMails.indexOf(e.target.value))
                 setUserFind('User Coincidence')
@@ -148,25 +145,9 @@ function LoginComponentsContainer({Joined, setUsername, setLogin}) {
         //console.log({username:userNames[userIndex], password: userFields.password})
         setShowErrorText(true)
     }
-    //console.log('USERLOG =>')
-    //console.log(UserLog)
-    
 
-    
+ 
 
-    // console.log('User Logged => ')
-    //console.log(UserLog)
-    //console.log(passError)
-    
-    // console.log('USER CAN LOG =>> ' + UserCanLog)
-
-    console.log('User Fields =>> ')
-    console.log(userFields)
-
-    // console.log('User Errors =>>')
-    // console.log(errors)
-    //console.log(UserLog)
-    //console.log('local storage => '+ window.localStorage.login)
     // const Joined=()=>{
     //     if(!window.localStorage.login && UserLog==='Correcto')console.log('LOGEANDO')
     // }

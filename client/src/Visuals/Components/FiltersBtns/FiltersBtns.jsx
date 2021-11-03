@@ -66,7 +66,7 @@ const handleSubmit = e => {
                     value={data.profesion}
                     className='inputsFiltersBtns* uk-select width-100 bg-color-transparent border-color-light pg-custom'
                 >
-                    <option value="">Seleccionar Profesión</option>
+                    <option readOnly>Seleccionar Profesión</option>
                     {categoriesRender}
                 </select>
             </div>                
@@ -80,7 +80,7 @@ const handleSubmit = e => {
                     value={data.country}
                     className='inputsFiltersBtns* uk-select width-100 bg-color-transparent border-color-light pg-custom' 
                 >
-                    <option value="">Seleccionar País</option>
+                    <option readOnly>Seleccionar País</option>
                     {countriesRender}
                 </select>
             </div>    

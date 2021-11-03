@@ -1,18 +1,16 @@
 export function Filter(obj,arr){
     const {name,profesion, country, min,max, likes} = obj
-    //Primero filtramos por nombre
-    //hay que colocar la regex para los acentos
+
     if(name){
+        let nameResult = name.split(' ').map(e => e.charAt(0).toUpperCase() + e.slice(1)).join( ' ');
+       let nameResultReverse = nameResult.split(' ').reverse().join(' ')
         let arrOne = name.split(' ').map(e => e.charAt(0).toUpperCase() + e.slice(1));
-        let firstName = arrOne[0];
-        if(arrOne[1]){
-            let lastName = arrOne[1];
-            arr = (arr.filter(e => e.name === firstName)).filter(e => e.lastname === lastName);
-        }else{
-            arr = arr.filter(e => e.name === firstName)
-        }
-       
         
+        arr = arr.filter(e => 
+            e.fullname.includes(nameResult) 
+            || e.fullname.includes(arrOne[0])
+            || e.fullname.includes(nameResultReverse)
+            );
     }
     if(profesion){
         arr = arr.filter(e => e.category[0].name === profesion);

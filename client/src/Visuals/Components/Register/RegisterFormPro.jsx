@@ -34,13 +34,13 @@ export default function RegisterFormPro(){
                 [name]:value
         })
         if(userData.find(user=> user.email===value)){
-            setError({...error, ["email"] : "El email ya esta en uso"})
+            setError({...error, "email" : "El email ya esta en uso"})
         }
         else if(userData.find(user=> user.username===value)){
-            setError({...error, ["username"] : "El usuario ya existe"})
+            setError({...error, "username" : "El usuario ya existe"})
         }
-        else {if(!userData.find(user=> user.email===value) && error.email!=="") {setError({...error, ["email"] : ""})}
-             else if(!userData.find(user=> user.username===value)) {setError({...error, ["username"] : ""})}
+        else {if(!userData.find(user=> user.email===value) && error.email!=="") {setError({...error, "email" : ""})}
+             else if(!userData.find(user=> user.username===value)) {setError({...error, "username" : ""})}
     }}
     function handleChangeCheckbox(e){
         setChecked(!checked)
