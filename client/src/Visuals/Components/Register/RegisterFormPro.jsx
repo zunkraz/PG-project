@@ -33,31 +33,33 @@ export default function RegisterFormPro(){
                 ...newUser,
                 [name]:value
         })
+
         if (name==="email"){
             if(userData.find(user=> user.email===value)){
-                setError({...error, ["email"] : "El email ya esta en uso"})
+                setError({...error, "email" : "El email ya esta en uso"})
             }
-            else setError({...error, ["email"] : ""})
+            else setError({...error, "email" : ""})
         }
         if (name==="username"){
             if(userData.find(user=> user.username===value)){
-                setError({...error, ["username"] : "El usuario ya existe"})
+                setError({...error, "username" : "El usuario ya existe"})
             }
-            else setError({...error, ["username"] : ""})
+            else setError({...error, "username" : ""})
         }
         if (name==="confirmPassword"){
             if(newUser.password && value!==newUser.password){
-                setError({...error, ["password"]:"Las contraseñas no coinciden."})
+                setError({...error, "password":"Las contraseñas no coinciden."})
             }
-            else setError({...error, ["password"]:""})
+            else setError({...error, "password":""})
         }
         if (name==="password"){
             if(newUser.confirmPassword && value!==newUser.confirmPassword){
-                setError({...error, ["password"]:"Las contraseñas no coinciden."})
+                setError({...error, "password":"Las contraseñas no coinciden."})
             }
-            else setError({...error, ["password"]:""})
+            else setError({...error, "password":""})
         }
     }
+  
     function handleChangeCheckbox(e){
         setChecked(!checked)
     }

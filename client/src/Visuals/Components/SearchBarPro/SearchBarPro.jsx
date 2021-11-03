@@ -71,19 +71,17 @@ const handleSubmit = e => {
         >
        
         <div>
-            <input 
+            <button 
             className="uk-button uk-button-danger"
-            value="Buscar por Nombre"
             onClick={handleCliks}
             disabled={optionViewBtnOne}
-            />
-            <input 
+            >Buscar por Nombre</button>
+            <button 
             className="uk-button uk-button-danger"
-            value="Búsqueda Personalizada"
             onClick={handleCliks}
             disabled={optionViewBtnTwo}
 
-            />
+            >Búsqueda Personalizada</button>
         </div>
         {optionViewBtnOne &&
             <NameSearch
@@ -104,19 +102,18 @@ const handleSubmit = e => {
         handleChange={handleChange}
         />
         } 
-        <input 
+        <button 
         type="submit" 
         value="Buscar"
         className="uk-button uk-button-danger uk-margin"
-        />
+        >Buscar</button>
        
         </form>
-        <input 
+        <button 
         type="button" 
-        value="Restablecer"
         onClick={() => dispatch(getAllProfs())}
         className="uk-button uk-button-danger uk-margin"
-        />
+        >Restablecer</button>
         {errorSubmit && <div><h3>Verifique sus campos</h3></div>}
     </aside>
      );
