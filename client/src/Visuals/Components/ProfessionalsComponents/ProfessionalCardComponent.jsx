@@ -52,7 +52,7 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
             <div className='mt-10'>
                 {login && <BigButton  onClickFunction={showForm}
                             text='CONTRATAR'
-                            cssClass='bg-green-300 w-3/5 p-8 rounded-3xl mt-10 mb-10 text-2xl font-semibold tracking-widest w-4/5 ml-24'
+                            cssActive='bg-green-300 w-3/5 p-8 rounded-3xl mt-10 mb-10 text-2xl font-semibold tracking-widest w-4/5 ml-24'
                     />}
                 
                 {hireform && (<form onSubmit={contratado} className="w-4/5 ml-24">

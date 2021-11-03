@@ -112,10 +112,10 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog,
                 <BigButton  disactive={UserCanLog} 
                             onClickFunction={handleClickCheck} 
                             text={'Ingresar'} 
-                            cssClass={classLogBtn}
+                            cssActive={classLogBtn}
                             cssDisactive={classNoLogBtn}
-                            textLog={textLog}
-                            textNoLog={textNoLog}
+                            textActive={textLog}
+                            textDisactive={textNoLog}
                             />
             }
             <div className='flex items-center justify-center mt-10 text-2xl font-semibold  '>
