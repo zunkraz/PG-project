@@ -24,15 +24,15 @@ const Testimonials = () => {
                     </section>
                 </div>
                 <div data-uk-slider className="wrapper padd-xl-tb">
-                    <ul class="uk-slider-items">
+                    <ul className="uk-slider-items">
                         {
                             reviews.length && reviews.map(function (testimonyData, index) {
                                 return <Testimony key={index} data={testimonyData} />
                             })
                         } 
                     </ul>
-                    <div class="wrapper flex-center">
-                        <ul class="uk-slider-nav uk-dotnav"></ul>
+                    <div className="wrapper flex-center">
+                        <ul className="uk-slider-nav uk-dotnav"></ul>
                     </div>
                 </div>
             </div>

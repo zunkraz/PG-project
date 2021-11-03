@@ -15,7 +15,7 @@ function Dashboard({match}) {
         getSingleUser(username).then(user=>{
             setUserData(user)
         })
-    },[!userData])
+    },[username])
     
     
     

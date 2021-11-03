@@ -26,7 +26,7 @@ function App() {
   const dispatch = useDispatch()
 
   const [username, setUsername] = useState('')
-  console.log('APP USERNAME => ' + username)
+
 
   const [login, setLogin] = useState(false)
   

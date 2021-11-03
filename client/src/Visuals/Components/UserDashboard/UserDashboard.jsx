@@ -21,11 +21,11 @@ function UserDashboard({userData}) {
 
         const changeTipFlag=()=>{setTip(!tip)}
     
-        const changeState=()=>{
-            //setFlag(!flag)
-            setTip(false)
-            setUserInfo('personalInfo')
-        }
+        // const changeState=()=>{
+        //     //setFlag(!flag)
+        //     setTip(false)
+        //     setUserInfo('personalInfo')
+        // }
 
         const changeUserState = (e)=>{
             setUserInfo(e.target.name)
