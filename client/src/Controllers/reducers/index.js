@@ -13,5 +13,5 @@ export default combineReducers({
     userReducer,
     sessionReducer,
     adminReducer,
-    cartReducer
+    // cartReducer
 })
