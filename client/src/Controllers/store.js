@@ -1,18 +1,21 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import reducer from './reducers/index';
-import sessionReducer from "./reducers/sessionReducer";
+import reducer from './reducers/index'; //combined reducers
 import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
 
 const composeTask = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const persistConfig = {
-    key: 'session',
+    key: 'root',
     storage: storage,
-    whitelist: sessionReducer
+    whitelist: ['sessionReducer']
 }
+const pReducer = persistReducer(persistConfig,reducer)
 
-const pReducer = persistReducer(persistConfig,)
-const store = createStore(reducer, composeTask(applyMiddleware(thunk)));
+export const store = createStore(pReducer, composeTask(applyMiddleware(thunk)));
 
-export default store;
+export const persistor = persistStore(store)
+
+export default {persistor, store}
+// export default store;
