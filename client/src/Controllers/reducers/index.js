@@ -5,6 +5,7 @@ import professionalReducer from './professionalReducer'
 import userReducer from './userReducer';
 import sessionReducer from './sessionReducer';
 import adminReducer from './adminReducer';
+import cartReducer from './cartReducer';
 
 export default combineReducers({
     constantInfoReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
     userReducer,
     sessionReducer,
     adminReducer,
+    cartReducer
 })
