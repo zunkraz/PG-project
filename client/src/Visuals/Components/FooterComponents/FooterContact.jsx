@@ -5,11 +5,11 @@ import * as FaIcons from 'react-icons/fa';
 function FooterContact() {
 
     const contactLinks = [
-        {name: 'Instagram', url:'#', class: 'instagram', icon: <FaIcons.FaInstagram class="display-inline"/>},
-        {name: 'Twitter', url:'#', class: 'twitter', icon: <FaIcons.FaTwitter class="display-inline"/>},
-        {name: 'Facebook', url:'#', class: 'facebook', icon: <FaIcons.FaFacebookF class="display-inline"/>},
-        {name: 'Whatsapp', url:'#', class: 'whatsapp', icon: <FaIcons.FaWhatsapp class="display-inline"/>},
-        {name: 'Youtube', url:'#', class: 'youtube', icon: <FaIcons.FaYoutube class="display-inline"/>},
+        {name: 'Instagram', url:'#', class: 'instagram', icon: <FaIcons.FaInstagram className="display-inline"/>},
+        {name: 'Twitter', url:'#', class: 'twitter', icon: <FaIcons.FaTwitter className="display-inline"/>},
+        {name: 'Facebook', url:'#', class: 'facebook', icon: <FaIcons.FaFacebookF className="display-inline"/>},
+        {name: 'Whatsapp', url:'#', class: 'whatsapp', icon: <FaIcons.FaWhatsapp className="display-inline"/>},
+        {name: 'Youtube', url:'#', class: 'youtube', icon: <FaIcons.FaYoutube className="display-inline"/>},
     ]
 
     return (
@@ -17,7 +17,7 @@ function FooterContact() {
             <div className="font-color-light font-main font-xl">
                 <span className="padd-md-b padd-lg-r font-bold border-bottom-color-main">Contactanos!</span>
             </div>
-            <ul classname="horizontal-list mrg-lg-t">
+            <ul className="horizontal-list mrg-lg-t">
                 {
                     contactLinks?.map((elem, index) => {
                         // const Icon = (Icon) => <Icon/>;

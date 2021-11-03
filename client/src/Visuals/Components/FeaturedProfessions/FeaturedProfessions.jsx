@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
 import FeaturedProfession from "./FeaturedProfession";
 import {getCategories} from '../../../ApiReq/constantInfo';
 

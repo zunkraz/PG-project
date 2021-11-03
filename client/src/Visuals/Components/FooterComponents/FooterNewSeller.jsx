@@ -6,7 +6,7 @@ function FooterNewSeller() {
     return (
         <div className="">
             <div className="">
-                <img src={logoFooter}/>
+                <img src={logoFooter} alt=''/>
             </div>
             <div className="padd-lg-tb font-color-light">
                 <p>Resolvemos tus problemas de una manera eficiente y rapida, no dudes en realizar consultas en nuestra plataforma!</p>

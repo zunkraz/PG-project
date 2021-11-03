@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from "react";
 import RegisterFormUser from "../Components/Register/RegisterFormUser";
 import RegisterFormPro from "../Components/Register/RegisterFormPro";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllUsers } from "../../Controllers/actions/userActions";
 import { getAllCategories } from "../../Controllers/actions/constantInfoActions";
 
 export default function Register(){
     const [active, setActive] = useState("cliente");
     const dispatch = useDispatch()
-    const categories = useSelector(state => state.constantInfoReducer.categories);
-
+    
     useEffect(() => {
         dispatch(getAllUsers())
-        if(!categories.length) {dispatch(getAllCategories())}
-    }, [dispatch])
+        dispatch(getAllCategories())
+        //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     function handleClick(e){
         const name= e.target.name
