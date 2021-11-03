@@ -29,7 +29,7 @@ export default function validate(newUser, setError, userData){
       }
       if (!patternname.test(newUser["lastname"])) {
         isValid = false;
-        errors["name"] = "Por favor ingresa un nombre válido";
+        errors["lastname"] = "Por favor ingresa un apellido válido";
       }
     }
 

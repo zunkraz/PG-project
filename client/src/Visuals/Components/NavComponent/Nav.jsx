@@ -4,9 +4,6 @@ import logoMain from "../../Assets/media/logo-main.svg";
 
 
 const Nav = ({Logout, login, username}) => {
-    console.log('USERNAME => '+ username)
-    console.log('LOGIN => '+login)
-    
 
     //let username = localStorage.username//.getItem('username');
     
@@ -25,7 +22,7 @@ const Nav = ({Logout, login, username}) => {
     ]
     let items = btns.map( (data,index) => {
         let item = 
-        <li><Link key={index} to={data.url}>{data.title}</Link></li>
+        <li key={index}><Link to={data.url}>{data.title}</Link></li>
         return item
     })
     return ( 

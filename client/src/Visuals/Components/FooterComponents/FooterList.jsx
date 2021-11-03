@@ -7,7 +7,7 @@ function FooterList({Title, Contain}) {
             <div className="text-bold font-color-light font-main font-xl">
                 <span className="padd-md-b padd-lg-r border-bottom-color-main">{Title}</span>
             </div>
-            <ul classname="horizontal-list mrg-lg-t">
+            <ul className="horizontal-list mrg-lg-t">
                 {
                     Contain?.map((elem, index)=>{
                         return  <li key={index} className="mrg-md-t">
