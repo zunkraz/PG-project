@@ -72,7 +72,7 @@ const user = new Schema(
         tittle: {
             type: String
         },
-        institue: {
+        institute: {
             type: String
         },
         regNumber: {
