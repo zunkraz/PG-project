@@ -25,15 +25,30 @@ export default function RegisterFormUser(){
             ...newUser,
             [name]:value
         })
-        if(userData.find(user=> user.email===value)){
-            setError({...error, "email" : "El email ya esta en uso"})
+
+        if (name==="email"){
+            if(userData.find(user=> user.email===value)){
+                setError({...error, "email" : "El email ya esta en uso"})
+            }
+            else setError({...error, "email" : ""})
         }
-        else if(userData.find(user=> user.username===value)){
-            setError({...error, "username" : "El usuario ya existe"})
+        if (name==="username"){
+            if(userData.find(user=> user.username===value)){
+                setError({...error, "username" : "El usuario ya existe"})
+            }
+            else setError({...error, "username" : ""})
         }
-        else {
-            if(!userData.find(user=> user.email===value) && error.email!=="") {setError({...error, "email" : ""})}
-            else if(!userData.find(user=> user.username===value)) {setError({...error, "username" : ""})}
+        if (name==="confirmPassword"){
+            if(newUser.password && value!==newUser.password){
+                setError({...error, "password":"Las contraseñas no coinciden."})
+            }
+            else setError({...error, "password":""})
+        }
+        if (name==="password"){
+            if(newUser.confirmPassword && value!==newUser.confirmPassword){
+                setError({...error, "password":"Las contraseñas no coinciden."})
+            }
+            else setError({...error, "password":""})
         }
     }
 
@@ -77,7 +92,7 @@ export default function RegisterFormUser(){
                         name="email"
                         id="email"
                         autoComplete="off"
-                        placeholder="Ingresa tu email..."
+                        placeholder="Ingresa tu email"
                         onChange={handleChange}
                         required/>
                         {
@@ -92,7 +107,7 @@ export default function RegisterFormUser(){
                         name="username"
                         id="username"
                         autoComplete="off"
-                        placeholder="Ingresa tu nombre de usuario..." 
+                        placeholder="Ingresa tu nombre de usuario" 
                         onChange={handleChange}
                         required/>
                         {
@@ -100,7 +115,6 @@ export default function RegisterFormUser(){
                         }
                     </div>
                 </div>
-                
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="name" className="p-2"> Nombre </label>
@@ -109,7 +123,7 @@ export default function RegisterFormUser(){
                         type="text"
                         name="name"
                         id="name"
-                        placeholder="Ingresa tu nombre..."
+                        placeholder="Ingresa tu nombre"
                         autoComplete="off"
                         onChange={handleChange}
                         required/>
@@ -121,27 +135,29 @@ export default function RegisterFormUser(){
                         <label htmlFor="lastname" className="p-2"> Apellido </label>
                         <input className="uk-input uk-form-width-large"  type="text"
                         name="lastname" id="lastname"
-                        placeholder="Ingresa tu apellido..." 
+                        placeholder="Ingresa tu apellido" 
                         onChange={handleChange}
                         required/>
+                        {
+                            error.lastname ? <span className="uk-alert-danger">{error.lastname}</span> : null
+                        }
                     </div>
                 </div>
                 
                 <div className="mb-4 uk-flex uk-flex-row uk-flex-wrap">
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
-                        <label htmlFor="password" className="p-2"> Contraseña </label>
+                        <label htmlFor="password" className="p-2"> Contraseña - (minimo 6 caracteres) </label>
                         <input className="uk-input uk-form-width-large"  type="password"
                         name="password" id="password"
-                        placeholder="Ingresa tu contraseña..." 
+                        placeholder="Ingresa tu contraseña" 
                         onChange={handleChange}
                         required/>
-
                     </div>
                     <div className="uk-flex uk-flex-column uk-form-width-large uk-margin-right">
                         <label htmlFor="confirmPassword" className="p-2"> Confirmar contraseña </label>
                         <input className="uk-input uk-form-width-large"  type="password"
                         name="confirmPassword" id="confirmPassword"
-                        placeholder="Confirma tu contraseña..." 
+                        placeholder="Confirma tu contraseña" 
                         onChange={handleChange}
                         required/>
                         {
