@@ -38,9 +38,6 @@ const user = new Schema(
         birthdate: {
             type: Date,
         },
-        img: {
-            type: String
-        },
         isAdmin: {
             type: Boolean,
             default: false
@@ -49,22 +46,48 @@ const user = new Schema(
             type: Boolean,
             default: false
         },
+        isActive: {
+            type: Boolean,
+            default: true //activación de correo
+        },
+        appointments: [{type: Schema.Types.ObjectId, ref: 'appointments'}],
+        // professionalData: {
+        img: {
+            type: String
+            },
         professionalRegistration: {
             type: String,
             unique: false,
             required: false
         },
+        biography: {
+            type: String,
+        },
         cost: {
             type: Number
         },
-        category: [{type: Schema.Types.ObjectId, ref: 'categories'}],
-        degree: {
+        category: {
+            type: Schema.Types.ObjectId, ref: 'categories'
+        },
+        tittle: {
             type: String
+        },
+        institue: {
+            type: String
+        },
+        regNumber: {
+            type: String
+        },
+        regUrl: {
+            type: String
+        },
+        isVerified: {
+            type: Boolean,
+            default: true //verificación de profesioanl
         },
         bankAccount: {
             type: String
         },
-        appointments: [{type: Schema.Types.ObjectId, ref: 'appointments'}],
         schedule: [{
             date: {
                 type: String
@@ -73,7 +96,7 @@ const user = new Schema(
                 type: Boolean,
                 default: true
             },
-        }],
+        }], //todavía por modificar para migrar a calendly
         likes: {
             type: Number,
             default: 0
@@ -82,10 +105,8 @@ const user = new Schema(
             type: Number,
             default: 0
         },
-        isActive: {
-            type: Boolean,
-            default: true
-        }
+
+        // },
     },
     { timestamp: true }
 )
