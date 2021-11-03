@@ -18,7 +18,7 @@ router.post('/signin', async(req, res, next) => {
                 req.login(user, {session: false}, (er) => {
                     if(er) return next(er);
                     const {_id, email} = user;
-                    const body = { _id, email };
+                    const body = { _id, username, email };
                     console.log('userrrr',user);
                     const token = jwt.sign({user: body}, process.env.SECRET);
     
