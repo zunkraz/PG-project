@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { thumbsup, thumbsdown } from "../../Assets/icons";
 import ImageComponent from "../ImageComponent";
 import * as FaIcons from 'react-icons/fa';
 

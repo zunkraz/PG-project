@@ -14,16 +14,16 @@ const countries = useSelector(state => state.constantInfoReducer.countries)
     ]
 
 
-    const categoriesRender = categories.map(data => {
-        const opt = <option  value={data.name}>{data.name}</option>;
+    const categoriesRender = categories.map((data,index) => {
+        const opt = <option key={index} readOnly value={data.name}>{data.name}</option>;
         return opt;
     });
     const countriesRender = countries.map((data,index) => {
-        const opt = <option key={index} value={data.name}>{data.name}</option>;
+        const opt = <option key={index} readOnly value={data.name}>{data.name}</option>;
         return opt;
     });
     const likesRender = likes.map((data,index) => {
-        const opt = <option key={index} value={data.range}>{data.range}</option>
+        const opt = <option  key={index} readOnly value={data.range}>{data.range}</option>
         return opt
     });
 
@@ -52,7 +52,7 @@ useEffect(() => {
                 value={data.profesion}
                 className='inputsFiltersBtns uk-input uk-form-width-large'
             >
-            <option value="">Seleccionar Profesión</option>
+            <option>Seleccionar Profesión</option>
               {categoriesRender}
             </select>
         </div>
@@ -64,19 +64,18 @@ useEffect(() => {
                 value={data.country}
                 className='inputsFiltersBtns uk-input uk-form-width-large' 
             >
-            <option value="">Seleccionar País</option>
+            <option>Seleccionar País</option>
              {countriesRender}
             </select>  
         </div>
         <div>
             <select
-                
                 onChange={handleChange}
                 name='likes'
                 value={data.likes}
                 className='inputsFiltersBtns uk-input uk-form-width-large' 
             >
-            <option value="">Seleccionar Reputación</option>
+            <option>Seleccionar Reputación</option>
              {likesRender}
             </select>  
         </div>
