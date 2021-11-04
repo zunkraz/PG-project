@@ -26,12 +26,5 @@ router.post('/signin', async(req, res, next) => {
         }
     }) (req, res, next)
 });
-router.get('/hola', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    console.log(req.query);
-    res.json({
-        message: 'success',
-        user: req.user,
-        token: req.query.secret_token
-    })
-})
+
 module.exports = router;

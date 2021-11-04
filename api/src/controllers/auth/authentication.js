@@ -5,27 +5,6 @@ const passport = require('passport');
 const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
-passport.use('signup', new LocalStrat({
-    usernameField: 'username',
-    passwordField: 'password'
-}, async(username, password, done) => {
-    const user = await User.findOne({username});
-    if(!user) {
-        try {
-            const hashedPassword = await bcrypt.hash(password, 10);
-            let newUser = new User({
-                username,
-                password: hashedPassword,
-            });
-            console.log(newUser);
-            return done(null, newUser);
-        } catch (error) {
-            done(error);
-        }
-    }else {
-        return done(null, false, {message: 'Ya existe un usuario registrado con este username.'})
-    }
-}));
 
 passport.use('signin', new LocalStrat({
     usernameField: 'username',
