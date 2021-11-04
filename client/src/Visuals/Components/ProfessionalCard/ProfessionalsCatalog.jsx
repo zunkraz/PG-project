@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import ProfessionalCard from "./ProfessionalCard";
+//import ProfessionalCard from "./ProfessionalCard";
+import ProfessionalCard from "./../ProfessionalCardComponent";
+
 import ReactPaginate from "react-paginate"
 import { useSelector } from "react-redux";
 
@@ -13,20 +15,25 @@ export default function ProfesionalsCatalog(){
     
     const defImg= "https://media.istockphoto.com/photos/confident-businessman-portrait-isolated-picture-id455586761?s=612x612"
 
-    const displayProfs= profis.slice(pageVisited, pageVisited + profPerPage).map(p=>{
-        return(<div key={p._id} className="col-1-6@xl col-1-4@lg col-1-4@md padd-lg">
-            <ProfessionalCard key={p._id}
-            username={p.username}
-            name={p.name}
-            lastName= {p.lastname}
-            img={p.img ? p.img : defImg}
-            category= {p.category[0] ? p.category[0].name : null}
-            likes= {p.likes}
-            dislikes= {p.dislikes}
-            />
-
-        </div>)
+    const displayProfs= profis.slice(pageVisited, pageVisited + profPerPage).map(data=>{
+        return(
+            <div key={data._id} className="col-1-6@xl col-1-4@lg col-1-3@md col-1-2@sm col-1-1@xs padd-lg">
+                <ProfessionalCard data={data} />
+            </div>
+        )
     })
+    {/*
+    <ProfessionalCard 
+        key={data._id}
+        username={data.username}
+        name={data.name}
+        lastName= {data.lastname}
+        img={data.img ? data.img : defImg}
+        category= {data.category[0] ? data.category[0].name : null}
+        likes= {data.likes}
+        dislikes= {data.dislikes}
+    />
+    */}
     const pageCount= Math.ceil(profis.length / profPerPage)
     const changePage= ({selected})=>{
         setPageNumber(selected)
@@ -40,7 +47,7 @@ export default function ProfesionalsCatalog(){
         <React.Fragment>
             <div className="wrapper">
                 <section>
-                    <div className="col-1-1@xl col-1-1@lg col-1-1@md">
+                    <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs">
                         {displayProfs}
                     </div>
                 </section>

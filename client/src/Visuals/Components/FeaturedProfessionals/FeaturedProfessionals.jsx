@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FeaturedProfessional from './FeaturedProfessional';
+import ProfessionalCardComponent from './../ProfessionalCardComponent';
 import {getProfessionals} from '../../../ApiReq/professionals';
 
 export function FeaturedProfessionals() {
@@ -28,7 +29,10 @@ export function FeaturedProfessionals() {
                 <section>
                     {
                         professionals && professionals.map(function (professionalData, index) {
-                            return <FeaturedProfessional key={index} data={professionalData} />
+                            //return <FeaturedProfessional key={index} data={professionalData} />
+                            return  <div key={index} className="col-1-5@xl col-1-4@lg col-1-3@md col-1-2@sm col-1-1@xs padd-lg">
+                                        <ProfessionalCardComponent data={professionalData} />
+                                    </div>
                         })
                     }             
                 </section>
