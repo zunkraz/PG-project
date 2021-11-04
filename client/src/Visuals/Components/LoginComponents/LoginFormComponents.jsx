@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import BigButton from '../BigButton'
 import LoginInputComponent from './LoginInputComponent'
-import { Link } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 
-function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog, passError, passClean, showError, login, usernameField, setUsernameField, passField, setPassField}) {
+function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog, passError, showError, usernameField, setUsernameField, passField, setPassField}) {
     
     const [passEye, setpassEye] = useState(false)
 
@@ -43,10 +43,10 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog,
         setpassEye(!passEye)
     }
 
-    //console.log(showError)
+    const LogError = useSelector(state =>  state.sessionReducer.status.error)
+
     return (
         <div className='flex flex-col'>
-            
             <LoginInputComponent    handleChange={handleFields} 
                 text={'Nombre de Usuario'} 
                 name='username'
@@ -72,12 +72,11 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog,
             handleShowPass={handleShowPass}
             textPassBtn={passEye?textPassHide:textPassShow}
             classBtnPass={classBtnPass}
-            passClean={passClean}
             inputField={passField}
             setInputField={setPassField}
             />
             
-            {(showError===true && !login ) &&
+            {(showError===true && LogError) &&
                 <span className={wrogPassClass}>Contraseña incorrecta</span>
             }
             

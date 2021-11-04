@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import logoMain from "../../Assets/media/logo-main.svg";
 import { cleanLoginCheck } from '../../../Controllers/actions/loginAction';
+import CartIcon from './CartIcon'
 
 
 const Nav = () => {
@@ -16,12 +17,7 @@ const Nav = () => {
         dispatch(cleanLoginCheck())
     }
 
-    const btns = !login ? [ 
-        {
-            title: 'Profesionales',
-            url:'/profesionales'
-        },
-        {
+    let btns = !login ? [{
             title:'Crea tu cuenta',
             url:'/registro'
         },
@@ -30,14 +26,14 @@ const Nav = () => {
             url: '/ingresar'
         }] : 
         [{
-            title: 'Profesionales',
-            url:'/profesionales'
-        },
-        {
             title:'Mi perfil',
             url: `/miperfil/${username}`
         }]
-    
+    btns = [
+        {
+            title: 'Profesionales',
+            url:'/profesionales'
+        },...btns]
 
     let items = btns.map( (data,i) => {
         return <li key={i}><Link to={data.url}>{data.title}</Link></li>
@@ -69,7 +65,9 @@ const Nav = () => {
                         <li>
                             <Link to='/' onClick={Logout}>Salir</Link>
                         </li>}
-
+                    <li>
+                        <CartIcon/>
+                    </li>
                     <button 
                         className="uk-button uk-button-default uk-hidden@m uk-position-right" 
                         type="button" 
@@ -94,6 +92,9 @@ const Nav = () => {
                                 <li>
                                     <Link to='/' onClick={Logout}>Salir</Link>
                                 </li>}
+                            <li>
+                                <CartIcon/>
+                            </li>
                         </ul>
                     </div>
                 </div>

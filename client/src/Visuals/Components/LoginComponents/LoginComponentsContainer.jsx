@@ -128,30 +128,34 @@ function LoginComponentsContainer() {
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
 
-    if(UserLog === 'Las contraseñas no coinciden'){
-        setPassError(true)
-        setuserFields({
-            username:'',
-            password:''
-        })
-        dispatch(cleanLoginCheck())
-        setShowErrorText(true)
+    const checkLog=()=>{
+        if(!UserLog.error){
+            console.log('NO TENGO ERROR')
+            setShowErrorText(false)
+        }else if(UserLog.error){
+            console.log('SI TENGO ERROR')
+            setShowErrorText(true)
+            setPassError(true)
+            setuserFields({
+                username:'',
+                password:''
+            })
+            dispatch(cleanLoginCheck())
+        }
     }
 
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
-        setShowErrorText(true)
+        checkLog()
     }
-
-
-
+    
     const responseGoogle =(res)=>{
         const endUN = res.profileObj.email.indexOf('@')
         if(!userNames.includes(res.profileObj.email.slice(0, endUN))){
             alert('Usuario inexistente , por favor crea tu cuenta ! ')
             return history.push('/registro')
         }
-        setShowErrorText(true)
+        setShowErrorText(false)
         dispatch(checkLoginAction({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId}))
     }
 
@@ -168,7 +172,6 @@ function LoginComponentsContainer() {
                                         tagPass={passVerified}
                                         UserCanLog={UserCanLog}
                                         passError={passError}
-                                        UserLog={UserLog}
                                         showError={showErrorText}
                                         usernameField={usernameField}
                                         setUsernameField={setUsernameField}
@@ -176,22 +179,6 @@ function LoginComponentsContainer() {
                                         setPassField={setPassField}
                                     />
             }
-            
-                {/* <LoginFormComponents    handleFields={handleFields}
-                                        logIn={logIn}
-                                        tagUser={userFind}
-                                        tagPass={passVerified}
-                                        UserCanLog={UserCanLog}
-                                        passError={passError}
-                                        UserLog={UserLog}
-                                        showError={showErrorText}
-                                        Joined={Joined}
-                                        login={login}
-                                        usernameField={usernameField}
-                                        setUsernameField={setUsernameField}
-                                        passField={passField}
-                                        setPassField={setPassField}
-                                    /> */}
             <br/>
             <GoogleLogin
                         clientId={GOOGLE_ID}
