@@ -1,6 +1,6 @@
 import React , { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect } from 'react-router'
+import { Redirect, useHistory } from 'react-router'
 import { checkLoginAction, cleanLoginCheck } from '../../../Controllers/actions/loginAction'
 import { getAllUsers } from '../../../Controllers/actions/userActions'
 
@@ -20,6 +20,7 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
         dispatch(getAllUsers())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    const history = useHistory()
 
     const users = useSelector(state => state.userReducer.users)
     const userNames = users.map(elem=>elem.username)
@@ -157,6 +158,10 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
         //console.log(res.profileObj)
         //console.log(res.profileObj.email)
         const endUN = res.profileObj.email.indexOf('@')
+        if(!userNames.includes(res.profileObj.email.slice(0, endUN))){
+            alert('Usuario inexistente , por favor crea tu cuenta ! ')
+            return history.push('/registro')
+        }
         //console.log(res.profileObj.email.slice(0, endUN))
         setUsername(res.profileObj.email.slice(0, endUN))
         Joined(res.profileObj.email.slice(0, endUN))
