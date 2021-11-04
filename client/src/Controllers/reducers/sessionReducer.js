@@ -18,7 +18,10 @@ export default function sessionReducer(state=initialState, {type,payload}){
         case CHECK_LOGIN:
             return {
                 ...state,
-                status: payload
+                status: {
+                    token: payload.token,
+                    username: payload.username
+                }
             }
         case CLEAN_USER_LOGIN:
             return {
@@ -29,10 +32,16 @@ export default function sessionReducer(state=initialState, {type,payload}){
                 }
                 // status:{}
             }
-        case 'persist/REHYDRATE':
+            case 'persist/REHYDRATE':
+            console.log('rehydrate:',payload)
+            if(payload){
+                return {
+                    ...state,
+                    status: payload?.sessionReducer.status
+                }
+            }
             return {
-                ...state,
-                status: payload.sessionReducer?.status
+                ...state
             }
         default: 
         return {...state}

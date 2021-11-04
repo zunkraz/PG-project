@@ -1,6 +1,6 @@
 import React , { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect } from 'react-router'
+import { Redirect, useHistory } from 'react-router'
 import { checkLoginAction, cleanLoginCheck } from '../../../Controllers/actions/loginAction'
 import { getAllUsers } from '../../../Controllers/actions/userActions'
 
@@ -20,6 +20,7 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
         dispatch(getAllUsers())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    const history = useHistory()
 
     const users = useSelector(state => state.userReducer.users)
     const userNames = users.map(elem=>elem.username)
@@ -124,8 +125,10 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
         
     }
 
-    const UserLog = useSelector(state=> state.sessionReducer)
-    
+    const UserLog = useSelector(state=> state.sessionReducer.status)
+    //console.log(UserLog)
+    //console.log(UserLog.token)
+    //console.log(UserLog.username)
 
     if(UserLog === 'Las contraseñas no coinciden'){
         setPassError(true)
@@ -140,18 +143,31 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
 
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
-            console.log('PRE JOINED => '+ userNames[userIndex])
-            // setUsername(userNames[userIndex])
-            // Joined(userNames[userIndex])
-            // setShowErrorText(true)
+            //console.log('PRE JOINED => ')
+            //console.log({username:userNames[userIndex], password: userFields.password})
+            setUsername(userNames[userIndex])
+            Joined(userNames[userIndex])
+            setShowErrorText(true)
     }
-    console.log(UserLog)
-    console.log({username:userFields.username, password: userFields.password})
+    //console.log(UserLog)
+    //console.log({username:userFields.username, password: userFields.password})
 
 
 
     const responseGoogle =(res)=>{
-        console.log(res.profileObj)
+        //console.log(res.profileObj)
+        //console.log(res.profileObj.email)
+        const endUN = res.profileObj.email.indexOf('@')
+        if(!userNames.includes(res.profileObj.email.slice(0, endUN))){
+            alert('Usuario inexistente , por favor crea tu cuenta ! ')
+            return history.push('/registro')
+        }
+        //console.log(res.profileObj.email.slice(0, endUN))
+        setUsername(res.profileObj.email.slice(0, endUN))
+        Joined(res.profileObj.email.slice(0, endUN))
+        setShowErrorText(true)
+        dispatch(checkLoginAction({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId}))
+        //console.log({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId})
     }
 
 
@@ -171,9 +187,9 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
 
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
-            {/* {(UserLog.length && UserLog==='Correcto') ? 
-                <Redirect to={`/miperfil/${userNames[userIndex]}`}/>
-            :
+            {(UserLog.token && UserLog.token.length>0) ? 
+                <Redirect to={`/miperfil/${UserLog.username}`}/>
+                    :
             ( UserLog!=='Correcto') &&
                 <LoginFormComponents    handleFields={handleFields}
                                         logIn={logIn}
@@ -190,9 +206,9 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
                                         passField={passField}
                                         setPassField={setPassField}
                                     />
-            } */}
+            }
             
-                <LoginFormComponents    handleFields={handleFields}
+                {/* <LoginFormComponents    handleFields={handleFields}
                                         logIn={logIn}
                                         tagUser={userFind}
                                         tagPass={passVerified}
@@ -206,7 +222,7 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
                                         setUsernameField={setUsernameField}
                                         passField={passField}
                                         setPassField={setPassField}
-                                    />
+                                    /> */}
             <br/>
             <GoogleLogin
                         clientId={GOOGLE_ID}
