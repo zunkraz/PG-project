@@ -61,7 +61,7 @@ function App() {
           <Home/>
         </Route>
         <Route path='/ingresar'>
-          <Login Joined={Joined} setUsername={setUsername} setLogin={setLogin}/>
+          <Login Joined={Joined} setUsername={setUsername} setLogin={setLogin} login={login}/>
         </Route>
         <Route path='/profesionales/:username'>
           <ProfessionalDashboard login={login}/>

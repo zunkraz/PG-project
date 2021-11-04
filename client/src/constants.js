@@ -24,3 +24,5 @@ export const FILTER_PROF = 'FILTER_PROF';
 export const DATA_NOT_FOUND = 'DATA_NOT_FOUND';
 
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
+
+export const GOOGLE_ID = '75669810329-vstjoo2cmckb7lhp5nrthdej5bm8cpk6.apps.googleusercontent.com'

@@ -38,7 +38,21 @@ function ProfessionalCardInfo({biography, professionalData, schedule}) {
                 {proInfo==='profile' && professionalData?.map((elem, index)=>{
                     return <span key={index} className={profileclass}>{elem.name}<p className={profileP}>{elem.text}</p>{elem.verified?<FcCheckmark class='font-xl'/>:''}</span>
                 })}
+<<<<<<< HEAD
                 {proInfo==='schedule' && <Schedule />}
+=======
+                {
+                    proInfo==='schedule' && schedule?.map((elem, index)=>{
+                    return <span key={index} className={scheduleclass}><p>{elem.available?<FcCheckmark className='mr-4'/>:<FcCancel class='mr-4'/>}</p>{elem.date}</span>
+                })}
+                {/* {
+                    proInfo === 'schedule' &&
+                    <div>
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/ft17a-g4?primary_color=7f00ff" style="min-width:320px;height:630px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    </div>
+                } */}
+>>>>>>> 0f1201cb2f4fcc22bec0351b35f64f0e3997ede1
             </div>
         </div>
     )

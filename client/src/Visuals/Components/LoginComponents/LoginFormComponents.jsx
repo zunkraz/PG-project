@@ -5,15 +5,8 @@ import { Link } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 
-function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog, passError, passClean, showError, Joined}) {
-
-    const [flag, setflag] = useState(false)
-    const [inputName, setinputName] = useState('username')
-    const handleFlag=(e)=>{
-
-        setinputName(e.target.name)
-        setflag(!flag)
-    }
+function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog, passError, passClean, showError, login, usernameField, setUsernameField, passField, setPassField}) {
+    
     const [passEye, setpassEye] = useState(false)
 
     const classInput='bg-gray-100 border-2 border-gray-300 px-5 py-2 '
@@ -24,11 +17,6 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog,
     const classBtnPass = 'font-xl' 
     const textPassShow = <FaRegEye/>
     const textPassHide = <FaRegEyeSlash/>
-
-    const classSelectBtn = `bg-gray-200 px-8 py-4 w-96 mt-5 rounded-xl font-semibold 
-                            text-3xl uppercase tracking-widest text-gray-100 
-                            cursor-pointer hover:bg-gray-400 duration-1000
-                            border-2 border-gray-200 shadow-xl ring-4 ring-gray-300 ring-opacity-50`
 
     const classLogBtn=`bg-red-400 px-8 py-4 w-96 mt-5 rounded-xl font-semibold 
                 text-3xl uppercase tracking-widest text-gray-100 
@@ -45,9 +33,8 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog,
     const textNoLog='text-gray-400'
 
     //Clean Field
-    const [passField, setPassField] = useState()
-    
     const handleClickCheck=()=>{
+        setUsernameField('')
         setPassField('')
         logIn()
     }
@@ -59,70 +46,50 @@ function LoginFormComponents({logIn, handleFields, tagUser, tagPass, UserCanLog,
     //console.log(showError)
     return (
         <div className='flex flex-col'>
-            {flag===false &&
-                <div className='flex flex-col'>
-                    <span className='flex justify-center items-center 
-                                    text-2xl font-semibold text-gray-500
-                                    mb-5'>Loguearte con</span>
-                    <div className='flex flex-col'>
-                        <button onClick={handleFlag}
-                                className={classSelectBtn}
-                                name='username'
-                            >Usuario</button>
-                        <button onClick={handleFlag}
-                                className={classSelectBtn}
-                                name='email'
-                            >E-Mail</button>
-                    </div>
-                </div>
-            }
-            {flag &&
-                <LoginInputComponent    handleChange={handleFields} 
-                text={inputName==='username'?'Nombre de Usuario':'Correo Electrónico'} 
-                name={inputName}
+            
+            <LoginInputComponent    handleChange={handleFields} 
+                text={'Nombre de Usuario'} 
+                name='username'
                 type={'text'}
-                placeholder={inputName==='username'?'Ingrese su Nombre de Usuario':'Ingrese su Correo Electrónico'}
+                placeholder='Ingrese su Nombre de Usuario'
                 classInput={tagUser?classInput:classDanger}
                 classLabel={classLabel}
                 classDiv={classDiv}
-                />
-            }
-            {flag &&
-                <LoginInputComponent    handleChange={handleFields}
-                text={'Ingrese su Contraseña'} 
-                name={'password'}
-                type={passEye?'text':'password'}
-                placeholder={'Ingrese su Contraseña'}
-                classInput={tagPass || passError ?classInput:classDanger}
-                classLabel={classLabel}
-                classDiv={classDiv}
-                classPass={classPass}
-                handleShowPass={handleShowPass}
-                textPassBtn={passEye?textPassHide:textPassShow}
-                classBtnPass={classBtnPass}
-                passClean={passClean}
-                passField={passField}
-                setPassField={setPassField}
-                />
-            }
-            {showError===true &&
+                inputField={usernameField}
+                setInputField={setUsernameField}
+            />
+            
+            
+            <LoginInputComponent    handleChange={handleFields}
+            text={'Ingrese su Contraseña'} 
+            name={'password'}
+            type={passEye?'text':'password'}
+            placeholder={'Ingrese su Contraseña'}
+            classInput={tagPass || passError ?classInput:classDanger}
+            classLabel={classLabel}
+            classDiv={classDiv}
+            classPass={classPass}
+            handleShowPass={handleShowPass}
+            textPassBtn={passEye?textPassHide:textPassShow}
+            classBtnPass={classBtnPass}
+            passClean={passClean}
+            inputField={passField}
+            setInputField={setPassField}
+            />
+            
+            {(showError===true && !login ) &&
                 <span className={wrogPassClass}>Contraseña incorrecta</span>
             }
-            {flag &&
-                <BigButton  disactive={UserCanLog} 
-                            onClickFunction={handleClickCheck} 
-                            text={'Ingresar'} 
-                            cssClass={classLogBtn}
-                            cssDisactive={classNoLogBtn}
-                            textLog={textLog}
-                            textNoLog={textNoLog}
-                            />
-            }
-            <div className='flex items-center justify-center mt-10 text-2xl font-semibold  '>
-                {flag &&
-                    <Link className='hover:no-underline hover:text-red-400 duration-700' to={'/registro'}>Crea tu cuenta!</Link>
-                }
-            </div>
+            
+            <BigButton  disactive={UserCanLog} 
+                        onClickFunction={handleClickCheck} 
+                        text={'Ingresar'} 
+                        cssActive={classLogBtn}
+                        cssDisactive={classNoLogBtn}
+                        textActive={textLog}
+                        textDisactive={textNoLog}
+                        />
+            
         </div>
     )
 }
