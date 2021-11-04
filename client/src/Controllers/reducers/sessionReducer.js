@@ -32,20 +32,17 @@ export default function sessionReducer(state=initialState, {type,payload}){
                 }
                 // status:{}
             }
-            // case 'persist/REHYDRATE':
-            //     if(state.status.token.length>0){
-            //         return {
-            //             ...state,
-            //             status: payload?.sessionReducer?.status
-            //         }
-            //     }
-            //     return {
-            //         ...state,
-            //         status: {
-            //             token:'',
-            //             username:''
-            //         }
-            //     }
+            case 'persist/REHYDRATE':
+            console.log('rehydrate:',payload)
+            if(payload){
+                return {
+                    ...state,
+                    status: payload?.sessionReducer.status
+                }
+            }
+            return {
+                ...state
+            }
         default: 
         return {...state}
     }

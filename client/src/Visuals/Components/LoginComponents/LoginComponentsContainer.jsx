@@ -124,8 +124,10 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
         
     }
 
-    const UserLog = useSelector(state=> state.sessionReducer)
-    
+    const UserLog = useSelector(state=> state.sessionReducer.status)
+    console.log(UserLog)
+    console.log(UserLog.token)
+    console.log(UserLog.username)
 
     if(UserLog === 'Las contraseñas no coinciden'){
         setPassError(true)
@@ -180,8 +182,8 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
 
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
-            {(UserLog.length && UserLog==='Correcto') ? 
-                <Redirect to={`/miperfil/${userNames[userIndex]}`}/>
+            {(UserLog.token && UserLog.token.length>0) ? 
+                <Redirect to={`/miperfil/${UserLog.username}`}/>
                     :
             ( UserLog!=='Correcto') &&
                 <LoginFormComponents    handleFields={handleFields}
