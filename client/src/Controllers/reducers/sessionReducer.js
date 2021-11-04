@@ -16,12 +16,13 @@ const initialState = {
 export default function sessionReducer(state=initialState, {type,payload}){
     switch(type){
         case CHECK_LOGIN:
+            console.log(payload)
             return {
                 ...state,
                 status: {
                     ...state.status,
-                    token: payload.token,
-                    username: payload.username,
+                    token: payload.token || '',
+                    username: payload.username || '',
                 }
             }
         case CLEAN_USER_LOGIN:
