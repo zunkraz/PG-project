@@ -105,7 +105,7 @@ function LoginComponentsContainer() {
             return
         }
         if(e.target.name==='password'){
-            if(e.target.value.length>=6){
+            if(e.target.value.length>=5){
                 setPassVerified('Password Verified')
                 cleanErrors('password')
                 setuserFields({
