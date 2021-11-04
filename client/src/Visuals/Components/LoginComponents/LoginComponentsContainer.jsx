@@ -126,9 +126,9 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
     }
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
-    console.log(UserLog)
-    console.log(UserLog.token)
-    console.log(UserLog.username)
+    //console.log(UserLog)
+    //console.log(UserLog.token)
+    //console.log(UserLog.username)
 
     if(UserLog === 'Las contraseñas no coinciden'){
         setPassError(true)
