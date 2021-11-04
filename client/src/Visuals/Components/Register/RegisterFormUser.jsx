@@ -3,6 +3,8 @@ import validate from "../../../Tools/validations";
 import { Link } from "react-router-dom";
 import {useSelector} from "react-redux"
 import { createUser } from "../../../ApiReq/users";
+import GoogleLogin from 'react-google-login'
+import { GOOGLE_ID } from '../../../constants'
 
 export default function RegisterFormUser(){
     const [newUser, setNewuser]= useState({
@@ -77,6 +79,31 @@ export default function RegisterFormUser(){
             setDone(true)
         }
       }
+    
+    const responseGoogle =(res)=>{
+        const endUN = res.profileObj.email.indexOf('@')
+        if(userData.find(user=> user.email===res.profileObj.email)){
+            return alert("Esa cuenta de google ya esta registrada")
+        }
+        if(!checked) {
+            alert("Por favor indica que aceptas los Términos y Condiciones");
+            return false
+        }
+        try{
+            createUser({
+                username:res.profileObj.email.slice(0, endUN),
+                name: res.profileObj.givenName,
+                lastname: res.profileObj.familyName,
+                password:res.profileObj.googleId,
+                confirmPassword:res.profileObj.googleId,
+                email: res.profileObj.email,
+            })
+        }
+        catch(e){
+            console.log(e)
+        }
+        setDone(true)
+    }
     
     if(!done){
     return (
@@ -170,8 +197,20 @@ export default function RegisterFormUser(){
                 <label htmlFor="acceptT" className="p-2">Acepto los términos y condiciones del servicio</label>
                 <input className="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" id="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
                 </div>
-                <input className="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
+                <div className="flex justify-center">
+                <div className="flex flex-col w-60">
+                    <input className="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
+                    <GoogleLogin
+                            clientId={GOOGLE_ID}
+                            buttonText="Registrarse con Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
+                </div>
+                </div>
             </form>
+            
         </div>
     )}
     if(done){
