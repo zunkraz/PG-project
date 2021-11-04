@@ -61,12 +61,16 @@ function handlePay(){
             <p className="text-2xl">$ {suma}</p>
         </div>
 
-        {/* BOTOOON DE PAYPAL */}
-            <div className="flex-center">
+        {/* BOTOOON DE PAYPAL FUNCIONANDO*/}
+            <div className="wrapper flex-center my-12">
+                <div className="width-50">
+
                 <PayPalButton
+                className="width-100"
                 createOrder={(data, actions) => createOrder(data, actions)}
                 onApprove={(data, actions) => onApprove(data, actions)}
              />
+                </div>
             </div>
 
     </div>
