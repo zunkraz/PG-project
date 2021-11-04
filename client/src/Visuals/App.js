@@ -22,36 +22,6 @@ import { cleanLoginCheck } from '../Controllers/actions/loginAction';
 
 
 function App() {
-  // const history = useHistory()
-  // const dispatch = useDispatch()
-
-  // const [username, setUsername] = useState('')
-
-
-  // const [login, setLogin] = useState(false)
-  
-  // //console.log(window.localStorage)
-  // const Joined = (username) => {
-  //   setLogin(true)
-  //   console.log('JOINED LOGIN => ' + login)
-  //   console.log('IN JOINED => '+username)
-  //   window.localStorage.login = true;
-  //   localStorage.setItem('username', username);
-  //   //console.log('INGRESANDO')
-  //   //console.log(window.localStorage.login)
-  // }
-
-  // const Logout = () => {
-  //   setUsername('')
-  //   setLogin(false)
-  //   dispatch(cleanLoginCheck())
-  //   window.localStorage.login = false;
-  //   window.localStorage.username = ''
-  //   history.push('/')
-  //   //localStorage.clear();
-  //   //localStorage.removeItem('username');
-  // }
-
 
   return (
     <div>
@@ -64,7 +34,6 @@ function App() {
           <Login/>
         </Route>
         <Route path='/profesionales/:username'>
-          {/* <ProfessionalDashboard login={login}/> */}
           <ProfessionalDashboard/>
         </Route>        
         <Route path='/miperfil/:username'

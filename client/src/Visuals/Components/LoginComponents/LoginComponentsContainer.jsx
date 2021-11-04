@@ -130,7 +130,6 @@ function LoginComponentsContainer() {
 
     if(UserLog === 'Las contraseñas no coinciden'){
         setPassError(true)
-        // setLogin(false)
         setuserFields({
             username:'',
             password:''
@@ -157,20 +156,6 @@ function LoginComponentsContainer() {
     }
 
 
-    // const Joined=()=>{
-    //     if(!window.localStorage.login && UserLog==='Correcto')console.log('LOGEANDO')
-    // }
-    //window.localStorage.login = true : window.localStorage.login = ''
-    /* 
-    const Joined = () => {
-        window.localStorage.login = true;
-    }
-    
-    const Logout = () => {
-        window.localStorage.login = '';
-    }
-    */
-
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
             {(UserLog.token && UserLog.token.length>0) ? 
@@ -185,8 +170,6 @@ function LoginComponentsContainer() {
                                         passError={passError}
                                         UserLog={UserLog}
                                         showError={showErrorText}
-                                        // Joined={Joined}
-                                        // login={login}
                                         usernameField={usernameField}
                                         setUsernameField={setUsernameField}
                                         passField={passField}
