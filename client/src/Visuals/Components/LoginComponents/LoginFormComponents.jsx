@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import BigButton from '../BigButton'
 import LoginInputComponent from './LoginInputComponent'
-import { Link } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 
