@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../../../Controllers/actions/cartActions';
 
+//NO TOCAR CARRITO
+
 function RomoveFromCartBtn({date}) {
     const dispatch = useDispatch();
     return (
