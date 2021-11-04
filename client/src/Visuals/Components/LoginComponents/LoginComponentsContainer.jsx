@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 
 
-function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
+function LoginComponentsContainer() {
 
     //funcion que llame el listado de usernames y mails
     const dispatch = useDispatch()
@@ -20,6 +20,7 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
         dispatch(getAllUsers())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     const history = useHistory()
 
     const users = useSelector(state => state.userReducer.users)
@@ -104,7 +105,7 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
             return
         }
         if(e.target.name==='password'){
-            if(e.target.value.length>=6){
+            if(e.target.value.length>=5){
                 setPassVerified('Password Verified')
                 cleanErrors('password')
                 setuserFields({
@@ -126,13 +127,9 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
     }
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
-    //console.log(UserLog)
-    //console.log(UserLog.token)
-    //console.log(UserLog.username)
 
     if(UserLog === 'Las contraseñas no coinciden'){
         setPassError(true)
-        setLogin(false)
         setuserFields({
             username:'',
             password:''
@@ -143,47 +140,21 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
 
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
-            //console.log('PRE JOINED => ')
-            //console.log({username:userNames[userIndex], password: userFields.password})
-            setUsername(userNames[userIndex])
-            Joined(userNames[userIndex])
-            setShowErrorText(true)
+        setShowErrorText(true)
     }
-    //console.log(UserLog)
-    //console.log({username:userFields.username, password: userFields.password})
 
 
 
     const responseGoogle =(res)=>{
-        //console.log(res.profileObj)
-        //console.log(res.profileObj.email)
         const endUN = res.profileObj.email.indexOf('@')
         if(!userNames.includes(res.profileObj.email.slice(0, endUN))){
             alert('Usuario inexistente , por favor crea tu cuenta ! ')
             return history.push('/registro')
         }
-        //console.log(res.profileObj.email.slice(0, endUN))
-        setUsername(res.profileObj.email.slice(0, endUN))
-        Joined(res.profileObj.email.slice(0, endUN))
         setShowErrorText(true)
         dispatch(checkLoginAction({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId}))
-        //console.log({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId})
     }
 
-
-    // const Joined=()=>{
-    //     if(!window.localStorage.login && UserLog==='Correcto')console.log('LOGEANDO')
-    // }
-    //window.localStorage.login = true : window.localStorage.login = ''
-    /* 
-    const Joined = () => {
-        window.localStorage.login = true;
-    }
-    
-    const Logout = () => {
-        window.localStorage.login = '';
-    }
-    */
 
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
@@ -199,8 +170,6 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
                                         passError={passError}
                                         UserLog={UserLog}
                                         showError={showErrorText}
-                                        Joined={Joined}
-                                        login={login}
                                         usernameField={usernameField}
                                         setUsernameField={setUsernameField}
                                         passField={passField}

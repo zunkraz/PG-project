@@ -7,7 +7,7 @@ const initialState = {
     status: {
         token:'',   
         username:'',
-        isAdmin:false
+        isAdmin: false
     },
     // cart: {}
     //status: {},
@@ -19,8 +19,9 @@ export default function sessionReducer(state=initialState, {type,payload}){
             return {
                 ...state,
                 status: {
-                    token: payload.token,
-                    username: payload.username
+                    ...state.status,
+                    token: payload.token || '',
+                    username: payload.username || '',
                 }
             }
         case CLEAN_USER_LOGIN:
@@ -28,12 +29,11 @@ export default function sessionReducer(state=initialState, {type,payload}){
                 ...state,
                 status: {
                     token:'',
-                    username:''
+                    username:'',
+                    isAdmin: false
                 }
-                // status:{}
             }
             case 'persist/REHYDRATE':
-            console.log('rehydrate:',payload)
             if(payload){
                 return {
                     ...state,
