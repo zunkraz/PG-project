@@ -92,6 +92,9 @@ const Nav = () => {
                                 <li>
                                     <Link to='/' onClick={Logout}>Salir</Link>
                                 </li>}
+                            <li>
+                                <CartIcon/>
+                            </li>
                         </ul>
                     </div>
                 </div>
