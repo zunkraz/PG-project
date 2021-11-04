@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Home from './Containers/Home';
 import './App.css';
@@ -17,7 +16,7 @@ import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 import AdminPanel from "./Containers/AdminPanel";
 import Cart from './Components/Cart/Cart';
-import { cleanLoginCheck } from '../Controllers/actions/loginAction';
+
 
 
 
