@@ -159,3 +159,7 @@ select.pg-custom:focus {
 	background-color: var(--color-main);
 	border-color: var(--color-light);
 }
+
+.ud-professional-card-border {
+    border-top: solid 4px var(--color-main);
+}

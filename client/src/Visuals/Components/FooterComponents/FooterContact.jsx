@@ -17,7 +17,7 @@ function FooterContact() {
             <div className="font-color-light font-main font-xl">
                 <span className="padd-md-b padd-lg-r font-bold border-bottom-color-main">Contactanos!</span>
             </div>
-            <ul className="horizontal-list mrg-lg-t">
+            <ul className="vertical-list mrg-lg-t">
                 {
                     contactLinks?.map((elem, index) => {
                         // const Icon = (Icon) => <Icon/>;
