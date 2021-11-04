@@ -4,13 +4,13 @@ import {
 
 const initialState = {
     //esta es la estructura final del store, por ahora queda así para que no rompa todo
-    // status: {
-    //     token:'',   
-    //     username:''
-    // },
+    status: {
+        token:'',   
+        username:'',
+        isAdmin:false
+    },
     // cart: {}
-
-    status: {},
+    //status: {},
 }
 
 export default function sessionReducer(state=initialState, {type,payload}){
@@ -23,16 +23,16 @@ export default function sessionReducer(state=initialState, {type,payload}){
         case CLEAN_USER_LOGIN:
             return {
                 ...state,
-                // status: {
-                //     token:'',
-                //     username:''
-                // }
-                status:{}
+                status: {
+                    token:'',
+                    username:''
+                }
+                // status:{}
             }
         case 'persist/REHYDRATE':
             return {
                 ...state,
-                status: payload.sessionReducer
+                status: payload.sessionReducer?.status
             }
         default: 
         return {...state}
