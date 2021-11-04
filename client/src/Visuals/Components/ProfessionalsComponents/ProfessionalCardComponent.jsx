@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../../Controllers/actions/cartActions'
 import BigButton from '../BigButton'
 import ProfessionalCardData from './ProfessionalCardData'
@@ -8,7 +8,10 @@ import ProfessionalCardInfo from './ProfessionalCardInfo'
 
 
 
-function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, professionalData, schedule, data, name, login}) {
+function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, professionalData, schedule, data, name}) {
+  
+    const login = useSelector(state => state.sessionReducer.status.token)
+  
     const [hireform, setHire]= useState(false)
     const [appointment, setAppo]= useState()
     const dispatch= useDispatch()
