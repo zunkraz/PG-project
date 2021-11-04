@@ -1,12 +1,17 @@
 import React from "react";
-import RemoveFromCart from "../Cart/RomoveFromCartBtn";
+import RemoveFromCartBtn from "../Cart/RomoveFromCartBtn";
 
-export default function CardElement({ date, price}){
+export default function CartElement({name, date, sessions, price}){
+   
     return (
         <div className="grid grid-cols-5 gap-4">
+            <p>{name}</p>
             <p>{date}</p>
-            {price && <p>${price}</p>}
-            <RemoveFromCart date={date}/>
+            <p>{sessions} ({(sessions*30+" min")})</p>
+            <p>$ {price}</p>
+        <RemoveFromCartBtn
+            date={date}
+        />
         </div>
     )
 }
