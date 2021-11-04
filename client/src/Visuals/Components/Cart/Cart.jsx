@@ -45,7 +45,7 @@ function handlePay(){
     
     return (
         
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4 divide-y ">
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4 divide-y ">
         <div className="grid grid-cols-5 gap-4 mb-2 ">
             <p className="text-xl">Consultoria virtual con:</p>
             <p className="text-xl">Fecha</p>
@@ -69,7 +69,7 @@ function handlePay(){
              />
             </div>
 
-        </div>
+    </div>
     )
 
 }
