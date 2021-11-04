@@ -143,8 +143,6 @@ function LoginComponentsContainer() {
         setShowErrorText(true)
     }
 
-
-
     const responseGoogle =(res)=>{
         const endUN = res.profileObj.email.indexOf('@')
         if(!userNames.includes(res.profileObj.email.slice(0, endUN))){
