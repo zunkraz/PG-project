@@ -217,7 +217,9 @@ export default function RegisterFormPro(){
                 <label htmlFor="acceptT" className="mb-4 p-2">Acepto los términos y condiciones del servicio</label>
                 <input className="uk-checkbox uk-margin-left"  type="checkbox"  name="acceptT" checked={checked} onChange={handleChangeCheckbox}/>
                 </div>
-                <input className="uk-button uk-button-danger uk-margin" type="submit" value="Registrarse"/>
+                <div className="flex justify-center mt-5">
+                    <input className="uk-button uk-button-danger  w-60 uk-margin" type="submit" value="Registrarse"/>
+                </div>
             </form>
         </div>
     )}
