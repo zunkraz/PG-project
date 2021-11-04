@@ -140,18 +140,27 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
 
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
-            console.log('PRE JOINED => '+ userNames[userIndex])
-            // setUsername(userNames[userIndex])
-            // Joined(userNames[userIndex])
-            // setShowErrorText(true)
+            //console.log('PRE JOINED => ')
+            //console.log({username:userNames[userIndex], password: userFields.password})
+            setUsername(userNames[userIndex])
+            Joined(userNames[userIndex])
+            setShowErrorText(true)
     }
-    console.log(UserLog)
-    console.log({username:userFields.username, password: userFields.password})
+    //console.log(UserLog)
+    //console.log({username:userFields.username, password: userFields.password})
 
 
 
     const responseGoogle =(res)=>{
-        console.log(res.profileObj)
+        //console.log(res.profileObj)
+        //console.log(res.profileObj.email)
+        const endUN = res.profileObj.email.indexOf('@')
+        //console.log(res.profileObj.email.slice(0, endUN))
+        setUsername(res.profileObj.email.slice(0, endUN))
+        Joined(res.profileObj.email.slice(0, endUN))
+        setShowErrorText(true)
+        dispatch(checkLoginAction({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId}))
+        //console.log({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId})
     }
 
 
@@ -171,9 +180,9 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
 
     return (
         <div class='flex flex-col items-center justify-start mt-44 h-screen'>
-            {/* {(UserLog.length && UserLog==='Correcto') ? 
+            {(UserLog.length && UserLog==='Correcto') ? 
                 <Redirect to={`/miperfil/${userNames[userIndex]}`}/>
-            :
+                    :
             ( UserLog!=='Correcto') &&
                 <LoginFormComponents    handleFields={handleFields}
                                         logIn={logIn}
@@ -190,9 +199,9 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
                                         passField={passField}
                                         setPassField={setPassField}
                                     />
-            } */}
+            }
             
-                <LoginFormComponents    handleFields={handleFields}
+                {/* <LoginFormComponents    handleFields={handleFields}
                                         logIn={logIn}
                                         tagUser={userFind}
                                         tagPass={passVerified}
@@ -206,7 +215,7 @@ function LoginComponentsContainer({Joined, setUsername, setLogin, login}) {
                                         setUsernameField={setUsernameField}
                                         passField={passField}
                                         setPassField={setPassField}
-                                    />
+                                    /> */}
             <br/>
             <GoogleLogin
                         clientId={GOOGLE_ID}

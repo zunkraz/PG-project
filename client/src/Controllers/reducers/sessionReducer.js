@@ -18,7 +18,10 @@ export default function sessionReducer(state=initialState, {type,payload}){
         case CHECK_LOGIN:
             return {
                 ...state,
-                status: payload
+                status: {
+                    token: payload.token,
+                    username: payload.username
+                }
             }
         case CLEAN_USER_LOGIN:
             return {
@@ -29,11 +32,20 @@ export default function sessionReducer(state=initialState, {type,payload}){
                 }
                 // status:{}
             }
-        case 'persist/REHYDRATE':
-            return {
-                ...state,
-                status: payload.sessionReducer?.status
-            }
+            // case 'persist/REHYDRATE':
+            //     if(state.status.token.length>0){
+            //         return {
+            //             ...state,
+            //             status: payload?.sessionReducer?.status
+            //         }
+            //     }
+            //     return {
+            //         ...state,
+            //         status: {
+            //             token:'',
+            //             username:''
+            //         }
+            //     }
         default: 
         return {...state}
     }
