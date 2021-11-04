@@ -1,5 +1,5 @@
 import {
-    CHECK_LOGIN, CLEAN_USER_LOGIN
+    CHECK_LOGIN, CLEAN_USER_LOGIN,REMOVE_FROM_CART,ADD_TO_CART
 } from './../../constants';
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
         username:'',
         isAdmin: false
     },
-    // cart: {}
+    cart: [],
     //status: {},
 }
 
@@ -33,11 +33,22 @@ export default function sessionReducer(state=initialState, {type,payload}){
                     isAdmin: false
                 }
             }
-            case 'persist/REHYDRATE':
+        case ADD_TO_CART:
+            return {
+                ...state,
+                cart: [...state.cart, payload]
+            };
+        case REMOVE_FROM_CART:
+            return {
+                ...state,
+                cart: state.cart.filter(a => a.appointment.date !== payload)   
+            };
+        case 'persist/REHYDRATE':
             if(payload){
                 return {
                     ...state,
-                    status: payload?.sessionReducer.status
+                    status: payload.sessionReducer.status || state.status,
+                    cart: payload.sessionReducer.cart || state.cart
                 }
             }
             return {
