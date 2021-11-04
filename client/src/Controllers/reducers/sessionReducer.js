@@ -16,7 +16,6 @@ const initialState = {
 export default function sessionReducer(state=initialState, {type,payload}){
     switch(type){
         case CHECK_LOGIN:
-            console.log(payload)
             return {
                 ...state,
                 status: {
