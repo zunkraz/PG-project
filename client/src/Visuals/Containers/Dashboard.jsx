@@ -17,10 +17,11 @@ function Dashboard({match}) {
     const checkInfo=(user)=>{
         getSingleUser(user).then(res=>{
             setUserData(res)
+            
         })
         history.push(`/miperfil/${user}`)
     }
-
+    console.log(userData)
     useEffect(() => {
         if(status.username){
             status.username && username===status.username?
