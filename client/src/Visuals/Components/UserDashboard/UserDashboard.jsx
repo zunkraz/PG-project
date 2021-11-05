@@ -46,35 +46,6 @@ function UserDashboard({userData}) {
         '2 horas con Rocio',
         '30 minutos con Claudio'
     ]
-    // {
-//     name,,
-//     lastname,
-//     username,
-//     email,
-//     password,
-//     isProfessional,
-//     isAdmin,
-//     isActive, CORREO PERSONAL 
-//     isVerified, PROFESIONAL VERIFICADO
-//     country,
-//     state,
-//     city,
-//     birthdate,
-//     img,
-//     professionalRegistration, Numero de Matricula
-//     regUrl, link de registro de título o certificado
-//     biography,
-//     title,
-//     institute,
-//     cost,
-//     category,
-//     degree,
-//     bankAccount,
-//     appointments,
-//     schedule,
-//     likes,
-//     dislikes
-// },
 /*
             appointments: Array(0)
             length: 0
@@ -119,20 +90,25 @@ function UserDashboard({userData}) {
                     <div>
                         { userData.isProfessional && <PersonalDashboardContainer  user={userData}/*user={flag?user:userPro}*//>}
                         {userData.isProfessional && <button  className='bg-green-300 w-80 p-1 font-lg font-bold uppercase' 
-                                        onClick={changeTipFlag}
-                                    >Agregar post</button>}
+                                    onClick={changeTipFlag}
+                                >Publicar Post</button>
+                        }
                     </div>
-                    <div className='border-gray-200 bg-gray-100 border-8 
+                    <div className=' flex flex-col border-gray-200 bg-gray-100 border-8 items-center justify-center 
                                 rounded-2xl border-solid pt-2 pl-10 pr-10 '>
-                        <PersonalInformationContainer   personalInfo={userData /*flag?user.personalData:userPro.personalData*/}
-                                                        professionalData={userData.isProfessional && true /*flag===false && userPro.professionalData*/}
+                        <PersonalInformationContainer   userData={userData}
                                                         changeUserState={changeUserState}
                                                         userInfo={userInfo}
+                                                        isProf={userData.isProfessional?true:false}
                                         />
+                    { (!userData.review && !userData.isProfessional) &&
+                                <button  className='bg-green-300 w-80 p-1 font-lg font-bold uppercase' 
+                                onClick={changeTipFlag}
+                            >Publicar reseña</button>
+                    }
                     </div>
                     <div className='bg-gray-100 rounded-3xl'>
-                        <PersonalTaskComponent  data={userData.isProfessional?pendienteNormal:pendientePro} 
-                                                
+                        <PersonalTaskComponent  data={userData.isProfessional?pendienteNormal:pendientePro}
                                     />
                     </div>
                 </div>
