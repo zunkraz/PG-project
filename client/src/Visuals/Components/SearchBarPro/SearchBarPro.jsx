@@ -64,59 +64,75 @@ const handleSubmit = e => {
 }
 
 // FUNCIONES END FUNCIONES END FUNCIONES END FUNCIONES END FUNCIONES END
-    return ( 
-    <aside>
-        <form
-        onSubmit={handleSubmit}
-        >
-       
-        <div>
-            <button 
-            className="uk-button uk-button-danger"
-            onClick={handleCliks}
-            disabled={optionViewBtnOne}
-            >Buscar por Nombre</button>
-            <button 
-            className="uk-button uk-button-danger"
-            onClick={handleCliks}
-            disabled={optionViewBtnTwo}
+        //<aside className="padd-lg"></aside> 
+    return (
+        <React.Fragment>
+            <div id="offcanvas-search" data-uk-offcanvas="overlay: true;flip: true">
+                <div className="uk-offcanvas-bar bg-component-search">
+                    <form
+                    onSubmit={handleSubmit}
+                    >       
+                    <div>
+                        <div className="padd-lg-b text-center font-color-light font-xl font-main">
+                            <div className="padd-sm-b border-bottom-color-main">
+                                Busqueda por nombre
+                            </div>
+                        </div>
+                        {/*
+                        <div className="padd-lg-b text-center font-color-light font-xl font-main">
+                            <div className="padd-sm-b border-bottom-color-main">
+                                Busqueda personalizada
+                            </div>
+                        </div>
+                        */}
+                        <button 
+                        className="width-100 padd-md font-main border-radius-sm action action-search"
+                        onClick={handleCliks}
+                        disabled={optionViewBtnOne}
+                        >Buscar por Nombre</button>
 
-            >Búsqueda Personalizada</button>
-        </div>
-        {optionViewBtnOne &&
-            <NameSearch
-            data={data}
-            setData={setData}
-            optionView={optionView}
-            handleChange={handleChange}
-            />
-        }
-        {
-        optionViewBtnTwo && 
-        <FiltersFields
-        data={data}
-        setData={setData}
-        optionView={optionView}
-        error={error}
-        setError={setError}
-        handleChange={handleChange}
-        />
-        } 
-        <button 
-        type="submit" 
-        value="Buscar"
-        className="uk-button uk-button-danger uk-margin"
-        >Buscar</button>
-       
-        </form>
-        <button 
-        type="button" 
-        onClick={() => dispatch(getAllProfs())}
-        className="uk-button uk-button-danger uk-margin"
-        >Restablecer</button>
-        {errorSubmit && <div><h3>Verifique sus campos</h3></div>}
-    </aside>
-     );
+                        <button 
+                        className="width-100 mrg-lg-t padd-md font-main border-radius-sm action action-search"
+                        onClick={handleCliks}
+                        disabled={optionViewBtnTwo}
+                        >Búsqueda Personalizada</button>
+                    </div>
+                    {optionViewBtnOne &&
+                        <NameSearch
+                        data={data}
+                        setData={setData}
+                        optionView={optionView}
+                        handleChange={handleChange}
+                        />
+                    }
+                    {
+                    optionViewBtnTwo && 
+                    <FiltersFields
+                    data={data}
+                    setData={setData}
+                    optionView={optionView}
+                    error={error}
+                    setError={setError}
+                    handleChange={handleChange}
+                    />
+                    } 
+                    <button 
+                    type="submit" 
+                    value="Buscar"
+                    className="width-100 mrg-lg-t padd-md font-main border-radius-sm action action-search"
+                    >Buscar</button>
+        
+                    </form>
+                    <button 
+                    type="button" 
+                    onClick={() => dispatch(getAllProfs())}
+                    className="width-100 mrg-lg-t padd-md font-main border-radius-sm action action-search"
+                    >Restablecer</button>
+                    {errorSubmit && <div><h3>Verifique sus campos</h3></div>}
+                </div>
+            </div>
+        </React.Fragment>
+    );
 }
  
 export default SearchBarPro;

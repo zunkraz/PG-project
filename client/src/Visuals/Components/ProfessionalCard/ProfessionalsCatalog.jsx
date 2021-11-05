@@ -46,12 +46,9 @@ export default function ProfesionalsCatalog(){
     else {return (
         <React.Fragment>
             <div className="wrapper">
-                <section>
-                    <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs">
-                        {displayProfs}
-                    </div>
-                </section>
+                {displayProfs}
             </div>
+
             <div className="wrapper padd-lg">
                 <ReactPaginate
                     breakLabel="..."
