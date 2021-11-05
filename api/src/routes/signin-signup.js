@@ -27,7 +27,7 @@ router.post('/signin', async(req, res, next) => {
                     )
                     .status(200)
                     .json({
-                        message: 'Succes',
+                        message: 'Success',
                         user: {...body, token}
                     })
                 })
