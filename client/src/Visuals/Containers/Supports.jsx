@@ -7,6 +7,7 @@ import PrivacySupport from '../Components/SuportComponents/PrivacySupport';
 
 const Supports = () => {
     return ( 
+
         <div className='grid grid-cols-6 bg-gray-400'>
             <div className='bg-green-400 col-start-0 col-end-2'>
                 <aside className='flex flex-wrap justify-center'>
