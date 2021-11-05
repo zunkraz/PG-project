@@ -47,6 +47,7 @@ export default function sessionReducer(state=initialState, {type,payload}){
                 }
             }
         case SET_ADMIN:
+            console.log('set admin')
             return {
                 ...state,
                 status:{
