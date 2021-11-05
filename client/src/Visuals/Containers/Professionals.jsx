@@ -18,9 +18,35 @@ export default function Profesionals() {
     }, []);
 
     return (
-        <div>
+        <React.Fragment>
+            <div className="wrapper bg-professionals-title">
+                <div className="wrapper padd-xl bg-color-light-a80">
+                    <section className="flex-center-xl-lg-md">
+                        <div className="col-5-6@xl">
+                            <div className="text-bold font-main font-2x">
+                                <span className="border-bottom-color-main padd-md-b padd-lg-r">Profesionales</span>
+                            </div>
+                            <div className="mrg-sm-t">
+                                <h1 className="font-xl">Las profesiones más consultadas en LATAM EXPONENTIAL.</h1>
+                            </div>
+                        </div>
+                        <div className="col-1-6@xl">
+                            <div 
+                                className="width-100 mrg-lg-t padd-md font-main border-radius-sm action action-search-bar flex-center" 
+                                data-uk-toggle="target: #offcanvas-search">
+                                Buscar Profesionales
+                                <span className="mrg-md-l" uk-icon="icon: search"></span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div className="wrapper mrg-lg-t">
+                <section>
+                    <ProfesionalsCatalog/>
+                </section>
+            </div>
             <SearchBarPro />
-            <ProfesionalsCatalog/>
-        </div>
+        </React.Fragment>
     )
 }
