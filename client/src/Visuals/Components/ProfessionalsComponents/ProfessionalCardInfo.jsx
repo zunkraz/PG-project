@@ -38,7 +38,7 @@ function ProfessionalCardInfo({biography, professionalData, schedule}) {
                 {proInfo==='profile' && professionalData?.map((elem, index)=>{
                     return <span key={index} className={profileclass}>{elem.name}<p className={profileP}>{elem.text}</p>{elem.verified?<FcCheckmark class='font-xl'/>:''}</span>
                 })}
-                {proInfo==='schedule' && <Schedule />}
+                {/* {proInfo==='schedule' && <Schedule />} */}
                 {
                     proInfo==='schedule' && schedule?.map((elem, index)=>{
                     return <span key={index} className={scheduleclass}><p>{elem.available?<FcCheckmark className='mr-4'/>:<FcCancel class='mr-4'/>}</p>{elem.date}</span>
