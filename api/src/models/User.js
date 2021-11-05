@@ -42,7 +42,7 @@ const user = new Schema(
             type: Boolean,
             default: true 
         },
-        googleAaccount: { //Saber si se logueó con google
+        googleAccount: { //Saber si se logueó con google
             type: Boolean,
             default: false
         },
