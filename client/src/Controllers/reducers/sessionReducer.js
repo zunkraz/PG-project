@@ -1,5 +1,5 @@
 import {
-    CHECK_LOGIN, CLEAN_USER_LOGIN,REMOVE_FROM_CART,ADD_TO_CART, SET_ERROR
+    CHECK_LOGIN, CLEAN_USER_LOGIN,REMOVE_FROM_CART,ADD_TO_CART, SET_ERROR, SET_ADMIN
 } from './../../constants';
 
 const initialState = {
@@ -44,6 +44,14 @@ export default function sessionReducer(state=initialState, {type,payload}){
                     username:'',
                     isAdmin: false,
                     error:true
+                }
+            }
+        case SET_ADMIN:
+            return {
+                ...state,
+                status:{
+                    ...state.status,
+                    isAdmin: payload
                 }
             }
 
