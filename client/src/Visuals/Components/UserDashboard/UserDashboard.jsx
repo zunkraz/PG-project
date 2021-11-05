@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import { setAdmin } from '../../../Controllers/actions/userActions'
 import AddPostComponent from '../PersonalDashboards/AddPostComponent'
 import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardContainer'
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
@@ -7,7 +8,10 @@ import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsC
 
 function UserDashboard({userData}) {
 
-    //console.log(userData)
+    useEffect(() => {
+        setAdmin(userData.isAdmin)
+        console.log('set admin')
+    }, [])
     const [tip, setTip] = useState(false)
     const [userInfo, setUserInfo] = useState('personalInfo')
 
