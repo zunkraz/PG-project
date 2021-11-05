@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {postCountry, getAllCountries, getOneCountry} = require('../controllers/index');
-// const Country = require('../models/Country');
+const Country = require('../models/Country');
 
 
 router.post('/', (req, res, next) => {
@@ -28,5 +28,12 @@ router.get('/:name', (req, res, next) => {
 //         .then(result => res.json(result))
 //         .catch(err => res.json(err))
 // });
+
+router.delete('/:_id',(req,res,next)=>{
+    const {_id} = req.params;
+    Country.deleteOne({_id})
+      .then(result => res.json(result))
+      .catch(err => next(err));
+});
 
 module.exports = router; 

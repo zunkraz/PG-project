@@ -12,7 +12,9 @@ const {
   categoryDelete,
   postTips,
   tipUpdate,
-  tipDelete
+  tipDelete,
+  getAllTipsAdmin,
+  getAllReviewsAdmin, reviewUpdate, reviewDelete
 } = require('../controllers/index.js');
 
 //GET ALL USERS
@@ -76,6 +78,12 @@ router.delete('/category/:id', (req,res,next)=>{
     .catch(err => next(err));
 });
 
+//GET ALL TIPS
+router.get('/tips',(req,res,next)=>{
+  getAllTipsAdmin()
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
 //TIP CREATE
 router.post('/tips',(req,res,next)=>{
   let {text} = req.body;
@@ -95,6 +103,28 @@ router.put('/tips/:id',(req,res,next)=>{
 router.delete('/tips/:id', (req,res,next)=>{
   let {id} = req.params;
   tipDelete(id)
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
+
+//GET ALL REVIEWS
+router.get('/reviews',(req,res,next)=>{
+  getAllReviewsAdmin()
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
+//REVIEW UPDATE
+router.put('/reviews/:id',(req,res,next)=>{
+  let {id} = req.params;
+  let updateInfo = req.body;
+  reviewUpdate(id,updateInfo)
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
+//REVIEW DELETE
+router.delete('/reviews/:id', (req,res,next)=>{
+  let {id} = req.params;
+  reviewDelete(id)
     .then(result => res.json(result))
     .catch(err => next(err));
 });

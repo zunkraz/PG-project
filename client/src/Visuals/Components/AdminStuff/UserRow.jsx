@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions';
+import * as FaIcons from "react-icons/fa";
 
 function UserRow({user}){
   const dispatch = useDispatch();
@@ -44,26 +45,30 @@ function UserRow({user}){
       {user.email}
     </td>
     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-      {user.isAdmin? 'Admin': 'Usuario' }
+      {user.isAdmin?
+        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-gray-800">
+          Admin </span> :
+        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">
+          Usuario</span>}
     </td>
       <td className="px-6 py-4 whitespace-nowrap">
         {user.isProfessional?
-            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-green-800">
+            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-200 text-gray-800">
           Profesional</span> :
-          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-          Regular</span>}
+          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-300 text-gray-800">
+          Cliente</span>}
     </td>
     <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-      <button onClick={()=>handleUserDelete(user.username)}>❌</button>
+      <button onClick={()=>handleUserDelete(user.username)}><FaIcons.FaRegTrashAlt/></button>
     </td>
       <td className="px-10 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleResetPassword(user.username)}>♻</button>
+        <button onClick={()=>handleResetPassword(user.username)}><FaIcons.FaRedo/></button>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleChangeRole(user.username,user.isAdmin)}>👥</button>
+        <button onClick={()=>handleChangeRole(user.username,user.isAdmin)}><FaIcons.FaUserFriends/></button>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>alert('Próximamente')}>✏</button>
+        <button onClick={()=>alert('Próximamente')}><FaIcons.FaRegEdit/></button>
       </td>
   </tr>
   </tbody>)
