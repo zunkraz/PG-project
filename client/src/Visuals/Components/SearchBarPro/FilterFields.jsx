@@ -40,45 +40,45 @@ useEffect(() => {
        }
    }
 })
-
+//<div className=' flex justify-center flex-col space-y-2.5 text-center'>
     return ( 
-    <div className=' flex justify-center flex-col space-y-2.5 text-center '>
-        
-        <div>
+    <div className='wrapper'>
+        <div className="mrg-lg-t">
             <select
-                
+
                 onChange={handleChange}
                 name='profesion'
                 value={data.profesion}
-                className='inputsFiltersBtns uk-input uk-form-width-large'
+                className='inputsFiltersBtns uk-select font-main border-radius-sm'
             >
             <option>Seleccionar Profesión</option>
-              {categoriesRender}
+            {categoriesRender}
             </select>
         </div>
-        <div>
+        <div className="mrg-lg-t">
             <select
                 
                 onChange={handleChange}
                 name='country'
                 value={data.country}
-                className='inputsFiltersBtns uk-input uk-form-width-large' 
+                className='inputsFiltersBtns uk-select font-main border-radius-sm' 
             >
             <option>Seleccionar País</option>
-             {countriesRender}
+            {countriesRender}
             </select>  
         </div>
-        <div>
+        <div className="mrg-lg-t">
             <select
                 onChange={handleChange}
                 name='likes'
                 value={data.likes}
-                className='inputsFiltersBtns uk-input uk-form-width-large' 
+                className='inputsFiltersBtns uk-select font-main border-radius-sm' 
             >
             <option>Seleccionar Reputación</option>
-             {likesRender}
+            {likesRender}
             </select>  
         </div>
+
 
         {/* <div>
         <h3>Escoge tu presupuesto</h3>
