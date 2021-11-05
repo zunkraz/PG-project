@@ -64,4 +64,4 @@ module.exports = (date) => {
       shortcut: parseInt(shortcut(dateArray[3], dateArray[1], dateArray[2], dateArray[4].slice(0,2), dateArray[4].slice(3,5)))
     }
     return dateObj;
-  }
+  } 
