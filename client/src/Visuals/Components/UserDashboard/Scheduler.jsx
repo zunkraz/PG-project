@@ -35,19 +35,25 @@ export default function Scheduler({userId}){
     const showDate = date =>{
         //console.log(dateToJSON(date))
         // console.log(date)
-        if(!app || !app.find(e=>e.date===date.toString())){
+        if(!app){
+            setApp([{
+                date:date.toString(),
+                userId:userId,
+                availability:true
+            }])
+        }
+        else if(!app.find(e=>e.date===date.toString())){
             setApp([...app, {
                 date:date.toString(),
                 userId:userId,
                 availability:true
             }]
-        )
-        }
+        )}
     }
 
     const handleClickmany=()=>{
         alert("Agregado!")
-        console.log(app)
+        addtoSchedule(app)
         setApp()
     }
     

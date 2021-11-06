@@ -2,7 +2,7 @@ import axios from 'axios';
 import {BASIC_URL} from '../constants';
 
 export async function addtoSchedule(date) {
-    const data = await axios.post(`${BASIC_URL}/schedules`, date);
+    const data = await axios.post(`${BASIC_URL}/schedules/many`, date);
     return data;
 }
 
