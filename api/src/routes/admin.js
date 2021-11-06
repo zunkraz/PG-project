@@ -14,7 +14,9 @@ const {
   categoryDelete,
   postTips,
   tipUpdate,
-  tipDelete
+  tipDelete,
+  getAllTipsAdmin,
+  getAllReviewsAdmin, reviewUpdate, reviewDelete
 } = require('../controllers/index.js');
 
 //GET ALL USERS
@@ -78,6 +80,12 @@ router.delete('/category/:id', passport.authenticate('jwt', {session: false}), r
     .catch(err => next(err));
 });
 
+//GET ALL TIPS
+router.get('/tips',(req,res,next)=>{
+  getAllTipsAdmin()
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
 //TIP CREATE
 router.post('/tips', passport.authenticate('jwt', {session: false}), roleAuth, (req,res,next)=>{
   let {text} = req.body;
@@ -101,4 +109,28 @@ router.delete('/tips/:id', passport.authenticate('jwt', {session: false}), roleA
     .catch(err => next(err));
 });
 
+
+//GET ALL REVIEWS
+router.get('/reviews', passport.authenticate('jwt', {session: false}), roleAuth,(req,res,next)=>{
+  getAllReviewsAdmin()
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
+//REVIEW UPDATE
+router.put('/reviews/:id', passport.authenticate('jwt', {session: false}), roleAuth,(req,res,next)=>{
+  let {id} = req.params;
+  let updateInfo = req.body;
+  reviewUpdate(id,updateInfo)
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
+//REVIEW DELETE
+router.delete('/reviews/:id', passport.authenticate('jwt', {session: false}), roleAuth, (req,res,next)=>{
+  let {id} = req.params;
+  reviewDelete(id)
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
+
 module.exports = router;
+
