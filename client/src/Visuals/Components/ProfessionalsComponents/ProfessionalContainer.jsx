@@ -85,6 +85,7 @@ function ProfessionalContainer({username, login}) {
                                                     data={professional.similarProfessionals}
                                                     name={profData.name+" " +profData.lastname}
                                                     login={login}
+                                                    id={profData._id}
                                 />
                 </div>
                 <div className='w-1/5'>

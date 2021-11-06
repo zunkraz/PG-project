@@ -31,7 +31,7 @@ function handlePay(){
 
     const order= useSelector(state=>state.sessionReducer.cart)
     
-   const elements= order.map(o=><li className="mb-2">
+   const elements= order.map(o=><li className="mb-2" key={o._id}>
         <CartElement 
         name={o.name}
         date={o.appointment.date}

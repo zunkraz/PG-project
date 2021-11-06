@@ -6,6 +6,7 @@ import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardC
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
+import Scheduler from './Scheduler'
 
 function UserDashboard({userData}) {
     console.log(userData)
@@ -147,6 +148,9 @@ function UserDashboard({userData}) {
                     {userData.isProfessional && <ProfessionalPostsContainer    posts={tipsArray}/>}
                 </div>
             </div>
+            {userData.isProfessional && <div>
+                <Scheduler userId={userData._id}/>
+            </div>}
         </div>
     )
 }

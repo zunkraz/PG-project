@@ -1,21 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../../Controllers/actions/cartActions'
 import BigButton from '../BigButton'
 import ProfessionalCardData from './ProfessionalCardData'
 import ProfessionalCardInfo from './ProfessionalCardInfo'
 //import SimilarProfessionals from './SimilarProfessionals'
+import { getProfSchedule } from '../../../Controllers/actions/professionalsActions'
 
 
 
-function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, professionalData, schedule, data, name}) {
-  
+function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, professionalData, schedule, data, name, id}) {
+    
     const login = useSelector(state => state.sessionReducer.status.token)
-  
+    
     const [hireform, setHire]= useState(false)
-    const [appointment, setAppo]= useState()
     const dispatch= useDispatch()
+    useEffect(()=>{
+        dispatch(getProfSchedule(id))
+    },[])
     const carrito= useSelector(state=>state.sessionReducer.cart)
+    const sched= useSelector(state=>state.professionalReducer.profSchedule)
     
     // const contratado = (e)=>{
     //     e.preventDefault()
@@ -46,6 +50,10 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
                     },
                     id:e.target.id
                 }))
+    }
+
+    const dateJoin= (date)=>{
+        return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time
     }
     
     return (
@@ -78,14 +86,15 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
                     <input type="number" id="sessions" name="sessions" min="1" max="5" onChange={handleChange} className="my-5"/>
                     <input type="submit" value="Reservar"  className="uk-button uk-button-danger uk-margin"/>
                 </form>)} */}
-                {/* <SimilarProfessionals data={data}/> */}
                 {hireform && (<ul className="w-4/5 ml-24 bg-white divide-y divide-gray-200">
-                    {appointments.map(d=>
-                        <li className="flex justify-between py-4 px-2">
-                            {d.date}  {carrito.find(e=>e.id===d.id) ? <span>en carrito</span> : <button id={d.id} name={d.date} onClick={handleClick}>Agregar al carrito</button>}
+                    {sched.map(d=>
+                        <li key={d._id} className="flex justify-between py-4 px-2">
+                            {dateJoin(d.date)}  {carrito.find(e=>e.id===d._id) ? 
+                            <span>En carrito</span> 
+                                    : 
+                            <button id={d._id} name={dateJoin(d.date)} onClick={handleClick} className="uk-button uk-button-danger">Agregar al carrito</button>}
                         </li>
                     )}
-                    
                     </ul>)}
 
             </div>
@@ -94,10 +103,3 @@ function ProfessionalCardComponent({img, likes, dislikes, sessions, biography, p
 }
 
 export default ProfessionalCardComponent
-
-
-const appointments=[
-    {date: "Lunes 12/11/2021 13:00", id:"123"},
-    {date: "Martes 2/11/2021 14:00", id:"12"},
-    {date: "Viernes 1/11/2021 16:00", id:"1"}
-]
