@@ -8,20 +8,21 @@ import PrivacySupport from '../Components/SuportComponents/PrivacySupport';
 const Supports = () => {
     return ( 
 
-        <div className='grid grid-cols-6 bg-gray-400'>
-            <div className='bg-green-400 col-start-0 col-end-2'>
-                <aside className='flex flex-wrap justify-center'>
+
+        <div className='grid grid-cols-6'>
+            <div className=' ml-1 col-start-0 col-end-2  shadow-2xl'>
+                <aside className='flex flex-wrap justify-center '>
                     <h1 className='text-2xl text-center mt-2'>Selecciona una Categoría</h1>
-                    <button className=' mt-1 w-4/5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' type='button'>Servicios</button>
-                    <button className=' mt-1 w-4/5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' type='button'>Sugerencias</button>
-                    <button className=' mt-1 w-4/5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' type='button'>Sobre los Pagos</button>
-                    <button className=' mt-1 w-4/5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' type='button'>Políticas y Privacidad</button>
-                    <button className=' mt-1 w-4/5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' type='button'>Reportar un Problema</button>
-                    <button className=' mt-1 w-4/5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-3' type='button'>Volver al inicio</button>
+                    <button className=' mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Servicios</button>
+                    <button className=' mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Sugerencias</button>
+                    <button className=' mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Sobre los Pagos</button>
+                    <button className=' mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Políticas y Privacidad</button>
+                    <button className=' mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Reportar un Problema</button>
+                    <button className=' mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600 mb-3' type='button'>Volver al inicio</button>
                 </aside>
             </div>
 
-            <div className='bg-blue-400 col-start-2 col-end-7 flex justify-center'>
+            <div className='col-start-2 col-end-7 flex justify-center'>
                 <article className='w-full mt-7'>
                     <PaymentsSupport />
                     {/* <ReportProblem />
@@ -29,6 +30,7 @@ const Supports = () => {
                     <SuggestionsSupport />
                     <PrivacySupport /> */}
                 </article>
+
             </div>
         </div>
      );
