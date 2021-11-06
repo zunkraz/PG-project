@@ -8,6 +8,8 @@ import ProfessionalOpinionsComponents from './ProfessionalOpinionsComponents'
 
 function ProfessionalContainer({username, login}) {
     const profData= useSelector(state=> state.professionalReducer.profDetail)
+
+    console.log(profData)
     /* funciones necesarias
 
     getProfessional : {
@@ -66,21 +68,22 @@ function ProfessionalContainer({username, login}) {
                             text-center text-opacity-900 uppercase 
                             font-extrabold 
                             border-b-8 border-double border-red-300 m-5'>{`${profData.name}  ${profData.lastname}`}</span>
-                <span class='font-serif text-3xl tracking-wider 
+                <span className='font-serif text-3xl tracking-wider 
 
                             text-gray-600 pb-6 text-center 
                             font-bold 
                             uppercase'>{profData.category.name}</span>
             </div>
 
-            <div class='container mx-auto md:container md:mx-auto center px-4 flex '>
-                <div class='w-4/5'>
+            <div className='container mx-auto md:container md:mx-auto center px-4 flex '>
+                <div className='w-4/5'>
                         <ProfessionalCardComponent  img={profData.img ? profData.img : professional.img} 
                                                     likes={profData.likes} 
                                                     dislikes={profData.dislikes}
-                                                    sessions={professional.sessions}
+                                                    sessions={profData.appointments.length}
                                                     biography={professional.biography}
                                                     professionalData={professional.professionalData}
+                                                    // professionalData={professional.professionalData}
                                                     schedule={professional.schedule}
                                                     data={professional.similarProfessionals}
                                                     name={profData.name+" " +profData.lastname}

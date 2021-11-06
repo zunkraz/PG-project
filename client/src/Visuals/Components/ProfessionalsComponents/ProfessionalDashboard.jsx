@@ -9,15 +9,11 @@ function ProfessionalDashboard({login}) {
     const {username}= useParams()
     const dispatch= useDispatch()
     dispatch(getProfByUser(username))
-    
-
     return (
-        <div class='bg-gray-100'>
+        <div /* className='bg-gray-100' */>
             <ProfessionalContainer username={username} login={login}/>
         </div>
     )
-
-
 }
 
 export default ProfessionalDashboard
