@@ -10,7 +10,7 @@ router.get('/',(req,res,next)=>{
     .catch(err => next(err));
 });
 
-router.put('/', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
+router.put('/', (req,res,next)=>{
   let data = req.body;
   updateCategCount(data)
     .then(result => res.json(result))

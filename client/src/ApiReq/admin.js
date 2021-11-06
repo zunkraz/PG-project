@@ -50,3 +50,48 @@ export function deleteCategory(categoryID){
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }
+export function postCountry(info){
+    return axios.post(`${BASIC_URL}/countries`,info)
+      .then(r=>r.data)
+      .catch(r=>r.response.data)
+}
+export function deleteCountry(_id){
+    return axios.delete(`${BASIC_URL}/countries/${_id}`)
+      .then(r=>r.data)
+      .catch(r=>r.response.data)
+}
+export function getAllTips(){
+    return axios.get(`${url}/tips`)
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}
+export function putTip(info,_id){
+    return axios.put(`${url}/tips/${_id}`,info)
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}
+export function deleteTip(_id){
+    return axios.delete(`${url}/tips/${_id}`)
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}
+export function postTip(info){
+    return axios.post(`${url}/tips`,info)
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}
+export function getAllReviews(){
+    return axios.get(`${url}/reviews`)
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}
+export function deleteReview(_id){
+    return axios.delete(`${url}/reviews/${_id}`)
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}
+export function putReview(info,_id){
+    return axios.put(`${url}/reviews/${_id}`,info)
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}

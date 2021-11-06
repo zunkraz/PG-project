@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import CartElement from "./CartElement";
+import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
+import { setAvailability } from "../../../ApiReq/schedule";
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 export default function Cart(){
+
+const dispatch = useDispatch();
+let history = useHistory();
     
     const createOrder = (data,actions) => {
         return actions.order.create({
@@ -24,24 +30,28 @@ export default function Cart(){
 //////////////////// FIN PP
 
 function handlePay(){
-    window.location.href = "/"
+    order.forEach(e=>{
+        setAvailability(e.id)
+    })
+    dispatch(removeFromCartAll())
+    history.push('./profesionales')
     console.log("el pago ha sido exitoso");
 }
   
 
     const order= useSelector(state=>state.sessionReducer.cart)
     
-   const elements= order.map(o=><li className="mb-2">
+   const elements= order.map(o=><li className="mb-2" key={o._id}>
         <CartElement 
         name={o.name}
         date={o.appointment.date}
         sessions={o.appointment.sessions}
-        price={o.appointment.sessions[0]*10}
+        price={o.appointment.sessions*10}
         />
     </li>)
     
     let suma= 0
-    order.forEach(o=> suma += o.appointment.sessions[0]*10)
+    order.forEach(o=> suma += o.appointment.sessions*10)
     
     return (
         

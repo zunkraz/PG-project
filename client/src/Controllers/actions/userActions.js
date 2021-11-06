@@ -28,3 +28,6 @@ export function setAdmin(admin){
     }
 }
 
+//post tips
+
+//post review

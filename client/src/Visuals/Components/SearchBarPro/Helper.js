@@ -1,6 +1,6 @@
 export function Filter(obj,arr){
     const {name,profesion, country, min,max, likes} = obj
-
+    
     if(name){
         let nameResult = name.split(' ').map(e => e.charAt(0).toUpperCase() + e.slice(1)).join( ' ');
        let nameResultReverse = nameResult.split(' ').reverse().join(' ')
@@ -13,7 +13,7 @@ export function Filter(obj,arr){
             );
     }
     if(profesion){
-        arr = arr.filter(e => e.category[0].name === profesion);
+        arr = arr.filter(e => e.category.name === profesion);
     }
     if(country){
      
