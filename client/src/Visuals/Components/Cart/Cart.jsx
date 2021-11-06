@@ -11,7 +11,7 @@ export default function Cart(){
            purchase_units: [
               {
                  amount: {
-                    value: "0.01",
+                    value: suma,
                  }
               }
            ]
@@ -19,9 +19,15 @@ export default function Cart(){
      }
  
    const onApprove = (data, actions) => {
-    return actions.order.capture();
+    return actions.order.capture(handlePay());
   }
 //////////////////// FIN PP
+
+function handlePay(){
+    window.location.href = "/"
+    console.log("el pago ha sido exitoso");
+}
+  
 
     const order= useSelector(state=>state.sessionReducer.cart)
     
@@ -39,7 +45,7 @@ export default function Cart(){
     
     return (
         
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4 divide-y ">
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4 divide-y ">
         <div className="grid grid-cols-5 gap-4 mb-2 ">
             <p className="text-xl">Consultoria virtual con:</p>
             <p className="text-xl">Fecha</p>
@@ -52,18 +58,22 @@ export default function Cart(){
         </ul>: <p className="text-2xl flex justify-center py-6">Tu carrito esta vacio</p>}
         <div className="grid grid-cols-4 gap-4 my-4 py-5">
             <p className="col-span-3 text-2xl">Total</p>
-            <p className="text-2xl">${suma}</p>
+            <p className="text-2xl">$ {suma}</p>
         </div>
 
-        {/* BOTOOON DE PAYPAL */}
-            <div className='uk-margin uk-width-1-1'>
+        {/* BOTOOON DE PAYPAL FUNCIONANDO*/}
+            <div className="wrapper flex-center my-12">
+                <div className="width-50">
+
                 <PayPalButton
+                className="width-100"
                 createOrder={(data, actions) => createOrder(data, actions)}
                 onApprove={(data, actions) => onApprove(data, actions)}
              />
+                </div>
             </div>
 
-        </div>
+    </div>
     )
 
 }

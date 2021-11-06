@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //import ProfessionalCard from "./ProfessionalCard";
 import ProfessionalCard from "./../ProfessionalCardComponent";
-
+import "./../../Assets/css/pagination-style.css"
 import ReactPaginate from "react-paginate"
 import { useSelector } from "react-redux";
 
@@ -46,12 +46,9 @@ export default function ProfesionalsCatalog(){
     else {return (
         <React.Fragment>
             <div className="wrapper">
-                <section>
-                    <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs">
-                        {displayProfs}
-                    </div>
-                </section>
+                {displayProfs}
             </div>
+
             <div className="wrapper padd-lg">
                 <ReactPaginate
                     breakLabel="..."
@@ -59,11 +56,9 @@ export default function ProfesionalsCatalog(){
                     nextLabel=">"
                     pageCount={pageCount}
                     onPageChange={changePage}
-                    containerClassName={"flex justify-center items-center space-x-1 "}
-                    pageClassName={"flex items-center px-4 py-2 text-gray-500 bg-gray-300 rounded-md text-decoration:none"}
-                    previousClassName={"flex items-center px-4 py-2 text-gray-500 bg-gray-300 rounded-md text-decoration:none"}
-                    nextLinkClassName={"flex items-center px-4 py-2 text-gray-500 bg-gray-300 rounded-md text-decoration:none"}
-                    activeLinkClassName={""}
+                    containerClassName={"pagination"}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={"active"}
                     renderOnZeroPageCount={null}
                 />
             </div>

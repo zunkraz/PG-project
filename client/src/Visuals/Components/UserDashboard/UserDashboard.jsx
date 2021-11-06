@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import {useDispatch} from 'react-redux'
+import { setAdmin } from '../../../Controllers/actions/userActions'
 import AddPostComponent from '../PersonalDashboards/AddPostComponent'
 import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardContainer'
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
@@ -6,103 +8,29 @@ import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
 
 function UserDashboard({userData}) {
-        console.log(userData)
-        // const [flag, setFlag] = useState(true)
+    console.log(userData)
+    const dispatch = useDispatch()
 
-        const [userInfo, setUserInfo] = useState('personalInfo')
+    useEffect(() => {
+        dispatch(setAdmin(userData.isAdmin))
+    }, [userData.isAdmin])
 
-        const [tip, setTip] = useState(false)
+    const [tip, setTip] = useState(false)
+    const [userInfo, setUserInfo] = useState('personalInfo')
 
-        const [tipsArray, settipsArray] = useState([
-            'Diseño para Halo-4', 'Como usar Photoshop en Iphone', 
-            'Sabías sobre esta paleta de colores?', 'Diseño para Ark-II',
-            'Diseño para Tetris'
-        ])
-
-        const changeTipFlag=()=>{setTip(!tip)}
+    const [tipsArray, settipsArray] = useState([
+        'Diseño para Halo-4', 'Como usar Photoshop en Iphone', 
+        'Sabías sobre esta paleta de colores?', 'Diseño para Ark-II',
+        'Diseño para Tetris'
+    ])
     
-        // const changeState=()=>{
-        //     //setFlag(!flag)
-        //     setTip(false)
-        //     setUserInfo('personalInfo')
-        // }
+    const changeTipFlag=()=>{setTip(!tip)}
+    
+    const changeUserState = (e)=>{
+        setUserInfo(e.target.name)
+    }
 
-        const changeUserState = (e)=>{
-            setUserInfo(e.target.name)
-        }
-
-    // funcion getMiDashboardDate
-
-    // const user ={
-    //     username: 'TheRobert_22',
-    //     _id:'asdafd3daw3daw3daws3',
-    //     name: 'Roberto',
-    //     lastName: 'Jefferson',
-    //     category: 'Normal',
-    //     likes: 12,
-    //     dislikes: 23,
-    //     timeOfSessions: 21.9,
-    //     img: 'https://th.bing.com/th/id/R.4c63b7b09da20864caf8595d704910fe?rik=W8%2bOfWGGofoDhg&pid=ImgRaw&r=0',
-        
-    //     personalData:{
-    //         username:'TheRobert_22',
-    //         name:'Roberto',
-    //         lastName:'Jefferson',
-    //         img:'https://th.bing.com/th/id/R.4c63b7b09da20864caf8595d704910fe?rik=W8%2bOfWGGofoDhg&pid=ImgRaw&r=0',
-    //         country:'Argentina',
-    //         state:'Cordoba',
-    //         city:'Carlos Paz',
-    //         age:'25/01/1990',
-    //         mail: 'RobertitoJefazo@somemail.com',
-    //         password: 'tortugaCrazy55',
-    //     }
-    // }
-
-
-    // const userPro = {
-    //     username: 'SamyLock05',
-    //     name: 'Samantha',
-    //     lastName: 'Lockson',
-    //     category: 'Professional',
-    //     profession:'Gaming Art Designer',
-    //     likes: 578,
-    //     dislikes: 17,
-    //     visibility: 789,
-    //     isVerified:true,
-    //     img: 'https://th.bing.com/th/id/R.a903ba87d9ebd4011c7c9c31cfe3f124?rik=AS5I7nD020qecA&pid=ImgRaw&r=0',
-    //     schedule: [ {date: 'Lunes', available: true},
-    //                 {date: 'Martes', available: true},
-    //                 {date: 'Miercoles', available: false},
-    //                 {date: 'Jueves', available: true},
-    //                 {date: 'Viernes', available: false},
-    //             ], /*(Arreglo de fechas disponibles y no disponibles)*/
-    //     biography: 'Me gradue de Henry a mediados del año pasado, desde ese momento de dedico a viajar por el mundo siendo el doble de la Roca Jhonson mientras brindo asesorias en esta gran plataforma',
-    //     professionalInfo: [{name:'Matricula :',text:'234531456', verified:true},{name:'Graduado de : ', text:'Henry con Honores', verified:false}, {name:'Cursos : ', text:'Fabricación de Mayonesa casera, React-Redux',verified:true}],
-    //     personalData:{
-    //         username:'SamyLock05',
-    //         name:'Samantha',
-    //         lastName:'Lockson',
-    //         img:'https://th.bing.com/th/id/R.a903ba87d9ebd4011c7c9c31cfe3f124?rik=AS5I7nD020qecA&pid=ImgRaw&r=0',
-    //         country:'Argentina',
-    //         state:'Buenos Aires',
-    //         city:'CABA',
-    //         age:'15/07/1994',
-    //         mail: 'Samy_Lock_art@somemail.com',
-    //         password: 'mariobrossqueen',
-    //     },
-    //     professionalData:{
-    //         matricula:'23-34-44-123-22-1a',
-    //         titulo:'Engineer Game Desing',
-    //         bankAccount: 'olisadfbn1231248484nsadfj',
-    //         schedule: [ {date: 'Lunes', available: true},
-    //                 {date: 'Martes', available: true},
-    //                 {date: 'Miercoles', available: false},
-    //                 {date: 'Jueves', available: true},
-    //                 {date: 'Viernes', available: false},
-    //             ]
-    //     },
-    // }
-
+    // FUNCION DE AGREGAR TIPS, COPIAR PARA AGREGAR REVIEWs
     const addPost=(post)=>{
         settipsArray([...tipsArray,post])
         setTip(false)
@@ -121,26 +49,73 @@ function UserDashboard({userData}) {
         '2 horas con Rocio',
         '30 minutos con Claudio'
     ]
-    
+    // {
+//     name,,
+//     lastname,
+//     username,
+//     email,
+//     password,
+//     isProfessional,
+//     isAdmin,
+//     isActive, CORREO PERSONAL 
+//     isVerified, PROFESIONAL VERIFICADO
+//     country,
+//     state,
+//     city,
+//     birthdate,
+//     img,
+//     professionalRegistration, Numero de Matricula
+//     regUrl, link de registro de título o certificado
+//     biography,
+//     title,
+//     institute,
+//     cost,
+//     category,
+//     degree,
+//     bankAccount,
+//     appointments,
+//     schedule,
+//     likes,
+//     dislikes
+// },
+/*
+            appointments: Array(0)
+            length: 0
+            [[Prototype]]: Array(0)
+            category:
+            name: "Veterinaria"
+            _id: "617aad194a37a360e5d05b20"
+            [[Prototype]]: Object
+            country:
+            name: "Brasil"
+            _id: "617ddd2a82b867a5c2a72c18"
+            [[Prototype]]: Object
+            dislikes: 50
+            email: "helenchufe101@mail.com"
+            img: "https://pbs.twimg.com/profile_images/1116176743356874760/NTYGV_jv_400x400.jpg"
+            isActive: true
+            isAdmin: false
+            isProfessional: true
+            isVerified: true
+            lastname: "Chufe"
+            likes: 276
+            name: "Helen"
+            password: "$2b$10$dikV.KlxklYIXDyp/d49i.kfNL6d4snmDesrA99Re3O4jUBJQnc6a"
+            professionalRegistration: "552sasd25432"
+            username: "Helen_Chufe"
+            __v: 0
+            _id: "617f225d88338db33c578036"
+*/
     return (
         <div className='flex flex-col'>
-            {/* {userData.isProfessional && 
-                <div className='flex flex-col items-center justify-center mt-2 mb-4'>
-                    <button className=' bg-red-300 pl-2 pr-2 rounded-xl'
-                            onClick={changeState} >Change Type Of User</button>
-                    {flag?<span className='font-lg'>Normal</span>:<span className='font-lg'>Professional</span>}
-                </div>
-            } */}
             <div className='text-red-400 font-sans text-4xl h-28
                             text-center text-opacity-900 uppercase 
                             font-extrabold items-center flex justify-center
                             border-b-8 border-double border-red-300 ml-14 mr-14 mb-4 '
                         >
                 {userData.isProfessional?
-                <span>{`${userData.name} ${userData.lastname}`}<p className='text-gray-400 text-2xl'>{userData.category[0].name}</p></span>
+                <span>{`${userData.name} ${userData.lastname}`}<p className='text-gray-400 text-2xl'>{userData.category.name}</p></span>
                 :<span>{`${userData.name} ${userData.lastname}`}</span>}
-                {/* {userData.isProfessional && <span>{userData.name}<p className='text-gray-400 text-2xl'>{userData.category[0].name}</p></span>} */}
-                {}
             </div>
             <div className='flex flex-col'>
                 <div className='flex justify-around items-start  pt-4 miPerfilCustomHeight'>
@@ -177,3 +152,4 @@ function UserDashboard({userData}) {
 }
 
 export default UserDashboard
+

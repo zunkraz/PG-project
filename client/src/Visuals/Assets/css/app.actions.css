@@ -58,15 +58,27 @@
 }
 
 /* Action Search */
-.action-search {
+.action-search-bar {
 	background-color: var(--color-light);
+    border: solid 2px var(--color-main);
+	color: var(--color-dark)!important;    
+}
+.action-search-bar:hover {
+	background-color: var(--color-main-a80);
+    border: solid 2px var(--color-light);
+	color: var(--color-light)!important;    
+}
+
+/* Action Search */
+.action-search {
+	background-color: var(--color-main);
     border: solid 1px var(--color-light);
-	color: var(--color-dark);    
+	color: var(--color-light)!important;    
 }
 .action-search:hover {
-	background-color: var(--color-main);
+	background-color: var(--color-light);
     border: solid 1px var(--color-main);
-	color: var(--color-dark);    
+	color: var(--color-main)!important;    
 }
 
 /* Action Country */
@@ -93,10 +105,7 @@
 
 /* Action Add */
 .action-add-country {
-
-
-
-		background-size: cover;
+	background-size: cover;
 	background-color: var(--color-light);
     border: solid 1px var(--color-light); 
 }

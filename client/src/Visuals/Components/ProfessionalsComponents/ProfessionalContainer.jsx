@@ -70,7 +70,7 @@ function ProfessionalContainer({username, login}) {
 
                             text-gray-600 pb-6 text-center 
                             font-bold 
-                            uppercase'>{profData.category[0].name}</span>
+                            uppercase'>{profData.category.name}</span>
             </div>
 
             <div class='container mx-auto md:container md:mx-auto center px-4 flex '>
@@ -85,7 +85,6 @@ function ProfessionalContainer({username, login}) {
                                                     data={professional.similarProfessionals}
                                                     name={profData.name+" " +profData.lastname}
                                                     login={login}
-
                                 />
                 </div>
                 <div className='w-1/5'>

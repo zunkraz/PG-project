@@ -3,25 +3,20 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import logoMain from "../../Assets/media/logo-main.svg";
 import { cleanLoginCheck } from '../../../Controllers/actions/loginAction';
+import CartIcon from './CartIcon'
 
 
 const Nav = () => {
 
-    let login = useSelector(state=>state.sessionReducer.status.token)
-    let username = useSelector(state=>state.sessionReducer.status.username)
-    let dispatch = useDispatch()
+    const loggedUser = useSelector(state=>state.sessionReducer.status)
+    const dispatch = useDispatch()
     
 
     function Logout(){
         dispatch(cleanLoginCheck())
     }
 
-    const btns = !login ? [ 
-        {
-            title: 'Profesionales',
-            url:'/profesionales'
-        },
-        {
+    let btns = !loggedUser.token ? [{
             title:'Crea tu cuenta',
             url:'/registro'
         },
@@ -30,14 +25,20 @@ const Nav = () => {
             url: '/ingresar'
         }] : 
         [{
+            title:'Mi perfil',
+            url: `/miperfil/${loggedUser.username}`
+        }]
+    btns = [{
+            title: 'Soporte',
+            url: '/soporte'
+        },
+        {
             title: 'Profesionales',
             url:'/profesionales'
         },
-        {
-            title:'Mi perfil',
-            url: `/miperfil/${username}`
-        }]
-    
+        ...btns]
+
+    btns = loggedUser.isAdmin ? [{title: 'Panel de Admin', url:'/admin'},...btns] : [...btns]
 
     let items = btns.map( (data,i) => {
         return <li key={i}><Link to={data.url}>{data.title}</Link></li>
@@ -65,11 +66,13 @@ const Nav = () => {
                             uk-visible@m"
                 >
                     {items}
-                    {login && 
+                    {loggedUser.token && 
                         <li>
                             <Link to='/' onClick={Logout}>Salir</Link>
                         </li>}
-
+                    <li>
+                        <CartIcon/>
+                    </li>
                     <button 
                         className="uk-button uk-button-default uk-hidden@m uk-position-right" 
                         type="button" 
@@ -90,10 +93,13 @@ const Nav = () => {
                         <ul className="uk-nav uk-nav-default">  
                             <li className="uk-nav-header">Menu</li>
                             {items}         
-                            {login && 
+                            {loggedUser.token && 
                                 <li>
                                     <Link to='/' onClick={Logout}>Salir</Link>
                                 </li>}
+                            <li>
+                                <CartIcon/>
+                            </li>
                         </ul>
                     </div>
                 </div>
