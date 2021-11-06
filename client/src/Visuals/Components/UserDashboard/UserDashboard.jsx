@@ -49,34 +49,7 @@ function UserDashboard({userData}) {
         '2 horas con Rocio',
         '30 minutos con Claudio'
     ]
-/*
-            appointments: Array(0)
-            length: 0
-            [[Prototype]]: Array(0)
-            category:
-            name: "Veterinaria"
-            _id: "617aad194a37a360e5d05b20"
-            [[Prototype]]: Object
-            country:
-            name: "Brasil"
-            _id: "617ddd2a82b867a5c2a72c18"
-            [[Prototype]]: Object
-            dislikes: 50
-            email: "helenchufe101@mail.com"
-            img: "https://pbs.twimg.com/profile_images/1116176743356874760/NTYGV_jv_400x400.jpg"
-            isActive: true
-            isAdmin: false
-            isProfessional: true
-            isVerified: true
-            lastname: "Chufe"
-            likes: 276
-            name: "Helen"
-            password: "$2b$10$dikV.KlxklYIXDyp/d49i.kfNL6d4snmDesrA99Re3O4jUBJQnc6a"
-            professionalRegistration: "552sasd25432"
-            username: "Helen_Chufe"
-            __v: 0
-            _id: "617f225d88338db33c578036"
-*/
+    
     return (
         <div className='flex flex-col'>
             <div className='text-red-400 font-sans text-4xl h-28
