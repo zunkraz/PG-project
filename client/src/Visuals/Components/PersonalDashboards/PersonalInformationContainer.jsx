@@ -14,27 +14,20 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     const [popState, setPopState] = useState(false)
     // {
             // CONTROL 
-            //     isProfessional,
-            //     isAdmin,
-            //     isActive, CORREO PERSONAL 
+            //      isProfessional,
+            //      isAdmin,
+            //      isActive, CORREO PERSONAL 
+            //      isVerified, PROFESIONAL VERIFICADO
+            //      img,
             ///////////////////////////
 
-
-            // PERSONAL
-            //     name,,
-            //     lastname,
-            //     username,
-            //     email,
-            //     password,
-            //     birthdate,
-            /////////////////////////////
-    // },
     const userNormalInfo={
         username : userData.username,
         nombre : userData.name,
         apellido : userData.lastname,
+        cumpleaños : userData.birthdate,
         email : userData.email,
-        cumpleaños : userData.birthdate
+        contraseña: '***********'
     }
 
     const getValue=(data)=>{
@@ -42,45 +35,29 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
             console.log(data)
             return{
                 profession: userData.category.name,
-                professionalRegistration: userData.professionalRegistration,
-                appointments: userData.appointments,
+                matricula: userData.professionalRegistration,
+                titulo : userData.title,
+                universidad: userData.intitute,
+                degree: userData.degree,
+                'cuenta bancaria': '************',
                 pais : userData.country.name,
                 estado : userData.state,
-                img: userData.img,
-                schedule: userData.schedule
+                ciudad : userData.city,
             }
         } 
         return {msg:'sin datos'}
     }
-        // PROFESIONAL
-        //     isVerified, PROFESIONAL VERIFICADO
-        //     img,
-        //     professionalRegistration, Numero de Matricula
-        //     regUrl, link de registro de título o certificado
-        //     biography,
-        //     title,
-        //     institute,
-        //     category,
-        //     country,
-        //     state,
-        //     city,
-        //     degree,
-        //     bankAccount,
-        //     appointments,
-        //     schedule,
-        //     likes,
-        //     dislikes
-        /////////////////////////////////////
+    
     const userProfInfo = getValue(userData.isProfessional)
 
     //console.log(userNormalInfo)
     //console.log(userProfInfo)
-    const showDataDiv='flex border-b-4 justify-between w-80';
-    const showDataSpan='capitalize mr-4 flex font-bold text-base';
+    const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
+    const showDataSpan='capitalize mr-4 font-bold text-base';
     const showDataP='text-sm font-normal ml-4';
     const popClass = `bg-white h-3/5 w-2/5 flex flex-col items-center 
                     justify-center rounded-2xl shadow-lg 
-                    ring-white ring-1 ring-offset-2 ring-offset-red-500	`
+                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
     /*
     professionalData:{
         matricula:'23-34-44-123-22-1a',
@@ -130,10 +107,6 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     </button>
                 */
                 }
-                <FaMarker
-                        className='font-lg text-red-300 hover:text-gray-600 cursor-pointer duration-500'
-                        onClick={editData}
-                    />
                 <PopContainer   trigger={popState}
                                 principalDiv={popClass}
                                 children={<EditDataComponent
@@ -150,14 +123,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                                 //console.log(`${elem} : ${userNormalInfo[elem]}`)
                                 let data=userNormalInfo[elem]
                                 return (
-                                    <div key={index+1} className='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between'>
                                         <ShowData   key={index} title={elem} 
                                                         data={data}
                                                         divClass={showDataDiv}
                                                         spanClass={showDataSpan} 
                                                         pClass={showDataP}
                                                 />
-                                    </div>
                                         )
                                     })
                                 }
@@ -180,35 +151,47 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 //})}
                 }
                 {
-                    (isProf && userInfo==='professionalInfo') && Object.keys(userProfInfo)?.map((elem,index)=>{
-                        return  <div key={index+1} className='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between'>
-                                    <span key={index+1*2} className='capitalize mr-4 font-bold text-base'>
-                                        {`${elem}  : `}
-                                    </span>
-                                    {
-                                        elem==='img' && 
-                                        <span key={index}>
-                                            'Imagen Cargada'
-                                        </span>
-                                    }
-                                    {
-                                        elem==='schedule' && 
-                                        <span className='flex flex-col'>
-                                            {/*userProfInfo[elem]*/}
-                                            <button
-                                                className='bg-gray-300 pl-2 pr-2 font-semibold rounded-xl cursor-pointer hover:bg-red-300 duration-500' onClick={()=>alert('pop up cambiar dias')}
-                                            >
-                                                Cambiar Dias Hábiles
-                                            </button>
-                                        </span>
-                                    }                                
-                                    <p key={index+2*3}>{(elem!=='img' && elem!=='schedule') && userProfInfo[elem]}</p>
-                                </div>
+                    (isProf && userInfo==='professionalInfo') 
+                            && Object.keys(userProfInfo)?.map((elem,index)=>{
+                                let data=userProfInfo[elem]
+                        return (
+                            <ShowData   key={index} title={elem} 
+                                            data={data}
+                                            divClass={showDataDiv}
+                                            spanClass={showDataSpan} 
+                                            pClass={showDataP}
+                                    />
+                                )
+                        
+                        
+                        // return  <div key={index+1} className='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between'>
+                        //             <span key={index+1*2} className='capitalize mr-4 font-bold text-base'>
+                        //                 {`${elem}  : `}
+                        //             </span>
+                        //             {
+                        //                 elem==='img' && 
+                        //                 <span key={index}>
+                        //                     'Imagen Cargada'
+                        //                 </span>
+                        //             }
+                        //             {
+                        //                 elem==='schedule' && 
+                        //                 <span className='flex flex-col'>
+                        //                     {/*userProfInfo[elem]*/}
+                        //                     <button
+                        //                         className='bg-gray-300 pl-2 pr-2 font-semibold rounded-xl cursor-pointer hover:bg-red-300 duration-500' onClick={()=>alert('pop up cambiar dias')}
+                        //                     >
+                        //                         Cambiar Dias Hábiles
+                        //                     </button>
+                        //                 </span>
+                        //             }                                
+                        //             <p key={index+2*3}>{(elem!=='img' && elem!=='schedule') && userProfInfo[elem]}</p>
+                        //         </div>
                     })
                 }
                 <button
                     className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit"
-                    onClick={()=>alert('pop up editar datos y post')}
+                    onClick={editData}
                 >
                     Editar Información
                 </button> 
