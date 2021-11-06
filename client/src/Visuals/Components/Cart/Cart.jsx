@@ -1,10 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import CartElement from "./CartElement";
+import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 export default function Cart(){
+
+const dispatch = useDispatch();
+let history = useHistory();
     
     const createOrder = (data,actions) => {
         return actions.order.create({
@@ -24,7 +29,8 @@ export default function Cart(){
 //////////////////// FIN PP
 
 function handlePay(){
-    window.location.href = "/"
+    dispatch(removeFromCartAll())
+    history.push('./profesionales')
     console.log("el pago ha sido exitoso");
 }
   

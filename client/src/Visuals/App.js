@@ -53,6 +53,9 @@ function App() {
         <Route path="/carrito">
           <Cart/>
         </Route>
+        <Route path="/soporte">
+          <Supports/>
+        </Route>
       </Switch>
         <Footer/>
     </div>
