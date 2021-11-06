@@ -28,5 +28,6 @@ export const SET_ADMIN = 'SET_ADMIN'
 
 export const REMOVE_FROM_CART_ALL = 'REMOVE_FROM_CART_ALL';
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
+export const GET_PROF_SCHEDULE= "GET_PROF_SCHEDULE"
 
 export const GOOGLE_ID = '75669810329-vstjoo2cmckb7lhp5nrthdej5bm8cpk6.apps.googleusercontent.com'
