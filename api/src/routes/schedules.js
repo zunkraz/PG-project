@@ -3,6 +3,7 @@ const deleteSchedules = require('../controllers/functions/deleteSchedules');
 const getAllSchedules = require('../controllers/functions/getAllSchedules');
 const getAvailableSchedules = require('../controllers/functions/getAvailableSchedules');
 const getSchedulesById = require('../controllers/functions/getSchedulesById');
+const postManySchedules = require('../controllers/functions/postManySchedules');
 const postSchedule = require('../controllers/functions/postSchedule');
 const setAvailability = require('../controllers/functions/setAvailability');
 
@@ -46,7 +47,12 @@ router.put('/:id', (req, res, next) => {
         .catch(err => next(err))
 });
 
-
+router.post('/many', (req, res, next) => {
+    const body = req.body;
+    postManySchedules(body)
+        .then(result => res.json(result))
+        .catch(err => next(err))
+});
 
 
 module.exports = router;
