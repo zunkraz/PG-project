@@ -8,16 +8,15 @@ import CartIcon from './CartIcon'
 
 const Nav = () => {
 
-    let login = useSelector(state=>state.sessionReducer.status.token)
-    let username = useSelector(state=>state.sessionReducer.status.username)
-    let dispatch = useDispatch()
+    const loggedUser = useSelector(state=>state.sessionReducer.status)
+    const dispatch = useDispatch()
     
 
     function Logout(){
         dispatch(cleanLoginCheck())
     }
 
-    let btns = !login ? [{
+    let btns = !loggedUser.token ? [{
             title:'Crea tu cuenta',
             url:'/registro'
         },
@@ -27,13 +26,19 @@ const Nav = () => {
         }] : 
         [{
             title:'Mi perfil',
-            url: `/miperfil/${username}`
+            url: `/miperfil/${loggedUser.username}`
         }]
-    btns = [
+    btns = [{
+            title: 'Soporte',
+            url: '/soporte'
+        },
         {
             title: 'Profesionales',
             url:'/profesionales'
-        },...btns]
+        },
+        ...btns]
+
+    btns = loggedUser.isAdmin ? [{title: 'Panel de Admin', url:'/admin'},...btns] : [...btns]
 
     let items = btns.map( (data,i) => {
         return <li key={i}><Link to={data.url}>{data.title}</Link></li>
@@ -61,7 +66,7 @@ const Nav = () => {
                             uk-visible@m"
                 >
                     {items}
-                    {login && 
+                    {loggedUser.token && 
                         <li>
                             <Link to='/' onClick={Logout}>Salir</Link>
                         </li>}
@@ -88,7 +93,7 @@ const Nav = () => {
                         <ul className="uk-nav uk-nav-default">  
                             <li className="uk-nav-header">Menu</li>
                             {items}         
-                            {login && 
+                            {loggedUser.token && 
                                 <li>
                                     <Link to='/' onClick={Logout}>Salir</Link>
                                 </li>}

@@ -42,6 +42,10 @@ const user = new Schema(
             type: Boolean,
             default: true 
         },
+        googleAccount: { //Saber si se logueó con google
+            type: Boolean,
+            default: false
+        },
         country: {
             type: Schema.Types.ObjectId, ref: 'countries'
         },

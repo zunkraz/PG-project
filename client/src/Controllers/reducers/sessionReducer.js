@@ -1,5 +1,14 @@
 import {
-    CHECK_LOGIN, CLEAN_USER_LOGIN,REMOVE_FROM_CART,ADD_TO_CART, SET_ERROR, SET_ADMIN
+    CHECK_LOGIN,
+     CLEAN_USER_LOGIN,
+     REMOVE_FROM_CART,
+     ADD_TO_CART,
+
+     REMOVE_FROM_CART_ALL,
+     SET_ERROR, 
+     SET_ADMIN,
+
+
 } from './../../constants';
 
 const initialState = {
@@ -47,6 +56,7 @@ export default function sessionReducer(state=initialState, {type,payload}){
                 }
             }
         case SET_ADMIN:
+            console.log('set admin')
             return {
                 ...state,
                 status:{
@@ -65,7 +75,11 @@ export default function sessionReducer(state=initialState, {type,payload}){
                 ...state,
                 cart: state.cart.filter(a => a.appointment.date !== payload)   
             };
-        
+        case REMOVE_FROM_CART_ALL:
+            return {
+                ...state,
+                cart: [],
+            }
         case 'persist/REHYDRATE':
             if(payload){
                 return {

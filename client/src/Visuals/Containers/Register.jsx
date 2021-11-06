@@ -3,7 +3,7 @@ import RegisterFormUser from "../Components/Register/RegisterFormUser";
 import RegisterFormPro from "../Components/Register/RegisterFormPro";
 import { useDispatch } from "react-redux";
 import { getAllUsers } from "../../Controllers/actions/userActions";
-import { getAllCategories } from "../../Controllers/actions/constantInfoActions";
+import { getAllCategories, getAllCountries } from "../../Controllers/actions/constantInfoActions";
 
 export default function Register(){
     const [active, setActive] = useState("cliente");
@@ -12,6 +12,7 @@ export default function Register(){
     useEffect(() => {
         dispatch(getAllUsers())
         dispatch(getAllCategories())
+        dispatch(getAllCountries())
         //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
