@@ -6,7 +6,7 @@ import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardC
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
-import Scheduler from './Scheduler'
+//import Scheduler from './Scheduler'
 
 function UserDashboard({userData}) {
     console.log(userData)
@@ -56,14 +56,7 @@ function UserDashboard({userData}) {
             <div className="wrapper bg-professional-title">
                 <div className="wrapper padd-lg bg-color-light-a80">
                     <section>
-                        {/* Title Container */}
                         <div className="col-1-1@xl col-1-1@lg col-1-1@md">
-                            {/*<div className='flex flex-col'>*/}
-                                {/*<div className='text-red-400 font-sans text-4xl h-28
-                                            text-center text-opacity-900 uppercase 
-                                            font-extrabold items-center flex justify-center
-                                            border-b-8 border-double border-red-300 ml-14 mr-14 mb-4 '
-                                        >*/}
                             <div className='font-main font-2x'>
                                 {userData.isProfessional?
                                 <div>
@@ -82,20 +75,15 @@ function UserDashboard({userData}) {
             </div>
             <div className="wrapper mrg-lg-t">
                 <section>
-                    {/* Container: Image, Info, Schedule */}
                     <div className='col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs' data-uk-height-match=".normalize">
-                        {/* Container: Image */}
                         <div className='col-1-5@xl col-1-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t3-'>
-                            {/*<div className='flex flex-col'>*/}
-                            {/*<div className='flex justify-around items-start  pt-4 miPerfilCustomHeight'>*/}
                             <div className='padd-lg bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
                                 {
                                     userData.isProfessional && 
-                                    <PersonalDashboardContainer user={userData}/*user={flag?user:userPro}*//>
+                                    <PersonalDashboardContainer user={userData}/>
                                 }
                                 {
                                     userData.isProfessional && 
-                                    /*<button className='bg-green-300 w-80 p-1 font-lg font-bold uppercase' onClick={changeTipFlag}>*/
                                     <button 
                                         className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
                                         onClick={changeTipFlag}>
@@ -104,12 +92,11 @@ function UserDashboard({userData}) {
                                 }
                             </div>
                         </div>
-                        {/* Container: Info */}
                         <div className='col-2-5@xl col-3-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg'>
                             <div className='padd-lg bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
                                 <PersonalInformationContainer
-                                    personalInfo={userData /*flag?user.personalData:userPro.personalData*/}
-                                    professionalData={userData.isProfessional && true /*flag===false && userPro.professionalData*/}
+                                    userData={userData}
+                                    isProf={userData.isProfessional && true }
                                     changeUserState={changeUserState}
                                     userInfo={userInfo}
                                 />
@@ -125,12 +112,6 @@ function UserDashboard({userData}) {
                         <div className='col-1-5@xl col-2-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t6-'>
                             <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
                                 {tip && <AddPostComponent addPost={addPost}/>}
-                                {/*   
-                                    userData.isProfessional &&
-                                        <h5 className='flex justify-center uppercase font-semibold tracking-widest text-gray-500 bg-gray-200'>
-                                            Post Publicados
-                                        </h5>
-                                */}
                                 {userData.isProfessional && <ProfessionalPostsContainer posts={tipsArray}/>}
                             </div>
                         </div>
