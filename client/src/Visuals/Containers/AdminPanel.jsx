@@ -43,8 +43,8 @@ function AdminPanel(){
     setButtons({...buttonsOff,[e.target.innerText]:buttonSelected});
     setShownData(e.target.innerText);
   }
-  //const userOnPage = useSelector(state=>state.sessionReducer.status); descomentar cuando ya este implementado
-  const userOnPage = {isAdmin:true};
+  const userOnPage = useSelector(state=>state.sessionReducer.status);
+  //const userOnPage = {isAdmin:true};
 
   if (userOnPage.isAdmin) return (
     <div className="min-h-screen">
