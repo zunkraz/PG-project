@@ -1,49 +1,94 @@
 
 import React from 'react'
 import { FaMarker } from "react-icons/fa";
+import BigButton from '../BigButton';
+import ShowData from './ShowData';
 
 
 
-function PersonalInformationContainer({personalInfo, changeUserState, userInfo, professionalData}) {
+function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
 
-    //console.log(personalInfo)
+    console.log(userData)
     //console.log(userInfo)
 
+// {
+        // CONTROL 
+        //     isProfessional,
+        //     isAdmin,
+        //     isActive, CORREO PERSONAL 
+        ///////////////////////////
+
+
+        // PERSONAL
+        //     name,,
+        //     lastname,
+        //     username,
+        //     email,
+        //     password,
+        //     birthdate,
+        /////////////////////////////
+// },
     const userNormalInfo={
-        username: personalInfo.username,
-        name: personalInfo.name,
-        lastname: personalInfo.lastname,
-        email: personalInfo.email,
+        username : userData.username,
+        nombre : userData.name,
+        apellido : userData.lastname,
+        email : userData.email,
+        cumpleaños : userData.birthdate
     }
     
     const getValue=(data)=>{
         if(data){
             console.log(data)
             return{
-                profession: personalInfo.category.name,
-                country: personalInfo.country.name,
-                professionalRegistration: personalInfo.professionalRegistration,
-                appointments: personalInfo.appointments,
-                img: personalInfo.img,
-                schedule: personalInfo.schedule
+                profession: userData.category.name,
+                professionalRegistration: userData.professionalRegistration,
+                appointments: userData.appointments,
+                pais : userData.country.name,
+                estado : userData.state,
+                img: userData.img,
+                schedule: userData.schedule
             }
         } 
         return {msg:'sin datos'}
     }
-
-    const userProfInfo = getValue(personalInfo.isProfessional)
+        // PROFESIONAL
+        //     isVerified, PROFESIONAL VERIFICADO
+        //     img,
+        //     professionalRegistration, Numero de Matricula
+        //     regUrl, link de registro de título o certificado
+        //     biography,
+        //     title,
+        //     institute,
+        //     category,
+        //     country,
+        //     state,
+        //     city,
+        //     degree,
+        //     bankAccount,
+        //     appointments,
+        //     schedule,
+        //     likes,
+        //     dislikes
+        /////////////////////////////////////
+    const userProfInfo = getValue(userData.isProfessional)
 
     //console.log(userNormalInfo)
     //console.log(userProfInfo)
-
-
+    const showDataDiv='flex border-b-4 justify-between w-80';
+    const showDataSpan='capitalize mr-4 flex font-bold text-base'
+    const showDataP='text-sm font-normal ml-4'
     /*
     professionalData:{
-            matricula:'23-34-44-123-22-1a',
-            titulo:'Engineer Game Desing',
-            bankAccount: 'olisadfbn1231248484nsadfj'
-        }
+        matricula:'23-34-44-123-22-1a',
+        titulo:'Engineer Game Desing',
+        bankAccount: 'olisadfbn1231248484nsadfj'
+    }
     */
+    const editData = (elem, data)=>{
+        console.log(elem)
+        alert(`pop up editar ${elem} => datos y post ${data}`)
+    }
+
     // const arr = Object.keys(personalInfo)
     // const arr2 = professionalData && Object.keys(professionalData)
 
