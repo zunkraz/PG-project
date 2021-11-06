@@ -1,33 +1,34 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { FaMarker } from "react-icons/fa";
 import BigButton from '../BigButton';
+import PopContainer from '../PopContainer';
+import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
 
 
-
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
-
+    
     console.log(userData)
-    //console.log(userInfo)
+    
+    const [popState, setPopState] = useState(false)
+    // {
+            // CONTROL 
+            //     isProfessional,
+            //     isAdmin,
+            //     isActive, CORREO PERSONAL 
+            ///////////////////////////
 
-// {
-        // CONTROL 
-        //     isProfessional,
-        //     isAdmin,
-        //     isActive, CORREO PERSONAL 
-        ///////////////////////////
 
-
-        // PERSONAL
-        //     name,,
-        //     lastname,
-        //     username,
-        //     email,
-        //     password,
-        //     birthdate,
-        /////////////////////////////
-// },
+            // PERSONAL
+            //     name,,
+            //     lastname,
+            //     username,
+            //     email,
+            //     password,
+            //     birthdate,
+            /////////////////////////////
+    // },
     const userNormalInfo={
         username : userData.username,
         nombre : userData.name,
@@ -35,7 +36,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         email : userData.email,
         cumpleaños : userData.birthdate
     }
-    
+
     const getValue=(data)=>{
         if(data){
             console.log(data)
@@ -75,8 +76,11 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     //console.log(userNormalInfo)
     //console.log(userProfInfo)
     const showDataDiv='flex border-b-4 justify-between w-80';
-    const showDataSpan='capitalize mr-4 flex font-bold text-base'
-    const showDataP='text-sm font-normal ml-4'
+    const showDataSpan='capitalize mr-4 flex font-bold text-base';
+    const showDataP='text-sm font-normal ml-4';
+    const popClass = `bg-white h-3/5 w-2/5 flex flex-col items-center 
+                    justify-center rounded-2xl shadow-lg 
+                    ring-white ring-1 ring-offset-2 ring-offset-red-500	`
     /*
     professionalData:{
         matricula:'23-34-44-123-22-1a',
@@ -84,11 +88,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         bankAccount: 'olisadfbn1231248484nsadfj'
     }
     */
-    const editData = (elem, data)=>{
-        console.log(elem)
-        alert(`pop up editar ${elem} => datos y post ${data}`)
+    const editData=()=>{
+        setPopState(!popState)
     }
 
+    // const arr = Object.keys(personalInfo)
+    // const arr2 = professionalData && Object.keys(professionalData)
     // const arr = Object.keys(personalInfo)
     // const arr2 = professionalData && Object.keys(professionalData)
 
@@ -105,12 +110,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     Datos Personales
                 </button>
                 {
-                    professionalData && 
+                    isProf && 
                     <button 
                         name='professionalInfo'
                         className='mrg-lg-l padd-md-tb padd-lg-lr font-main user-dashboard-info-tab-inactive'
                         onClick={changeUserState}>
-                       Datos Profesionales
+                        Datos Profesionales
                         
                     </button>
                 }
@@ -125,12 +130,16 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     </button>
                 */
                 }
-                {/*
                 <FaMarker
-                    className='font-lg text-red-300 hover:text-gray-600 cursor-pointer duration-500'
-                    onClick={()=>alert('pop up editar datos y post')}
-                />
-                */}
+                        className='font-lg text-red-300 hover:text-gray-600 cursor-pointer duration-500'
+                        onClick={editData}
+                    />
+                <PopContainer   trigger={popState}
+                                principalDiv={popClass}
+                                children={<EditDataComponent
+                                        onCancel={editData}
+                                    />}
+                    />
             </div>            
             <div className='user-dashboard-info-tabs-content border-color-dark-a20 padd-lg'>
                 {/*<p>{Object.keys(userNormalInfo)}</p>*/}
@@ -139,46 +148,30 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                         {
                             Object.keys(userNormalInfo)?.map((elem, index)=>{
                                 //console.log(`${elem} : ${userNormalInfo[elem]}`)
+                                let data=userNormalInfo[elem]
                                 return (
                                     <div key={index+1} className='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between'>
-                                        {
-                                            elem==='username' &&
-                                            <span key={index+1*2} className='text-bold'>
-                                                {`Nombre de Usuario : `}
-                                            </span>
-                                        }
-                                        {
-                                            elem==='name' &&
-                                            <span key={index+1*2} className='text-bold'>
-                                                {`Nombre : `}
-                                            </span>
-                                        }
-                                        {
-                                            elem==='lastname' &&
-                                            <span key={index+1*2} className='text-bold'>
-                                                {`Apellido : `}
-                                            </span>
-                                        }
-                                        {
-                                            elem==='email' &&
-                                            <span key={index+1*2} className='text-bold'>
-                                                {`Correo : `}
-                                            </span>
-                                        }
-                                        <p key={index+1*3} className='font-normal'>
-                                            {userNormalInfo[elem]}
-                                        </p>
+                                        <ShowData   key={index} title={elem} 
+                                                        data={data}
+                                                        divClass={showDataDiv}
+                                                        spanClass={showDataSpan} 
+                                                        pClass={showDataP}
+                                                />
                                     </div>
+                                        )
+                                    })
+                                }
+                            </div>
                                     /* <p key={index}>{elem==='img'?'Imagen Cargada':userNormalInfo[elem]}</p></span> */
                                     /*return <span key={index} className='capitalize mr-4 
                                         font-bold text-base'>{`${elem}  : `}
                                     <p key={index}>{elem==='img'?'Imagen Cargada':userNormalInfo[elem]}</p></span>*/
-                                )
-                            })
-                        }
-                    </div>
-                }
-                {
+                //                 )
+                //             })
+                //         }
+                //     </div>
+                // }
+                //{
                 //arr?.map((elem,index)=>{
                 //    return  <div key={index} className='flex border-b-4'>
                 //                <span key={index} className='capitalize mr-4 font-bold text-base'>{`${elem}  : `}</span>
@@ -187,7 +180,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 //})}
                 }
                 {
-                    (professionalData && userInfo==='professionalInfo') && Object.keys(userProfInfo)?.map((elem,index)=>{
+                    (isProf && userInfo==='professionalInfo') && Object.keys(userProfInfo)?.map((elem,index)=>{
                         return  <div key={index+1} className='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between'>
                                     <span key={index+1*2} className='capitalize mr-4 font-bold text-base'>
                                         {`${elem}  : `}
