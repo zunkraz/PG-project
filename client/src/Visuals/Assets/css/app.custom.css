@@ -142,6 +142,15 @@ select.pg-custom:focus {
     background-size: cover;
 }
 
+.bg-professional-title {
+	background: 
+		url('https://images.pexels.com/photos/301930/pexels-photo-301930.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1920') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .uk-dotnav > * > * {
 	display: block;
 	box-sizing: border-box;
@@ -157,6 +166,36 @@ select.pg-custom:focus {
 	transition: 0.2s ease-in-out;
 	transition-property: background-color, border-color;
 }
+
+.user-dashboard-info-tabs-content {
+    margin-top: -1px;
+    background-color: var(--color-light);
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+.user-dashboard-info-tab-active {
+	background-color: var(--color-light);
+    border-top: solid 1px var(--color-dark-a20);
+    border-left: solid 1px var(--color-dark-a20);
+    border-right: solid 1px var(--color-dark-a20);
+	color: inherit!important;  
+}
+
+.user-dashboard-info-tab-inactive {
+    margin-top: 1px;
+	background-color: var(--color-extra4-a60);
+    border-top: solid 1px var(--color-dark-a20);
+    border-left: solid 1px var(--color-dark-a20);
+    border-right: solid 1px var(--color-dark-a20);
+	color: inherit!important;  
+}
+.user-dashboard-info-tab-inactive:hover {
+	background-color: var(--color-extra4-a20);
+	color: var(--color-primary)!important;  
+}
+
 /* Hover + Focus */
 .uk-dotnav > * > :hover,
 .uk-dotnav > * > :focus {

@@ -135,3 +135,36 @@
     border: solid 1px var(--color-main);
 	color: var(--color-dark)!important;   
 }
+/* Action User Dashboard Add Post */
+.action-add-post {
+	background-color: var(--color-light);;
+    border: solid 2px var(--color-success);
+	color: var(--color-success)!important;    
+}
+.action-add-post:hover {
+	background-color: var(--color-success);
+    border: solid 2px var(--color-success);
+	color: var(--color-light)!important;   
+}
+
+.action-user-dashboard-cancel {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-danger);
+	color: var(--color-danger)!important;    
+}
+.action-user-dashboard-cancel:hover {
+	background-color: var(--color-danger);
+    border: solid 2px var(--color-danger);
+	color: var(--color-light)!important;   
+}
+
+.action-user-dashboard-edit {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-primary);
+	color: var(--color-primary)!important;    
+}
+.action-user-dashboard-edit:hover {
+	background-color: var(--color-primary);
+    border: solid 2px var(--color-primary);
+	color: var(--color-light)!important;   
+}
