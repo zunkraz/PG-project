@@ -17,7 +17,7 @@ function ReviewDashboard(){
   }
   useEffect(()=>{
     dispatch(getAdminReviews());
-  },[reviewDeleted,reviewModified]);
+  },[reviewDeleted,reviewModified,dispatch]);
   useEffect(()=>{
     if(!allReviews.length) dispatch(getAdminReviews());
     // eslint-disable-next-line react-hooks/exhaustive-deps

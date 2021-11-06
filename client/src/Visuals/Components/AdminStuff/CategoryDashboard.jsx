@@ -18,8 +18,13 @@ function CategoryDashboard(){
     if(window.confirm(`Desea resetear la cantidad de búsquedas de ${name}?`)) dispatch(putAdminCategory(id,{searchCount: 0}));
   }
   useEffect(()=>{
-    if(!allCategories.length) dispatch(getAllCategories());
+    dispatch(getAllCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[catDeleted,catModified,catPosted]);
+  useEffect(()=>{
+    if(!allCategories.length) dispatch(getAllCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   return (
       <div className="flex items-start mrg-2x-b">

@@ -15,9 +15,11 @@ function CountryDashboard(){
   }
   useEffect(()=>{
     dispatch(getAllCountries());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[countriesDel,countriesPost]);
   useEffect(()=>{
     if(!allCountries.length) dispatch(getAllCountries());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
 

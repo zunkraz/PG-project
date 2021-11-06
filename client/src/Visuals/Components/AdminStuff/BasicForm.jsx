@@ -1,11 +1,12 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
-import {postAdminCategory,postAdminCountry,postAdminTip} from "../../../Controllers/actions/adminActions";
+import {useDispatch, useSelector} from "react-redux";
+import {postAdminCategory,postAdminCountry,postAdminTip,putAdminCategory} from "../../../Controllers/actions/adminActions";
 
 
 function BasicForm({component}){
   const dispatch = useDispatch();
   const allInfo = {categories:{name:'',searchCount:0,img:''},countries:{name:''},tips:{text:'',isApproved:true}};
+  const allCategories = useSelector(state=>state.constantInfoReducer.categories);
   const [info,setInfo] = useState(allInfo[component]);
 
   function handleChange(ev){
@@ -13,8 +14,13 @@ function BasicForm({component}){
   }
   function handleSubmitCat(ev){
     ev.preventDefault();
-    if(info.name===''||info.img==='') return;
-    (postAdminCategory(info));
+    if(!allCategories.find(c=>c.name===info.name) && (info.name===''||info.img==='')) dispatch(postAdminCategory(info));
+    else {
+      let id = allCategories.filter(c => c.name === info.name)[0]._id;
+      let data = (info.img!=='') ? {img: info.img} : {};
+      data = (info.searchCount===0)? data : {...data,searchCount:info.searchCount};
+      dispatch(putAdminCategory(id, data))
+    }
     setInfo(allInfo[component]);
   }
   function handleSubmitCountry(ev){
@@ -31,35 +37,35 @@ function BasicForm({component}){
     setInfo(allInfo[component]);
   }
   if (component==='categories') return (
-  <form className="m-5 border-2 width-20 bg-gray-200 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitCat(ev)}>
+  <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitCat(ev)}>
     <label className="m-2" htmlFor={"name"}>Nombre</label>
     <input className="padd-md-l" name="name" type={"text"} value={info.name} onChange={(ev)=>handleChange(ev)} required={true}/>
     <label className="m-2" htmlFor={"searchCount"}>Cantidad de búsquedas</label>
     <input className="padd-md-l" name="searchCount" type="number" step={1} min={0} value={info.searchCount} onChange={ev=>handleChange(ev)} required={true}/>
     <label className="m-2" htmlFor={"img"}>URL imagen</label>
-    <input className="padd-md-l" name="img" type="url" value={info.img} onChange={(ev)=>handleChange(ev)} required={true}/>
-    <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a20 hover:bg-gray-400" value="Agregar categoría"/>
+    <input className="padd-md-l" name="img" type="url" value={info.img} onChange={(ev)=>handleChange(ev)}/>
+    <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-300" value="Agregar categoría"/>
   </form>);
 
   if (component==='tips') return (
-    <form className="m-5 border-2 width-20 bg-gray-200 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitTip(ev)}>
+    <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitTip(ev)}>
       <label className="m-2" htmlFor={"name"}>Nuevo tip: </label><br/>
-      <textarea className="uk-width" name="text" value={info.text} onChange={(ev)=>handleChange(ev)} required={true}/>
-      <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a20 hover:bg-gray-400" value="Agregar tip"/>
+      <textarea className="form-textarea mt-1 block w-full" name="text" value={info.text} onChange={(ev)=>handleChange(ev)} required={true}/>
+      <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-300" value="Agregar tip"/>
     </form>);
 
   if (component==='reviews') return (
-    <form className="m-5 border-2 width-20 bg-gray-200 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitTip(ev)}>
+    <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitTip(ev)}>
       <label className="m-2" htmlFor={"name"}>Nuevo review: </label><br/>
-      <textarea className="uk-width" name="text" value={info.text} onChange={(ev)=>handleChange(ev)} required={true}/>
-      <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a20 hover:bg-gray-400" value="Agregar tip"/>
+      <textarea className="form-textarea mt-1 block w-full" name="text" value={info.text} onChange={(ev)=>handleChange(ev)} required={true}/>
+      <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-300" value="Agregar tip"/>
     </form>);
 
   if (component==='countries') return (
-    <form className="m-5 border-2 width-20 bg-gray-200 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitCountry(ev)}>
+    <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitCountry(ev)}>
       <label className="m-2" htmlFor={"name"}>Nombre</label>
       <input className="padd-md-l" name="name" type={"text"} value={info.name} onChange={(ev)=>handleChange(ev)} required={true}/>
-      <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a20 hover:bg-gray-400" value="Agregar país"/>
+      <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-400" value="Agregar país"/>
     </form>);
 
 }

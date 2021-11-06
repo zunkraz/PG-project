@@ -16,6 +16,6 @@ const pReducer = persistReducer(persistConfig,reducer)
 export const store = createStore(pReducer, composeTask(applyMiddleware(thunk)));
 
 export const persistor = persistStore(store)
-
-export default {persistor, store}
+const finalStore = {persistor, store}
+export default finalStore;
 // export default store;

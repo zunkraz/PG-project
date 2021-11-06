@@ -19,7 +19,7 @@ function TipDashboard(){
   }
   useEffect(()=>{
     dispatch(getAdminTips());
-  },[tipPosted,tipDeleted,tipModified]);
+  },[tipPosted,tipDeleted,tipModified,dispatch]);
   useEffect(()=>{
     if(!allTips.length) dispatch(getAdminTips());
     // eslint-disable-next-line react-hooks/exhaustive-deps

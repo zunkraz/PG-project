@@ -7,6 +7,8 @@ import CategoryDashboard from "../Components/AdminStuff/CategoryDashboard";
 import CountryDashboard from "../Components/AdminStuff/CountryDashboard";
 import TipDashboard from "../Components/AdminStuff/TipDashboard";
 import ReviewDashboard from "../Components/AdminStuff/ReviewDashboard";
+import AppointmentDashboard from "../Components/AdminStuff/AppointmentDashboard";
+import {Redirect} from "react-router-dom";
 
 function AdminPanel(){
   const dispatch = useDispatch();
@@ -42,9 +44,9 @@ function AdminPanel(){
     setShownData(e.target.innerText);
   }
   //const userOnPage = useSelector(state=>state.sessionReducer.status); descomentar cuando ya este implementado
-  const userLoggedIn = {isAdmin:true};
+  const userOnPage = {isAdmin:true};
 
-  if (userLoggedIn.isAdmin) return (
+  if (userOnPage.isAdmin) return (
     <div className="min-h-screen">
       <h1 className='uk-padding text-bold font-main font-1x'>Panel de Administrador</h1>
       <div style={divStyle}>
@@ -57,13 +59,13 @@ function AdminPanel(){
       </div>
       {shownData==="Users" && <UserTable usersAdmin={usersAdmin}/>}
       {shownData==="Categories" && <CategoryDashboard />}
-      {shownData==="Appointments" && <div>Appointments</div>}
+      {shownData==="Appointments" && <AppointmentDashboard />}
       {shownData==="Countries" && <CountryDashboard />}
       {shownData==="Tips" && <TipDashboard />}
       {shownData==="Reviews" && <ReviewDashboard />}
     </div>);
   else {
-    return <div><h1 className='uk-padding text-bold font-main font-1x'>404</h1></div>
+    return <Redirect to={'/'}/>
   }
 }
 
