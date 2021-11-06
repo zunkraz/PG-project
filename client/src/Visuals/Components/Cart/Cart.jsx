@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import CartElement from "./CartElement";
 import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
+import { setAvailability } from "../../../ApiReq/schedule";
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 export default function Cart(){
@@ -29,6 +30,9 @@ let history = useHistory();
 //////////////////// FIN PP
 
 function handlePay(){
+    order.forEach(e=>{
+        setAvailability(e.id)
+    })
     dispatch(removeFromCartAll())
     history.push('./profesionales')
     console.log("el pago ha sido exitoso");
