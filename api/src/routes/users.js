@@ -1,4 +1,5 @@
 const router = require ('express').Router();
+const passport = require('passport');
 const { userCreate, getUsersToForm, userDelete, userUpdate, getUserFullInfo } = require('../controllers/index')
 
 router.post('/', (req, res, next) => {
@@ -21,14 +22,14 @@ router.get('/:username', (req, res, next) => {
         .catch(err => next(err))
 });
 
-router.delete('/:username',(req,res,next)=>{
+router.delete('/:username', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
     let {username} = req.params;
     userDelete(username)
       .then(result => res.json(result))
       .catch(err => next(err))
 });
 
-router.put ('/:username',(req,res,next)=>{
+router.put ('/:username', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
     let {username} = req.params
     let updateInfo = req.body
     userUpdate(username,updateInfo)
