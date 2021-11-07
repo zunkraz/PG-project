@@ -15,8 +15,6 @@ import { putUser } from '../../../Controllers/actions/userActions';
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
     
-    console.log(userData)
-    
     const [popState, setPopState] = useState(false)
     const history = useHistory()
     // {
@@ -110,10 +108,10 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     title: e.target.value
                 })
                 break;
-            case 'intitute':
+            case 'institute':
                 setpostProfData({
                     ...postProfData,
-                    intitute: e.target.value
+                    institute: e.target.value
                 })
                 break;
             case 'bankAccount':
@@ -157,7 +155,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     }
     const sendProfData=()=>{
         setPopState(!popState)
-        updateUserData({username: userData.username, body: postProfData})
+        dispatch(putUser(userData.username, {...postProfData, token}))
         Swal.fire(
             'Datos enviados!',
             'Pronto vera los cambios efectuados',

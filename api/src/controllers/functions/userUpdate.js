@@ -3,7 +3,7 @@ const User = require('../../models/User');
 const bcrypt = require('bcrypt');
 
 module.exports = (username,updateInfo) => {
-  if(updateInfo.password.length){
+  if(updateInfo.password){
     return bcrypt.hash(updateInfo.password,10).then(r=>{
       updateInfo.password=r
       return User.findOneAndUpdate({username},{

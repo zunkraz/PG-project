@@ -85,7 +85,7 @@ function EditDataComponent(props) {
                             <EditInputComponent
                                     key='Universidad'
                                     label='Universidad'
-                                    inputName='intitute'
+                                    inputName='institute'
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
