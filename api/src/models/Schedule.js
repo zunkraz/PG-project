@@ -21,6 +21,9 @@ const schedule = new Schema(
             },
             shortcut:{
                 type: Number
+            },
+            datefull:{
+                type:String
             }
         },
         availability: {
