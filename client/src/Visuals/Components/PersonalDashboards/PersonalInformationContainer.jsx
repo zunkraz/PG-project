@@ -7,6 +7,8 @@ import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
 import Swal from 'sweetalert2'
 import { updateUserData } from '../../../ApiReq/users';
+import { useDispatch, useSelector } from 'react-redux'
+import { putUser } from '../../../Controllers/actions/userActions';
 
 
 
@@ -57,7 +59,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         name : userData.name,
         lastname : userData.lastname,
         birthdate : userData.birthdate,
-        password: userData.password,
+        password: '',
     })
 
     const [postProfData, setpostProfData] = useState({
@@ -139,12 +141,15 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     console.log(postPersData)
     console.log(postProfData)
+    
+    const token = useSelector(state => state.sessionReducer.status.token)
+    const dispatch = useDispatch()
 
     const sendPersData=()=>{
         setPopState(!popState)
-        updateUserData(postPersData)
+        dispatch(putUser(userData.username, {...postPersData, token}))
         Swal.fire(
-            'Datos enviados!',
+            'Datos enviados! personal',
             'Pronto vera los cambios efectuados',
             'success'
         )
@@ -152,7 +157,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     }
     const sendProfData=()=>{
         setPopState(!popState)
-        updateUserData(postProfData)
+        updateUserData({username: userData.username, body: postProfData})
         Swal.fire(
             'Datos enviados!',
             'Pronto vera los cambios efectuados',
@@ -165,14 +170,16 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         setPopState(!popState)
     }
 
-    // CLASS ///////////////
-    
+    /////////////// CLASS ///////////////
+
     const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
     const showDataSpan='capitalize mr-4 font-bold text-base';
     const showDataP='text-sm font-normal ml-4';
-    const popClass = `bg-white bg-opacity-95 mt-20 h-4/5 w-2/5 flex flex-col items-center 
+    const popClass = `bg-white mt-2 h-4/5 w-2/5 flex flex-col items-center 
                     justify-center rounded-lg shadow-lg 
                     ring-white ring-4 ring-offset-1 ring-offset-red-500	`
+
+    /////////////// CLASS ///////////////
 
     return (
         <div className=''>
@@ -193,7 +200,6 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                         className='mrg-lg-l padd-md-tb padd-lg-lr font-main user-dashboard-info-tab-inactive'
                         onClick={changeUserState}>
                         Datos Profesionales
-                        
                     </button>
                 }
                 <PopContainer   trigger={popState}
@@ -206,7 +212,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                                         userInfo={userInfo}
                                     />}
                     />
-            </div>            
+            </div>
             <div className='user-dashboard-info-tabs-content border-color-dark-a20 padd-lg'>
                 {userInfo==='personalInfo' && 
                     <div className='flex flex-col'>

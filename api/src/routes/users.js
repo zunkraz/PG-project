@@ -25,16 +25,16 @@ router.get('/:username', (req, res, next) => {
 router.delete('/:username', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
     let {username} = req.params;
     userDelete(username)
-      .then(result => res.json(result))
-      .catch(err => next(err))
+        .then(result => res.json(result))
+        .catch(err => next(err))
 });
 
 router.put ('/:username', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
     let {username} = req.params
     let updateInfo = req.body
     userUpdate(username,updateInfo)
-      .then(result => res.json(result))
-      .catch(err => next(err))
+        .then(result => res.json(result))
+        .catch(err => next(err))
 });
 
 module.exports = router; 

@@ -54,7 +54,7 @@ function UserDashboard({userData}) {
         '2 horas con Ana - Artista',
         '1/2 hora con Romina - Abogada'
     ]
-
+    
     const pendientePro = [
         '30 minutos con Raul',
         '2 horas con Marcos',
@@ -62,7 +62,8 @@ function UserDashboard({userData}) {
         '2 horas con Rocio',
         '30 minutos con Claudio'
     ]
-    const popClass=`bg-white mt-20 h-4/5 w-2/5 flex flex-col items-center 
+    
+    const popClass=`bg-white mt-2 h-4/5 w-2/5 flex flex-col items-center 
                     justify-center rounded-lg shadow-lg
                     ring-white ring-4 ring-offset-1 ring-offset-red-500	`
     

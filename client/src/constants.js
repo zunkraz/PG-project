@@ -35,6 +35,7 @@ export const DATA_NOT_FOUND = 'DATA_NOT_FOUND';
 
 export const SET_ERROR = 'SET_ERROR'
 export const SET_ADMIN = 'SET_ADMIN'
+export const PUT_USER = 'PUT_USER'
 
 
 export const REMOVE_FROM_CART_ALL = 'REMOVE_FROM_CART_ALL';

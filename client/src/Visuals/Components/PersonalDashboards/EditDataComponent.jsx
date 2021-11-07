@@ -20,6 +20,7 @@ function EditDataComponent(props) {
                 {props.userInfo==='personalInfo'&&
                     <div className='flex flex-col h-64 justify-around w-96 max-h-72'>
                         <EditInputComponent
+                                    key='#Nombre'
                                     label='Nombre'
                                     inputName='name'
                                     value={props.data.name}
@@ -29,6 +30,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='#Apellido'
                                     label='Apellido'
                                     inputName='lastname'
                                     value={props.data.lastname}
@@ -38,6 +40,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='#Cumpleaños'
                                     label='Cumpleaños'
                                     inputName='birthdate'
                                     value={props.data.birthdate}
@@ -48,6 +51,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='#Contraseña'
                                     label='Contraseña'
                                     inputName='password'
                                     type='password'
@@ -61,6 +65,7 @@ function EditDataComponent(props) {
                 {props.userInfo==='professionalInfo' &&
                     <div className='editProfData'>
                         <EditInputComponent
+                                    key='Imagen de Perfil'
                                     label='Imagen de Perfil'
                                     inputName='img'
                                     divClass={divClass}
@@ -69,6 +74,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='Titulo'
                                     label='Titulo'
                                     inputName='title'
                                     divClass={divClass}
@@ -77,6 +83,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                             <EditInputComponent
+                                    key='Universidad'
                                     label='Universidad'
                                     inputName='intitute'
                                     divClass={divClass}
@@ -85,6 +92,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='Cuenta Bancaria'
                                     label='Cuenta Bancaria'
                                     inputName='bankAccount'
                                     divClass={divClass}
@@ -93,6 +101,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='Estado'
                                     label='Estado'
                                     inputName='state'
                                     divClass={divClass}
@@ -101,6 +110,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='Ciudad'
                                     label='Ciudad'
                                     inputName='city'
                                     divClass={divClass}
