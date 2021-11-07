@@ -6,7 +6,8 @@ import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardC
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
-//import Scheduler from './Scheduler'
+import PopContainer from '../PopContainer'
+import Scheduler from './Scheduler'
 
 function UserDashboard({userData}) {
     console.log(userData)
@@ -25,12 +26,20 @@ function UserDashboard({userData}) {
         'Diseño para Tetris'
     ])
     
+    const [scheduleFlag, setScheduleFlag] = useState(false)
+    const scheFlag = ()=>{
+        setScheduleFlag(!scheduleFlag)
+    }
+    const [reviewFlag, setReviewFlag] = useState(false)
+    const revFlag = ()=>{
+        setReviewFlag(!scheduleFlag)
+    }
+
     const changeTipFlag=()=>{setTip(!tip)}
     
     const changeUserState = (e)=>{
         setUserInfo(e.target.name)
     }
-
     // FUNCION DE AGREGAR TIPS, COPIAR PARA AGREGAR REVIEWs
     const addPost=(post)=>{
         settipsArray([...tipsArray,post])
@@ -50,6 +59,9 @@ function UserDashboard({userData}) {
         '2 horas con Rocio',
         '30 minutos con Claudio'
     ]
+    const popClass=`bg-white bg-opacity-95 mt-20 h-4/5 w-2/5 flex flex-col items-center 
+                    justify-center rounded-lg shadow-lg
+                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
     
     return (
         <React.Fragment>
@@ -84,11 +96,40 @@ function UserDashboard({userData}) {
                                 }
                                 {
                                     userData.isProfessional && 
-                                    <button 
-                                        className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
-                                        onClick={changeTipFlag}>
-                                        Agregar post
-                                    </button>
+                                    <div>
+                                        <button 
+                                            className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
+                                            onClick={changeTipFlag}>
+                                            Agregar post
+                                        </button>
+                                        <PopContainer   trigger={scheduleFlag}
+                                                        principalDiv={popClass}
+                                                        children={<Scheduler 
+                                                                    onCancel={revFlag}
+                                                                />}
+                                            />
+                                        <button 
+                                            className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
+                                            onClick={scheFlag}>
+                                            Horario
+                                        </button>
+                                    </div>
+                                }
+                                {
+                                    !userData.review &&
+                                    <div>
+                                        <button 
+                                            className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
+                                            onClick={scheFlag}>
+                                            Opinar sobre la plataforma
+                                        </button>
+                                        <PopContainer   trigger={reviewFlag}
+                                                        principalDiv={popClass}
+                                                        children={<Scheduler 
+                                                                onCancel={scheFlag}
+                                                            />}
+                                                />
+                                    </div>
                                 }
                             </div>
                         </div>

@@ -4,7 +4,7 @@ import { FaMarker } from "react-icons/fa";
 import PopContainer from '../PopContainer';
 import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
-
+import Swal from 'sweetalert2'
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
     
@@ -23,7 +23,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     const userNormalInfo={
         username : userData.username,
         email : userData.email,
-        contraseña: '***********',
+        contraseña: userData.password,
         '':'',
         nombre : userData.name,
         apellido : userData.lastname,
@@ -32,13 +32,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     const getValue=(data)=>{
         if(data){
-            console.log(data)
             return{
                 profesion: userData.category.name,
                 matricula: userData.professionalRegistration,
                 titulo : userData.title,
-                universidad: userData.intitute,
-                'cuenta bancaria': '************',
+                universidad: userData.institute,
+                'cuenta bancaria': userData.bankAccount,
                 pais : userData.country.name,
                 estado : userData.state,
                 ciudad : userData.city,
@@ -49,27 +48,20 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     const userProfInfo = getValue(userData.isProfessional)
 
-    const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
-    const showDataSpan='capitalize mr-4 font-bold text-base';
-    const showDataP='text-sm font-normal ml-4';
-    const popClass = `bg-white bg-opacity-95 mt-20 h-4/5 w-2/5 flex flex-col items-center 
-                    justify-center rounded-lg shadow-lg 
-                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
-
-    
     const [postPersData, setpostPersData] = useState({
-        name : '',
-        lastname : '',
-        birthdate : '',
+        name : userData.name,
+        lastname : userData.lastname,
+        birthdate : userData.birthdate,
+        password: userData.password,
     })
 
     const [postProfData, setpostProfData] = useState({
-        img: '',
-        title : '',
-        intitute: '',
-        bankAccount: '',
-        state : '',
-        city : '',
+        img: userData.img,
+        title : userProfInfo.titulo,
+        institute: userData.institute,
+        bankAccount: userData.bankAccount,
+        state : userData.state,
+        city : userData.city,
     })
 
     const handleEditFields=(e)=>{
@@ -90,6 +82,13 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 setpostPersData({
                     ...postPersData,
                     birthdate: e.target.value
+                })
+                break;
+
+            case 'password':
+                setpostPersData({
+                    ...postPersData,
+                    password: e.target.value
                 })
                 break;
             case 'img':
@@ -134,13 +133,18 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     }
 
     console.log(postPersData)
+    console.log(postProfData)
 
 
 
     const sendPersData=()=>{
         setPopState(!popState)
         console.log(postPersData)
-        alert('POST PERSONAL DATA')
+        Swal.fire(
+            'Datos enviados!',
+            'Pronto vera los cambios efectuados',
+            'success'
+        )
     }
     const sendProfData=()=>{
         setPopState(!popState)
@@ -151,6 +155,15 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     const editData=()=>{
         setPopState(!popState)
     }
+
+    // CLASS ///////////////
+    
+    const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
+    const showDataSpan='capitalize mr-4 font-bold text-base';
+    const showDataP='text-sm font-normal ml-4';
+    const popClass = `bg-white bg-opacity-95 mt-20 h-4/5 w-2/5 flex flex-col items-center 
+                    justify-center rounded-lg shadow-lg 
+                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
 
     return (
         <div className=''>
@@ -189,7 +202,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     <div className='flex flex-col'>
                         {
                             Object.keys(userNormalInfo)?.map((elem, index)=>{
-                                let data=userNormalInfo[elem]
+                                let data=(elem==='cuenta bancaria'|| elem==='contraseña')?'*************':userNormalInfo[elem]
                                 return (
                                         <ShowData   key={index} title={elem} 
                                                         data={data}
