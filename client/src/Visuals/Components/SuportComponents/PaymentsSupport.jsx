@@ -1,48 +1,52 @@
 import React from 'react'
 
 const PaymentsSupport = () => {
+
+    const obj = [
+        {title:'Pago a sujeto uno',
+        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        author: 'LATAM EXPONENTIAL'
+        },
+        {title:'Pago a sujeto dos',
+        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        author: 'LATAM EXPONENTIAL'
+        },
+        {title:'Pago a sujeto tres',
+        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        author: 'LATAM EXPONENTIAL'
+        },
+        {title:'Pago a sujeto cuatro',
+        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        author: 'LATAM EXPONENTIAL'
+        },
+        {title:'Pago a sujeto cinco',
+        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        author: 'LATAM EXPONENTIAL'
+        },
+    ]
+    let publication = obj.map(e => {
+        let card = 
+        <div className='m-1 mb-6 max-w-md py-4 px-8 bg-white shadow-2xl rounded-lg my-2'>
+            <div>
+                <h2 className='text-gray-800 text-3xl font-semibold'>
+                    {e.title}
+                </h2>
+                <p className='mt-2 text-gray-600'>
+                    {e.description}
+                </p>
+            </div>
+            <div className='flex justify-end mt-4'>
+                <p className='text-xl font-medium text-red-600'>
+                    {e.author}
+                </p>
+            </div>
+        </div>
+        return card
+    })
+
     return ( 
-<div className='flex flex-wrap justify-center'>
-    <div class="m-1 max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-        <div>
-            <h2 class="text-gray-800 text-3xl font-semibold">¿Qué Ofrecemos?</h2>
-            <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur minus consequuntur!</p>
-        </div>
-        <div class="flex justify-end mt-4">
-            <p className="text-xl font-medium text-indigo-500">LATAM EXPONENTIAL</p>
-        </div>
-    </div>
-
-    <div class=" m-1 max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-        <div>
-            <h2 class="text-gray-800 text-3xl font-semibold">¿Qué Ofrecemos?</h2>
-            <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur minus consequuntur!</p>
-        </div>
-        <div class="flex justify-end mt-4">
-            <p className="text-xl font-medium text-indigo-500">LATAM EXPONENTIAL</p>
-        </div>
-    </div>
-
-    <div class=" m-1 max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-        <div>
-            <h2 class="text-gray-800 text-3xl font-semibold">¿Qué Comemos?</h2>
-            <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur minus consequuntur!</p>
-        </div>
-        <div class="flex justify-end mt-4">
-            <p className="text-xl font-medium text-indigo-500">LATAM EXPONENTIAL</p>
-        </div>
-    </div>
-
-    <div class=" m-1 max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-        <div>
-            <h2 class="text-gray-800 text-3xl font-semibold">¿Qué Queremos?</h2>
-            <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur minus consequuntur!</p>
-        </div>
-        <div class="flex justify-end mt-4">
-            <p className="text-xl font-medium text-indigo-500">LATAM EXPONENTIAL</p>
-        </div>
-    </div>
-
+<div className='flex flex-wrap justify-center overflow-y-auto h-96'>
+        {publication}
 </div>
      );
 }
