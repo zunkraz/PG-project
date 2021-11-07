@@ -30,12 +30,12 @@ passport.use('signin', new LocalStrat({
     }
 }));
 
-passport.use('jwt', new JWTStrategy({
-    secretOrKey: process.env.SECRET,
-    jwtFromRequest: cookieExtractor
-}, async (decodedToken, done) => {
-    if(decodedToken){
-       return done(null, decodedToken);
-    }
-    return done(null, false, {message: 'Unauthorized'})
-}));
+// passport.use('jwt', new JWTStrategy({
+//     secretOrKey: process.env.SECRET,
+//     jwtFromRequest: cookieExtractor
+// }, async (decodedToken, done) => {
+//     if(decodedToken){
+//        return done(null, decodedToken);
+//     }
+//     return done(null, false, {message: 'Unauthorized'})
+// }));
