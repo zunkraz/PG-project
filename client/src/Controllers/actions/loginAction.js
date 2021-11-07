@@ -5,14 +5,14 @@ export function checkLoginAction(userData){
     return async function(dispatch){
         const data = await getLogin(userData);
         console.log(data)
-        return data.message?
+        return data.message !== "Success"?
         dispatch({
             type: SET_ERROR
         })
             :
         dispatch({
             type: CHECK_LOGIN,
-            payload: data
+            payload: data.user
         });
     };
 };

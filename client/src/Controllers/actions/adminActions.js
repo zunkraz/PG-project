@@ -6,8 +6,17 @@ import {
     PUT_ADMIN_APPOINTMENT,
     POST_ADMIN_CATEGORY,
     PUT_ADMIN_CATEGORY,
-    DELETE_ADMIN_CATEGORY
-} from './../../constants'
+    DELETE_ADMIN_CATEGORY,
+    POST_ADMIN_COUNTRY,
+    DELETE_ADMIN_COUNTRY,
+    GET_ADMIN_TIPS,
+    PUT_ADMIN_TIPS,
+    DELETE_ADMIN_TIPS,
+    POST_ADMIN_TIPS,
+    GET_ADMIN_REVIEWS,
+    PUT_ADMIN_REVIEWS,
+    DELETE_ADMIN_REVIEWS
+} from '../../constants';
 
 import {
     getAllUsers,
@@ -17,8 +26,12 @@ import {
     putAppointment,
     postCategory,
     putCategory,
-    deleteCategory
-} from './../../ApiReq/admin'
+    deleteCategory,
+    deleteCountry,
+    postCountry,
+    getAllTips,deleteTip,putTip,postTip,
+  getAllReviews,deleteReview,putReview
+} from '../../ApiReq/admin'
 
 export function getAdminUsers(){
     return async function(dispatch){
@@ -29,7 +42,6 @@ export function getAdminUsers(){
         })
     }
 }
-
 export function delAdminUser(username){
     return async function(dispatch){
         let data = await deleteUser(username)
@@ -39,7 +51,6 @@ export function delAdminUser(username){
         })
     }
 }
-
 export function putAdminUser(username, info){
     return async function(dispatch){
         let data = await putUser(username,info)
@@ -59,7 +70,6 @@ export function delAdminAppointment(appointmentID){
         })
     }
 }
-
 export function putAdminAppointment(appointmentID,info){
     return async function(dispatch){
         let data = await putAppointment(appointmentID,info)
@@ -79,7 +89,6 @@ export function postAdminCategory(category){
         })
     }
 }
-
 export function putAdminCategory(categoryID,info){
     return async function(dispatch){
         let data = await putCategory(categoryID,info)
@@ -95,6 +104,90 @@ export function deleteAdminCategory(categoryID){
         return dispatch({
             type: DELETE_ADMIN_CATEGORY,
             payload:data
+        })
+    }
+}
+
+export function postAdminCountry(info){
+    return async function(dispatch){
+        let data = await postCountry(info)
+        return dispatch({
+            type: POST_ADMIN_COUNTRY,
+            payload:data
+        })
+    }
+}
+export function deleteAdminCountry(countryId){
+    return async function(dispatch){
+        let data = await deleteCountry(countryId)
+        return dispatch({
+            type: DELETE_ADMIN_COUNTRY,
+            payload:data
+        })
+    }
+}
+
+export function getAdminTips(){
+    return async function(dispatch){
+        let data = await getAllTips()
+        return dispatch({
+            type: GET_ADMIN_TIPS,
+            payload: data
+        })
+    }
+}
+export function putAdminTip(info,_id){
+    return async function (dispatch){
+        let data = await putTip(info,_id)
+        return dispatch({
+            type: PUT_ADMIN_TIPS,
+            payload: data
+        })
+    }
+}
+export function deleteAdminTip(_id){
+    return async function (dispatch){
+        let data = await deleteTip(_id)
+        return dispatch({
+            type: DELETE_ADMIN_TIPS,
+            payload: data
+        })
+    }
+}
+export function postAdminTip(info){
+    return async function(dispatch){
+        let data = await postTip(info)
+        return dispatch({
+            type: POST_ADMIN_TIPS,
+            payload:data
+        })
+    }
+}
+
+export function getAdminReviews(){
+    return async function(dispatch){
+        let data = await getAllReviews()
+        return dispatch({
+            type: GET_ADMIN_REVIEWS,
+            payload: data
+        })
+    }
+}
+export function putAdminReview(info,_id){
+    return async function (dispatch){
+        let data = await putReview(info,_id)
+        return dispatch({
+            type: PUT_ADMIN_REVIEWS,
+            payload: data
+        })
+    }
+}
+export function deleteAdminReview(_id){
+    return async function (dispatch){
+        let data = await deleteReview(_id)
+        return dispatch({
+            type: DELETE_ADMIN_REVIEWS,
+            payload: data
         })
     }
 }
