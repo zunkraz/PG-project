@@ -32,6 +32,7 @@ router.delete('/:username', passport.authenticate('jwt', {session: false}), (req
 router.put ('/:username', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
     let {username} = req.params
     let updateInfo = req.body
+    console.log(req.body)
     userUpdate(username,updateInfo)
       .then(result => res.json(result))
       .catch(err => next(err))
