@@ -18,7 +18,7 @@ export default function Schedules({id, login, name, lastname, category}) {
     const carrito= useSelector(state=>state.sessionReducer.cart)
 
     const price = 10;
-    
+
     function handleClick(e) {
         dispatch(addToCart({
             name:name+" "+lastname,
@@ -69,20 +69,23 @@ export default function Schedules({id, login, name, lastname, category}) {
             Proximos turnos
         </div>
         <div>
-        <span>Filtar por: </span>
-            <label></label>
-            <select onChange={selectDay}>
-                <option value="Todos"> - Todos -</option>
+        <p className="my-2">Filtrar por: </p>
+            <div>
+            <label htmlFor="days" className="mr-2">Día:</label>
+            <select id="days"onChange={selectDay} className="w-48 uk-input border-radius-sm font-main">
+                <option value="Todos">  Todos </option>
                 {days.map(d=>{
                     return <option value={d}>{d}</option>
                 })}
             </select>
-            <select onChange={selectMonth}>
-                <option value="Todos"> - Todos -</option>
+            <label htmlFor="month" className="mx-2">Mes:</label>
+            <select id="month" onChange={selectMonth} className="w-48 uk-input border-radius-sm font-main">
+                <option value="Todos">  Todos </option>
                 {months.map(m=>{
                     return <option value={m}>{m}</option>
                 })}
             </select>
+            </div>
         </div>
         <ul>
         {
@@ -93,7 +96,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                     key={index}
                     >
                         {dateJoin(elem.date)}  {carrito.find(e=>e.id===elem._id) ? 
-                            <span>En carrito</span> 
+                            <p className="w-full py-2 text-center">En carrito</p> 
                                     : 
                             <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof">Contratar</button>}
                         
@@ -119,7 +122,7 @@ export default function Schedules({id, login, name, lastname, category}) {
 
                     </li>
         })
-        : <span>Sin turnos disponibles</span>
+        : <p className="py-4">Sin turnos disponibles</p>
         }
         </ul>
     </div>
