@@ -65,11 +65,13 @@ export default function EditReview({close,review,setReview,userId}){
                 </button> : 
                 <button onClick={sendReview} 
                         disabled={disabled}
-                        className='w-48 h-10 mr-4 bg-white rounded-xl duration-700
-                        hover:bg-green-500 ring-white bg-opacity-5
-                        ring-4 ring-offset-1 ring-offset-green-500'>
-                            <span className='text-green-500 font-medium tracking-widest 
-                                    duration-700 hover:text-white'>Enviar review</span>
+                        className={`w-48 h-10 mr-4 rounded-xl duration-700
+                        ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
+                        ${disabled ? 'bg-gray-900 hover:cursor-auto' : 'bg-white'}
+                        ${!disabled?'hover:bg-green-500':''} `}>
+                            <span className={`text-green-500 font-medium tracking-widest 
+                                    duration-700  
+                                    ${!disabled ? 'hover:text-white':''}`}>Enviar review</span>
                 </button>}
             <button onClick={()=>close()}
                     className='w-48 ml-4 bg-white bg-opacity-5
