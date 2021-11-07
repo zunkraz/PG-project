@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react'
 import { FaMarker } from "react-icons/fa";
-import BigButton from '../BigButton';
 import PopContainer from '../PopContainer';
 import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
@@ -12,90 +11,146 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     console.log(userData)
     
     const [popState, setPopState] = useState(false)
+
     // {
             // CONTROL 
-            //     isProfessional,
-            //     isAdmin,
-            //     isActive, CORREO PERSONAL 
+            //      isProfessional,
+            //      isAdmin,
+            //      isActive, CORREO PERSONAL 
+            //      isVerified, PROFESIONAL VERIFICADO
             ///////////////////////////
 
-
-            // PERSONAL
-            //     name,,
-            //     lastname,
-            //     username,
-            //     email,
-            //     password,
-            //     birthdate,
-            /////////////////////////////
-    // },
     const userNormalInfo={
         username : userData.username,
+        email : userData.email,
+        contraseña: '***********',
+        '':'',
         nombre : userData.name,
         apellido : userData.lastname,
-        email : userData.email,
-        cumpleaños : userData.birthdate
+        cumpleaños : userData.birthdate,
     }
 
     const getValue=(data)=>{
         if(data){
             console.log(data)
             return{
-                profession: userData.category.name,
-                professionalRegistration: userData.professionalRegistration,
-                appointments: userData.appointments,
+                profesion: userData.category.name,
+                matricula: userData.professionalRegistration,
+                titulo : userData.title,
+                universidad: userData.intitute,
+                'cuenta bancaria': '************',
                 pais : userData.country.name,
                 estado : userData.state,
-                img: userData.img,
-                schedule: userData.schedule
+                ciudad : userData.city,
             }
         } 
         return {msg:'sin datos'}
     }
-        // PROFESIONAL
-        //     isVerified, PROFESIONAL VERIFICADO
-        //     img,
-        //     professionalRegistration, Numero de Matricula
-        //     regUrl, link de registro de título o certificado
-        //     biography,
-        //     title,
-        //     institute,
-        //     category,
-        //     country,
-        //     state,
-        //     city,
-        //     degree,
-        //     bankAccount,
-        //     appointments,
-        //     schedule,
-        //     likes,
-        //     dislikes
-        /////////////////////////////////////
+
     const userProfInfo = getValue(userData.isProfessional)
 
-    //console.log(userNormalInfo)
-    //console.log(userProfInfo)
-    const showDataDiv='flex border-b-4 justify-between w-80';
-    const showDataSpan='capitalize mr-4 flex font-bold text-base';
+    const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
+    const showDataSpan='capitalize mr-4 font-bold text-base';
     const showDataP='text-sm font-normal ml-4';
-    const popClass = `bg-white h-3/5 w-2/5 flex flex-col items-center 
-                    justify-center rounded-2xl shadow-lg 
-                    ring-white ring-1 ring-offset-2 ring-offset-red-500	`
-    /*
-    professionalData:{
-        matricula:'23-34-44-123-22-1a',
-        titulo:'Engineer Game Desing',
-        bankAccount: 'olisadfbn1231248484nsadfj'
+    const popClass = `bg-white bg-opacity-95 mt-20 h-4/5 w-2/5 flex flex-col items-center 
+                    justify-center rounded-lg shadow-lg 
+                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
+
+    
+    const [postPersData, setpostPersData] = useState({
+        name : '',
+        lastname : '',
+        birthdate : '',
+    })
+
+    const [postProfData, setpostProfData] = useState({
+        img: '',
+        title : '',
+        intitute: '',
+        bankAccount: '',
+        state : '',
+        city : '',
+    })
+
+    const handleEditFields=(e)=>{
+        switch (e.target.name) {
+            case 'name':
+                setpostPersData({
+                    ...postPersData,
+                    name: e.target.value
+                })
+                break;
+            case 'lastname':
+                setpostPersData({
+                    ...postPersData,
+                    lastname: e.target.value
+                })
+                break;
+            case 'birthdate':
+                setpostPersData({
+                    ...postPersData,
+                    birthdate: e.target.value
+                })
+                break;
+            case 'img':
+                setpostProfData({
+                    ...postProfData,
+                    img: e.target.value
+                })
+                break;
+            case 'title':
+                setpostProfData({
+                    ...postProfData,
+                    title: e.target.value
+                })
+                break;
+            case 'intitute':
+                setpostProfData({
+                    ...postProfData,
+                    intitute: e.target.value
+                })
+                break;
+            case 'bankAccount':
+                setpostProfData({
+                    ...postProfData,
+                    bankAccount: e.target.value
+                })
+                break;
+            case 'state':
+                setpostProfData({
+                    ...postProfData,
+                    state: e.target.value
+                })
+                break;
+            case 'city':
+                setpostProfData({
+                    ...postProfData,
+                    city: e.target.value
+                })
+                break;
+            default:
+                break;
+        }
     }
-    */
+
+    console.log(postPersData)
+
+
+
+    const sendPersData=()=>{
+        setPopState(!popState)
+        console.log(postPersData)
+        alert('POST PERSONAL DATA')
+    }
+    const sendProfData=()=>{
+        setPopState(!popState)
+        console.log(postProfData)
+        alert('POST PROFESIONAL DATA')
+    }
+
     const editData=()=>{
         setPopState(!popState)
     }
-
-    // const arr = Object.keys(personalInfo)
-    // const arr2 = professionalData && Object.keys(professionalData)
-    // const arr = Object.keys(personalInfo)
-    // const arr2 = professionalData && Object.keys(professionalData)
 
     return (
         <div className=''>
@@ -119,99 +174,53 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                         
                     </button>
                 }
-                {/* Boton para incluir la información de agendamiento
-                    professionalData && 
-                    <button 
-                        name='professionalInfo'
-                        className='mrg-lg-l padd-md-tb padd-lg-lr user-dashboard-info-tab-inactive'
-                        onClick={changeUserState}>
-                        <span className="element-xl-lg-md">Datos Agendamiento</span>
-                        <span className="element-sm-xs font-sm">Agendamiento</span>
-                    </button>
-                */
-                }
-                <FaMarker
-                        className='font-lg text-red-300 hover:text-gray-600 cursor-pointer duration-500'
-                        onClick={editData}
-                    />
                 <PopContainer   trigger={popState}
                                 principalDiv={popClass}
                                 children={<EditDataComponent
+                                        onChange={handleEditFields}
+                                        onSuccess={userInfo==='personalInfo'?sendPersData:sendProfData}
                                         onCancel={editData}
+                                        userInfo={userInfo}
                                     />}
                     />
             </div>            
             <div className='user-dashboard-info-tabs-content border-color-dark-a20 padd-lg'>
-                {/*<p>{Object.keys(userNormalInfo)}</p>*/}
                 {userInfo==='personalInfo' && 
                     <div className='flex flex-col'>
                         {
                             Object.keys(userNormalInfo)?.map((elem, index)=>{
-                                //console.log(`${elem} : ${userNormalInfo[elem]}`)
                                 let data=userNormalInfo[elem]
                                 return (
-                                    <div key={index+1} className='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between'>
                                         <ShowData   key={index} title={elem} 
                                                         data={data}
                                                         divClass={showDataDiv}
                                                         spanClass={showDataSpan} 
                                                         pClass={showDataP}
                                                 />
-                                    </div>
                                         )
                                     })
                                 }
-                            </div>
-                                    /* <p key={index}>{elem==='img'?'Imagen Cargada':userNormalInfo[elem]}</p></span> */
-                                    /*return <span key={index} className='capitalize mr-4 
-                                        font-bold text-base'>{`${elem}  : `}
-                                    <p key={index}>{elem==='img'?'Imagen Cargada':userNormalInfo[elem]}</p></span>*/
-                //                 )
-                //             })
-                //         }
-                //     </div>
-                // }
-                //{
-                //arr?.map((elem,index)=>{
-                //    return  <div key={index} className='flex border-b-4'>
-                //                <span key={index} className='capitalize mr-4 font-bold text-base'>{`${elem}  : `}</span>
-                //                <p key={index+1000}>{elem==='img'?'Imagen Cargada':personalInfo[elem]}</p>
-                //            </div>
-                //})}
+                        </div>
                 }
                 {
-                    (isProf && userInfo==='professionalInfo') && Object.keys(userProfInfo)?.map((elem,index)=>{
-                        return  <div key={index+1} className='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between'>
-                                    <span key={index+1*2} className='capitalize mr-4 font-bold text-base'>
-                                        {`${elem}  : `}
-                                    </span>
-                                    {
-                                        elem==='img' && 
-                                        <span key={index}>
-                                            'Imagen Cargada'
-                                        </span>
-                                    }
-                                    {
-                                        elem==='schedule' && 
-                                        <span className='flex flex-col'>
-                                            {/*userProfInfo[elem]*/}
-                                            <button
-                                                className='bg-gray-300 pl-2 pr-2 font-semibold rounded-xl cursor-pointer hover:bg-red-300 duration-500' onClick={()=>alert('pop up cambiar dias')}
-                                            >
-                                                Cambiar Dias Hábiles
-                                            </button>
-                                        </span>
-                                    }                                
-                                    <p key={index+2*3}>{(elem!=='img' && elem!=='schedule') && userProfInfo[elem]}</p>
-                                </div>
+                    (isProf && userInfo==='professionalInfo') 
+                            && Object.keys(userProfInfo)?.map((elem,index)=>{
+                                let data=userProfInfo[elem]
+                        return (
+                            <ShowData   key={index} title={elem} 
+                                            data={data}
+                                            divClass={showDataDiv}
+                                            spanClass={showDataSpan} 
+                                            pClass={showDataP}
+                                    />
+                                )
                     })
                 }
-                <button
-                    className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit"
-                    onClick={()=>alert('pop up editar datos y post')}
-                >
-                    Editar Información
-                </button> 
+                {!userData.googleAccount && <button
+                    className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                    onClick={editData}
+                    >Editar Información <span className='ml-6'><FaMarker/></span>
+                </button>}
             </div>            
         </div>
     )
