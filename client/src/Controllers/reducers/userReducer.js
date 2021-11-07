@@ -1,4 +1,4 @@
-import { GET_USERS} from '../../constants'
+import { GET_USERS } from '../../constants'
 
 const initialState = {
     users: [],
