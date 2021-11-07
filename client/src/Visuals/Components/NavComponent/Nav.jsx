@@ -30,7 +30,7 @@ const Nav = () => {
         }]
     btns = [{
             title: 'Soporte',
-            url: '/soporte'
+            url: '/soporte/servicios'
         },
         {
             title: 'Profesionales',

@@ -37,7 +37,7 @@ function handlePay(){
     })
 
     dispatch(removeFromCartAll())
-    history.push('./profesionales')
+    history.push('/profesionales')
     console.log("el pago ha sido exitoso");
 }
   
