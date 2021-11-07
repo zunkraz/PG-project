@@ -2,6 +2,7 @@ import React   from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import logoMain from "../../Assets/media/logo-main.svg";
+import logoMobile from "../../Assets/media/logo-mobile.svg";
 import { cleanLoginCheck } from '../../../Controllers/actions/loginAction';
 import CartIcon from './CartIcon'
 
@@ -56,7 +57,8 @@ const Nav = () => {
                                 uk-logo 
                                 uk-margin-sm-left" 
                     to="/">
-                        <img src={logoMain} alt="LatamExponential"/>
+                        <img src={logoMain} alt="LatamExponential" className="element-xl-lg-md-sm"/>
+                        <img src={logoMobile} alt="LatamExponential" className="element-xs"/>
                 </Link>
                 
                 <ul 
