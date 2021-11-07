@@ -3,8 +3,8 @@ const passport = require('passport');
 const {postCountry, getAllCountries, getOneCountry} = require('../controllers/index');
 const Country = require('../models/Country');
 
-
-router.post('/', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+//, passport.authenticate('jwt', {session: false})
+router.post('/', (req, res, next) => {
     const body = req.body;
     postCountry(body)
         .then(result => res.json(result))

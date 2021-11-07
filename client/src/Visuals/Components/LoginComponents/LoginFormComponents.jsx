@@ -10,7 +10,7 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
     const [passEye, setpassEye] = useState(false)
 
     const classInput='bg-gray-100 border-2 border-gray-300 px-5 py-2 '
-    const classDanger='ring-4 ring-red-500 ring-opacity-50 bg-gray-100 px-5 py-2 '
+    const classDanger='ring-4 ring-red-500 bg-gray-100 px-5 py-2'
     const classLabel='font-xl '
     const classDiv='flex flex-col items-start justify-between  w-96 h-24 '
     const classPass = 'flex items-center justify-between  w-96 h-24' 
@@ -18,16 +18,17 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
     const textPassShow = <FaRegEye/>
     const textPassHide = <FaRegEyeSlash/>
 
-    const classLogBtn=`bg-red-400 px-8 py-4 w-96 mt-5 rounded-xl font-semibold 
-                text-3xl uppercase tracking-widest text-gray-100 
-                cursor-pointer hover:bg-red-300 duration-1000
-                border-2 border-gray-200 shadow-xl `
+    const classLogBtn=`bg-primary px-8 py-4 w-96 mt-5 rounded-xl font-semibold 
+                        text-3xl uppercase tracking-widest text-gray-100 
+                        cursor-pointer hover:bg-red-900 duration-1000
+                        border-2 border-gray-200 shadow-xl `
 
     const classNoLogBtn=`bg-gray-200 px-8 py-4 w-96 mt-5 rounded-xl font-semibold 
-    text-3xl uppercase tracking-widest text-gray-100 shadow-xl text-white
-    cursor-not-allowed `
+                        text-3xl uppercase tracking-widest text-gray-100 
+                        shadow-xl text-white cursor-not-allowed `
 
-    const wrogPassClass = 'flex items-center justify-center text-2xl mt-4 duration-700 text-red-500'
+    const wrogPassClass = `flex items-center justify-center text-2xl mt-4 
+                            duration-700 text-red-500 text-semibold tracking-widest`
 
     const textLog='text-white'
     const textNoLog='text-gray-400'
@@ -44,9 +45,10 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
     }
 
     const LogError = useSelector(state =>  state.sessionReducer.status.error)
+    console.log(LogError)
 
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col p-10 h-96 justify-around'>
             <LoginInputComponent    handleChange={handleFields} 
                 text={'Nombre de Usuario'} 
                 name='username'

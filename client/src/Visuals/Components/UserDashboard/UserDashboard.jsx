@@ -7,6 +7,8 @@ import PopContainer from '../PopContainer'
 import Scheduler from './Scheduler'
 import Review from '../PersonalDashboards/Review'
 
+
+
 function UserDashboard({userData}) {
 
     const [userInfo, setUserInfo] = useState('personalInfo')
@@ -74,6 +76,7 @@ function UserDashboard({userData}) {
                                         <PopContainer   trigger={scheduleFlag}
                                                         principalDiv={popClass}
                                                         children={<Scheduler 
+                                                                    userId={userData._id}
                                                                     onCancel={scheFlag}
                                                                 />}
                                             />

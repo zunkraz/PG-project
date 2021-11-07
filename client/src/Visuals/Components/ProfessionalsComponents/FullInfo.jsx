@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react'
+import React from 'react'
 // import { FaMarker } from "react-icons/fa";
 // import BigButton from '../BigButton';
 // import PopContainer from '../PopContainer';
@@ -8,24 +7,25 @@ import React, { useState } from 'react'
 
 
 export default function FullInfo({profData}) {
-    
-    console.log(profData)
 
     return (
         <div className=''>
             <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
                 Información detallada
             </div>
-                <div className="mrg-lg-t">
-                    Biografía
+                <div className="padd-md-b font-main text-center- font-xl border-bottom-color-main">
+                    Sobre mí
                 </div>            
                 <div className='user-dashboard-info-tabs-content border-color-dark-a20 padd-lg'>
                     {profData.biography}
                 </div>
-                <div className="mrg-lg-t">
+                <div className="padd-md-b font-main text-center- font-xl border-bottom-color-main">
                     Datos profesionales
                 </div>            
                 <div className='user-dashboard-info-tabs-content border-color-dark-a20 padd-lg'>
+                    <div>
+                        Consultas atendidas: {profData.appointments.length}
+                    </div>
                     <div>
                         Categoría: {profData.category.name}
                     </div>
@@ -39,18 +39,12 @@ export default function FullInfo({profData}) {
                         Licencia: {profData.professionalRegistration}
                     </div>
                     <div>
-                        Categoría: {profData.category.name}
+                        Estado: {profData.state}
                     </div>
                     <div>
-                        Categoría: {profData.category.name}
-                    </div>
-                    <div>
-                        Categoría: {profData.category.name}
+                        Ciudad: {profData.city}
                     </div>
                 </div>
-                <button className='btn-prof-info'><span>Ver video de presentacion</span></button>
         </div>
     )
-}
-
-
+};
