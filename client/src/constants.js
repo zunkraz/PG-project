@@ -32,8 +32,10 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const FILTER_PROF = 'FILTER_PROF';
 export const DATA_NOT_FOUND = 'DATA_NOT_FOUND';
 
+
 export const SET_ERROR = 'SET_ERROR'
 export const SET_ADMIN = 'SET_ADMIN'
+
 
 export const REMOVE_FROM_CART_ALL = 'REMOVE_FROM_CART_ALL';
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';

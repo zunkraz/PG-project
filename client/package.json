@@ -21,6 +21,7 @@
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.0",
+    "sweetalert2": "^11.1.9",
     "uikit": "^3.7.6",
     "web-vitals": "^0.2.4"
   },
