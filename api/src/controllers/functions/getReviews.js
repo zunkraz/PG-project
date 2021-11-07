@@ -3,7 +3,6 @@ const User = require('./../../models/User')
 
 module.exports = ({userId}) => {
   if(userId){
-    console.log(userId)
     return Review.findOne({userId})
   }
   return Review.aggregate([
