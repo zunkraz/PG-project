@@ -80,6 +80,9 @@ export default function ProfessionalContainer({username, login}) {
                                <Schedules
                                 id={profData._id}
                                 login={session}
+                                name={profData.name}
+                                lastname={profData.lastname}
+                                category={profData.category.name}
                                 />
                             }
                             
