@@ -49,13 +49,13 @@ function handlePay(){
         name={o.name}
         date={o.appointment.date}
         sessions={o.appointment.sessions}
-        price={o.appointment.sessions*10}
+        price={o.price}
         />
     </li>)
     
     let suma= 0
-    order.forEach(o=> suma += o.appointment.sessions*10)
-    
+    order.forEach(o=> suma += o.price)
+    console.log(suma)
     return (
         
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4 divide-y ">
