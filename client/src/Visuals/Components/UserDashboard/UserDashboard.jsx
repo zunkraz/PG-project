@@ -104,9 +104,7 @@ function UserDashboard({userData}) {
                                         </button>
                                         <PopContainer   trigger={scheduleFlag}
                                                         principalDiv={popClass}
-                                                        children={<Scheduler 
-                                                                    onCancel={revFlag}
-                                                                />}
+                                                        //children={}
                                             />
                                         <button 
                                             className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
