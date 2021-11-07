@@ -70,30 +70,30 @@ export default function Scheduler({userId}){
       return (
           <div className="flex flex-col justify-center w-1/2 py-4 bg-white shadow-md rounded ">
             <div className="flex justify-center">
-                <div>
+                <div className="mr-3">
                 <DatePicker
                 selected={date}
                 onChange={(date) => setDate(date)}
                 showTimeSelect
-                className="rounded-sm uk-input uk-form-width-medium mr-3"
+                className="rounded-sm uk-input mr-3"
                 dateFormat="MMMM d, yyyy h:mm aa"
                 withPortal
                 />
                 </div>
-                <div>
+                <div className="mt-1">
                 <button
                 type="button"
                 value="Mostrar Fecha"
-                className=" padd-md border-radius-sm action action-professional"
+                className="width-120 px-5 font-lg font-main border-radius-sm action action-user-dashboard-edit"
                 onClick={() => showDate(date)}
                 >Agregar</button>
                 </div>
             </div>
             <div className="flex flex-col">
                 <div className="flex justify-center py-4">
-                    <ul>
+                    <ul className="divide-y">
                         {app ? app.map(e=>{
-                            return(<li key={app.indexOf(e)} className="flex flex-row my-2"> 
+                            return(<li key={app.indexOf(e)} className="flex flex-row py-2"> 
                                     <p className="text-lg">{daySpanish(e.date)}</p>
                                     <button name={e.date} onClick={removeApp} className="bg-white w-2 flex justify-center items-center h-7 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mx-2">
                                         X</button>
@@ -101,7 +101,7 @@ export default function Scheduler({userId}){
                         }) : null}
                     </ul>
                 </div><div className="flex justify-center">
-                    {app ? (<button className="padd-md border-radius-sm action action-professional" onClick={handleClickmany}>Confirmar</button>):null}
+                    {app ? (<button className='width-50 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post' onClick={handleClickmany}>Confirmar</button>):null}
                 </div>
             </div>
           </div>
