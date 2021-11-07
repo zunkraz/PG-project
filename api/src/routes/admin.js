@@ -18,6 +18,7 @@ const {
   getAllTipsAdmin,
   getAllReviewsAdmin, reviewUpdate, reviewDelete
 } = require('../controllers/index.js');
+const Appointment = require('../models/Appointment');
 
 //GET ALL USERS
 router.post('/users', passport.authenticate('jwt', {session: false}), roleAuth, (req,res,next)=>{
@@ -41,6 +42,13 @@ router.put('/users/:username', (req,res,next)=>{
     .catch(err => next(err));
 });
 
+//GET ALL APPOINTMENTS
+router.get('/appointment',(req,res,next)=>{
+  Appointment.find().populate('customerId', 'id username')
+    .populate('professionalId', 'id username')
+    .then(result => res.json(result))
+    .catch(err => next(err));
+})
 //APPOINTMENT DELETE
 router.delete('/appointment/:id', (req,res,next)=>{
   let {id} = req.params;
@@ -59,16 +67,16 @@ router.put('/appointment/:id', passport.authenticate('jwt', {session: false}), r
 
 //CATEGORY CREATE
 router.post('/category', passport.authenticate('jwt', {session: false}), roleAuth, (req,res,next)=>{
-  let newCategory = req.body;
-  categoryCreate(newCategory)
+  let {img,name,searchCount} = req.body;
+  categoryCreate({img,name,searchCount})
     .then(result => res.json(result))
     .catch(err => next(err));
 });
 //CATEGORY UPDATE
 router.put('/category/:id', passport.authenticate('jwt', {session: false}), roleAuth, (req,res,next)=>{
   let {id} = req.params;
-  let updateInfo = req.body;   // {name,img,searchCount,etc} = req.body
-  categoryUpdate(id,updateInfo)
+  let {img,name,searchCount} = req.body;   // {name,img,searchCount,etc} = req.body
+  categoryUpdate(id,{img,name,searchCount})
     .then(result => res.json(result))
     .catch(err => next(err));
 });
@@ -81,7 +89,7 @@ router.delete('/category/:id', (req,res,next)=>{
 });
 
 //GET ALL TIPS
-router.post('/tips',(req,res,next)=>{
+router.post('/tips', passport.authenticate('jwt', {session: false}), roleAuth,(req,res,next)=>{
   getAllTipsAdmin()
     .then(result => res.json(result))
     .catch(err => next(err));
@@ -94,10 +102,10 @@ router.post('/tips/add', passport.authenticate('jwt', {session: false}), roleAut
     .catch(err => next(err));
 });
 //TIP UPDATE
-router.put('/tips/:id', passport.authenticate('jwt', {session: false}), roleAuth, (req,res,next)=>{
+router.put('/tips/:id',  passport.authenticate('jwt', {session: false}), roleAuth, (req,res,next)=>{
   let {id} = req.params;
-  let updateInfo = req.body;
-  tipUpdate(id,updateInfo)
+  let {text,isApproved} = req.body;
+  tipUpdate(id,{text,isApproved})
     .then(result => res.json(result))
     .catch(err => next(err));
 });
@@ -109,7 +117,6 @@ router.delete('/tips/:id', (req,res,next)=>{
     .then(result => res.json(result))
     .catch(err => next(err));
 });
-
 
 //GET ALL REVIEWS
 router.post('/reviews', passport.authenticate('jwt', {session: false}), roleAuth,(req,res,next)=>{
@@ -126,7 +133,7 @@ router.put('/reviews/:id', passport.authenticate('jwt', {session: false}), roleA
     .catch(err => next(err));
 });
 //REVIEW DELETE
-router.delete('/reviews/:id', (req,res,next)=>{
+router.delete('/reviews/:id',(req,res,next)=>{
   let {id} = req.params;
   reviewDelete(id)
     .then(result => res.json(result))
