@@ -269,3 +269,32 @@
 .miPerfilCustomHeight{
     height: 550px;
 }
+.btn-prof{
+    /* background-color: green; */
+    color:green;
+    border: 1px green solid;
+    border-radius: .5rem;
+    width: 100%;
+    margin-top: .5rem;
+    height: 2rem;
+}
+.btn-prof:hover{
+    background-color: green;
+}
+.btn-prof-info{
+    background-color:#FF214F;
+    /* border: 1px green solid; */
+    border-radius: .5rem;
+    width: 100%;
+    margin-top: .5rem;
+    height: 2rem;
+}
+.btn-prof-info span {
+    color: black;
+}
+.btn-prof-info:hover{
+    background-color: white;
+}
+.btn-prof-info:hover span{
+    color: #FF214F;
+}

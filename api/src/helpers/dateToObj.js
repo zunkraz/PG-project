@@ -61,7 +61,10 @@ module.exports = (date) => {
       dayNumber: parseInt(dateArray[2]),
       year: dateArray[3],
       time: dateArray[4].slice(0,5),
-      shortcut: parseInt(shortcut(dateArray[3], dateArray[1], dateArray[2], dateArray[4].slice(0,2), dateArray[4].slice(3,5)))
+      shortcut: parseInt(shortcut(dateArray[3], dateArray[1], dateArray[2], dateArray[4].slice(0,2), dateArray[4].slice(3,5))),
+      datefull:''
     }
+    let {dayName, dayNumber, month, year, time} = dateObj;
+    dateObj.datefull = `${dayName} ${dayNumber} de ${month} de ${year} a las ${time}`
     return dateObj;
   }
