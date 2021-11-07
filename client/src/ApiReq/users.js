@@ -30,3 +30,15 @@ export function postReviewUser({text,userId,rate}){
     .then(r=>r.data)
     .catch(r=>r.response.data);
 }
+
+export function updateReviewUser({text,reviewId}){
+    return axios.put(`${BASIC_URL}/reviews/${reviewId}`, {text})
+    .then(r=>r.data)
+    .catch(r=>r.response.data)
+}
+
+export function deleteTipUser({tipId}){
+    return axios.delete(`${BASIC_URL}/tips/${tipId}`)
+    .then(r=>r.data)
+    .catch(r=>r.response.data)
+}

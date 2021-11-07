@@ -16,16 +16,6 @@ export default function userReducer(state=initialState,{type,payload}){
                 ...state,
                 users: payload
             }
-        case POST_TIP:
-            return {
-                ...state,
-                tipPosted: payload
-            }
-        case POST_REVIEW:
-            return {
-                ...state,
-                reviewPosted: payload
-            }
         default:
             return {...state}
     }

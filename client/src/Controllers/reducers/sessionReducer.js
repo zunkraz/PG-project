@@ -32,6 +32,7 @@ export default function sessionReducer(state=initialState, {type,payload}){
                     ...state.status,
                     token: payload.token || '',
                     username: payload.username || '',
+                    isAdmin: payload.isAdmin || false,
                     error: false
                 }
             }
@@ -55,15 +56,6 @@ export default function sessionReducer(state=initialState, {type,payload}){
                     error:true
                 }
             }
-        case SET_ADMIN:
-            return {
-                ...state,
-                status:{
-                    ...state.status,
-                    isAdmin: payload
-                }
-            }
-
         case ADD_TO_CART:
             return {
                 ...state,

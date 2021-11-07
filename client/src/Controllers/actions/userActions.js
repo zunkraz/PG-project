@@ -21,30 +21,5 @@ export function getAllUsers(){
     };
 };
 
-export function setAdmin(admin){
-    return {
-        type: SET_ADMIN,
-        payload: admin
-    }
-}
 
-export function postTip({text}){
-    return async function(dispatch){
-        const data = await postTipUser(text);
-        return dispatch({
-            type: POST_TIP,
-            payload: data
-        })
-    }
-}
-
-export function postReview(data){
-    return async function(dispatch){
-        const data = await postReviewUser(data);
-        return dispatch({
-            type: POST_REVIEW,
-            payload: data
-        })
-    }
-}
 
