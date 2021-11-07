@@ -10,7 +10,7 @@ router.get('/',(req,res,next)=>{
     .catch(err => next(err))
 });
 
-router.post('/', /*passport.authenticate('jwt', {session: false}),*/ (req, res, next) => {
+router.post('/', passport.authenticate('jwt', {session: false}), (req, res, next) => {
   const text = req.body;
   postTips(text)
     .then(result => res.json(result))
