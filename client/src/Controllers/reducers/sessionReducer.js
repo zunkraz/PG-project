@@ -1,15 +1,11 @@
 import {
     CHECK_LOGIN,
-
     CLEAN_USER_LOGIN,
     REMOVE_FROM_CART,
     ADD_TO_CART,
-
     REMOVE_FROM_CART_ALL,
     SET_ERROR, 
     SET_ADMIN,
-
-
 
 } from './../../constants';
 

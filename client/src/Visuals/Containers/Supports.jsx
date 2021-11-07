@@ -17,22 +17,22 @@ const Supports = () => {
                     <div className='flex flex-col'>
 
                     <Link to='/soporte/servicios'>
-                        <button className='rounded-md  mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Servicios</button>
+                        <button className='rounded-md  mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Servicios</button>
                     </Link>
                     <Link to='/soporte/sugerencias'>
-                        <button className='rounded-md mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Sugerencias</button>
+                        <button className='rounded-md mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Sugerencias</button>
                     </Link>
                     <Link to='/soporte/pagos'>
-                        <button className='rounded-md mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Sobre los Pagos</button>
+                        <button className='rounded-md mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Sobre los Pagos</button>
                     </Link>
                     <Link to='/soporte/politicas'>
-                        <button className='rounded-md mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Políticas y Privacidad</button>
+                        <button className='rounded-md mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Políticas y Privacidad</button>
                     </Link>
                     <Link to='/soporte/reporte'>
-                        <button className='rounded-md  mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600' type='button'>Reportar un Problema</button>
+                        <button className='rounded-md  mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Reportar un Problema</button>
                     </Link>
                     <Link to='/'>
-                        <button className=' rounded-md  mt-2 w-full bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600 mb-3' type='button'>Volver al inicio</button>
+                        <button className=' rounded-md  mt-2 w-full bg-primary font-bold py-2 px-4 transition duration-300 ease-in-out mb-3' type='button'>Volver al inicio</button>
                     </Link>
                     </div>
                 </aside>

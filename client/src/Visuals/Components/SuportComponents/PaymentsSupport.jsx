@@ -36,7 +36,7 @@ const PaymentsSupport = () => {
                 </p>
             </div>
             <div className='flex justify-end mt-4'>
-                <p className='text-xl font-medium text-red-500'>
+                <p className='text-xl font-medium text-red-600'>
                     {e.author}
                 </p>
             </div>
