@@ -16,7 +16,7 @@ export default function Schedules({id, login, name, lastname, category}) {
     const [month, setMonth]= useState("Todos")
     const sched= useSelector(state=>state.professionalReducer.profSchedule)
     const carrito= useSelector(state=>state.sessionReducer.cart)
-
+    
     const price = 10;
 
     function handleClick(e) {
@@ -28,7 +28,8 @@ export default function Schedules({id, login, name, lastname, category}) {
             },
             price:price,
             id:e.target.id,
-            category:category
+            category:category,
+            professionalId:id
         }))
     };
     const dateJoin= (date)=>{
@@ -90,16 +91,30 @@ export default function Schedules({id, login, name, lastname, category}) {
         <ul>
         {
         filter(sched).length>0 ?
-        filter(sched).map((elem, index)=>{
+        filter(sched).slice(0, 4).map((elem, index)=>{
             
             return  <li className='bg-color-extra4-a20 mrg-lg-t padd-lg border-color-dark-a20 border-radius-sm' 
                     key={index}
-                    >
-                        {dateJoin(elem.date)}  {carrito.find(e=>e.id===elem._id) ? 
-                            <p className="w-full py-2 text-center">En carrito</p> 
-                                    : 
-                            <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof">Contratar</button>}
-                        
+                    >   {login.length ? 
+                        <div>
+                            {dateJoin(elem.date)}  {carrito.find(e=>e.id===elem._id) ? 
+                                <p className="w-full py-2 text-center">En carrito</p> 
+                                        : 
+                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>
+                            
+                            }
+                        </div>
+                            : 
+                        <div>
+                            {dateJoin(elem.date)}
+                            <Link to='/ingresar'>
+                                <button className="btn-prof-nologin">
+                                <span>Inicia sesion para reservar</span>
+                                </button>
+                                </Link>
+                        </div>
+                        }
+
                         {/* <div>{elem.date.datefull}hs</div>
                         <div style={{textAlign:'right'}}>
                             {

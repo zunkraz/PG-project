@@ -108,6 +108,7 @@ function UserDashboard({userData}) {
                                         <PopContainer   trigger={scheduleFlag}
                                                         principalDiv={popClass}
                                                         children={<Scheduler 
+                                                                    userId={userData._id}
                                                                     onCancel={scheFlag}
                                                                 />}
                                             />
