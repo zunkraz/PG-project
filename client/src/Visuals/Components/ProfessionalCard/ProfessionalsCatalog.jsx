@@ -4,6 +4,7 @@ import ProfessionalCard from "./../ProfessionalCardComponent";
 import "./../../Assets/css/pagination-style.css"
 import ReactPaginate from "react-paginate"
 import { useSelector } from "react-redux";
+import Loading from '../Loading'
 
 export default function ProfesionalsCatalog(){
     const [pageNumber, setPageNumber]= useState(0)
@@ -46,7 +47,7 @@ export default function ProfesionalsCatalog(){
     else {return (
         <React.Fragment>
             <div className="wrapper">
-                {displayProfs}
+                {profis.length ? displayProfs : <Loading/>}
             </div>
 
             <div className="wrapper padd-lg">
