@@ -16,9 +16,9 @@ export default function Schedules({id, login, name, lastname, category}) {
     const [month, setMonth]= useState("Todos")
     const sched= useSelector(state=>state.professionalReducer.profSchedule)
     const carrito= useSelector(state=>state.sessionReducer.cart)
-
-    const price = 10;
     
+    const price = 10;
+
     function handleClick(e) {
         dispatch(addToCart({
             name:name+" "+lastname,
@@ -28,7 +28,8 @@ export default function Schedules({id, login, name, lastname, category}) {
             },
             price:price,
             id:e.target.id,
-            category:category
+            category:category,
+            professionalId:id
         }))
     };
     const dateJoin= (date)=>{
@@ -36,7 +37,7 @@ export default function Schedules({id, login, name, lastname, category}) {
     }
 
     const months= ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-    const days= ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
+    const days= ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
 
     const selectDay = (e)=>{
         const {value}=e.target
@@ -69,34 +70,51 @@ export default function Schedules({id, login, name, lastname, category}) {
             Proximos turnos
         </div>
         <div>
-        <span>Filtar por: </span>
-            <label></label>
-            <select onChange={selectDay}>
-                <option value="Todos"> - Todos -</option>
+        <p className="my-2">Filtrar por: </p>
+            <div>
+            <label htmlFor="days" className="mr-2">Día:</label>
+            <select id="days"onChange={selectDay} className="w-48 uk-input border-radius-sm font-main">
+                <option value="Todos">  Todos </option>
                 {days.map(d=>{
                     return <option value={d}>{d}</option>
                 })}
             </select>
-            <select onChange={selectMonth}>
-                <option value="Todos"> - Todos -</option>
+            <label htmlFor="month" className="mx-2">Mes:</label>
+            <select id="month" onChange={selectMonth} className="w-48 uk-input border-radius-sm font-main">
+                <option value="Todos">  Todos </option>
                 {months.map(m=>{
                     return <option value={m}>{m}</option>
                 })}
             </select>
+            </div>
         </div>
         <ul>
         {
         filter(sched).length>0 ?
-        filter(sched).map((elem, index)=>{
+        filter(sched).slice(0, 4).map((elem, index)=>{
             
             return  <li className='bg-color-extra4-a20 mrg-lg-t padd-lg border-color-dark-a20 border-radius-sm' 
                     key={index}
-                    >
-                        {dateJoin(elem.date)}  {carrito.find(e=>e.id===elem._id) ? 
-                            <span>En carrito</span> 
-                                    : 
-                            <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof">Contratar</button>}
-                        
+                    >   {login.length ? 
+                        <div>
+                            {dateJoin(elem.date)}  {carrito.find(e=>e.id===elem._id) ? 
+                                <p className="w-full py-2 text-center">En carrito</p> 
+                                        : 
+                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>
+                            
+                            }
+                        </div>
+                            : 
+                        <div>
+                            {dateJoin(elem.date)}
+                            <Link to='/ingresar'>
+                                <button className="btn-prof-nologin">
+                                <span>Inicia sesion para reservar</span>
+                                </button>
+                                </Link>
+                        </div>
+                        }
+
                         {/* <div>{elem.date.datefull}hs</div>
                         <div style={{textAlign:'right'}}>
                             {
@@ -119,7 +137,7 @@ export default function Schedules({id, login, name, lastname, category}) {
 
                     </li>
         })
-        : <span>Sin turnos disponibles</span>
+        : <p className="py-4">Sin turnos disponibles</p>
         }
         </ul>
     </div>

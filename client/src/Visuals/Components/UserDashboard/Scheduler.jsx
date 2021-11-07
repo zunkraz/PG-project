@@ -68,7 +68,7 @@ export default function Scheduler({userId, onCancel}){
     }
     
     return (
-        <div className="flex flex-col justify-center w-1/2 py-4 bg-white shadow-md rounded ">
+        <div className="flex flex-col justify-center w-full py-4 bg-white shadow-md rounded ">
             <div className="flex justify-center">
                 <div className="mr-3">
                 <DatePicker
@@ -77,7 +77,7 @@ export default function Scheduler({userId, onCancel}){
                 showTimeSelect
                 className="rounded-sm uk-input mr-3"
                 dateFormat="MMMM d, yyyy h:mm aa"
-                withPortal
+                
                 />
                 </div>
                 <div className="mt-1">
@@ -93,7 +93,7 @@ export default function Scheduler({userId, onCancel}){
                 <div className="flex justify-center py-4">
                     <ul className="divide-y">
                         {app ? app.map(e=>{
-                            return(<li key={app.indexOf(e)} className="flex flex-row py-2"> 
+                            return(<li key={app.indexOf(e)} className="flex flex-row justify-between py-2"> 
                                     <p className="text-lg">{daySpanish(e.date)}</p>
                                     <button name={e.date} onClick={removeApp} className="bg-white w-2 flex justify-center items-center h-7 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mx-2">
                                         X</button>
@@ -103,7 +103,7 @@ export default function Scheduler({userId, onCancel}){
                 </div><div className="flex justify-center">
 
                     {app ? (<button className="padd-md border-radius-sm action action-professional mr-4" onClick={handleClickmany}>Confirmar</button>):null}
-                    {app ? (<button className="padd-md border-radius-sm action action-professional ml-4" onClick={onCancel}>Cancelar</button>):null}
+                    {<button className="padd-md border-radius-sm action action-professional ml-4" onClick={onCancel}>Cancelar</button>}
 
                 </div>
             </div>
