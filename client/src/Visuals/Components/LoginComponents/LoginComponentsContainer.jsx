@@ -127,7 +127,7 @@ function LoginComponentsContainer() {
     }
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
-
+    console.log(UserLog)
     const checkLog=()=>{
         if(!UserLog.error){
             console.log('NO TENGO ERROR')
@@ -135,9 +135,10 @@ function LoginComponentsContainer() {
         }else if(UserLog.error){
             console.log('SI TENGO ERROR')
             setShowErrorText(true)
+            setUserCanLog(true)
             setPassError(true)
             setuserFields({
-                username:'',
+                ...userFields,
                 password:''
             })
             dispatch(cleanLoginCheck())
@@ -161,7 +162,7 @@ function LoginComponentsContainer() {
 
 
     return (
-        <div class='flex flex-col items-center justify-start mt-44 h-screen'>
+        <div class='flex flex-col items-center justify-start mt-10 h-screen'>
             {(UserLog.token && UserLog.token.length>0) ? 
                 <Redirect to={`/miperfil/${UserLog.username}`}/>
                     :
@@ -187,8 +188,8 @@ function LoginComponentsContainer() {
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'}
                     />
-            <div className='flex flex-col items-center justify-center mt-6 text-2xl font-semibold text-green-600  '>
-                <Link   className='hover:no-underline hover:text-red-400 duration-700' 
+            <div className='flex flex-col items-center justify-center mt-6 text-2xl font-semibold pt-4'>
+                <Link   className={`text-red-500 hover:no-underline hover:text-red-700 duration-700`} 
                         to={'/registro'}>Crea tu cuenta!</Link>
             </div>
             

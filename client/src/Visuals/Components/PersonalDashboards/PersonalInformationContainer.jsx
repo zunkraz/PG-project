@@ -1,17 +1,22 @@
 
 import React, { useState } from 'react'
 import { FaMarker } from "react-icons/fa";
+import { useHistory } from 'react-router'
 import PopContainer from '../PopContainer';
 import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
 import Swal from 'sweetalert2'
+import { updateUserData } from '../../../ApiReq/users';
+
+
+
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
     
     console.log(userData)
     
     const [popState, setPopState] = useState(false)
-
+    const history = useHistory()
     // {
             // CONTROL 
             //      isProfessional,
@@ -135,21 +140,25 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     console.log(postPersData)
     console.log(postProfData)
 
-
-
     const sendPersData=()=>{
         setPopState(!popState)
-        console.log(postPersData)
+        updateUserData(postPersData)
         Swal.fire(
             'Datos enviados!',
             'Pronto vera los cambios efectuados',
             'success'
         )
+        history.push(`/miperfil/${userData.username}`)
     }
     const sendProfData=()=>{
         setPopState(!popState)
-        console.log(postProfData)
-        alert('POST PROFESIONAL DATA')
+        updateUserData(postProfData)
+        Swal.fire(
+            'Datos enviados!',
+            'Pronto vera los cambios efectuados',
+            'success'
+        )
+        history.push(`/miperfil/${userData.username}`)
     }
 
     const editData=()=>{
@@ -192,6 +201,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                                 children={<EditDataComponent
                                         onChange={handleEditFields}
                                         onSuccess={userInfo==='personalInfo'?sendPersData:sendProfData}
+                                        data={userInfo==='personalInfo'?postPersData:postProfData}
                                         onCancel={editData}
                                         userInfo={userInfo}
                                     />}
