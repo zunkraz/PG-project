@@ -10,7 +10,6 @@ function PersonalCardUser({img, likes, dislikes, sessions, isVerified, professio
 
     useEffect(() => setRandom(Math.ceil(Math.random()*10)) ,[])
 
-    //{/*<div className='h-auto w-80 pt-4'>*/}
     return (
         <div>
             <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
@@ -19,14 +18,9 @@ function PersonalCardUser({img, likes, dislikes, sessions, isVerified, professio
             <div className="mrg-lg-t border-radius-sm overflow-hidden">
                 <ImageComponent img={img} ratio={"ratio-1-1"}/>
             </div>
-            {/*
-            <div className='flex justify-center bg-gray-0 rounded-2xl justify-center '>
-                <img className='p-3 w-56 rounded-3xl' src={img} alt='Professional Img'/>
-            </div>
-            */}
             <div className="padd-md-tb text-center font-main font-lg">
-                {/*isVerified*/ random>5 && <span className="flex-center">Usuario Verificado<FcApproval className='font-xl mrg-sm-l'/></span>}
-                {/*!isVerified*/random<5 && <span>Usuario no verificado</span>}
+                {isVerified && <span className="flex-center">Usuario Verificado<FcApproval className='font-xl mrg-sm-l'/></span>}
+                {!isVerified && <span>Usuario no verificado</span>}
             </div>
             <div className='flex items-center justify-around'>
                 <div className='flex font-lg items-center'>
@@ -38,25 +32,13 @@ function PersonalCardUser({img, likes, dislikes, sessions, isVerified, professio
                     <span>{dislikes}</span>
                 </div>
             </div>
-            {/* <div className='flex bg-gray-200 justify-around items-center'> */}
             <div className='mrg-lg-t font-main font-lg flex-bar'>
                 {professional &&   
                     <div className='text-bold'>Sesiones Completadas:</div>
                 }
                 {professional && 
-                    <span className='text-bold font-color-success'>{ Math.floor(random*1000/likes + 5) /*sessions*/}00</span>
+                    <span className='text-bold font-color-success'>{ Math.floor(random*1000/(likes>0?likes:50)) /*sessions*/}</span>
                 }
-                
-                {/* {category==='Normal'?
-                    <span className=' font-lg text-gray-800 font-semibold'>Horas Asistidas :</span>
-                        :
-                    <span className=' font-lg text-gray-800 font-semibold'>Sesiones Completadas :</span>
-                }
-                {category==='Normal'?
-                    <p className='font-lg font-bold text-green-600 ml-4'>{sessions} Hs</p>
-                        :
-                        <p className='font-lg font-bold text-green-600 ml-4'>{sessions}</p>
-                } */}
             </div>
         </div>
     )
