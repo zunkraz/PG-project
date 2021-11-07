@@ -1,8 +1,4 @@
-import { 
-    GET_USERS,
-    POST_REVIEW,
-    POST_TIP
-} from '../../constants'
+import { GET_USERS} from '../../constants'
 
 const initialState = {
     users: [],

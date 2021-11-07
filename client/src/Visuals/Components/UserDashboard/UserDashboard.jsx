@@ -3,11 +3,18 @@ import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardC
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
-//import Scheduler from './Scheduler'
+import PopContainer from '../PopContainer'
+import Scheduler from './Scheduler'
+import Review from '../PersonalDashboards/Review'
 
 function UserDashboard({userData}) {
 
     const [userInfo, setUserInfo] = useState('personalInfo')
+    
+    const [scheduleFlag, setScheduleFlag] = useState(false)
+    const scheFlag = ()=>{
+        setScheduleFlag(!scheduleFlag)
+    }
     
     const changeUserState = (e)=>{
         setUserInfo(e.target.name)
@@ -26,6 +33,9 @@ function UserDashboard({userData}) {
         '2 horas con Rocio',
         '30 minutos con Claudio'
     ]
+    const popClass=`bg-white mt-20 h-4/5 w-2/5 flex flex-col items-center 
+                    justify-center rounded-lg shadow-lg
+                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
     
     return (
         <React.Fragment>
@@ -58,6 +68,23 @@ function UserDashboard({userData}) {
                                     userData.isProfessional && 
                                     <PersonalDashboardContainer user={userData}/>
                                 }
+                                {
+                                    userData.isProfessional && 
+                                    <div>
+                                        <PopContainer   trigger={scheduleFlag}
+                                                        principalDiv={popClass}
+                                                        children={<Scheduler 
+                                                                    onCancel={scheFlag}
+                                                                />}
+                                            />
+                                        <button 
+                                            className='leading-3 width-100 mrg-md-t padd-sm-tb font-md font-main border-radius-sm action action-add-post'
+                                            onClick={scheFlag}>
+                                            Horario
+                                        </button>
+                                    </div>
+                                }
+                                <Review userId={userData._id}/>
                             </div>
                         </div>
                         <div className='col-2-5@xl col-3-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg'>

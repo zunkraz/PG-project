@@ -34,15 +34,52 @@ export default function EditReview({close,review,setReview,userId}){
         setDisabled(rew ? false : true)
     }
     return(
-        <form>
-            <textarea placeholder='Dejanos tu feedback...' onChange={rewChange} value={rew} rows="10">{rew}</textarea>
+        <form className='flex flex-col h-4/5 justify-evenly'>
+            <h1 className='text-bold font-lg'>Tu review:</h1>
+            <textarea placeholder='Dejanos tu feedback...' 
+                    onChange={rewChange} 
+                    value={rew} 
+                    rows="5"
+                    className='bg-gray-50 rounded-lg p-4 resize-none'>{rew}</textarea>
             
-            <button value='Good' onClick={rateChange}>Bueno</button>
-            <button value="Bad" onClick={rateChange}>Malo</button>
+            <div className='flex justify-evenly h-6'>
+                <button value='Good' 
+                    onClick={rateChange}
+                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full text-gray-800 hover:pointer ${rate==='Good' ?'bg-green-200':'bg-gray-200'}`}
+                    >Bueno</button>
+                <button value="Bad" 
+                    onClick={rateChange}
+                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full text-gray-800 ${rate==='Bad' ?'bg-red-200':'bg-gray-200'}`}
+                    >Malo</button>
+            </div>
+
+        <div className='flex justify-around'>
             {review ? 
-                <button onClick={editRew} disabled={disabled}>Editar</button> : 
-                <button onClick={sendReview} disabled={disabled}>Enviar review</button>}
-            <button onClick={()=>close()}>Cerrar</button>
+                <button onClick={editRew} 
+                        disabled={disabled}
+                        className='w-48 h-10 mr-4 bg-white rounded-xl duration-700
+                        hover:bg-green-500 ring-white bg-opacity-5
+                        ring-4 ring-offset-1 ring-offset-green-500'>
+                            <span className='text-green-500 font-medium tracking-widest 
+                                    duration-700 hover:text-white'>Editar</span>
+                </button> : 
+                <button onClick={sendReview} 
+                        disabled={disabled}
+                        className='w-48 h-10 mr-4 bg-white rounded-xl duration-700
+                        hover:bg-green-500 ring-white bg-opacity-5
+                        ring-4 ring-offset-1 ring-offset-green-500'>
+                            <span className='text-green-500 font-medium tracking-widest 
+                                    duration-700 hover:text-white'>Enviar review</span>
+                </button>}
+            <button onClick={()=>close()}
+                    className='w-48 ml-4 bg-white bg-opacity-5
+                    hover:bg-red-500 rounded-xl duration-700
+                    ring-white ring-4 ring-offset-1 ring-offset-red-500'>
+                <span className='text-red-500 font-medium tracking-widest
+                                    duration-700 hover:text-white'>Cerrar</span>
+            </button>
+
+        </div>
         </form>
     )
 }

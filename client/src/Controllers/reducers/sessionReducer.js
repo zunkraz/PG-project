@@ -5,7 +5,6 @@ import {
     ADD_TO_CART,
     REMOVE_FROM_CART_ALL,
     SET_ERROR, 
-    SET_ADMIN,
 
 } from './../../constants';
 
