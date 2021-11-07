@@ -80,7 +80,7 @@ function ProfessionalContainer({username, login}) {
                         <ProfessionalCardComponent  img={profData.img ? profData.img : professional.img} 
                                                     likes={profData.likes} 
                                                     dislikes={profData.dislikes}
-                                                    sessions={profData.appointments.length}
+                                                    sessions={profData.appointments?.length}
                                                     biography={professional.biography}
                                                     professionalData={professional.professionalData}
                                                     // professionalData={professional.professionalData}
