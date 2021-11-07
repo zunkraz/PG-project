@@ -7,9 +7,10 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 const jwt = require('jsonwebtoken');
 
 const cookieExtractor = req => {
+    console.log('entra con',req.body)
     let token = null;
-    if (req && req.cookies) {
-        token = req.cookies['jwt'];
+    if (req && req.body) {
+        token = req.body['token'];
     }
     return token;
 }
