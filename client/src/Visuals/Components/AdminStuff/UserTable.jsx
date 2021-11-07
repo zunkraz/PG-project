@@ -2,7 +2,7 @@ import UserRow from "./UserRow";
 import React, {useState} from "react";
 //import * as FaIcons from 'react-icons/fa';
 
-function UserTable({usersAdmin}){
+function UserTable({usersAdmin, isAdmin, token}){
   // const maxPage = Math.floor(usersAdmin.length/8) +1;
   // const [page,setPage] = useState(1);
   const [usersSearch,setUsersSearch] = useState([]);
@@ -63,7 +63,7 @@ function UserTable({usersAdmin}){
             </th>
           </tr>
           </thead>
-          {usersSearch.length? usersSearch.map(u=> <UserRow key={u._id} user={u}/>):usersAdmin.map(u=> <UserRow key={u._id} user={u}/>)}
+          {usersSearch.length? usersSearch.map(u=> <UserRow key={u._id} user={u} isAdmin={isAdmin} token={token}/>):usersAdmin.map(u=> <UserRow key={u._id} user={u} isAdmin={isAdmin} token={token}/>)}
         </table>
         {/*<div className="flex-bar position-absolute">{buttonLeft()} {page} {buttonRight()}</div>*/}
       </div></div></div></div>

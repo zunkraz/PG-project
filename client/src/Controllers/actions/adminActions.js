@@ -33,9 +33,9 @@ import {
   getAllReviews,deleteReview,putReview
 } from '../../ApiReq/admin'
 
-export function getAdminUsers(){
+export function getAdminUsers(user){
     return async function(dispatch){
-        let data = await getAllUsers()
+        let data = await getAllUsers(user)
         return dispatch({
             type: GET_ADMIN_USERS,
             payload: data
@@ -70,9 +70,9 @@ export function delAdminAppointment(appointmentID){
         })
     }
 }
-export function putAdminAppointment(appointmentID,info){
+export function putAdminAppointment(appointmentID,info, {isAdmin, token}){
     return async function(dispatch){
-        let data = await putAppointment(appointmentID,info)
+        let data = await putAppointment(appointmentID,info, {isAdmin, token})
         return dispatch({
             type: PUT_ADMIN_APPOINTMENT,
             payload: data
@@ -80,18 +80,18 @@ export function putAdminAppointment(appointmentID,info){
     }
 }
 
-export function postAdminCategory(category){
+export function postAdminCategory(category, {isAdmin, token}){
     return async function(dispatch){
-        let data = await postCategory(category)
+        let data = await postCategory(category, {isAdmin, token})
         return dispatch({
             type: POST_ADMIN_CATEGORY,
             payload:data
         })
     }
 }
-export function putAdminCategory(categoryID,info){
+export function putAdminCategory(categoryID,info, {isAdmin, token}){
     return async function(dispatch){
-        let data = await putCategory(categoryID,info)
+        let data = await putCategory(categoryID,info, {isAdmin, token})
         return dispatch({
             type: PUT_ADMIN_CATEGORY,
             payload:data
@@ -108,9 +108,9 @@ export function deleteAdminCategory(categoryID){
     }
 }
 
-export function postAdminCountry(info){
+export function postAdminCountry(info, {isAdmin, token}){
     return async function(dispatch){
-        let data = await postCountry(info)
+        let data = await postCountry(info, {isAdmin, token})
         return dispatch({
             type: POST_ADMIN_COUNTRY,
             payload:data
@@ -127,18 +127,18 @@ export function deleteAdminCountry(countryId){
     }
 }
 
-export function getAdminTips(){
+export function getAdminTips({isAdmin, token}){
     return async function(dispatch){
-        let data = await getAllTips()
+        let data = await getAllTips({isAdmin, token})
         return dispatch({
             type: GET_ADMIN_TIPS,
             payload: data
         })
     }
 }
-export function putAdminTip(info,_id){
+export function putAdminTip(info,_id,{isAdmin, token}){
     return async function (dispatch){
-        let data = await putTip(info,_id)
+        let data = await putTip(info,_id,{isAdmin, token})
         return dispatch({
             type: PUT_ADMIN_TIPS,
             payload: data
@@ -154,9 +154,9 @@ export function deleteAdminTip(_id){
         })
     }
 }
-export function postAdminTip(info){
+export function postAdminTip(info,{isAdmin, token}){
     return async function(dispatch){
-        let data = await postTip(info)
+        let data = await postTip(info,{isAdmin, token})
         return dispatch({
             type: POST_ADMIN_TIPS,
             payload:data
@@ -164,18 +164,18 @@ export function postAdminTip(info){
     }
 }
 
-export function getAdminReviews(){
+export function getAdminReviews({isAdmin, token}){
     return async function(dispatch){
-        let data = await getAllReviews()
+        let data = await getAllReviews({isAdmin, token})
         return dispatch({
             type: GET_ADMIN_REVIEWS,
             payload: data
         })
     }
 }
-export function putAdminReview(info,_id){
+export function putAdminReview(info,_id,{isAdmin, token}){
     return async function (dispatch){
-        let data = await putReview(info,_id)
+        let data = await putReview(info,_id,{isAdmin, token})
         return dispatch({
             type: PUT_ADMIN_REVIEWS,
             payload: data

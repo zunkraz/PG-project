@@ -43,6 +43,14 @@ function EditDataComponent(props) {
                                     inputClass={inputClass}
                                     onChange={props.onChange}
                             />
+                        <EditInputComponent
+                                    label='Contraseña'
+                                    inputName='password'
+                                    divClass={divClass}
+                                    labelClass={labelClass}
+                                    inputClass={inputClass}
+                                    onChange={props.onChange}
+                            />
                     </div>
                 }
                 {props.userInfo==='professionalInfo' &&
