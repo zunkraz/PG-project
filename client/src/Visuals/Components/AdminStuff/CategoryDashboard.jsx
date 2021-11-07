@@ -5,24 +5,25 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllCategories} from "../../../Controllers/actions/constantInfoActions";
 import {deleteAdminCategory,putAdminCategory} from "../../../Controllers/actions/adminActions";
 
-function CategoryDashboard(){
+function CategoryDashboard({isAdmin, token}){
   const dispatch = useDispatch();
   const allCategories = useSelector(state=>state.constantInfoReducer.categories);
   const catDeleted = useSelector(state=>state.adminReducer.categoryDeleted);
   const catModified = useSelector(state=>state.adminReducer.categoryModified);
   const catPosted = useSelector(state=>state.adminReducer.categoryPosted);
+
   function handleCatDelete(name,id){
     if(window.confirm(`Desea eliminar la categoría ${name}?`)) dispatch(deleteAdminCategory(id));
   }
   function handleCatReset(name,id){
-    if(window.confirm(`Desea resetear la cantidad de búsquedas de ${name}?`)) dispatch(putAdminCategory(id,{searchCount: 0}));
+    if(window.confirm(`Desea resetear la cantidad de búsquedas de ${name}?`)) dispatch(putAdminCategory(id,{searchCount: 0},{isAdmin, token}));
   }
   useEffect(()=>{
-    dispatch(getAllCategories());
+    dispatch(getAllCategories({isAdmin, token}));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[catDeleted,catModified,catPosted]);
   useEffect(()=>{
-    if(!allCategories.length) dispatch(getAllCategories());
+    if(!allCategories.length) dispatch(getAllCategories({isAdmin, token}));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
