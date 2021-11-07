@@ -48,8 +48,9 @@ router.get('/signout', (req, res) => {
             message: 'Successfully logged out'
         })
     } else {
-        res.status(401).json({
-            error: 'Invalid token'
+        next({
+            status: 401,
+            message: 'Invalid token'
         })
     }
 })
