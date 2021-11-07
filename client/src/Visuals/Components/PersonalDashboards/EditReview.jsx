@@ -15,8 +15,11 @@ export default function EditReview({close,review,setReview,userId}){
 
     function editRew(e){
         e.preventDefault()
-        updateReviewUser({text:rew,rate, reviewId:review._id})
-        .then(r=>setReview(r))
+        console.log(rate)
+        updateReviewUser({text:rew,rate:rate, reviewId:review._id})
+        .then(r=>{
+            console.log(r)
+            return setReview(r)})
     }
 
     function sendReview(e){

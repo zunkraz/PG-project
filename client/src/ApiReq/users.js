@@ -31,8 +31,8 @@ export function postReviewUser({text,userId,rate}){
     .catch(r=>r.response.data);
 }
 
-export function updateReviewUser({text,reviewId}){
-    return axios.put(`${BASIC_URL}/reviews/${reviewId}`, {text})
+export function updateReviewUser({text,reviewId,rate}){
+    return axios.put(`${BASIC_URL}/reviews/${reviewId}`, {text,rate})
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }
