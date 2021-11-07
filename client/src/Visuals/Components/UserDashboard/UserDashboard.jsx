@@ -6,6 +6,7 @@ import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardC
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
+import ReviewPop from '../PersonalDashboards/ReviewPop'
 import PopContainer from '../PopContainer'
 import Scheduler from './Scheduler'
 
@@ -32,7 +33,7 @@ function UserDashboard({userData}) {
     }
     const [reviewFlag, setReviewFlag] = useState(false)
     const revFlag = ()=>{
-        setReviewFlag(!scheduleFlag)
+        setReviewFlag(!reviewFlag)
     }
 
     const changeTipFlag=()=>{setTip(!tip)}
@@ -59,7 +60,7 @@ function UserDashboard({userData}) {
         '2 horas con Rocio',
         '30 minutos con Claudio'
     ]
-    const popClass=`bg-white bg-opacity-95 mt-20 h-4/5 w-2/5 flex flex-col items-center 
+    const popClass=`bg-white mt-20 h-4/5 w-2/5 flex flex-col items-center 
                     justify-center rounded-lg shadow-lg
                     ring-white ring-4 ring-offset-1 ring-offset-red-500	`
     
@@ -104,7 +105,9 @@ function UserDashboard({userData}) {
                                         </button>
                                         <PopContainer   trigger={scheduleFlag}
                                                         principalDiv={popClass}
-                                                        //children={}
+                                                        children={<Scheduler 
+                                                                    onCancel={scheFlag}
+                                                                />}
                                             />
                                         <button 
                                             className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
@@ -118,13 +121,13 @@ function UserDashboard({userData}) {
                                     <div>
                                         <button 
                                             className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
-                                            onClick={scheFlag}>
+                                            onClick={revFlag}>
                                             Opinar sobre la plataforma
                                         </button>
                                         <PopContainer   trigger={reviewFlag}
                                                         principalDiv={popClass}
-                                                        children={<Scheduler 
-                                                                onCancel={scheFlag}
+                                                        children={<ReviewPop 
+                                                                onCancel={revFlag}
                                                             />}
                                                 />
                                     </div>
