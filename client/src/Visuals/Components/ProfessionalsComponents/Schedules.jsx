@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfSchedule } from '../../../Controllers/actions/professionalsActions';
 import {Link} from 'react-router-dom';
@@ -43,7 +43,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                     >
                         
                         <div>{elem.date.datefull}hs</div>
-                        <div style={{textAlign:'right'}}>
+                        <div>
                             {
                                 login.length ? 
                                 <button
@@ -51,8 +51,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                                 value={elem.date.datefull}
                                 onClick={onClick}
                                 >
-                                <span>Contratar</span>
-                                </button>
+                                <span>Contratar</span></button>
                                 :
                                 <Link to='/ingresar'>
                                 <button className="btn-prof-nologin">
