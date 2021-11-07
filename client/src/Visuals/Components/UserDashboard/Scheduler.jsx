@@ -3,19 +3,19 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { addtoSchedule } from "../../../ApiReq/schedule";
 
-export default function Scheduler({userId}){
+export default function Scheduler({userId, onCancel}){
     
     const [date, setDate] = useState(new Date());
     const [app, setApp] = useState([])
     // const [added, setAdded] = useState(false)
     
     const days={
-      Mon:"Lunes",
-      Tue:"Martes",
-      Wed:"Miercoles",
-      Thu:"Jueves",
-      Fri:"Viernes",
-      Sat:"Sabado"
+        Mon:"Lunes",
+        Tue:"Martes",
+        Wed:"Miercoles",
+        Thu:"Jueves",
+        Fri:"Viernes",
+        Sat:"Sabado"
     }
     
     // const dateToJSON = (date) => {
@@ -67,8 +67,8 @@ export default function Scheduler({userId}){
         return date.join(" ")
     }
     
-      return (
-          <div className="flex flex-col justify-center w-1/2 py-4 bg-white shadow-md rounded ">
+    return (
+        <div className="flex flex-col justify-center w-1/2 py-4 bg-white shadow-md rounded ">
             <div className="flex justify-center">
                 <div className="mr-3">
                 <DatePicker
@@ -101,10 +101,13 @@ export default function Scheduler({userId}){
                         }) : null}
                     </ul>
                 </div><div className="flex justify-center">
-                    {app ? (<button className='width-50 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post' onClick={handleClickmany}>Confirmar</button>):null}
+
+                    {app ? (<button className="padd-md border-radius-sm action action-professional mr-4" onClick={handleClickmany}>Confirmar</button>):null}
+                    {app ? (<button className="padd-md border-radius-sm action action-professional ml-4" onClick={onCancel}>Cancelar</button>):null}
+
                 </div>
             </div>
-          </div>
+        </div>
         
-      );
-    }
+    );
+}

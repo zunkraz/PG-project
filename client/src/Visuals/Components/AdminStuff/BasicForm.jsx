@@ -8,36 +8,39 @@ function BasicForm({component}){
   const allInfo = {categories:{name:'',searchCount:0,img:''},countries:{name:''},tips:{text:'',isApproved:true}};
   const allCategories = useSelector(state=>state.constantInfoReducer.categories);
   const [info,setInfo] = useState(allInfo[component]);
+  const userOnPage = useSelector(state=>state.sessionReducer.status);
+  const {isAdmin, token} = userOnPage;
 
   function handleChange(ev){
     setInfo({...info,[ev.target.name]:ev.target.value});
   }
-  function handleSubmitCat(ev){
+  function handleSubmitCat(ev, isAdmin, token){
     ev.preventDefault();
-    if(!allCategories.find(c=>c.name===info.name) && (info.name===''||info.img==='')) dispatch(postAdminCategory(info));
+    if(!allCategories.find(c=>c.name===info.name) && (info.name===''||info.img==='')) dispatch(postAdminCategory(info, {isAdmin, token}));
     else {
       let id = allCategories.filter(c => c.name === info.name)[0]._id;
       let data = (info.img!=='') ? {img: info.img} : {};
       data = (info.searchCount===0)? data : {...data,searchCount:info.searchCount};
-      dispatch(putAdminCategory(id, data))
+      dispatch(putAdminCategory(id, data, {isAdmin, token}))
     }
     setInfo(allInfo[component]);
   }
   function handleSubmitCountry(ev){
+    console.log(isAdmin, token);
     ev.preventDefault();
     if (info.name!=='') {
       console.log(info)
-      dispatch(postAdminCountry(info));
+      dispatch(postAdminCountry(info, {isAdmin, token}));
       setInfo(allInfo[component]);
     }
   }
   function handleSubmitTip(ev){
     ev.preventDefault();
-    dispatch(postAdminTip(info));
+    dispatch(postAdminTip(info, {isAdmin, token}));
     setInfo(allInfo[component]);
   }
   if (component==='categories') return (
-  <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitCat(ev)}>
+  <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev, isAdmin, token)=>handleSubmitCat(ev, isAdmin, token)}>
     <label className="m-2" htmlFor={"name"}>Nombre</label>
     <input className="padd-md-l" name="name" type={"text"} value={info.name} onChange={(ev)=>handleChange(ev)} required={true}/>
     <label className="m-2" htmlFor={"searchCount"}>Cantidad de búsquedas</label>

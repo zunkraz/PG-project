@@ -15,9 +15,12 @@ function AdminPanel(){
   const usersAdmin = useSelector(state=>state.adminReducer.adminUsers);
   const userDeleted = useSelector(state=>state.adminReducer.userDeleted);
   const userModified = useSelector(state=>state.adminReducer.userModified);
+  const userOnPage = useSelector(state=>state.sessionReducer.status);
+  const {isAdmin, token} = userOnPage;
 
   useEffect(()=>{
-  dispatch(getAdminUsers());
+  dispatch(getAdminUsers({token, isAdmin}));
+  console.log(token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[userDeleted,userModified]);
 
@@ -43,7 +46,6 @@ function AdminPanel(){
     setButtons({...buttonsOff,[e.target.innerText]:buttonSelected});
     setShownData(e.target.innerText);
   }
-  const userOnPage = useSelector(state=>state.sessionReducer.status);
   //const userOnPage = {isAdmin:true};
 
   if (userOnPage.isAdmin) return (
@@ -57,12 +59,12 @@ function AdminPanel(){
         <BigButton text="Tips" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Tips} />
         <BigButton text="Reviews" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Reviews} />
       </div>
-      {shownData==="Users" && <UserTable usersAdmin={usersAdmin}/>}
-      {shownData==="Categories" && <CategoryDashboard />}
-      {shownData==="Appointments" && <AppointmentDashboard />}
-      {shownData==="Countries" && <CountryDashboard />}
-      {shownData==="Tips" && <TipDashboard />}
-      {shownData==="Reviews" && <ReviewDashboard />}
+      {shownData==="Users" && <UserTable usersAdmin={usersAdmin} isAdmin={isAdmin} token={token}/>}
+      {shownData==="Categories" && <CategoryDashboard isAdmin={isAdmin} token={token}/>}
+      {shownData==="Appointments" && <AppointmentDashboard isAdmin={isAdmin} token={token}/>}
+      {shownData==="Countries" && <CountryDashboard isAdmin={isAdmin} token={token}/>}
+      {shownData==="Tips" && <TipDashboard isAdmin={isAdmin} token={token}/>}
+      {shownData==="Reviews" && <ReviewDashboard isAdmin={isAdmin} token={token}/>}
     </div>);
   else {
     return <Redirect to={'/'}/>

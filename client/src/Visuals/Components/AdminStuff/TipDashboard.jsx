@@ -4,7 +4,7 @@ import BasicForm from "./BasicForm";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteAdminTip,putAdminTip,getAdminTips} from "../../../Controllers/actions/adminActions";
 
-function TipDashboard(){
+function TipDashboard({isAdmin, token}){
   const dispatch = useDispatch();
   const allTips = useSelector(state=>state.adminReducer.adminTips);
   const tipDeleted = useSelector(state=>state.adminReducer.tipDeleted);
@@ -15,13 +15,13 @@ function TipDashboard(){
     dispatch(deleteAdminTip(id));
   }
   function handleTipChange(status,id){
-    dispatch(putAdminTip({isApproved:!status},id))
+    dispatch(putAdminTip({isApproved:!status},id,{isAdmin, token}))
   }
   useEffect(()=>{
-    dispatch(getAdminTips());
-  },[tipPosted,tipDeleted,tipModified,dispatch]);
+    dispatch(getAdminTips({isAdmin, token}));
+  },[tipPosted, tipDeleted, tipModified, dispatch, isAdmin, token]);
   useEffect(()=>{
-    if(!allTips.length) dispatch(getAdminTips());
+    if(!allTips.length) dispatch(getAdminTips({isAdmin, token}));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
