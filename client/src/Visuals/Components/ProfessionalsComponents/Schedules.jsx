@@ -37,7 +37,7 @@ export default function Schedules({id, login, name, lastname, category}) {
     }
 
     const months= ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-    const days= ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
+    const days= ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
 
     const selectDay = (e)=>{
         const {value}=e.target
