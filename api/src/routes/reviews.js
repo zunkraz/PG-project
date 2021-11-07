@@ -8,15 +8,15 @@ router.get('/',(req,res,next)=>{
     .then(result => res.json(result))
     .catch(err => next(err));
 });
-
-router.post('/', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+//passport.authenticate('jwt', {session: false}),
+router.post('/',  (req, res, next) => {
   const body = req.body;
   postReview(body)
     .then(result => res.json(result))
     .catch(err => next(err));
 });
-
-router.delete('/:id', passport.authenticate('jwt', {session: false}), (req,res,send) => {
+//passport.authenticate('jwt', {session: false}),
+router.delete('/:id', (req,res,next) => {
   const param = req.params.id
   deleteReview(param)
     .then(result=> res.json(result))

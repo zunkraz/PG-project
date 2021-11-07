@@ -18,8 +18,8 @@ function UserRow({user, isAdmin, token}){
   }
   function handleChangeRole(username,isAdmin){
     if(window.confirm(`Desea cambiar el rol de ${username}?`)) {
-      if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}, {isAdmin, token}));
-      else dispatch(putAdminUser(username, {isAdmin: true}, {isAdmin, token}));
+      if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}));
+      else dispatch(putAdminUser(username, {isAdmin: true}));
     } else console.log('Ok no lo cambio.');
   }
 
