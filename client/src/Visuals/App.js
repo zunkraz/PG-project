@@ -16,8 +16,10 @@ import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 import AdminPanel from "./Containers/AdminPanel";
 import Cart from './Components/Cart/Cart';
+import PaymentsCart from './Components/Cart/PaymentsCart';
 import Terms from './Containers/Terms';
 import SalesPolicy from './Containers/SalesPolicy';
+
 
 
 
@@ -58,6 +60,9 @@ function App() {
         <Route path="/soporte">
           <Supports/>
         </Route>
+        <Route path="/facturas">
+          <PaymentsCart/>
+          </Route>
         <Route path="/terminos-y-condiciones">
           <Terms/>
         </Route>
