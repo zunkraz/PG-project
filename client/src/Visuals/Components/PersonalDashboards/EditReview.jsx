@@ -35,7 +35,7 @@ export default function EditReview({close,review,setReview,userId}){
     }
     return(
         <form className='flex flex-col h-4/5 justify-evenly'>
-            <h1 className='text-bold font-lg'>Tu review:</h1>
+            <h1 className='text-bold font-lg'>Tu opinión sobre la plataforma:</h1>
             <textarea placeholder='Dejanos tu feedback...' 
                     onChange={rewChange} 
                     value={rew} 
