@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux'
 import Loading from '../../Components/Loading'
 import QuickInfo from './QuickInfo'
 import Schedules from './Schedules'
-
-
-import ProfessionalCardComponent from './ProfessionalCardComponent'
-import ProfessionalCardData from './ProfessionalCardData'
-import ProfessionalOpinionsComponents from './ProfessionalOpinionsComponents'
 import Opinions from './Opinions'
 import FullInfo from './FullInfo'
+
+
+// import ProfessionalCardComponent from './ProfessionalCardComponent'
+// import ProfessionalCardData from './ProfessionalCardData'
+// import ProfessionalOpinionsComponents from './ProfessionalOpinionsComponents'
 
 export default function ProfessionalContainer({username, login}) {
     
@@ -18,9 +18,6 @@ export default function ProfessionalContainer({username, login}) {
     const session = useSelector(state => state.sessionReducer.status.token)
     const divClass = 'flex justify-center items-center h-screen w-screen'
     const imgClass= 'w-96 h-96'
-
-    console.log(login)
-
 
     if(username===profData.username) {
 

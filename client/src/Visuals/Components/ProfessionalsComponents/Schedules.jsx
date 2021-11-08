@@ -21,7 +21,7 @@ export default function Schedules({id, login, name, lastname, category}) {
 
     function handleClick(e) {
         dispatch(addToCart({
-            name:name+" "+lastname,
+            name:name+" "+lastname+" ("+category+")",
             appointment:{
             date:e.target.name,
             sessions:1
@@ -114,27 +114,6 @@ export default function Schedules({id, login, name, lastname, category}) {
                                 </Link>
                         </div>
                         }
-
-                        {/* <div>{elem.date.datefull}hs</div>
-                        <div style={{textAlign:'right'}}>
-                            {
-                                login.length ? 
-                                <button
-                                className="btn-prof"
-                                value={elem.date.datefull}
-                                onClick={onClick}
-                                >
-                                <span>Contratar</span>
-                                </button>
-                                :
-                                <Link to='/ingresar'>
-                                <button className="btn-prof-nologin">
-                                <span>Inicia sesion para reservar</span>
-                                </button>
-                                </Link>
-                            }
-                        </div> */}
-
                     </li>
         })
         : <p className="py-4">Sin turnos disponibles</p>

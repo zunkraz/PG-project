@@ -1,8 +1,11 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React/* , { useEffect } */ from 'react'
 
 export default function FullInfo({profData}) {
 
-    console.log(profData)
+    // useEffect(() => {
+    //     console.log(profData)
+    // },[])
 
     return (
         <div className=''>
