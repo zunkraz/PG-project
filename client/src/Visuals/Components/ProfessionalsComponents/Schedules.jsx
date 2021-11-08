@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProfSchedule } from '../../../Controllers/actions/professionalsActions';
 import {Link} from 'react-router-dom';
 import { addToCart } from '../../../Controllers/actions/cartActions';
+import Swal from 'sweetalert2';
 
 
 export default function Schedules({id, login, name, lastname, category}) {
@@ -16,11 +17,12 @@ export default function Schedules({id, login, name, lastname, category}) {
     const [month, setMonth]= useState("Todos")
     const [load, setLoad]= useState([])
     const sched= useSelector(state=>state.professionalReducer.profSchedule)
-    const carrito= useSelector(state=>state.sessionReducer.cart)
+    // const carrito= useSelector(state=>state.sessionReducer.cart)
     
     const price = 10;
 
     function handleClick(e) {
+        setLoad([...load, e.target.id])
         dispatch(addToCart({
             name:name+" "+lastname+" ("+category+")",
             appointment:{
@@ -32,7 +34,13 @@ export default function Schedules({id, login, name, lastname, category}) {
             category:category,
             professionalId:id
         }))
-        setLoad([...load, e.target.id])
+        return Swal.fire({
+            title: '¡Reserva hecha!',
+            text: 'En tu carrito podrás abonar tu reserva',
+            icon:'success',
+            confirmButtonColor: "#FF214F", 
+        }
+        )
     };
     const dateJoin= (date)=>{
         return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time
@@ -100,7 +108,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                     key={index}
                     >   {login.length ? 
                         <div>
-                            {dateJoin(elem.date)}  {carrito.find(e=>e.id===elem._id) || load.find(e=>e===elem._id)? 
+                            {dateJoin(elem.date)}  {/* carrito.find(e=>e.id===elem._id) || */ load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
                                 <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>
