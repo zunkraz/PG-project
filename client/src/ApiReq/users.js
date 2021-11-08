@@ -45,8 +45,8 @@ export function deleteTipUser({tipId}){
 
 }
 
-export function updateUserData({username, body}){
-    return axios.put(`${BASIC_URL}/users/${username}`, {username,updateInfo: body})
+export function updateUserData(username, body){
+    return axios.put(`${BASIC_URL}/users/${username}`, body)
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }
