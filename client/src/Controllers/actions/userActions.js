@@ -1,5 +1,5 @@
-import { CREATE_USER, GET_USERS, SET_ADMIN, POST_TIP, POST_REVIEW } from "../../constants";
-import { createUser, getUsers, postTipUser, postReviewUser } from "../../ApiReq/users";
+import { CREATE_USER, GET_USERS, SET_ADMIN} from "../../constants";
+import { createUser, getUsers } from "../../ApiReq/users";
 
 export const createUserAction = (user) => {
     return (dispatch) => {
