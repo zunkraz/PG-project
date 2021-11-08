@@ -33,7 +33,7 @@ export default function Review({userId}){
                 </button> 
             </div> :
             <div className='flex flex-col justify-evenly h-full'>
-                <h3 className='font-bold'>Tu opinión de la plataforma:</h3>
+                <h3 className='font-bold'>Tu opinión:</h3>
                 <div className='flex items-center'>
                     <p className='m-0 w-3/4 text-sm max-h-14 overflow-y-auto scroll'>{review.text}</p>
                     <span className={`w-1/4 h-4 text-xs px-2 align-middle inline-flex text-xs leading-5 font-semibold rounded-full text-gray-800 max-w-max ${review.rate==='Good'? 'bg-green-200' :  'bg-red-200'}`}>{review.rate === 'Good' ? 'Bueno' : 'Malo'}</span>
