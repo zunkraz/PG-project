@@ -4,41 +4,25 @@ import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardC
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
-import ReviewPop from '../PersonalDashboards/ReviewPop'
 import PopContainer from '../PopContainer'
 import Scheduler from './Scheduler'
+import Review from '../PersonalDashboards/Review'
 
 
 
 function UserDashboard({userData}) {
     
     const [tip, setTip] = useState(false)
-    const [userInfo, setUserInfo] = useState('personalInfo')
 
-    const [tipsArray, settipsArray] = useState([
-        'Diseño para Halo-4', 'Como usar Photoshop en Iphone', 
-        'Sabías sobre esta paleta de colores?', 'Diseño para Ark-II',
-        'Diseño para Tetris'
-    ])
+    const [userInfo, setUserInfo] = useState('personalInfo')
     
     const [scheduleFlag, setScheduleFlag] = useState(false)
     const scheFlag = ()=>{
         setScheduleFlag(!scheduleFlag)
     }
-    const [reviewFlag, setReviewFlag] = useState(false)
-    const revFlag = ()=>{
-        setReviewFlag(!reviewFlag)
-    }
-
-    const changeTipFlag=()=>{setTip(!tip)}
     
     const changeUserState = (e)=>{
         setUserInfo(e.target.name)
-    }
-    // FUNCION DE AGREGAR TIPS, COPIAR PARA AGREGAR REVIEWs
-    const addPost=(post)=>{
-        settipsArray([...tipsArray,post])
-        setTip(false)
     }
 
     const pendienteNormal=[
@@ -93,40 +77,21 @@ function UserDashboard({userData}) {
                                 {
                                     userData.isProfessional && 
                                     <div>
-                                        <button 
-                                            className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
-                                            onClick={changeTipFlag}>
-                                            Agregar post
-                                        </button>
                                         <PopContainer   trigger={scheduleFlag}
                                                         principalDiv={popClass}
                                                         children={<Scheduler 
+                                                                    userId={userData._id}
                                                                     onCancel={scheFlag}
                                                                 />}
                                             />
                                         <button 
-                                            className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
+                                            className='leading-3 width-100 mrg-md-t padd-sm-tb font-md font-main border-radius-sm action action-add-post'
                                             onClick={scheFlag}>
                                             Horario
                                         </button>
                                     </div>
                                 }
-                                {
-                                    !userData.review &&
-                                    <div>
-                                        <button 
-                                            className='width-100 mrg-lg-t padd-sm-tb font-lg font-main border-radius-sm action action-add-post'
-                                            onClick={revFlag}>
-                                            Opinar sobre la plataforma
-                                        </button>
-                                        <PopContainer   trigger={reviewFlag}
-                                                        principalDiv={popClass}
-                                                        children={<ReviewPop 
-                                                                onCancel={revFlag}
-                                                            />}
-                                                />
-                                    </div>
-                                }
+                                <Review userId={userData._id}/>
                             </div>
                         </div>
                         <div className='col-2-5@xl col-3-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg'>
@@ -148,8 +113,7 @@ function UserDashboard({userData}) {
                         {/* Container: Posts */}
                         <div className='col-1-5@xl col-2-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t6-'>
                             <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
-                                {tip && <AddPostComponent addPost={addPost}/>}
-                                {userData.isProfessional && <ProfessionalPostsContainer posts={tipsArray}/>}
+                                <ProfessionalPostsContainer userId={userData._id}/>
                             </div>
                         </div>
                     </div>

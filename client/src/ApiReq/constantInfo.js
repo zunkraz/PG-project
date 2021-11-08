@@ -13,8 +13,8 @@ export function getTips(){
     .catch(r=>r.response.data)
 }
 
-export function getReviews(){
-    return axios.get(`${BASIC_URL}/reviews`)
+export function getReviews(userId){
+    return axios.get(`${BASIC_URL}/reviews${userId ? '?userId='+userId : ''}`)
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }

@@ -21,26 +21,34 @@ function Dashboard({match}) {
         })
         history.push(`/miperfil/${user}`)
     }
-    
+
     useEffect(() => {
         if(status.username){
             status.username && username===status.username?
-        checkInfo(status.username)
+            checkInfo(status.username)
             :
-        checkInfo(status.username)
+            checkInfo(status.username)
         }else if(!status.username){
             history.push('/ingresar')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-
+    
+    const checkInfo=(user)=>{
+        getSingleUser(user).then(res=>{
+            console.log(res)
+            setUserData(res)
+            
+        })
+        history.push(`/miperfil/${user}`)
+    }
     const divClass = 'flex justify-center items-center h-screen w-screen'
     const imgClass= 'w-96 h-96'
     
     return (
         <div>
             {(!status.token.length>0 && !userData) && <Redirect to='/'/>}
-            {status.token.length>0 && userData.name?
+            {status.token.length>0 && userData?.name?
             <UserDashboard userData={userData}/>
                 :
             <Loading divClass={divClass} imgClass={imgClass}/>}
