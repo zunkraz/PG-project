@@ -14,7 +14,7 @@ import { putUser } from '../../../Controllers/actions/userActions';
 
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
-    
+    console.log(userData.birthdate)
     const [popState, setPopState] = useState(false)
     const history = useHistory()
     // {
@@ -136,7 +136,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 break;
         }
     }
-    
+
     const token = useSelector(state => state.sessionReducer.status.token)
     const dispatch = useDispatch()
 

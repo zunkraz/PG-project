@@ -34,14 +34,7 @@ function Dashboard({match}) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
-    const checkInfo=(user)=>{
-        getSingleUser(user).then(res=>{
-            console.log(res)
-            setUserData(res)
-            
-        })
-        history.push(`/miperfil/${user}`)
-    }
+    
     const divClass = 'flex justify-center items-center h-screen w-screen'
     const imgClass= 'w-96 h-96'
     
