@@ -6,8 +6,7 @@ export function checkLoginAction(userData){
         const data = await getLogin(userData);
         return data.message !== "Success"?
         dispatch({
-            type: SET_ERROR,
-            payload: data.message
+            type: SET_ERROR
         })
             :
         dispatch({
