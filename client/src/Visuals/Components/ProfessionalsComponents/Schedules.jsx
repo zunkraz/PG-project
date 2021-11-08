@@ -14,6 +14,7 @@ export default function Schedules({id, login, name, lastname, category}) {
     },[]);
     const [day, setDay]= useState("Todos")
     const [month, setMonth]= useState("Todos")
+    const [load, setLoad]= useState([])
     const sched= useSelector(state=>state.professionalReducer.profSchedule)
     const carrito= useSelector(state=>state.sessionReducer.cart)
     
@@ -31,6 +32,7 @@ export default function Schedules({id, login, name, lastname, category}) {
             category:category,
             professionalId:id
         }))
+        setLoad([...load, e.target.id])
     };
     const dateJoin= (date)=>{
         return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time
@@ -63,6 +65,7 @@ export default function Schedules({id, login, name, lastname, category}) {
         }
         
     }
+    
 
     return (
         <div className="padd-lg">
@@ -76,14 +79,14 @@ export default function Schedules({id, login, name, lastname, category}) {
             <select id="days"onChange={selectDay} className="w-48 uk-input border-radius-sm font-main">
                 <option value="Todos">  Todos </option>
                 {days.map(d=>{
-                    return <option value={d}>{d}</option>
+                    return <option value={d} key={days.indexOf(d)}>{d}</option>
                 })}
             </select>
             <label htmlFor="month" className="mx-2">Mes:</label>
             <select id="month" onChange={selectMonth} className="w-48 uk-input border-radius-sm font-main">
                 <option value="Todos">  Todos </option>
                 {months.map(m=>{
-                    return <option value={m}>{m}</option>
+                    return <option value={m} key={months.indexOf(m)}>{m}</option>
                 })}
             </select>
             </div>
@@ -97,7 +100,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                     key={index}
                     >   {login.length ? 
                         <div>
-                            {dateJoin(elem.date)}  {carrito.find(e=>e.id===elem._id) ? 
+                            {dateJoin(elem.date)}  {carrito.find(e=>e.id===elem._id) || load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
                                 <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>
