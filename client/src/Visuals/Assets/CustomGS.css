@@ -211,10 +211,10 @@
     max-height: 25vh;
 }
 
-.WeekTipsCard::-webkit-scrollbar {
+.WeekTipsCard::-webkit-scrollbar, .scroll::-webkit-scrollbar {
     width: 6px;
     height: 8px;
-}.WeekTipsCard::-webkit-scrollbar-thumb {
+}.WeekTipsCard::-webkit-scrollbar-thumb, .scroll::-webkit-scrollbar-thumb {
     background: rgba(128, 128, 128, 0.2);;
     border-radius: 4px;
 }
@@ -268,4 +268,59 @@
 
 .miPerfilCustomHeight{
     height: 550px;
+}
+.btn-prof{
+    background-color: white;
+    color:green;
+    border: 1px green solid;
+    border-radius: .5rem;
+    width: 100%;
+    /* width: 50%; */
+    margin-top: .5rem;
+    height: 2rem;
+    
+}
+.btn-prof span{
+    color: green;
+}
+.btn-prof:hover{
+    background-color: green;
+}
+.btn-prof:hover span{
+    color: white;
+}
+.btn-prof-nologin{
+    background-color: #ffffff;
+    color:red;
+    border: 1px red solid;
+    border-radius: .5rem;
+    width: 100%;
+    margin-top: .5rem;
+    height: 2rem;
+}
+.btn-prof-nologin span{
+    color: red;
+}
+.btn-prof-nologin:hover{
+    background-color: #FF214F;
+}
+.btn-prof-nologin:hover span{
+    color: white;
+}
+.btn-prof-info{
+    background-color:#FF214F;
+    /* border: 1px green solid; */
+    border-radius: .5rem;
+    width: 100%;
+    margin-top: .5rem;
+    height: 2rem;
+}
+.btn-prof-info span {
+    color: black;
+}
+.btn-prof-info:hover{
+    background-color: white;
+}
+.btn-prof-info:hover span{
+    color: #FF214F;
 }

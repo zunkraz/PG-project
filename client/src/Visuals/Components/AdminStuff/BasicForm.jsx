@@ -14,9 +14,13 @@ function BasicForm({component}){
   function handleChange(ev){
     setInfo({...info,[ev.target.name]:ev.target.value});
   }
-  function handleSubmitCat(ev, isAdmin, token){
+  function handleSubmitCat(ev){
     ev.preventDefault();
-    if(!allCategories.find(c=>c.name===info.name) && (info.name===''||info.img==='')) dispatch(postAdminCategory(info, {isAdmin, token}));
+    if(info.name==='') return;
+    if(!(allCategories.find(c=>c.name===info.name))){
+      if (info.img !== '') dispatch(postAdminCategory(info, {isAdmin, token}));
+      else return;
+    }
     else {
       let id = allCategories.filter(c => c.name === info.name)[0]._id;
       let data = (info.img!=='') ? {img: info.img} : {};
@@ -29,7 +33,6 @@ function BasicForm({component}){
     console.log(isAdmin, token);
     ev.preventDefault();
     if (info.name!=='') {
-      console.log(info)
       dispatch(postAdminCountry(info, {isAdmin, token}));
       setInfo(allInfo[component]);
     }
@@ -47,7 +50,7 @@ function BasicForm({component}){
     <input className="padd-md-l" name="searchCount" type="number" step={1} min={0} value={info.searchCount} onChange={ev=>handleChange(ev)} required={true}/>
     <label className="m-2" htmlFor={"img"}>URL imagen</label>
     <input className="padd-md-l" name="img" type="url" value={info.img} onChange={(ev)=>handleChange(ev)}/>
-    <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-300" value="Agregar categoría"/>
+    <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-300" value="Agregar / editar categoría"/>
   </form>);
 
   if (component==='tips') return (

@@ -19,11 +19,11 @@ function CategoryDashboard({isAdmin, token}){
     if(window.confirm(`Desea resetear la cantidad de búsquedas de ${name}?`)) dispatch(putAdminCategory(id,{searchCount: 0},{isAdmin, token}));
   }
   useEffect(()=>{
-    dispatch(getAllCategories({isAdmin, token}));
+    dispatch(getAllCategories());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[catDeleted,catModified,catPosted]);
   useEffect(()=>{
-    if(!allCategories.length) dispatch(getAllCategories({isAdmin, token}));
+    if(!allCategories.length) dispatch(getAllCategories());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 

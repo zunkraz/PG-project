@@ -1,17 +1,22 @@
 
 import React, { useState } from 'react'
 import { FaMarker } from "react-icons/fa";
+import { useHistory } from 'react-router'
 import PopContainer from '../PopContainer';
 import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
+import Swal from 'sweetalert2'
+import { updateUserData } from '../../../ApiReq/users';
+import { useDispatch, useSelector } from 'react-redux'
+import { putUser } from '../../../Controllers/actions/userActions';
+
+
 
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
-    
-    console.log(userData)
-    
+    console.log(userData.birthdate)
     const [popState, setPopState] = useState(false)
-
+    const history = useHistory()
     // {
             // CONTROL 
             //      isProfessional,
@@ -23,7 +28,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     const userNormalInfo={
         username : userData.username,
         email : userData.email,
-        contraseña: '***********',
+        contraseña: userData.password,
         '':'',
         nombre : userData.name,
         apellido : userData.lastname,
@@ -32,13 +37,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     const getValue=(data)=>{
         if(data){
-            console.log(data)
             return{
                 profesion: userData.category.name,
                 matricula: userData.professionalRegistration,
                 titulo : userData.title,
-                universidad: userData.intitute,
-                'cuenta bancaria': '************',
+                universidad: userData.institute,
+                'cuenta bancaria': userData.bankAccount,
                 pais : userData.country.name,
                 estado : userData.state,
                 ciudad : userData.city,
@@ -49,27 +53,20 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     const userProfInfo = getValue(userData.isProfessional)
 
-    const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
-    const showDataSpan='capitalize mr-4 font-bold text-base';
-    const showDataP='text-sm font-normal ml-4';
-    const popClass = `bg-white bg-opacity-95 mt-20 h-4/5 w-2/5 flex flex-col items-center 
-                    justify-center rounded-lg shadow-lg 
-                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
-
-    
     const [postPersData, setpostPersData] = useState({
-        name : '',
-        lastname : '',
-        birthdate : '',
+        name : userData.name,
+        lastname : userData.lastname,
+        birthdate : userData.birthdate,
+        password: '',
     })
 
     const [postProfData, setpostProfData] = useState({
-        img: '',
-        title : '',
-        intitute: '',
-        bankAccount: '',
-        state : '',
-        city : '',
+        img: userData.img,
+        title : userProfInfo.titulo,
+        institute: userData.institute,
+        bankAccount: userData.bankAccount,
+        state : userData.state,
+        city : userData.city,
     })
 
     const handleEditFields=(e)=>{
@@ -92,6 +89,13 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     birthdate: e.target.value
                 })
                 break;
+
+            case 'password':
+                setpostPersData({
+                    ...postPersData,
+                    password: e.target.value
+                })
+                break;
             case 'img':
                 setpostProfData({
                     ...postProfData,
@@ -104,10 +108,10 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     title: e.target.value
                 })
                 break;
-            case 'intitute':
+            case 'institute':
                 setpostProfData({
                     ...postProfData,
-                    intitute: e.target.value
+                    institute: e.target.value
                 })
                 break;
             case 'bankAccount':
@@ -133,24 +137,44 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         }
     }
 
-    console.log(postPersData)
-
-
+    const token = useSelector(state => state.sessionReducer.status.token)
+    const dispatch = useDispatch()
 
     const sendPersData=()=>{
         setPopState(!popState)
-        console.log(postPersData)
-        alert('POST PERSONAL DATA')
+        dispatch(putUser(userData.username, {...postPersData, token}))
+        Swal.fire(
+            'Datos enviados! personal',
+            'Pronto vera los cambios efectuados',
+            'success'
+        )
+        history.push(`/miperfil/${userData.username}`)
     }
     const sendProfData=()=>{
         setPopState(!popState)
-        console.log(postProfData)
-        alert('POST PROFESIONAL DATA')
+        dispatch(putUser(userData.username, {...postProfData, token}))
+        Swal.fire(
+            'Datos enviados!',
+            'Pronto vera los cambios efectuados',
+            'success'
+        )
+        history.push(`/miperfil/${userData.username}`)
     }
 
     const editData=()=>{
         setPopState(!popState)
     }
+
+    /////////////// CLASS ///////////////
+
+    const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
+    const showDataSpan='capitalize mr-4 font-bold text-base';
+    const showDataP='text-sm font-normal ml-4';
+    const popClass = `bg-white mt-2 h-4/5 w-2/5 flex flex-col items-center 
+                    justify-center rounded-lg shadow-lg 
+                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
+
+    /////////////// CLASS ///////////////
 
     return (
         <div className=''>
@@ -171,7 +195,6 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                         className='mrg-lg-l padd-md-tb padd-lg-lr font-main user-dashboard-info-tab-inactive'
                         onClick={changeUserState}>
                         Datos Profesionales
-                        
                     </button>
                 }
                 <PopContainer   trigger={popState}
@@ -179,17 +202,18 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                                 children={<EditDataComponent
                                         onChange={handleEditFields}
                                         onSuccess={userInfo==='personalInfo'?sendPersData:sendProfData}
+                                        data={userInfo==='personalInfo'?postPersData:postProfData}
                                         onCancel={editData}
                                         userInfo={userInfo}
                                     />}
                     />
-            </div>            
+            </div>
             <div className='user-dashboard-info-tabs-content border-color-dark-a20 padd-lg'>
                 {userInfo==='personalInfo' && 
                     <div className='flex flex-col'>
                         {
                             Object.keys(userNormalInfo)?.map((elem, index)=>{
-                                let data=userNormalInfo[elem]
+                                let data=(elem==='cuenta bancaria'|| elem==='contraseña')?'*************':userNormalInfo[elem]
                                 return (
                                         <ShowData   key={index} title={elem} 
                                                         data={data}
@@ -220,6 +244,11 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
                     onClick={editData}
                     >Editar Información <span className='ml-6'><FaMarker/></span>
+                </button>}
+                {userData.isProfessional && <button
+                    className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                    onClick={editData}
+                    >Información Profesional<span className='ml-6'><FaMarker/></span>
                 </button>}
             </div>            
         </div>

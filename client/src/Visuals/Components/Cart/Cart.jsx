@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import CartElement from "./CartElement";
 import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
 import { setAvailability } from "../../../ApiReq/schedule";
+import Swal from 'sweetalert2'
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -26,6 +27,7 @@ let history = useHistory();
      }
  
    const onApprove = (data, actions) => {
+       console.log(data)
     return actions.order.capture(handlePay());
   }
 //////////////////// FIN PP
@@ -37,8 +39,14 @@ function handlePay(){
     })
 
     dispatch(removeFromCartAll())
-    history.push('/profesionales')
-    console.log("el pago ha sido exitoso");
+     Swal.fire({
+        title: 'Pago Realizado!',
+        text: 'Redireccionado al panel de facturación',
+        icon:'success',
+        confirmButtonColor: "#e83454", 
+    });
+    history.push('/facturas')
+    
 }
   
 
@@ -49,13 +57,13 @@ function handlePay(){
         name={o.name}
         date={o.appointment.date}
         sessions={o.appointment.sessions}
-        price={o.appointment.sessions*10}
+        price={o.price}
         />
     </li>)
     
     let suma= 0
-    order.forEach(o=> suma += o.appointment.sessions*10)
-    
+    order.forEach(o=> suma += o.price)
+    console.log(suma)
     return (
         
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4 divide-y ">

@@ -14,19 +14,19 @@ const ProfessionalCardComponent = ({data}) => {
     const country = data.country.name;
     const img = data.img ? data.img : defImg;
     return (
-        <div className="border-color-extra4-a40 border-radius-sm overflow-hidden">
+        <div className="border-color-dark-a20 border-radius-sm overflow-hidden shadow-lg">
             <Link to={`/profesionales/${username}`} style={{ "textDecoration": "none" }}>
                 <ImageComponent key={username} img={img} ratio={"ratio-1-1"}/>
             </Link>
-            <div className="padd-xl-t padd-lg-lr padd-lg-b ud-professional-card-border position-relative bg-color-light">
+            <div className="padd-lg-t padd-lg-lr padd-lg-b ud-professional-card-border position-relative bg-color-light">
                 <div className="position-middle-parent">
-                    <div className="icon-xl border-radius-sm bg-color-main flex-center">
+                    <div className="icon-xl border-radius-sm bg-color-main flex-center- display-none">
                         <span>icon</span>
                     </div>
                 </div> 
-                <div className="text-bold text-center font-lg font-main">{name} {lastname}</div>
-                <div className="text-bold text-center font-main">{category}</div>
-                <div className="text-bold text-center font-main font-sm">{country}</div>
+                <div className="text-bold text-center font-lg font-main normalize">{name} {lastname}</div>
+                <div className="mrg-sm-t text-bold text-center font-main font-color-extra3-a60">{category}</div>
+                <div className="text-bold text-center font-main font-sm font-color-extra3-a60">{country}</div>
                 <div className="mrg-lg-t flex-center">
                     <div className="padd-lg-r">
                         <div className="padd-md-b font-lg flex-center">

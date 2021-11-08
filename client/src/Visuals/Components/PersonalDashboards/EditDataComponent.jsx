@@ -20,24 +20,41 @@ function EditDataComponent(props) {
                 {props.userInfo==='personalInfo'&&
                     <div className='flex flex-col h-64 justify-around w-96 max-h-72'>
                         <EditInputComponent
+                                    key='#Nombre'
                                     label='Nombre'
                                     inputName='name'
+                                    value={props.data.name}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='#Apellido'
                                     label='Apellido'
                                     inputName='lastname'
+                                    value={props.data.lastname}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='#Cumpleaños'
                                     label='Cumpleaños'
                                     inputName='birthdate'
+                                    value={props.data.birthdate}
+                                    type='date'
+                                    divClass={divClass}
+                                    labelClass={labelClass}
+                                    inputClass={inputClass}
+                                    onChange={props.onChange}
+                            />
+                        <EditInputComponent
+                                    key='#Contraseña'
+                                    label='Contraseña'
+                                    inputName='password'
+                                    type='password'
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
@@ -48,6 +65,7 @@ function EditDataComponent(props) {
                 {props.userInfo==='professionalInfo' &&
                     <div className='editProfData'>
                         <EditInputComponent
+                                    key='Imagen de Perfil'
                                     label='Imagen de Perfil'
                                     inputName='img'
                                     divClass={divClass}
@@ -56,6 +74,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='Titulo'
                                     label='Titulo'
                                     inputName='title'
                                     divClass={divClass}
@@ -64,14 +83,16 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                             <EditInputComponent
+                                    key='Universidad'
                                     label='Universidad'
-                                    inputName='intitute'
+                                    inputName='institute'
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='Cuenta Bancaria'
                                     label='Cuenta Bancaria'
                                     inputName='bankAccount'
                                     divClass={divClass}
@@ -80,6 +101,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='Estado'
                                     label='Estado'
                                     inputName='state'
                                     divClass={divClass}
@@ -88,6 +110,7 @@ function EditDataComponent(props) {
                                     onChange={props.onChange}
                             />
                         <EditInputComponent
+                                    key='Ciudad'
                                     label='Ciudad'
                                     inputName='city'
                                     divClass={divClass}
@@ -97,7 +120,6 @@ function EditDataComponent(props) {
                             /> 
                     </div>
                 }
-
                 <div className='flex justify-around'>
                     <button className='w-48 h-10 mr-4 bg-white rounded-xl duration-700
                                         hover:bg-green-500 ring-white bg-opacity-5

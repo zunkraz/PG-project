@@ -19,13 +19,17 @@ function FeaturedProfession({profession}){
   };
 
 return (
-  <div className="col-1-4@xl col-1-4@lg col-1-4@md padd-lg">
-    <ImageComponent key={profession._id} img={profession.img} ratio={"ratio-3-2"}/>
-    <div className="padd-xl-t padd-lg-lr padd-lg-b border-top-color-main border-4x position-relative bg-color-light">
-      <div className="position-middle-parent">
-        <div className="icon-xl bg-color-main flex-center"><span>{icons[profession._id]}</span></div>
+  <div className="col-1-4@xl col-1-4@lg col-1-2@md col-1-2@sm col-1-1@xs padd-lg">
+    <div className="border-color-dark-a20 border-radius-sm overflow-hidden shadow-lg">
+      <ImageComponent key={profession._id} img={profession.img} ratio={"ratio-3-2"}/>
+      <div className="padd-lg-t padd-lg-lr padd-md-b border-top-color-main ud-professional-card-border position-relative bg-color-light">
+        <div className="position-middle-parent">
+          <div className="icon-lg bg-color-main border-radius-sm flex-center">
+            <span className="font-color-light font-lg">{icons[profession._id]}</span>
+          </div>
+        </div>
+        <div className="padd-md-t font-lg font-main width-100 text-center">{profession.name}</div>
       </div>
-      <div className="font-lg font-main width-100 text-center">{profession.name}</div>
     </div>
   </div>
 );

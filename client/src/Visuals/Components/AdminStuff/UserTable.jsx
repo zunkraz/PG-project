@@ -6,7 +6,7 @@ function UserTable({usersAdmin, isAdmin, token}){
   // const maxPage = Math.floor(usersAdmin.length/8) +1;
   // const [page,setPage] = useState(1);
   const [usersSearch,setUsersSearch] = useState([]);
-  const [search,searchHappened] = useState(false)
+  const [search,searchHappened] = useState(false);
   // function nextPage() {
   //   setPage(page < maxPage ? page + 1 : page);
   // }
@@ -63,7 +63,8 @@ function UserTable({usersAdmin, isAdmin, token}){
             </th>
           </tr>
           </thead>
-          {usersSearch.length? usersSearch.map(u=> <UserRow key={u._id} user={u} isAdmin={isAdmin} token={token}/>):usersAdmin.map(u=> <UserRow key={u._id} user={u} isAdmin={isAdmin} token={token}/>)}
+          {usersSearch.length? usersSearch.map(u=> <UserRow key={u._id} user={u} isAdmin={isAdmin} token={token}/>):
+            usersAdmin.map(u=> <UserRow key={u._id} user={u} isAdmin={isAdmin} token={token}/>)}
         </table>
         {/*<div className="flex-bar position-absolute">{buttonLeft()} {page} {buttonRight()}</div>*/}
       </div></div></div></div>

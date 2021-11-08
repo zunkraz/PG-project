@@ -1,6 +1,6 @@
 module.exports = (req, res, next) => {
-    console.log(req.cookies.isAdmin);
-    if(req && req.cookies.isAdmin){
+    console.log(req.body);
+    if(req && req.body.isAdmin){
         next();
     }
     else {

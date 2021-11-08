@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import SearchBarPro from '../Components/SearchBarPro/SearchBarPro'
 import ProfesionalsCatalog from '../Components/ProfessionalCard/ProfessionalsCatalog'
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { getAllProfs } from '../../Controllers/actions/professionalsActions'
 import { getAllCategories, getAllCountries } from '../../Controllers/actions/constantInfoActions'
 
@@ -9,9 +9,12 @@ import { getAllCategories, getAllCountries } from '../../Controllers/actions/con
 export default function Profesionals() {
     const dispatch= useDispatch()
 
+    const profs =  useSelector(state => state.professionalReducer.professionalsRender)
     useEffect(() => {
 
+        if(!profs.length){
             dispatch(getAllProfs())
+        }
             dispatch(getAllCountries())
             dispatch(getAllCategories())
             // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,7 +25,7 @@ export default function Profesionals() {
             <div className="wrapper bg-professionals-title">
                 <div className="wrapper padd-xl bg-color-light-a80">
                     <section className="flex-center-xl-lg-md">
-                        <div className="col-5-6@xl">
+                        <div className="col-5-6@xl col-4-5@lg col-2-3@md col-1-1@sm col-1-1@xs">
                             <div className="text-bold font-main font-2x">
                                 <span className="border-bottom-color-main padd-md-b padd-lg-r">Profesionales</span>
                             </div>
@@ -30,7 +33,7 @@ export default function Profesionals() {
                                 <h1 className="font-xl">Las profesiones más consultadas en LATAM EXPONENTIAL.</h1>
                             </div>
                         </div>
-                        <div className="col-1-6@xl">
+                        <div className="col-1-6@xl col-1-5@lg col-1-3@md col-1-1@sm col-1-1@xs">
                             <div 
                                 className="width-100 mrg-lg-t padd-md font-main border-radius-sm action action-search-bar flex-center" 
                                 data-uk-toggle="target: #offcanvas-search">
@@ -41,7 +44,7 @@ export default function Profesionals() {
                     </section>
                 </div>
             </div>
-            <div className="wrapper mrg-lg-t">
+            <div className="wrapper mrg-lg-t" data-uk-height-match=".normalize">
                 <section>
                     <ProfesionalsCatalog/>
                 </section>

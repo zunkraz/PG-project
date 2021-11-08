@@ -9,11 +9,12 @@ function Footer() {
 
     const utilLink = [
         {name:'Politica de privacidad',url:'#'},
-        {name:'Terminos y condiciones',url:'#'},
+        {name:'Politica de ventas',url:'/politica-ventas'},
+        {name:'Terminos y condiciones',url:'/terminos-y-condiciones'},
         {name:'Reclamos',url:'#'},
-        {name:'Soporte',url:'#'},
+        {name:'Soporte',url:'/soporte/servicios'},
         {name:'Servicio Tecnico',url:'#'},
-        {name:'Derechos de propiedad intelectual',url:'#'},
+        //{name:'Derechos de propiedad intelectual',url:'#'},
     ]
 
     const info = [

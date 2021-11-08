@@ -7,8 +7,9 @@ function EditInputComponent(props) {
                     className={props.labelClass}
                 >{props.label}</label>
             <input  id='name'
-                    type="text"
+                    type={props.type?props.type:"text"}
                     name={props.inputName}
+                    value={props.value}
                     className={props.inputClass}
                     autoComplete='off'
                     onChange={props.onChange}
