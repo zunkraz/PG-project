@@ -4,8 +4,6 @@ import axios from 'axios'
 
 export function getLogin({username,password}){
     return axios.post(`${BASIC_URL}/login/signin`, { username, password })
-    .then(r=>{
-        console.log(r.data)
-        return r.data})
+    .then(r=>r.data)
     .catch(r => r.response.data)
 }
