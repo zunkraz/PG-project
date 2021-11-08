@@ -16,6 +16,7 @@ import Supports from './Containers/Supports'
 import ProfessionalDashboard from './Components/ProfessionalsComponents/ProfessionalDashboard';
 import AdminPanel from "./Containers/AdminPanel";
 import Cart from './Components/Cart/Cart';
+import PaymentsCart from './Components/Cart/PaymentsCart';
 
 
 
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route path="/soporte">
           <Supports/>
+        </Route>
+        <Route path="/facturas">
+          <PaymentsCart/>
         </Route>
       </Switch>
         <Footer/>
