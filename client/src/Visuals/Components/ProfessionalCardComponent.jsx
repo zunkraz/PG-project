@@ -24,9 +24,9 @@ const ProfessionalCardComponent = ({data}) => {
                         <span>icon</span>
                     </div>
                 </div> 
-                <div className="text-bold text-center font-lg font-main">{name} {lastname}</div>
-                <div className="text-bold text-center font-main">{category}</div>
-                <div className="text-bold text-center font-main font-sm">{country}</div>
+                <div className="text-bold text-center font-lg font-main normalize">{name} {lastname}</div>
+                <div className="mrg-sm-t text-bold text-center font-main font-color-extra3-a60">{category}</div>
+                <div className="text-bold text-center font-main font-sm font-color-extra3-a60">{country}</div>
                 <div className="mrg-lg-t flex-center">
                     <div className="padd-lg-r">
                         <div className="padd-md-b font-lg flex-center">
