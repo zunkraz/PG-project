@@ -1,4 +1,4 @@
-import { CREATE_USER, GET_USERS, SET_ADMIN} from "../../constants";
+import { CREATE_USER, GET_USERS } from "../../constants";
 import { createUser, getUsers } from "../../ApiReq/users";
 
 export const createUserAction = (user) => {
