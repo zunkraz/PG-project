@@ -136,9 +136,6 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 break;
         }
     }
-
-    console.log(postPersData)
-    console.log(postProfData)
     
     const token = useSelector(state => state.sessionReducer.status.token)
     const dispatch = useDispatch()
@@ -247,6 +244,11 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
                     onClick={editData}
                     >Editar Información <span className='ml-6'><FaMarker/></span>
+                </button>}
+                {userData.isProfessional && <button
+                    className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                    onClick={editData}
+                    >Información Profesional<span className='ml-6'><FaMarker/></span>
                 </button>}
             </div>            
         </div>

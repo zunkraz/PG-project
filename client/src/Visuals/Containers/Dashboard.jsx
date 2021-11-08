@@ -21,7 +21,7 @@ function Dashboard({match}) {
         })
         history.push(`/miperfil/${user}`)
     }
-    console.log(userData)
+    
     useEffect(() => {
         if(status.username){
             status.username && username===status.username?

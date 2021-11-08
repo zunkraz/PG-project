@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import {useDispatch} from 'react-redux'
-import { setAdmin } from '../../../Controllers/actions/userActions'
 import AddPostComponent from '../PersonalDashboards/AddPostComponent'
 import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardContainer'
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
@@ -13,13 +11,7 @@ import Scheduler from './Scheduler'
 
 
 function UserDashboard({userData}) {
-    console.log(userData)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(setAdmin(userData.isAdmin))
-    }, [userData.isAdmin])
-
+    
     const [tip, setTip] = useState(false)
     const [userInfo, setUserInfo] = useState('personalInfo')
 
