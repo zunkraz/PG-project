@@ -248,7 +248,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 {userData.isProfessional && <button
                     className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
                     onClick={editData}
-                    >Información Profesional<span className='ml-6'><FaMarker/></span>
+                    >Presentación Profesional<span className='ml-6'><FaMarker/></span>
                 </button>}
             </div>            
         </div>
