@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddPostComponent from '../PersonalDashboards/AddPostComponent'
 import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardContainer'
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
@@ -11,6 +11,11 @@ import Review from '../PersonalDashboards/Review'
 
 
 function UserDashboard({userData}) {
+    console.log(userData)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        }, [])
     
     const [tip, setTip] = useState(false)
 

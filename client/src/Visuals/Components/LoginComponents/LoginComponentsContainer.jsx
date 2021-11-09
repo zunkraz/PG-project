@@ -18,6 +18,7 @@ function LoginComponentsContainer() {
     
     useEffect(() => {
         dispatch(getAllUsers())
+        window.scrollTo(0, 0)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -25,7 +26,6 @@ function LoginComponentsContainer() {
 
     const users = useSelector(state => state.userReducer.users)
     const userNames = users.map(elem=>elem.username)
-
 
     const [showErrorText, setShowErrorText] = useState(false)
     const [userIndex, setUserIndex] = useState()
@@ -127,13 +127,14 @@ function LoginComponentsContainer() {
     }
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
-    console.log(UserLog)
+    
     const checkLog=()=>{
         if(!UserLog.error && UserLog.token.length){
             console.log('NO TENGO ERROR')
             setShowErrorText(false)
         }else if(UserLog.error){
             console.log('SI TENGO ERROR')
+            console.log(UserLog)
             setShowErrorText(true)
             setUserCanLog(true)
             setPassError(true)

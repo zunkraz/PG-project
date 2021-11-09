@@ -1,17 +1,30 @@
 //admin function
 const User = require('../../models/User');
 const bcrypt = require('bcrypt');
+const { update } = require('../../models/User');
 
-module.exports = (username,updateInfo) => {
-  if(updateInfo.password){
-    return bcrypt.hash(updateInfo.password,10).then(r=>{
-      updateInfo.password=r
-      return User.findOneAndUpdate({username},{
+module.exports = async(username,updateInfo) => {
+
+
+  const userData = await User.findOne({username});
+
+
+  if(userData){
+    //console.log(userData)
+    if(await bcrypt.compare(userData.password, updateInfo.password)){
+      return await User.findOneAndUpdate({username},{
         $set: updateInfo
       }, {new: true}).select({username:1, email:1});
-    })
+    }else{
+      const newPass = await bcrypt.hash(updateInfo.password,10)
+        updateInfo.password=newPass
+        console.log('NEW USER DATA =>> ', updateInfo)
+      return await User.findOneAndUpdate({username},{
+        $set: updateInfo
+      }, {new: true}).select({username:1, email:1});
+    }
   }
-  return User.findOneAndUpdate({username},{
+  return await User.findOneAndUpdate({username},{
     $set: updateInfo
   }, {new: true}).select({username:1, email:1}); //el select es por si queremos que la funcion
 }                                                   // devuelva el username y el email del usuario actualizado

@@ -23,6 +23,7 @@ function Dashboard({match}) {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         if(status.username){
             status.username && username===status.username?
             checkInfo(status.username)

@@ -57,7 +57,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         name : userData.name,
         lastname : userData.lastname,
         birthdate : userData.birthdate,
-        password: '',
+        password: userData.password,
     })
 
     const [postProfData, setpostProfData] = useState({
