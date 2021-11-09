@@ -20,6 +20,15 @@ const invoice = new Schema(
       type: String,
       required: true
     },
+    numberOfSessions: {
+      type: Number
+    },
+    totalCost: {
+      type: Number
+    },
+    description: {
+      type: String
+    },
     schedules:[{type: Schema.Types.ObjectId,
       ref: 'schedules',
       required: true
@@ -28,6 +37,7 @@ const invoice = new Schema(
   { timestamp: true }
 )
 
+// DATA DE PAYPAL:
 // billingToken: null
 // facilitatorAccessToken: "A21AAKWt8KqjD_MBPiqd6kkNCtzBWMjwoijD4HsUkTwy6bvJ3aUCQC4Rv0i6_QJo6Lwuym_iTx8HnCCqbcQwq-A65-Q0r3Jyw"
 // orderID: "2S4615684E2248813"
