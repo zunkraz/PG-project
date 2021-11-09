@@ -1,23 +1,22 @@
 const {Router} = require("express");
 const router = Router();
 const Invoice = require('../models/Invoice');
-
+const {invoiceCreate} = require('../controllers/index.js');
 
 //POST NEW INVOICE
 router.post('/',(req,res,next)=>{
-  let newInvoice = req.body;
-  let date=Date();
-  const newInv = new Invoice(newInvoice);
-  newInv.save()
+  let data = req.body;
+  invoiceCreate(data)
     .then(result => res.json(result))
     .catch(err => next(err));
 });
 
-//GET INVOICE BY userId
+//GET INVOICEs BY userId
 router.get('/:customerId',(req,res,next)=>{
   let {customerId} = req.params;
-  Invoice.find({customerId}).populate([{path: 'customerId', select: 'username'},
-    {path: 'schedules',select: 'userId'}])
+  Invoice.find({customerId}).select('numberOfSessions orderID totalCost description date')
+    // .populate([{path: 'customerId', select: 'username'},
+    // {path: 'schedules',select: 'userId'}])
     .then(result => res.json(result))
     .catch(err => next(err));
 });
