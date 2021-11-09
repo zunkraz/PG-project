@@ -10,7 +10,6 @@ const professionals = require('./professionals')
 const reviews = require('./reviews')
 const schedules = require('./schedules');
 const feedback = require('./feedback');
-const appointment = require('./appointment');
 const invoice = require('./invoice');
 
 
