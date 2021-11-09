@@ -4,13 +4,8 @@ const bcrypt = require('bcrypt');
 const { update } = require('../../models/User');
 
 module.exports = async(username,updateInfo) => {
-
-
   const userData = await User.findOne({username});
-
-
   if(userData){
-    //console.log(userData)
     if(await bcrypt.compare(userData.password, updateInfo.password)){
       return await User.findOneAndUpdate({username},{
         $set: updateInfo
@@ -18,7 +13,6 @@ module.exports = async(username,updateInfo) => {
     }else{
       const newPass = await bcrypt.hash(updateInfo.password,10)
         updateInfo.password=newPass
-        console.log('NEW USER DATA =>> ', updateInfo)
       return await User.findOneAndUpdate({username},{
         $set: updateInfo
       }, {new: true}).select({username:1, email:1});
