@@ -1,0 +1,39 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const invoice = new Schema(
+  {
+    customerId: {
+      type: Schema.Types.ObjectId,
+      ref: 'users',
+      required: true,
+    },
+    date: {
+      type:Date,
+      default: Date.now
+    },
+    payerID: {
+      type: String,
+      required: true
+    },
+    orderID: {
+      type: String,
+      required: true
+    },
+    schedules:[{type: Schema.Types.ObjectId,
+      ref: 'schedules',
+      required: true
+    }]
+  },
+  { timestamp: true }
+)
+
+// billingToken: null
+// facilitatorAccessToken: "A21AAKWt8KqjD_MBPiqd6kkNCtzBWMjwoijD4HsUkTwy6bvJ3aUCQC4Rv0i6_QJo6Lwuym_iTx8HnCCqbcQwq-A65-Q0r3Jyw"
+// orderID: "2S4615684E2248813"
+// payerID: "P9TCTBGVG3NSS"
+// paymentID: null
+
+const Invoice = mongoose.model('invoices', invoice);
+
+module.exports = Invoice;
