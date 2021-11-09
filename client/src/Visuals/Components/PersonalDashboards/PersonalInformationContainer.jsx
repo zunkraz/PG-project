@@ -14,8 +14,10 @@ import { putUser } from '../../../Controllers/actions/userActions';
 
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
-    console.log(userData.birthdate)
+
     const [popState, setPopState] = useState(false)
+    const [popOffer, setPopOffer] = useState(false)
+
     const history = useHistory()
     // {
             // CONTROL 
@@ -57,7 +59,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         name : userData.name,
         lastname : userData.lastname,
         birthdate : userData.birthdate,
-        password: '',
+        password: userData.password,
     })
 
     const [postProfData, setpostProfData] = useState({
@@ -165,6 +167,10 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         setPopState(!popState)
     }
 
+    const setOffer=()=>{
+        setPopOffer(!popOffer)
+    }
+
     /////////////// CLASS ///////////////
 
     const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
@@ -197,6 +203,16 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                         Datos Profesionales
                     </button>
                 }
+                <PopContainer   trigger={popState}
+                                principalDiv={popClass}
+                                children={<EditDataComponent
+                                        onChange={handleEditFields}
+                                        onSuccess={userInfo==='personalInfo'?sendPersData:sendProfData}
+                                        data={userInfo==='personalInfo'?postPersData:postProfData}
+                                        onCancel={editData}
+                                        userInfo={userInfo}
+                                    />}
+                    />
                 <PopContainer   trigger={popState}
                                 principalDiv={popClass}
                                 children={<EditDataComponent
@@ -247,8 +263,8 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 </button>}
                 {userData.isProfessional && <button
                     className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
-                    onClick={editData}
-                    >Información Profesional<span className='ml-6'><FaMarker/></span>
+                    onClick={setOffer}
+                    >Presentación Profesional<span className='ml-6'><FaMarker/></span>
                 </button>}
             </div>            
         </div>
