@@ -17,7 +17,7 @@ export default function Schedules({id, login, name, lastname, category}) {
     const [month, setMonth]= useState("Todos")
     const [load, setLoad]= useState([])
     const sched= useSelector(state=>state.professionalReducer.profSchedule)
-    // const carrito= useSelector(state=>state.sessionReducer.cart)
+    const carrito= useSelector(state=>state.sessionReducer.cart)
     
     const price = 10;
 
@@ -108,7 +108,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                     key={index}
                     >   {login.length ? 
                         <div>
-                            {dateJoin(elem.date)}  {/* carrito.find(e=>e.id===elem._id) || */ load.find(e=>e===elem._id)? 
+                            {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
                                 <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>
