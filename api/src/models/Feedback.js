@@ -21,21 +21,10 @@ const feedback = new Schema(
       ref: 'users',
       required: true,
     },
-    appointmentId: {
+    scheduleId: {
       type: Schema.Types.ObjectId,
-      ref: 'appointments',
+      ref: 'schedules',
       required: true,
-    },
-    date: {
-      year:{
-        type: Number
-      },
-      month:{
-        type: Number
-      },
-      dayNumber:{
-        type: Number
-      }
     }
   },
   { timestamp: true }
