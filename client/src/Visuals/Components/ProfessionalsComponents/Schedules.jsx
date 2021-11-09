@@ -18,6 +18,8 @@ export default function Schedules({id, login, name, lastname, category}) {
     const [load, setLoad]= useState([])
     const sched= useSelector(state=>state.professionalReducer.profSchedule)
     const carrito= useSelector(state=>state.sessionReducer.cart)
+    const customerId= useSelector(state=>state.sessionReducer.status.id)
+    
     
     const price = 10;
 
@@ -32,7 +34,8 @@ export default function Schedules({id, login, name, lastname, category}) {
             price:price,
             id:e.target.id,
             category:category,
-            professionalId:id
+            professionalId:id,
+            customerId:customerId
         }))
         return Swal.fire({
             title: '¡Reserva hecha!',
