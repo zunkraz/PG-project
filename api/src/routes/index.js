@@ -10,6 +10,8 @@ const professionals = require('./professionals')
 const reviews = require('./reviews')
 const schedules = require('./schedules');
 const feedback = require('./feedback');
+const appointment = require('./appointment');
+const invoice = require('./invoice');
 
 
 router.use('/tips', tips);
@@ -22,6 +24,7 @@ router.use('/login', login); //esta ruta valida el inicio de sesión
 router.use('/countries', countries);
 router.use('/schedules', schedules);
 router.use('/feedback', feedback);
+router.use('/invoice',invoice);
 
 router.get('/', (req, res) => {
     res.send({
@@ -35,7 +38,8 @@ router.get('/', (req, res) => {
         reviews: 'http://localhost:3001/reviews',
         tips: 'http://localhost:3001/tips',
         schedules: 'http://localhost:3001/schedules',
-        feedback: 'http://localhost:3001/feedback'
+        feedback: 'http://localhost:3001/feedback',
+        invoice: 'http://localhost:3001/invoice'
     })
 });
 
