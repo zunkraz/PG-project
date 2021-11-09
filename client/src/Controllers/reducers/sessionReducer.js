@@ -13,6 +13,7 @@ const initialState = {
     status: {
         token:'',   
         username:'',
+        id:'',
         isAdmin: false,
         error: false
     },
@@ -29,6 +30,7 @@ export default function sessionReducer(state=initialState, {type,payload}){
                     ...state.status,
                     token: payload.token || '',
                     username: payload.username || '',
+                    id: payload._id || '',
                     isAdmin: payload.isAdmin || false,
                     error: false
                 }
