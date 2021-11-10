@@ -1,5 +1,5 @@
 
-import { CREATE_USER, GET_USERS, PUT_USER, SET_ADMIN } from "../../constants";
+import { CREATE_USER, GET_USERS, PUT_USER } from "../../constants";
 import { createUser, getUsers, updateUserData } from "../../ApiReq/users";
 
 
