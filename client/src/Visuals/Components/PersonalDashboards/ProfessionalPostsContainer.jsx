@@ -1,4 +1,3 @@
-import Review from '../PersonalDashboards/Review'
 import React from 'react'
 import PostsShowComponent from './PostsShowComponent'
 //<div className='flex items-center justify-around flex-wrap h-96 mx-36 bg-gray-100'></div>
