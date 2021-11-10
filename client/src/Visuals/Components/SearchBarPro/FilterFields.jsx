@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {useSelector} from 'react-redux'
 
-const FiltersFields = ({data,handleChange,setError}) => {
+const FiltersFields = ({data,handleChange,setError, error}) => {
 
 const categories = useSelector(state => state.constantInfoReducer.categories);
 const countries = useSelector(state => state.constantInfoReducer.countries)
@@ -80,9 +80,11 @@ useEffect(() => {
         </div>
 
 
-        {/* <div>
-        <h3>Escoge tu presupuesto</h3>
-        {error && <h3>Los montos no son válidos</h3>}
+        <div className='padd-lg-b text-center font-color-light font-md font-main'>
+       
+        {error 
+        ? <h3 className="padd-sm-b border-bottom-color-main">Los montos no son válidos</h3>
+        : <h3 className="padd-sm-b border-bottom-color-main" >Escoge tu presupuesto</h3>}
           <div>
             <input
                  
@@ -91,7 +93,7 @@ useEffect(() => {
                 name='min'
                 value={data.min}
                 onChange={handleChange}
-                className='uk-width-1-6@s uk-input'
+                className='uk-input mrg-lg-t border-radius-sm font-main'
             />
             <input 
                 
@@ -100,10 +102,10 @@ useEffect(() => {
                 name='max'
                 value={data.max}
                 onChange={handleChange}
-                className='uk-width-1-6@s uk-input'
+                className='uk-input mrg-lg-t border-radius-sm font-main'
             />
           </div>
-        </div> */}
+        </div>
     </div>
      );
 }
