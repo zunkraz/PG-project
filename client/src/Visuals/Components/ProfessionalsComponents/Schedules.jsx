@@ -26,7 +26,7 @@ export default function Schedules({id, login, name, lastname, category}) {
     function handleClick(e) {
         setLoad([...load, e.target.id])
         dispatch(addToCart({
-            name:name+" "+lastname+" ("+category+")",
+            name:name+" "+lastname,
             appointment:{
             date:e.target.name,
             sessions:1

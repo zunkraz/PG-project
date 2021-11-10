@@ -1,19 +1,59 @@
-import React from 'react'
-import { FaBackspace } from 'react-icons/fa';
+import React, {useEffect, useState} from 'react'
+import {useSelector} from 'react-redux';
+import { getCartInfo } from '../../../ApiReq/cart';
 
-
-const PaymentsCart = () => {
+const PaymentsCart =  () => {
+  const customerId = useSelector(state => state.sessionReducer.status.id)
+ const [render, setRender] = useState([])
     
+ useEffect( () => {
+  const payRender =   getCartInfo(customerId)
+  payRender.then(data => setRender(data))
+  //  const payRender =  await getCartInfo(customerId)
+        // let renderization = payRender.map((e,index) => {
+        //   let Render = 
+        //   <tr  key={index} className="bg-white border-4 border-gray-200">
+        //     <td>
+        //       <span className="text-center ml-4 font-semibold">{e.description}</span>
+        //     </td>
+        //     <td className="px-16 py-2">
+        //         $ {e.totalCost}
+        //     </td>
+        //     <td className="px-16 py-2">
+        //       <span>{e.date.slice(0,10)}</span>
+        //     </td>
+        //     <td className="px-16 py-2 text-center">
+        //       <span>{e.numberOfSessions}</span>
+        //     </td>
+
+        //     <td className="px-16 py-2">
+        //       <span className="text-green-500">
+        //         Pagado
+        //       </span>
+        //     </td>
+
+        //     <td className="px-16 py-2">
+        //       <span>
+        //         {e.orderID}
+        //       </span>
+        //     </td>
+        //   </tr>
+        //   return Render
+        // })
+        // setRender(renderization)
+        
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  console.log(render.length)
+
     return ( 
         <div>
       <table className="min-w-full table-auto">
         <thead className="justify-between">
           <tr className="bg-primary">
+           
             <th className="px-16 py-2">
-              <span className="text-gray-300"></span>
-            </th>
-            <th className="px-16 py-2">
-              <span className="text-gray-300">Descripcion</span>
+              <span className="text-gray-300">Contratados</span>
             </th>
             <th className="px-16 py-2">
               <span className="text-gray-300">Precio</span>
@@ -29,30 +69,26 @@ const PaymentsCart = () => {
               <span className="text-gray-300">Estado</span>
             </th>
             <th className="px-16 py-2">
-              <span className="text-gray-300">Codigo</span>
+              <span className="text-gray-300">Orden de Pago</span>
             </th>
           </tr>
         </thead>
-        <tbody className="bg-blue-600">
-          <tr className="bg-white border-4 border-gray-200">
-            <td class="px-16 py-2 flex flex-row items-center">
-              <img
-                class="h-8 w-8 rounded-full object-cover "
-                src="https://randomuser.me/api/portraits/men/30.jpg"
-                alt=""
-              />
-            </td>
+        <tbody>
+         {/* {render.length && render} */}
+         {render.length !== 0 ? render.map((e,index) => {
+          let Render = 
+          <tr  key={index} className="bg-white border-4 border-gray-200">
             <td>
-              <span className="text-center ml-4 font-semibold">Dean Lynch</span>
+              <span className="text-center ml-4 font-semibold">{e.description}</span>
             </td>
             <td className="px-16 py-2">
-                10$
+                $ {e.totalCost}
             </td>
             <td className="px-16 py-2">
-              <span>05/06/2020</span>
+              <span>{e.date.slice(0,10)}</span>
             </td>
-            <td className="px-16 py-2">
-              <span>1</span>
+            <td className="px-16 py-2 text-center">
+              <span>{e.numberOfSessions}</span>
             </td>
 
             <td className="px-16 py-2">
@@ -63,149 +99,15 @@ const PaymentsCart = () => {
 
             <td className="px-16 py-2">
               <span>
-                123456
+                {e.orderID}
               </span>
             </td>
           </tr>
-
-          {/* BORRAR BORRAR BORRAR BORRRAR BORRAR BORRAR BORRAR BORRRAR BORRAR BORRAR BORRAR BORRRAR */}
-
-          <tr className="bg-white border-4 border-gray-200">
-            <td class="px-16 py-2 flex flex-row items-center">
-              <img
-                class="h-8 w-8 rounded-full object-cover "
-                src="https://randomuser.me/api/portraits/women/25.jpg"
-                alt=""
-              />
-            </td>
-            <td>
-              <span className="text-center ml-4 font-semibold">Pepita perez</span>
-            </td>
-            <td className="px-16 py-2">
-                10$
-            </td>
-            <td className="px-16 py-2">
-              <span>06/06/2020</span>
-            </td>
-            <td className="px-16 py-2">
-              <span>1</span>
-            </td>
-
-            <td className="px-16 py-2">
-              <span className="text-green-500">
-                Pagado
-              </span>
-            </td>
-
-            <td className="px-16 py-2">
-              <span>
-                123456
-              </span>
-            </td>
-          </tr>
-
-          <tr className="bg-white border-4 border-gray-200">
-            <td class="px-16 py-2 flex flex-row items-center">
-              <img
-                class="h-8 w-8 rounded-full object-cover "
-                src="https://randomuser.me/api/portraits/men/31.jpg"
-                alt=""
-              />
-            </td>
-            <td>
-              <span className="text-center ml-4 font-semibold">Daniel Dhers</span>
-            </td>
-            <td className="px-16 py-2">
-                10$
-            </td>
-            <td className="px-16 py-2">
-              <span>05/06/2020</span>
-            </td>
-            <td className="px-16 py-2">
-              <span>2</span>
-            </td>
-
-            <td className="px-16 py-2">
-              <span className="text-green-500">
-                Pagado
-              </span>
-            </td>
-
-            <td className="px-16 py-2">
-              <span>
-                123456
-              </span>
-            </td>
-          </tr>
-
-          <tr className="bg-white border-4 border-gray-200">
-            <td class="px-16 py-2 flex flex-row items-center">
-              <img
-                class="h-8 w-8 rounded-full object-cover "
-                src="https://randomuser.me/api/portraits/women/15.jpg"
-                alt=""
-              />
-            </td>
-            <td>
-              <span className="text-center ml-4 font-semibold">Santiago Maligno</span>
-            </td>
-            <td className="px-16 py-2">
-                10$
-            </td>
-            <td className="px-16 py-2">
-              <span>05/06/2020</span>
-            </td>
-            <td className="px-16 py-2">
-              <span>3</span>
-            </td>
-
-            <td className="px-16 py-2">
-              <span className="text-green-500">
-                Pagado
-              </span>
-            </td>
-
-            <td className="px-16 py-2">
-              <span>
-                123456
-              </span>
-            </td>
-          </tr>
-
-          <tr className="bg-white border-4 border-gray-200">
-            <td class="px-16 py-2 flex flex-row items-center">
-              <img
-                class="h-8 w-8 rounded-full object-cover "
-                src="https://randomuser.me/api/portraits/women/70.jpg"
-                alt=""
-              />
-            </td>
-            <td>
-              <span className="text-center ml-4 font-semibold">Helen Chufa</span>
-            </td>
-            <td className="px-16 py-2">
-                10$
-            </td>
-            <td className="px-16 py-2">
-              <span>05/06/2020</span>
-            </td>
-            <td className="px-16 py-2">
-              <span>2</span>
-            </td>
-
-            <td className="px-16 py-2">
-              <span className="text-green-500">
-                Pagado
-              </span>
-            </td>
-
-            <td className="px-16 py-2">
-              <span>
-                123456
-              </span>
-            </td>
-          </tr>
-         
+          return Render
+        })
+      :
+      <h1>NADA</h1>
+      }
         </tbody>
       </table>
     </div>
