@@ -7,6 +7,7 @@ import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsC
 import PopContainer from '../PopContainer'
 import Scheduler from './Scheduler'
 import Review from '../PersonalDashboards/Review'
+import SchedulerRecurrent from './SchedulerRecurrent'
 
 
 
@@ -45,7 +46,7 @@ function UserDashboard({userData}) {
         '30 minutos con Claudio'
     ]
     
-    const popClass=`bg-white mt-2 h-4/5 w-2/5 flex flex-col items-center 
+    const popClass=`bg-white mt-2 h-4/5 w-4/5 flex flex-col items-center 
                     justify-center rounded-lg shadow-lg
                     ring-white ring-4 ring-offset-1 ring-offset-red-500	`
     
@@ -85,7 +86,7 @@ function UserDashboard({userData}) {
                                     <div>
                                         <PopContainer   trigger={scheduleFlag}
                                                         principalDiv={popClass}
-                                                        children={<Scheduler 
+                                                        children={<SchedulerRecurrent 
                                                                     userId={userData._id}
                                                                     onCancel={scheFlag}
                                                                 />}
