@@ -73,6 +73,7 @@ function App() {
         </Route>
         <Route path="/preguntas-frecuentes">
           <Faq/>
+        </Route>
         <Route path="/opinion">
           <Review/>
         </Route>
