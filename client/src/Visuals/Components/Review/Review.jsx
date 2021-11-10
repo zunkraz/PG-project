@@ -16,8 +16,9 @@ export default function Review() {
   useEffect(() => {
     getReviews(userId).then((r) => {
       setReview(r);
-    });
-  }, []);
+    });  
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
+  },[]);
 
   function changePopUp(e) {
     setPopUp((state) => (state ? false : true));
