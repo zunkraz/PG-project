@@ -6,14 +6,19 @@ import CartElement from "./CartElement";
 import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
 import { setAvailability } from "../../../ApiReq/schedule";
 import Swal from 'sweetalert2'
+import { postCartInfo } from "../../../ApiReq/cart";
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 export default function Cart(){
 
+const order= useSelector(state=>state.sessionReducer.cart)
+const objInfo = {};
 const dispatch = useDispatch();
 let history = useHistory();
     
+
+// PAYPAL
     const createOrder = (data,actions) => {
         return actions.order.create({
            purchase_units: [
@@ -27,16 +32,27 @@ let history = useHistory();
      }
  
    const onApprove = (data, actions) => {
-       console.log(data)
+      objInfo.orderID = data.orderID;
+      objInfo.payerID = data.payerID;
     return actions.order.capture(handlePay());
   }
 //////////////////// FIN PP
 
-function handlePay(){
+ function  handlePay(){
 
-    order.forEach(e=>{
+    order.forEach(e =>{
         setAvailability(e.id)
     })
+    objInfo.customerId = order[0].customerId;
+    objInfo.cart = order.map(e => {
+        return {
+            name: e.name,
+            price: e.price,
+            id: e.id
+        }
+    })
+    postCartInfo(objInfo)
+    .catch(err => alert(err))
 
     dispatch(removeFromCartAll())
      Swal.fire({
@@ -49,8 +65,6 @@ function handlePay(){
     
 }
   
-
-    const order= useSelector(state=>state.sessionReducer.cart)
     
    const elements= order.map(o=><li className="mb-2" key={o._id}>
         <CartElement 
@@ -63,7 +77,7 @@ function handlePay(){
     
     let suma= 0
     order.forEach(o=> suma += o.price)
-    console.log(suma)
+
     return (
         
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-4 divide-y ">
