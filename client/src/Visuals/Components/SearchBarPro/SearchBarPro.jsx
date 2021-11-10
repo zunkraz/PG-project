@@ -3,6 +3,7 @@ import FiltersFields from './FilterFields';
 import NameSearch from './NameSearch';
 import {useSelector, useDispatch} from 'react-redux'
 import { filterProfessional, getAllProfs } from '../../../Controllers/actions/professionalsActions';
+import {updateCategCount} from "../../../ApiReq/constantInfo";
 
 const SearchBarPro = () => {
 const dispatch = useDispatch();
@@ -44,10 +45,11 @@ const handleCliks = () => {
 }
 const handleSubmit = e => {
     e.preventDefault()
-   
+
     if(error === true || !Object.values(data).map(e => e === '').includes(false)){
         return setErrorSubmit(true)
     }else{
+        if(data.profesion!=='') updateCategCount({name:data.profesion});
         // Aqui despacho la acción
         setErrorSubmit(false);
         dispatch(filterProfessional(data,professionals))
