@@ -194,6 +194,7 @@ function LoginComponentsContainer() {
                     password:googleData.googleId,
                     confirmPassword:googleData.googleId,
                     email: googleData.email,
+                    googleAccount: true
                 })
                 setGoogleData({})
                 await Swal.fire({

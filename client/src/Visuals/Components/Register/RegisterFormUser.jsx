@@ -97,6 +97,7 @@ export default function RegisterFormUser(){
                 password:res.profileObj.googleId,
                 confirmPassword:res.profileObj.googleId,
                 email: res.profileObj.email,
+                googleAccount: true
             })
         }
         catch(e){

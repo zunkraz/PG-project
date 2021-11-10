@@ -15,6 +15,8 @@ import { putUser } from '../../../Controllers/actions/userActions';
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
 
+    console.log(userData)
+
     const [popState, setPopState] = useState(false)
     const [popOffer, setPopOffer] = useState(false)
 
