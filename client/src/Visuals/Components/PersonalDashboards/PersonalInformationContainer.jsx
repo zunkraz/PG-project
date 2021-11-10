@@ -192,7 +192,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     name='personalInfo' 
                     className='padd-md-tb padd-lg-lr font-main user-dashboard-info-tab-active' 
                     onClick={changeUserState}>
-                    Datos Personales
+                    Personal
                 </button>
                 {
                     isProf && 
@@ -200,7 +200,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                         name='professionalInfo'
                         className='mrg-lg-l padd-md-tb padd-lg-lr font-main user-dashboard-info-tab-inactive'
                         onClick={changeUserState}>
-                        Datos Profesionales
+                        Profesional
                     </button>
                 }
                 <PopContainer   trigger={popState}
