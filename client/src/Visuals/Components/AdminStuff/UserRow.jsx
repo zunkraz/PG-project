@@ -2,25 +2,80 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions';
 import * as FaIcons from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 function UserRow({user, isAdmin, token}){
   const dispatch = useDispatch();
-  console.log(isAdmin, token);
 
   function handleUserDelete(username){
-    if(window.confirm(`Desea eliminar a ${username}?`)) dispatch(delAdminUser(username));
-    else console.log('Ok no lo elimino.');
+    return Swal.fire({
+      text:`Desea borrar a ${username}? Esta acción no se puede deshacer.`,
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si',
+      confirmButtonColor: "rgba(232,52,84,0.84)",
+      cancelButtonColor: "#8c8f9a",
+    }).then(result=>{
+      if(result.isConfirmed){
+        dispatch(delAdminUser(username));
+        Swal.fire({
+          text:`${username} eliminado.`,
+          icon:'error',
+          confirmButtonColor: "rgba(232,52,84,0.84)"})}})
   }
   function handleResetPassword(username){
-    if(window.confirm(`Desea resetear el password de ${username}?`)) {
-      dispatch(putAdminUser(username, {password: '123456'}, {isAdmin, token}));
-    } else console.log('Ok no lo cambio.');
+    return Swal.fire({
+      text:`Desea resetear el password de ${username}?`,
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si',
+      confirmButtonColor: "rgb(165 220 134)",
+      cancelButtonColor: "#8c8f9a",
+    }).then(result => {
+      if(result.isConfirmed){
+        dispatch(putAdminUser(username, {password: '123456'}, {isAdmin, token}));
+        Swal.fire({
+          text:`Password cambiado.`,
+          icon:'success',
+          confirmButtonColor: "rgb(165 220 134)"})}})
   }
   function handleChangeRole(username,isAdmin){
-    if(window.confirm(`Desea cambiar el rol de ${username}?`)) {
-      if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}));
-      else dispatch(putAdminUser(username, {isAdmin: true}));
-    } else console.log('Ok no lo cambio.');
+    return Swal.fire({
+      text:`Desea cambiar el rol de ${username}?`,
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si',
+      confirmButtonColor: "rgb(165 220 134)",
+      cancelButtonColor: "#8c8f9a",
+  }).then(result => {
+      if (result.isConfirmed) {
+        if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}));
+        else dispatch(putAdminUser(username, {isAdmin: true}));
+        Swal.fire({
+          text:`${username} ahora es ${isAdmin?'usuario':'administrador'}.`,
+          icon:'success',
+          confirmButtonColor: "rgb(165 220 134)"})
+      }})
+  }
+  function handleVerifyUser(username,isVerified){
+    return Swal.fire({
+      text:`Desea ${!isVerified?'aprobar':'desactivar'} la cuenta de ${username}? Si no está verificado no se ofrecerán sus servicios.`,
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: `${!isVerified?'Aprobar':'Desactivar'}`,
+      confirmButtonColor: `${!isVerified?'rgb(165 220 134)':'rgba(232,52,84,0.84)'}`,
+      cancelButtonColor: "#8c8f9a",
+    }).then(result=>{
+      if(result.isConfirmed){
+        dispatch(putAdminUser(username, {isVerified: !isVerified}));
+        Swal.fire({
+          text:`Estado de cuenta cambiado'}.`,
+          icon:'success',
+          confirmButtonColor: "rgb(165 220 134)"})}})
   }
 
   return (
@@ -60,7 +115,8 @@ function UserRow({user, isAdmin, token}){
           Cliente</span>}
     </td>
     <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-      <button onClick={()=>handleUserDelete(user.username)}><FaIcons.FaRegTrashAlt/></button>
+      {user.isProfessional?<button onClick={() => handleVerifyUser(user.username, user.isVerified)}>{
+        user.isVerified ? <FaIcons.FaCheck color={'green'}/> : <FaIcons.FaTimes color={'red'}/>}</button>:' '}
     </td>
       <td className="px-10 py-4 whitespace-nowrap text-center text-sm font-medium">
         <button onClick={()=>handleResetPassword(user.username)}><FaIcons.FaRedo/></button>
@@ -69,7 +125,7 @@ function UserRow({user, isAdmin, token}){
         <button onClick={()=>handleChangeRole(user.username,user.isAdmin)}><FaIcons.FaUserFriends/></button>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>alert('Próximamente')}><FaIcons.FaRegEdit/></button>
+        <button onClick={()=>handleUserDelete(user.username)}><FaIcons.FaRegTrashAlt/></button>
       </td>
   </tr>
   </tbody>)
