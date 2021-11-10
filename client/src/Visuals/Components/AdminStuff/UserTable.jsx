@@ -50,7 +50,7 @@ function UserTable({usersAdmin, isAdmin, token}){
               <div className="flex flex-row mr-4 "> Tipo de usuario </div>
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Borrar
+              Verificado
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Reset password
@@ -59,7 +59,7 @@ function UserTable({usersAdmin, isAdmin, token}){
               Cambiar rol
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Editar
+              Borrar
             </th>
           </tr>
           </thead>
