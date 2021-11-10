@@ -114,6 +114,20 @@ function UserDashboard({userData}) {
                                         </span>
                                     </button>
                                 </Link>
+                                <Link to='/facturas' >
+                                    <button
+                                        className="my-3 w-full h-10 mr-4 rounded-xl duration-700
+                                            ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
+                                            bg-white hover:bg-green-500"
+                                    >
+                                        <span
+                                        className="text-green-500 font-medium tracking-widest 
+                                                        duration-700 hover:text-white"
+                                        >
+                                        Facturas 
+                                        </span>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                         <div className='col-2-5@xl col-3-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg'>
