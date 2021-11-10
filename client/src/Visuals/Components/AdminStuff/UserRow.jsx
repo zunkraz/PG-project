@@ -62,7 +62,7 @@ function UserRow({user, isAdmin, token}){
   }
   function handleVerifyUser(username,isVerified){
     return Swal.fire({
-      text:`Desea ${!isVerified?'aprobar':'desactivar'} la cuenta de ${username}?`,
+      text:`Desea ${!isVerified?'aprobar':'desactivar'} la cuenta de ${username}? Si no está verificado no se ofrecerán sus servicios.`,
       icon: 'question',
       showCancelButton: true,
       cancelButtonText: 'Cancelar',
@@ -115,8 +115,8 @@ function UserRow({user, isAdmin, token}){
           Cliente</span>}
     </td>
     <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-      <button onClick={()=>handleVerifyUser(user.username,user.isVerified)}>{
-        user.isVerified?<FaIcons.FaCheck color={'green'}/>:<FaIcons.FaTimes color={'red'}/>}</button>
+      {user.isProfessional?<button onClick={() => handleVerifyUser(user.username, user.isVerified)}>{
+        user.isVerified ? <FaIcons.FaCheck color={'green'}/> : <FaIcons.FaTimes color={'red'}/>}</button>:' '}
     </td>
       <td className="px-10 py-4 whitespace-nowrap text-center text-sm font-medium">
         <button onClick={()=>handleResetPassword(user.username)}><FaIcons.FaRedo/></button>

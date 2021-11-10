@@ -90,12 +90,12 @@ const user = new Schema(
         bankAccount: {
             type: String
         },
-        appointments: {
+        appointments: [{
             type: Schema.Types.ObjectId, ref: 'appointments'
-        },
-        schedule: {
-            type: String //link de calendly
-        }, 
+        }],
+        schedule: [{
+            type: Schema.Types.ObjectId, ref: 'schedules'
+        }],
         likes: {
             type: Number,
             default: 0
@@ -104,6 +104,9 @@ const user = new Schema(
             type: Number,
             default: 0
         },
+        invoices: [{
+          type: Schema.Types.ObjectId, ref: 'invoices'
+      }],
     },
     { timestamp: true }
 )
