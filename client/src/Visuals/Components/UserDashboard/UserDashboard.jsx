@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import AddPostComponent from '../PersonalDashboards/AddPostComponent'
 import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardContainer'
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
@@ -8,18 +7,18 @@ import PopContainer from '../PopContainer'
 import Scheduler from './Scheduler'
 import Review from '../PersonalDashboards/Review'
 import SchedulerRecurrent from './SchedulerRecurrent'
+import {Link} from 'react-router-dom'
+
 
 
 
 function UserDashboard({userData}) {
-    console.log(userData)
 
     useEffect(() => {
         window.scrollTo(0, 0)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
-    const [tip, setTip] = useState(false)
 
     const [userInfo, setUserInfo] = useState('personalInfo')
     
@@ -91,14 +90,47 @@ function UserDashboard({userData}) {
                                                                     onCancel={scheFlag}
                                                                 />}
                                             />
-                                        <button 
-                                            className='leading-3 width-100 mrg-md-t padd-sm-tb font-md font-main border-radius-sm action action-add-post'
-                                            onClick={scheFlag}>
-                                            Horario
+                                        <button
+                                            className="my-3 w-full h-10 mr-4 rounded-xl duration-700
+                                            ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
+                                            bg-white hover:bg-green-500"
+                                            onClick={scheFlag}
+                                            >
+                                                <span className="text-green-500 font-medium tracking-widest 
+                                                            duration-700 hover:text-white">
+                                                Horario
+                                                </span>
                                         </button>
                                     </div>
                                 }
-                                <Review userId={userData._id}/>
+                                <Link to='/opinion' >
+                                    <button
+                                        className="my-3 w-full h-10 mr-4 rounded-xl duration-700
+                                            ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
+                                            bg-white hover:bg-green-500"
+                                    >
+                                        <span
+                                        className="text-green-500 font-medium tracking-widest 
+                                                        duration-700 hover:text-white"
+                                        >
+                                        Deja tu opinión
+                                        </span>
+                                    </button>
+                                </Link>
+                                <Link to='/facturas' >
+                                    <button
+                                        className="my-3 w-full h-10 mr-4 rounded-xl duration-700
+                                            ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
+                                            bg-white hover:bg-green-500"
+                                    >
+                                        <span
+                                        className="text-green-500 font-medium tracking-widest 
+                                                        duration-700 hover:text-white"
+                                        >
+                                        Facturas 
+                                        </span>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                         <div className='col-2-5@xl col-3-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg'>
@@ -131,4 +163,3 @@ function UserDashboard({userData}) {
 }
 
 export default UserDashboard
-

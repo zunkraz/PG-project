@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import '../../Assets/CustomAR.css'
 import {useSelector, useDispatch} from 'react-redux'
 import { filterProfessional } from '../../../Controllers/actions/professionalsActions';
+import {updateCategCount} from '../../../ApiReq/constantInfo'
 
 const FiltersBtns = () => {
 let history = useHistory();
@@ -41,6 +42,7 @@ return setInvalid(true);
 
 const handleSubmit = e => {
     e.preventDefault();
+    if(data.profesion!=='') updateCategCount({name:data.profesion});
     dispatch(filterProfessional(data,professionals))
     setData({
         country: '',
