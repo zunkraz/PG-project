@@ -1,6 +1,5 @@
 import React from 'react'
 import '../Assets/css/popup.custom.css'
-import {useEffect} from 'react'
 
 function PopContainer(props) {
     const principalDiv = props.principalDiv || `bg-white mt-20 h-4/5 w-2/5 flex flex-col items-center 
