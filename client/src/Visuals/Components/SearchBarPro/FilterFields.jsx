@@ -82,14 +82,12 @@ useEffect(() => {
 
         <div className='padd-lg-b text-center font-color-light font-md font-main'>
        
-        {error 
-        ? <h3 className="padd-sm-b border-bottom-color-main">Los montos no son válidos</h3>
-        : <h3 className="padd-sm-b border-bottom-color-main" >Escoge tu presupuesto</h3>}
+       
           <div>
             <input
                  
                 type="number" 
-                placeholder='Mínimo USD'
+                placeholder='Presupuesto mínimo USD'
                 name='min'
                 value={data.min}
                 onChange={handleChange}
@@ -98,14 +96,16 @@ useEffect(() => {
             <input 
                 
                 type="number" 
-                placeholder='Máximo USD'
+                placeholder='Presupuesto máximo USD'
                 name='max'
                 value={data.max}
                 onChange={handleChange}
                 className='uk-input mrg-lg-t border-radius-sm font-main'
             />
           </div>
+        {error && <h3 className="padd-sm-b border-bottom-color-main">Los montos no son válidos</h3>}
         </div>
+       
     </div>
      );
 }
