@@ -24,3 +24,9 @@ export function getCountries(){
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }
+
+export function updateCategCount(data){
+    return axios.put(`${BASIC_URL}/categories`,data)
+      .then(r=>r.data)
+      .catch(r=>r.response.data)
+}

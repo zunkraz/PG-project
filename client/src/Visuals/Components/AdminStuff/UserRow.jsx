@@ -4,8 +4,7 @@ import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActi
 import * as FaIcons from "react-icons/fa";
 
 function UserRow({user, isAdmin, token}){
-  const dispatch = useDispatch();
-  console.log(isAdmin, token);
+  const dispatch = useDispatch(); 
 
   function handleUserDelete(username){
     if(window.confirm(`Desea eliminar a ${username}?`)) dispatch(delAdminUser(username));
