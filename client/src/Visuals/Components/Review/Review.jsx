@@ -14,6 +14,11 @@ export default function Review() {
   const sesion = useSelector(state=>state.sessionReducer.status.token)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
     getReviews(userId).then((r) => {
       setReview(r);
     });  
