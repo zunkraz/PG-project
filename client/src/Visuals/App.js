@@ -19,6 +19,8 @@ import Cart from './Components/Cart/Cart';
 import PaymentsCart from './Components/Cart/PaymentsCart';
 import Terms from './Containers/Terms';
 import SalesPolicy from './Containers/SalesPolicy';
+import Faq from './Containers/Faq';
+import Review from './Components/Review/Review';
 
 
 
@@ -68,6 +70,12 @@ function App() {
         </Route>
         <Route path="/politica-ventas">
           <SalesPolicy/>
+        </Route>
+        <Route path="/preguntas-frecuentes">
+          <Faq/>
+        </Route>
+        <Route path="/opinion">
+          <Review/>
         </Route>
       </Switch>
         <Footer/>

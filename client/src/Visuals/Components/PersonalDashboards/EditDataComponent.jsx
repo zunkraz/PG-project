@@ -68,6 +68,7 @@ function EditDataComponent(props) {
                                     key='Imagen de Perfil'
                                     label='Imagen de Perfil'
                                     inputName='img'
+                                    value={props.data.img}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
@@ -77,6 +78,7 @@ function EditDataComponent(props) {
                                     key='Titulo'
                                     label='Titulo'
                                     inputName='title'
+                                    value={props.data.title}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
@@ -86,6 +88,7 @@ function EditDataComponent(props) {
                                     key='Universidad'
                                     label='Universidad'
                                     inputName='institute'
+                                    value={props.data.institute}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
@@ -95,6 +98,7 @@ function EditDataComponent(props) {
                                     key='Cuenta Bancaria'
                                     label='Cuenta Bancaria'
                                     inputName='bankAccount'
+                                    value={props.data.bankAccount}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
@@ -104,6 +108,7 @@ function EditDataComponent(props) {
                                     key='Estado'
                                     label='Estado'
                                     inputName='state'
+                                    value={props.data.state}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
@@ -113,6 +118,7 @@ function EditDataComponent(props) {
                                     key='Ciudad'
                                     label='Ciudad'
                                     inputName='city'
+                                    value={props.data.city}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}

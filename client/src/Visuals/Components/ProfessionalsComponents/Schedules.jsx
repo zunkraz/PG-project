@@ -17,14 +17,16 @@ export default function Schedules({id, login, name, lastname, category}) {
     const [month, setMonth]= useState("Todos")
     const [load, setLoad]= useState([])
     const sched= useSelector(state=>state.professionalReducer.profSchedule)
-    // const carrito= useSelector(state=>state.sessionReducer.cart)
+    const carrito= useSelector(state=>state.sessionReducer.cart)
+    const customerId= useSelector(state=>state.sessionReducer.status.id)
+    
     
     const price = 10;
 
     function handleClick(e) {
         setLoad([...load, e.target.id])
         dispatch(addToCart({
-            name:name+" "+lastname+" ("+category+")",
+            name:name+" "+lastname,
             appointment:{
             date:e.target.name,
             sessions:1
@@ -32,7 +34,8 @@ export default function Schedules({id, login, name, lastname, category}) {
             price:price,
             id:e.target.id,
             category:category,
-            professionalId:id
+            professionalId:id,
+            customerId:customerId
         }))
         return Swal.fire({
             title: '¡Reserva hecha!',
@@ -108,7 +111,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                     key={index}
                     >   {login.length ? 
                         <div>
-                            {dateJoin(elem.date)}  {/* carrito.find(e=>e.id===elem._id) || */ load.find(e=>e===elem._id)? 
+                            {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
                                 <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>

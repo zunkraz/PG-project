@@ -18,9 +18,9 @@ function Footer() {
     ]
 
     const info = [
+        {name:'Opinión',url:'/opinion'},
         {name:'Nosotros',url:'#'},
         {name:'Noticias',url:'#'},
-        {name:'Colecciones',url:'#'},
         {name:'Servicios',url:'#'},
         {name:'Inversiones',url:'#'},
         {name:'Proyectos',url:'#'}
