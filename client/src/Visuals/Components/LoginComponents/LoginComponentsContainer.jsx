@@ -157,12 +157,9 @@ function LoginComponentsContainer() {
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
         checkLog()
     }
-    
-    console.log(googleData)
 
     const responseGoogle =(res)=>{
         setGoogleData({...res.profileObj})
-        console.log(googleData)
         const endUN = res.profileObj.email.indexOf('@')
         if(!userNames.includes(res.profileObj.email.slice(0, endUN))){
             setRegister(!register)
