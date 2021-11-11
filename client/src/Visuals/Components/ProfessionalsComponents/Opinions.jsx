@@ -32,7 +32,7 @@ export default function Opinions() {
                     </div>
                 </div>
             ))
-            : <span>Este profesional aun no recibio opiniones</span>
+            : <span>Este profesional aún no recibió opiniones</span>
         }
     </div>
     )
