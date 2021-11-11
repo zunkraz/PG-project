@@ -9,7 +9,7 @@ function BasicForm({component}){
   const allCategories = useSelector(state=>state.constantInfoReducer.categories);
   const [info,setInfo] = useState(allInfo[component]);
   const userOnPage = useSelector(state=>state.sessionReducer.status);
-  const {isAdmin, token} = userOnPage;
+  const {token} = userOnPage;
 
   function handleChange(ev){
     setInfo({...info,[ev.target.name]:ev.target.value});
@@ -18,32 +18,31 @@ function BasicForm({component}){
     ev.preventDefault();
     if(info.name==='') return;
     if(!(allCategories.find(c=>c.name===info.name))){
-      if (info.img !== '') dispatch(postAdminCategory(info, {isAdmin, token}));
+      if (info.img !== '') dispatch(postAdminCategory(info, token));
       else return;
     }
     else {
       let id = allCategories.filter(c => c.name === info.name)[0]._id;
       let data = (info.img!=='') ? {img: info.img} : {};
       data = (info.searchCount===0)? data : {...data,searchCount:info.searchCount};
-      dispatch(putAdminCategory(id, data, {isAdmin, token}))
+      dispatch(putAdminCategory(id, data, token))
     }
     setInfo(allInfo[component]);
   }
   function handleSubmitCountry(ev){
-    console.log(isAdmin, token);
     ev.preventDefault();
     if (info.name!=='') {
-      dispatch(postAdminCountry(info, {isAdmin, token}));
+      dispatch(postAdminCountry(info, token));
       setInfo(allInfo[component]);
     }
   }
   function handleSubmitTip(ev){
     ev.preventDefault();
-    dispatch(postAdminTip(info, {isAdmin, token}));
+    dispatch(postAdminTip(info, token));
     setInfo(allInfo[component]);
   }
   if (component==='categories') return (
-  <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev, isAdmin, token)=>handleSubmitCat(ev, isAdmin, token)}>
+  <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitCat(ev)}>
     <label className="m-2" htmlFor={"name"}>Nombre</label>
     <input className="padd-md-l" name="name" type={"text"} value={info.name} onChange={(ev)=>handleChange(ev)} required={true}/>
     <label className="m-2" htmlFor={"searchCount"}>Cantidad de búsquedas</label>

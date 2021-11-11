@@ -1,4 +1,5 @@
 const router = require('express').Router();
+// const clearSchedules = require('../controllers/functions/clearSchedules');
 const deleteSchedules = require('../controllers/functions/deleteSchedules');
 const getAllSchedules = require('../controllers/functions/getAllSchedules');
 const getAvailableSchedules = require('../controllers/functions/getAvailableSchedules');
@@ -46,6 +47,13 @@ router.put('/:id', (req, res, next) => {
         .then(result => res.json(result))
         .catch(err => next(err))
 });
+
+// router.delete('/:id/delete', (req, res, next) => {
+//     const {id} = req.params;
+//     clearSchedules(id)
+//         .then(result => res.json(result))
+//         .catch(err => next(err))
+// });
 
 router.post('/many', (req, res, next) => {
     const body = req.body;

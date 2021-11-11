@@ -1,5 +1,6 @@
 const {Router} = require("express");
 const router = Router();
+const {loginAuth} = require('../controllers/auth/roleAuth');
 // const { } = require('../controllers/index.js');
 const Feedback = require ('../models/Feedback');
 
@@ -24,7 +25,7 @@ router.get('/',(req,res,next)=>{
     .catch(err => next(err));
 });
 //POST NEW FEEDBACK
-router.post('/',(req,res,next)=>{
+router.post('/', loginAuth, (req,res,next)=>{
   let newFeedback = req.body;
   const newFeed = new Feedback(newFeedback);
   newFeed.save()
@@ -32,7 +33,7 @@ router.post('/',(req,res,next)=>{
     .catch(err => next(err));
 });
 //UPDATE EXISTING FEEDBACK
-router.put('/:id',(req,res,next)=>{
+router.put('/:id', loginAuth, (req,res,next)=>{
   let {id} = req.params;
   let updateInfo = req.body;
   Feedback.findByIdAndUpdate(id,{$set: updateInfo}, {new: true})
@@ -40,7 +41,7 @@ router.put('/:id',(req,res,next)=>{
     .catch(err => next(err));
 });
 //DELETE FEEDBACK
-router.delete('/:id',(req,res,next)=>{
+router.delete('/:id', loginAuth, (req,res,next)=>{
   let {id} = req.params;
   Feedback.deleteOne({_id:id},{new: true})
     .then(result => res.json(result))

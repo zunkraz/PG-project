@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const passport = require('passport');
 const {postCountry, getAllCountries, getOneCountry} = require('../controllers/index');
 const Country = require('../models/Country');
+const {roleAuth, loginAuth} = require('../controllers/auth/roleAuth');
 
 //, passport.authenticate('jwt', {session: false})
-router.post('/', (req, res, next) => {
+router.post('/',loginAuth, roleAuth, (req, res, next) => {
     const body = req.body;
     postCountry(body)
         .then(result => res.json(result))
@@ -30,7 +30,7 @@ router.get('/:name', (req, res, next) => {
 //         .catch(err => res.json(err))
 // });
 
-router.delete('/:_id',(req,res,next)=>{
+router.delete('/:_id', loginAuth, roleAuth, (req,res,next)=>{
     const {_id} = req.params;
     Country.deleteOne({_id})
       .then(result => res.json(result))
