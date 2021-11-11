@@ -144,13 +144,11 @@ router.delete('/reviews/:id', loginAuth, roleAuth, (req,res,next)=>{
 router.get('/invoices', loginAuth, roleAuth,(req,res,next)=>{
   let resp = [];
   ClientInvoice.find()
+    .then(r => resp.push(r))
+    .then(() => ProfInvoice.find())
     .then(r => {
-      resp.push(r);
-      ProfInvoice.find()
-        .then(r => {
           resp.push(r);
-          res.json(resp)
-        })})
+          res.json(resp)})
     .catch(err => next(err))
 });
 
