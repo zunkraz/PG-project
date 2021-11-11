@@ -116,7 +116,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                             {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
-                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>
+                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof">Contratar</button>
                             
                             }
                         </div>
