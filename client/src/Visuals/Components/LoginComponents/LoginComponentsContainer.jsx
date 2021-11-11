@@ -193,14 +193,16 @@ function LoginComponentsContainer() {
                     email: googleData.email,
                     googleAccount: true
                 })
-                setGoogleData({})
                 await Swal.fire({
-                            icon: 'success',
-                            title: 'Cuenta creada!',
-                            showConfirmButton: false,
-                            timer: 1500
-                    })
-                window.location.reload(false);
+                    icon: 'success',
+                    title: 'Cuenta creada!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                dispatch(checkLoginAction({username:googleData.email.slice(0, endUN), password:googleData.googleId}))
+                setGoogleData({})
+                setShowErrorText(false)
+                //window.location.reload(false);
             }
             catch(e){
                 console.log(e)
