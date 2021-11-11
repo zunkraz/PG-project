@@ -8,6 +8,10 @@ import LoginFormComponents from './LoginFormComponents'
 import GoogleLogin from 'react-google-login'
 import { GOOGLE_ID } from '../../../constants'
 import { Link } from 'react-router-dom'
+import PopContainer from "../PopContainer";
+import LoginCreateAccount from './LoginCreateAccount'
+import { createUser } from '../../../ApiReq/users'
+import Swal from 'sweetalert2'
 
 
 
@@ -33,6 +37,9 @@ function LoginComponentsContainer() {
     const [passVerified, setPassVerified] = useState('')
     const [UserCanLog, setUserCanLog] = useState(true)
     const [passError, setPassError] = useState(false)
+    const [register, setRegister] = useState(false)
+    const [checked, setChecked] = useState(false)
+    const [googleData, setGoogleData] = useState({})
 
     const [usernameField, setUsernameField] = useState()
     const [passField, setPassField] = useState()
@@ -150,20 +157,79 @@ function LoginComponentsContainer() {
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
         checkLog()
     }
-    
+
     const responseGoogle =(res)=>{
+        setGoogleData({...res.profileObj})
         const endUN = res.profileObj.email.indexOf('@')
         if(!userNames.includes(res.profileObj.email.slice(0, endUN))){
-            alert('Usuario inexistente , por favor crea tu cuenta ! ')
-            return history.push('/registro')
+            setRegister(!register)
         }
-        setShowErrorText(false)
-        dispatch(checkLoginAction({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId}))
+        if(userNames.includes(res.profileObj.email.slice(0, endUN))){
+            setGoogleData({})
+            setShowErrorText(false)
+            dispatch(checkLoginAction({username:res.profileObj.email.slice(0, endUN), password:res.profileObj.googleId}))
+        }
+    }
+
+    const createAccountGoogle = async()=>{
+        if(!checked) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Acepta los terminos primero',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false
+        }
+        if(checked){
+            try{
+                const endUN = googleData.email.indexOf('@')
+                createUser({
+                    username:googleData.email.slice(0, endUN),
+                    name: googleData.givenName,
+                    lastname: googleData.familyName,
+                    password:googleData.googleId,
+                    confirmPassword:googleData.googleId,
+                    email: googleData.email,
+                    googleAccount: true
+                })
+                setGoogleData({})
+                await Swal.fire({
+                            icon: 'success',
+                            title: 'Cuenta creada!',
+                            showConfirmButton: false,
+                            timer: 1500
+                    })
+                window.location.reload(false);
+            }
+            catch(e){
+                console.log(e)
+            }
+        }
     }
 
 
+    const changeCheck=()=>{
+        setChecked(!checked);
+    }
+
+    const changeRegisterStatus=()=>{
+        setRegister(false);
+    }
+    const modalDiv=`bg-white mt-2 h-2/5 w-2/5 flex flex-col items-center 
+                    justify-center rounded-lg shadow-lg	`
+
     return (
         <div class='flex flex-col items-center justify-start mt-10 h-screen'>
+            <PopContainer   trigger={register}
+                            principalDiv={modalDiv}
+                            children={<LoginCreateAccount 
+                                            checked={checked}
+                                            checkTerms={changeCheck}
+                                            onSuccess={createAccountGoogle}
+                                            onCancel={changeRegisterStatus}
+                                        />}
+                />
             {(UserLog.token && UserLog.token.length>0) ? 
                 <Redirect to={`/miperfil/${UserLog.username}`}/>
                     :

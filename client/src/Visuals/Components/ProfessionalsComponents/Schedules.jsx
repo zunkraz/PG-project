@@ -9,9 +9,10 @@ import Swal from 'sweetalert2';
 
 export default function Schedules({id, login, name, lastname, category}) {
     const dispatch = useDispatch();
+    const token = useSelector(state => state.sessionReducer.status.token);
 
     useEffect(() => {
-        dispatch(getProfSchedule(id))
+        dispatch(getProfSchedule(id, token))
     },[]);
     const [day, setDay]= useState("Todos")
     const [month, setMonth]= useState("Todos")
@@ -41,7 +42,8 @@ export default function Schedules({id, login, name, lastname, category}) {
             title: '¡Reserva hecha!',
             text: 'En tu carrito podrás abonar tu reserva',
             icon:'success',
-            confirmButtonColor: "#FF214F", 
+            confirmButtonColor: "#FF214F",
+            allowOutsideClick:false,
         }
         )
     };
@@ -114,7 +116,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                             {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
-                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>
+                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof">Contratar</button>
                             
                             }
                         </div>

@@ -4,8 +4,9 @@ import PersonalInformationContainer from '../PersonalDashboards/PersonalInformat
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
 import PopContainer from '../PopContainer'
-import Scheduler from './Scheduler'
+import SchedulerRecurrent from './SchedulerRecurrent'
 import {Link} from 'react-router-dom'
+
 
 
 
@@ -42,7 +43,7 @@ function UserDashboard({userData}) {
         '30 minutos con Claudio'
     ]
     
-    const popClass=`bg-white mt-2 h-4/5 w-2/5 flex flex-col items-center 
+    const popClass=`bg-white mt-2 h-4/5 w-4/5 flex flex-col items-center 
                     justify-center rounded-lg shadow-lg
                     ring-white ring-4 ring-offset-1 ring-offset-red-500	`
     
@@ -82,7 +83,7 @@ function UserDashboard({userData}) {
                                     <div>
                                         <PopContainer   trigger={scheduleFlag}
                                                         principalDiv={popClass}
-                                                        children={<Scheduler 
+                                                        children={<SchedulerRecurrent 
                                                                     userId={userData._id}
                                                                     onCancel={scheFlag}
                                                                 />}
@@ -146,12 +147,12 @@ function UserDashboard({userData}) {
                                 <PersonalTaskComponent data={userData.isProfessional?pendienteNormal:pendientePro} />
                             </div>
                         </div>
-                        {/* Container: Posts */}
+                        {userData.isProfessional && 
                         <div className='col-1-5@xl col-2-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t6-'>
                             <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
                                 <ProfessionalPostsContainer userId={userData._id}/>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                 </section>
             </div>

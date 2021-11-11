@@ -18,11 +18,7 @@ const [data, setData] = useState({
         likes: '',
 });
 
-    const [optionView, setOptionView] = useState({
-        optionViewBtnOne:true,
-        optionViewBtnTwo:false,
-    })
-const {optionViewBtnOne,optionViewBtnTwo} = optionView;
+
 
 const [error, setError] = useState(false);
 const [errorSubmit,setErrorSubmit] = useState(false);
@@ -35,14 +31,6 @@ const handleChange = e => {
     })
 }
 
-
-const handleCliks = () => {
-    setOptionView({
-        ...optionView,
-        optionViewBtnOne: !optionViewBtnOne,
-        optionViewBtnTwo: !optionViewBtnTwo,
-    })
-}
 const handleSubmit = e => {
     e.preventDefault()
 
@@ -66,7 +54,7 @@ const handleSubmit = e => {
 }
 
 // FUNCIONES END FUNCIONES END FUNCIONES END FUNCIONES END FUNCIONES END
-        //<aside className="padd-lg"></aside> 
+     
     return (
         <React.Fragment>
             <div id="offcanvas-search" data-uk-offcanvas="overlay: true;flip: true">
@@ -74,50 +62,25 @@ const handleSubmit = e => {
                     <form
                     onSubmit={handleSubmit}
                     >       
-                    <div>
+                  
                         <div className="padd-lg-b text-center font-color-light font-xl font-main">
                             <div className="padd-sm-b border-bottom-color-main">
-                                Busqueda por nombre
+                                Búsqueda  Personalizada
                             </div>
                         </div>
-                        {/*
-                        <div className="padd-lg-b text-center font-color-light font-xl font-main">
-                            <div className="padd-sm-b border-bottom-color-main">
-                                Busqueda personalizada
-                            </div>
-                        </div>
-                        */}
-                        <button 
-                        className="width-100 padd-md font-main border-radius-sm action action-search"
-                        onClick={handleCliks}
-                        disabled={optionViewBtnOne}
-                        >Buscar por Nombre</button>
-
-                        <button 
-                        className="width-100 mrg-lg-t padd-md font-main border-radius-sm action action-search"
-                        onClick={handleCliks}
-                        disabled={optionViewBtnTwo}
-                        >Búsqueda Personalizada</button>
-                    </div>
-                    {optionViewBtnOne &&
-                        <NameSearch
+                     <NameSearch
                         data={data}
                         setData={setData}
-                        optionView={optionView}
                         handleChange={handleChange}
                         />
-                    }
-                    {
-                    optionViewBtnTwo && 
-                    <FiltersFields
+                   
+                     <FiltersFields
                     data={data}
                     setData={setData}
-                    optionView={optionView}
                     error={error}
                     setError={setError}
                     handleChange={handleChange}
                     />
-                    } 
                     <button 
                     type="submit" 
                     value="Buscar"

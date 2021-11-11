@@ -3,7 +3,7 @@ import * as FaIcons from 'react-icons/fa';
 import {useDispatch, useSelector} from "react-redux";
 import {deleteAdminReview,putAdminReview,getAdminReviews} from "../../../Controllers/actions/adminActions";
 
-function ReviewDashboard({isAdmin, token}){
+function ReviewDashboard({token}){
   const dispatch = useDispatch();
   const allReviews = useSelector(state=>state.adminReducer.adminReviews);
   const reviewDeleted = useSelector(state=>state.adminReducer.reviewDeleted);
@@ -13,13 +13,13 @@ function ReviewDashboard({isAdmin, token}){
     dispatch(deleteAdminReview(id));
   }
   function handleReviewChange(status,id){
-    dispatch(putAdminReview({rate:status==="Good"?"Bad":"Good"},id,{isAdmin, token}))
+    dispatch(putAdminReview({rate:status==="Good"?"Bad":"Good"},id,token))
   }
   useEffect(()=>{
-    dispatch(getAdminReviews({isAdmin, token}));
-  },[reviewDeleted, reviewModified, dispatch, isAdmin, token]);
+    dispatch(getAdminReviews(token));
+  },[reviewDeleted, reviewModified, dispatch, token]);
   useEffect(()=>{
-    if(!allReviews.length) dispatch(getAdminReviews({isAdmin, token}));
+    if(!allReviews.length) dispatch(getAdminReviews(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
