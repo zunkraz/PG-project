@@ -210,11 +210,11 @@ function LoginComponentsContainer() {
 
 
     const changeCheck=()=>{
-        setChecked(!checked)
+        setChecked(!checked);
     }
 
     const changeRegisterStatus=()=>{
-        setRegister(false)
+        setRegister(false);
     }
     const modalDiv=`bg-white mt-2 h-2/5 w-2/5 flex flex-col items-center 
                     justify-center rounded-lg shadow-lg	`
