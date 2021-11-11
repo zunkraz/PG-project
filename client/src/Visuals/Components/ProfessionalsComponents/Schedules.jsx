@@ -42,7 +42,8 @@ export default function Schedules({id, login, name, lastname, category}) {
             title: '¡Reserva hecha!',
             text: 'En tu carrito podrás abonar tu reserva',
             icon:'success',
-            confirmButtonColor: "#FF214F", 
+            confirmButtonColor: "#FF214F",
+            allowOutsideClick:false,
         }
         )
     };

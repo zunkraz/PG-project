@@ -4,8 +4,6 @@ import PersonalInformationContainer from '../PersonalDashboards/PersonalInformat
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
 import PopContainer from '../PopContainer'
-import Scheduler from './Scheduler'
-import Review from '../PersonalDashboards/Review'
 import SchedulerRecurrent from './SchedulerRecurrent'
 import {Link} from 'react-router-dom'
 

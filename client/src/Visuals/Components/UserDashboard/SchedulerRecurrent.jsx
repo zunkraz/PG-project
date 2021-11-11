@@ -26,7 +26,7 @@ export default function SchedulerRecurrent ({userId, onCancel}){
         if(app1.length===0){return alert("Tu agenda esta vacía")}
         console.log(app1)
         alert('¡Hecho! Tus horarios han sido guardados')
-        //addtoSchedule(app1)
+        addtoSchedule(app1)
         onCancel()
     }
     
@@ -91,13 +91,13 @@ function date (day, time, userId) {
     while (d.getYear() === year) {
         var pushDate = new Date(d.getTime());
         if(a.getMonth()=== pushDate.getMonth() && a.getDate()<pushDate.getDate()){
-          days.push({date: day + " "+ months[(pushDate.getMonth())] + " " + pushDate.getDate() + " " + pushDate.getFullYear() + " " +time,
+          days.push({date: day + " "+ months[(pushDate.getMonth())] + " " + ('0' + pushDate.getDate()).slice(-2) + " " + pushDate.getFullYear() + " " +time,
                     userId:userId,
                     availavility:true
         });
         }
         else if (a.getMonth() !== pushDate.getMonth()){
-          days.push({date: day + " "+ months[(pushDate.getMonth())] + " " + pushDate.getDate() + " " + pushDate.getFullYear() + " " +time,
+          days.push({date: day + " "+ months[(pushDate.getMonth())] + " " + ('0' + pushDate.getDate()).slice(-2) + " " + pushDate.getFullYear() + " " +time,
                     userId:userId,
                     availavility:true
                     });
