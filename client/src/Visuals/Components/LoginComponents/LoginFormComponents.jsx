@@ -82,7 +82,8 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
             }
             
             <BigButton  disactive={UserCanLog} 
-                        onClickFunction={handleClickCheck} 
+                        onClickFunction={handleClickCheck}
+                        type='submit'
                         text={'Ingresar'} 
                         cssActive={classLogBtn}
                         cssDisactive={classNoLogBtn}
