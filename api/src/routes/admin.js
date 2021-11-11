@@ -113,7 +113,6 @@ router.put('/tips/:id', loginAuth, roleAuth, (req,res,next)=>{
 //TIP DELETE
 router.delete('/tips/:id', loginAuth, roleAuth, (req,res,next)=>{
   let {id} = req.params;
-  console.log(req.body);
   tipDelete(id)
     .then(result => res.json(result))
     .catch(err => next(err));
