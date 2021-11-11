@@ -30,6 +30,10 @@ const Nav = () => {
             url: `/miperfil/${loggedUser.username}`
         }]
     btns = [{
+            title: 'Inicio',
+            url:'/'
+        },
+        {
             title: 'Soporte',
             url: '/soporte/servicios'
         },
@@ -69,12 +73,14 @@ const Nav = () => {
                 >
                     {items}
                     {loggedUser.token && 
+                    <>
                         <li>
                             <Link to='/' onClick={Logout}>Salir</Link>
-                        </li>}
-                    <li>
-                        <CartIcon/>
-                    </li>
+                        </li>
+                        <li>
+                            <CartIcon/>
+                        </li>
+                    </>}
                     <button 
                         className="uk-button uk-button-default uk-hidden@m uk-position-right" 
                         type="button" 
