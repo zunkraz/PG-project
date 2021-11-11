@@ -7,8 +7,8 @@ export function getCategories(feat){
     .catch(r=>r.response.data)
 }
 
-export function getTips(){
-    return axios.get(`${BASIC_URL}/tips`)
+export function getTips(userId){
+    return axios.get(`${BASIC_URL}/tips${userId ? '?userId='+userId : ''}`)
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }
