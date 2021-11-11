@@ -48,7 +48,8 @@ let history = useHistory();
         return {
             name: e.name,
             price: e.price,
-            id: e.id
+            id: e.id,
+            professionalId: e.professionalId
         }
     })
     postCartInfo(objInfo)
