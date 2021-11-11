@@ -4,7 +4,7 @@ import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActi
 import * as FaIcons from "react-icons/fa";
 import Swal from 'sweetalert2';
 
-function UserRow({user, isAdmin, token}){
+function UserRow({user, token}){
   const dispatch = useDispatch();
 
   function handleUserDelete(username){
@@ -18,7 +18,7 @@ function UserRow({user, isAdmin, token}){
       cancelButtonColor: "#8c8f9a",
     }).then(result=>{
       if(result.isConfirmed){
-        dispatch(delAdminUser(username));
+        dispatch(delAdminUser(username, token));
         Swal.fire({
           text:`${username} eliminado.`,
           icon:'error',
@@ -35,7 +35,7 @@ function UserRow({user, isAdmin, token}){
       cancelButtonColor: "#8c8f9a",
     }).then(result => {
       if(result.isConfirmed){
-        dispatch(putAdminUser(username, {password: '123456'}, {isAdmin, token}));
+        dispatch(putAdminUser(username, {password: '123456'}, token));
         Swal.fire({
           text:`Password cambiado.`,
           icon:'success',
@@ -52,8 +52,8 @@ function UserRow({user, isAdmin, token}){
       cancelButtonColor: "#8c8f9a",
   }).then(result => {
       if (result.isConfirmed) {
-        if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}));
-        else dispatch(putAdminUser(username, {isAdmin: true}));
+        if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}, token));
+        else dispatch(putAdminUser(username, {isAdmin: true}, token));
         Swal.fire({
           text:`${username} ahora es ${isAdmin?'usuario':'administrador'}.`,
           icon:'success',
@@ -71,9 +71,9 @@ function UserRow({user, isAdmin, token}){
       cancelButtonColor: "#8c8f9a",
     }).then(result=>{
       if(result.isConfirmed){
-        dispatch(putAdminUser(username, {isVerified: !isVerified}));
+        dispatch(putAdminUser(username, {isVerified: !isVerified}, token));
         Swal.fire({
-          text:`Estado de cuenta cambiado'}.`,
+          text:`Estado de cuenta cambiado.`,
           icon:'success',
           confirmButtonColor: "rgb(165 220 134)"})}})
   }

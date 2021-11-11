@@ -15,24 +15,23 @@ router.post('/signin', async(req, res, next) => {
                     if(err) return next(err);
                     const {_id, name, lastname, email, username, isProfessional, isAdmin} = user._doc;
                     const body = {_id, name, lastname, email, username, isProfessional, isAdmin};
-                    const token = jwt.sign(JSON.stringify({_id, username}), process.env.SECRET);
-                    res.cookie('isAdmin', isAdmin, {httpOnly: true, secure: true})
-                    res
+                    const token = jwt.sign(JSON.stringify({_id, username, isAdmin}), process.env.SECRET);
+                    res.cookie('isAdmin', isAdmin, {httpOnly: process.env.NODE_ENV === 'dev' ? false : true, secure: process.env.NODE_ENV === 'dev' ? false : true})
+                    return res
                     .cookie('jwt',
-                        token, {
-                            httpOnly: true,
-                            secure: false, //--> SET TO TRUE ON PRODUCTION
-                            maxAge: maxAge * 1000
+                    token, {
+                        httpOnly: process.env.NODE_ENV === 'dev' ? false : true,
+                        secure: process.env.NODE_ENV === 'dev' ? false : true,
+                        maxAge: maxAge * 1000
                         }
                     )
-                    .status(200)
                     .json({
                         message: 'Success',
                         user: {...body, token}
                     })
                 })
             }
-            return res.status(304).json(info);
+            return res.json(info);
         } catch (e) {
             next(e);
         }
@@ -43,7 +42,6 @@ router.get('/signout', (req, res) => {
     if (req.cookies['jwt']) {
         res
         .clearCookie('jwt')
-        .status(200)
         .json({
             message: 'Successfully logged out'
         })

@@ -6,48 +6,49 @@ const getSchedulesById = require('../controllers/functions/getSchedulesById');
 const postManySchedules = require('../controllers/functions/postManySchedules');
 const postSchedule = require('../controllers/functions/postSchedule');
 const setAvailability = require('../controllers/functions/setAvailability');
+const {loginAuth} = require('../controllers/auth/roleAuth');
 
-router.post('/', (req, res, next) => {
+router.post('/', loginAuth, (req, res, next) => {
     const body = req.body;
     postSchedule(body)
         .then(result => res.json(result))
         .catch(err => next(err))
 });
 
-router.get('/', (req, res, next) => {
+router.get('/', loginAuth, (req, res, next) => {
     getAllSchedules()
         .then(result => res.json(result))
         .catch(err => next(err))
 });
 
-router.get('/:id/true', (req, res, next) => {
+router.get('/:id/true', loginAuth, (req, res, next) => {
     const {id} = req.params;
     getAvailableSchedules(id)
         .then(result => res.json(result))
         .catch(err => next(err))
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', loginAuth, (req, res, next) => {
     const {id} = req.params;
     getSchedulesById(id)
         .then(result => res.json(result))
         .catch(err => next(err))
 });
 
-router.delete('/', (req, res, next) => {
+router.delete('/', loginAuth, (req, res, next) => {
     deleteSchedules()
         .then(result => res.json(result))
         .catch(err => next(err))
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', loginAuth, (req, res, next) => {
     const {id} = req.params;
     setAvailability(id)
         .then(result => res.json(result))
         .catch(err => next(err))
 });
 
-router.post('/many', (req, res, next) => {
+router.post('/many', loginAuth, (req, res, next) => {
     const body = req.body;
     postManySchedules(body)
         .then(result => res.json(result))

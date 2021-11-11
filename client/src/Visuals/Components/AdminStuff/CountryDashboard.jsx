@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllCountries} from "../../../Controllers/actions/constantInfoActions";
 import {deleteAdminCountry} from "../../../Controllers/actions/adminActions";
 
-function CountryDashboard({isAdmin, token}){
+function CountryDashboard({token}){
   const dispatch = useDispatch();
   const allCountries = useSelector(state=>state.constantInfoReducer.countries);
   const countriesDel = useSelector(state=>state.adminReducer.countryDeleted);
@@ -14,11 +14,11 @@ function CountryDashboard({isAdmin, token}){
     if(window.confirm(`Desea eliminar ${name} de la lista?`)) dispatch(deleteAdminCountry(id));
   }
   useEffect(()=>{
-    dispatch(getAllCountries({isAdmin, token}));
+    dispatch(getAllCountries(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[countriesDel,countriesPost]);
   useEffect(()=>{
-    if(!allCountries.length) dispatch(getAllCountries({isAdmin, token}));
+    if(!allCountries.length) dispatch(getAllCountries(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 

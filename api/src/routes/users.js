@@ -1,5 +1,6 @@
 const router = require ('express').Router();
 const passport = require('passport');
+const { loginAuth } = require('../controllers/auth/roleAuth');
 const { userCreate, getUsersToForm, userDelete, userUpdate, getUserFullInfo } = require('../controllers/index')
 
 router.post('/', (req, res, next) => {
@@ -22,14 +23,14 @@ router.get('/:username', (req, res, next) => {
         .catch(err => next(err))
 });
 
-router.delete('/:username', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
+router.delete('/:username', loginAuth, (req,res,next)=>{
     let {username} = req.params;
     userDelete(username)
         .then(result => res.json(result))
         .catch(err => next(err))
 });
 
-router.put ('/:username', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
+router.put ('/:username', loginAuth, (req,res,next)=>{
     let {username} = req.params
     let updateInfo = req.body
     userUpdate(username,updateInfo)
