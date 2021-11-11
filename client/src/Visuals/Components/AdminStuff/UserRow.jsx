@@ -3,23 +3,22 @@ import {useDispatch} from "react-redux";
 import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions';
 import * as FaIcons from "react-icons/fa";
 
-function UserRow({user, isAdmin, token}){
+function UserRow({user, token}){
   const dispatch = useDispatch();
-  console.log(isAdmin, token);
 
   function handleUserDelete(username){
-    if(window.confirm(`Desea eliminar a ${username}?`)) dispatch(delAdminUser(username));
+    if(window.confirm(`Desea eliminar a ${username}?`)) dispatch(delAdminUser(username, token));
     else console.log('Ok no lo elimino.');
   }
   function handleResetPassword(username){
     if(window.confirm(`Desea resetear el password de ${username}?`)) {
-      dispatch(putAdminUser(username, {password: '123456'}, {isAdmin, token}));
+      dispatch(putAdminUser(username, {password: '123456'}, token));
     } else console.log('Ok no lo cambio.');
   }
   function handleChangeRole(username,isAdmin){
     if(window.confirm(`Desea cambiar el rol de ${username}?`)) {
-      if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}));
-      else dispatch(putAdminUser(username, {isAdmin: true}));
+      if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}, token));
+      else dispatch(putAdminUser(username, {isAdmin: true}, token));
     } else console.log('Ok no lo cambio.');
   }
 

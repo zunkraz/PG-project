@@ -16,11 +16,10 @@ function AdminPanel(){
   const userDeleted = useSelector(state=>state.adminReducer.userDeleted);
   const userModified = useSelector(state=>state.adminReducer.userModified);
   const userOnPage = useSelector(state=>state.sessionReducer.status);
-  const {isAdmin, token} = userOnPage;
+  const {token} = userOnPage;
 
   useEffect(()=>{
-  dispatch(getAdminUsers({token, isAdmin}));
-  console.log(token);
+  dispatch(getAdminUsers(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[userDeleted,userModified]);
 
@@ -59,12 +58,12 @@ function AdminPanel(){
         <BigButton text="Tips" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Tips} />
         <BigButton text="Reviews" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Reviews} />
       </div>
-      {shownData==="Users" && <UserTable usersAdmin={usersAdmin} isAdmin={isAdmin} token={token}/>}
-      {shownData==="Categories" && <CategoryDashboard isAdmin={isAdmin} token={token}/>}
-      {shownData==="Appointments" && <AppointmentDashboard isAdmin={isAdmin} token={token}/>}
-      {shownData==="Countries" && <CountryDashboard isAdmin={isAdmin} token={token}/>}
-      {shownData==="Tips" && <TipDashboard isAdmin={isAdmin} token={token}/>}
-      {shownData==="Reviews" && <ReviewDashboard isAdmin={isAdmin} token={token}/>}
+      {shownData==="Users" && <UserTable usersAdmin={usersAdmin} token={token}/>}
+      {shownData==="Categories" && <CategoryDashboard token={token}/>}
+      {shownData==="Appointments" && <AppointmentDashboard token={token}/>}
+      {shownData==="Countries" && <CountryDashboard token={token}/>}
+      {shownData==="Tips" && <TipDashboard token={token}/>}
+      {shownData==="Reviews" && <ReviewDashboard token={token}/>}
     </div>);
   else {
     return <Redirect to={'/'}/>

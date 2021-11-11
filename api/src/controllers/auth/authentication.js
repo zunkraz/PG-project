@@ -2,18 +2,6 @@ const LocalStrat = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const User = require('../../models/User');
 const passport = require('passport');
-const JWTStrategy = require('passport-jwt').Strategy;
-const ExtractJWT = require('passport-jwt').ExtractJwt;
-const jwt = require('jsonwebtoken');
-
-const cookieExtractor = req => {
-    console.log('entra con',req.body)
-    let token = null;
-    if (req && req.body) {
-        token = req.body['token'];
-    }
-    return token;
-}
 
 passport.use('signin', new LocalStrat({
     usernameField: 'username',
@@ -29,14 +17,4 @@ passport.use('signin', new LocalStrat({
     } catch (error) {
         return done(error);
     }
-}));
-
-passport.use('jwt', new JWTStrategy({
-    secretOrKey: process.env.SECRET,
-    jwtFromRequest: cookieExtractor
-}, async (decodedToken, done) => {
-    if(decodedToken){
-       return done(null, decodedToken);
-    }
-    return done(null, false, {message: 'Unauthorized'})
 }));
