@@ -39,9 +39,9 @@ export function filterProfessional(obj,arr){
         }
     }
 }
-export function getProfSchedule(id){
+export function getProfSchedule(id, token){
     return async function(dispatch){
-        const data = await getSchedulesById(id);
+        const data = await getSchedulesById(id, token);
         return dispatch({
             type: GET_PROF_SCHEDULE,
             payload: data

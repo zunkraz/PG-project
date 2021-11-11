@@ -9,9 +9,10 @@ import Swal from 'sweetalert2';
 
 export default function Schedules({id, login, name, lastname, category}) {
     const dispatch = useDispatch();
+    const token = useSelector(state => state.sessionReducer.status.token);
 
     useEffect(() => {
-        dispatch(getProfSchedule(id))
+        dispatch(getProfSchedule(id, token))
     },[]);
     const [day, setDay]= useState("Todos")
     const [month, setMonth]= useState("Todos")
