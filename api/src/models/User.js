@@ -105,8 +105,8 @@ const user = new Schema(
             default: 0
         },
         invoices: [{
-          type: Schema.Types.ObjectId, ref: 'invoices'
-      }],
+            type: Schema.Types.ObjectId, ref: 'invoices'  
+        }],
     },
     { timestamp: true }
 )

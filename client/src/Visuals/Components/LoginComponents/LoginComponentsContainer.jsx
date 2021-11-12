@@ -1,6 +1,6 @@
 import React , { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, useHistory } from 'react-router'
+import { Redirect } from 'react-router'
 import { checkLoginAction, cleanLoginCheck } from '../../../Controllers/actions/loginAction'
 import { getAllUsers } from '../../../Controllers/actions/userActions'
 
@@ -25,8 +25,12 @@ function LoginComponentsContainer() {
         window.scrollTo(0, 0)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    const history = useHistory()
+    const LogError = useSelector(state =>  state.sessionReducer.status.error)
+    useEffect(() => {
+        if(LogError){
+            setShowErrorText(true)
+        }
+    }, [LogError])
 
     const users = useSelector(state => state.userReducer.users)
     const userNames = users.map(elem=>elem.username)
@@ -87,7 +91,7 @@ function LoginComponentsContainer() {
             setUserCanLog(false)
         }
     }
-
+    
     const handleFields=(e)=>{
         if(e.target.name==='username'){
             setuserFields({
@@ -130,18 +134,14 @@ function LoginComponentsContainer() {
             }
             return
         }
-        
     }
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
     
     const checkLog=()=>{
         if(!UserLog.error && UserLog.token.length){
-            console.log('NO TENGO ERROR')
             setShowErrorText(false)
         }else if(UserLog.error){
-            console.log('SI TENGO ERROR')
-            console.log(UserLog)
             setShowErrorText(true)
             setUserCanLog(true)
             setPassError(true)
@@ -155,6 +155,7 @@ function LoginComponentsContainer() {
 
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
+        setShowErrorText(false)
         checkLog()
     }
 

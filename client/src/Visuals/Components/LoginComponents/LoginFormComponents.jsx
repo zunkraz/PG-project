@@ -46,35 +46,40 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
 
     const LogError = useSelector(state =>  state.sessionReducer.status.error)
 
+    const keyPressLogin=(e)=>{
+        e.keyCode===13 && handleClickCheck()
+    }
+
     return (
         <div className='flex flex-col p-10 h-96 justify-around'>
             <LoginInputComponent    handleChange={handleFields} 
-                text={'Nombre de Usuario'} 
-                name='username'
-                type={'text'}
-                placeholder='Ingrese su Nombre de Usuario'
-                classInput={tagUser?classInput:classDanger}
-                classLabel={classLabel}
-                classDiv={classDiv}
-                inputField={usernameField}
-                setInputField={setUsernameField}
+                                    text={'Nombre de Usuario'} 
+                                    name='username'
+                                    type={'text'}
+                                    placeholder='Ingrese su Nombre de Usuario'
+                                    classInput={tagUser?classInput:classDanger}
+                                    classLabel={classLabel}
+                                    classDiv={classDiv}
+                                    inputField={usernameField}
+                                    setInputField={setUsernameField}
             />
             
             
             <LoginInputComponent    handleChange={handleFields}
-            text={'Ingrese su Contraseña'} 
-            name={'password'}
-            type={passEye?'text':'password'}
-            placeholder={'Ingrese su Contraseña'}
-            classInput={tagPass || passError ?classInput:classDanger}
-            classLabel={classLabel}
-            classDiv={classDiv}
-            classPass={classPass}
-            handleShowPass={handleShowPass}
-            textPassBtn={passEye?textPassHide:textPassShow}
-            classBtnPass={classBtnPass}
-            inputField={passField}
-            setInputField={setPassField}
+                                    text={'Ingrese su Contraseña'} 
+                                    name={'password'}
+                                    type={passEye?'text':'password'}
+                                    placeholder={'Ingrese su Contraseña'}
+                                    classInput={tagPass || passError ?classInput:classDanger}
+                                    classLabel={classLabel}
+                                    classDiv={classDiv}
+                                    classPass={classPass}
+                                    handleShowPass={handleShowPass}
+                                    textPassBtn={passEye?textPassHide:textPassShow}
+                                    classBtnPass={classBtnPass}
+                                    inputField={passField}
+                                    setInputField={setPassField}
+                                    onkeypress={keyPressLogin}
             />
             
             {(showError===true && LogError) &&

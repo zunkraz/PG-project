@@ -46,7 +46,12 @@ export function deleteTipUser({tipId}){
 }
 
 export function updateUserData(username, body){
-    return axios.put(`${BASIC_URL}/users/${username}`, body)
+    return axios.put(`${BASIC_URL}/users/${username}`, body, {headers: {jwt: body.token}, withCredentials: true})
     .then(r=>r.data)
     .catch(r=>r.response.data)
+}
+
+export async function checkPassword({username, password, token, newPassword}){
+    const response = await axios.post(`${BASIC_URL}/users/${username}/check`, {password, newPassword}, {headers: {jwt: token}, withCredentials: true})
+    return response
 }
