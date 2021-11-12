@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import DatePicker from 'react-datepicker';
 import { addtoSchedule } from "../../../ApiReq/schedule";
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default function SchedulerRecurrent ({userId, onCancel}){
     const days= ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
@@ -24,7 +25,6 @@ export default function SchedulerRecurrent ({userId, onCancel}){
         }
         let app1= app.flat()
         if(app1.length===0){return alert("Tu agenda esta vacía")}
-        console.log(app1)
         alert('¡Hecho! Tus horarios han sido guardados')
         addtoSchedule(app1)
         onCancel()

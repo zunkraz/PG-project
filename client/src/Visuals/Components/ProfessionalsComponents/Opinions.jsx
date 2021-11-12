@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Opinions() {
 
-    const opiniones = [
+    const opinions = [
         {text: "Muy buen tipo", user:"user1"},
         {text: "Me atendio muy bien", user:"user2"},
         {text: "Me salvó de un problema importante", user:"user3"},
@@ -21,7 +21,8 @@ export default function Opinions() {
             })
         }             */}
         {
-            opiniones.slice(0,4).map((e, i) => (
+            opinions.length
+            ? opinions.slice(0,4).map((e, i) => (
                 <div key={i} className='bg-color-extra4-a20 mrg-lg-t padd-lg border-color-dark-a20 border-radius-sm'>
                     <div>
                         <span><b>{e.text}</b></span>
@@ -31,6 +32,7 @@ export default function Opinions() {
                     </div>
                 </div>
             ))
+            : <span>Este profesional aún no recibió opiniones</span>
         }
     </div>
     )

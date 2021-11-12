@@ -107,7 +107,7 @@ export default function Schedules({id, login, name, lastname, category}) {
         <ul>
         {
         filter(sched).length>0 ?
-        filter(sched).slice(0, 4).map((elem, index)=>{
+        filter(sched).slice(0, 5).map((elem, index)=>{
             
             return  <li className='bg-color-extra4-a20 mrg-lg-t padd-lg border-color-dark-a20 border-radius-sm' 
                     key={index}
@@ -116,7 +116,7 @@ export default function Schedules({id, login, name, lastname, category}) {
                             {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
-                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof"><span>Contratar</span></button>
+                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof">Contratar</button>
                             
                             }
                         </div>
