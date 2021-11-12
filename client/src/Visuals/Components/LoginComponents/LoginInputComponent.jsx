@@ -1,27 +1,27 @@
 import React from 'react'
 import BigButton from '../BigButton'
 
-function LoginInputComponent({handleChange, text, name, type, placeholder, classInput, classLabel, classDiv, classPass, classBtnPass, handleShowPass, textPassBtn, inputField, setInputField}) {
-    
+function LoginInputComponent(props) {
 
     const handleInputChange=(e)=>{
-        setInputField && setInputField(e.target.value)
-        handleChange(e)
+        props.setInputField && props.setInputField(e.target.value)
+        props.handleChange(e)
     }
 
     return (
-        <div className={classDiv}>
-            <div className={classPass}>
-                <label className={classLabel}>{text}</label>
-                <BigButton onClickFunction={handleShowPass} text={textPassBtn} cssClass={classBtnPass}/>
+        <div className={props.classDiv}>
+            <div className={props.classPass}>
+                <label className={props.classLabel}>{props.text}</label>
+                <BigButton onClickFunction={props.handleShowPass} text={props.textPassBtn} cssClass={props.classBtnPass}/>
             </div>
-            <input  type={type}
+            <input  type={props.type}
                     autocomplete="off" 
-                    name={name}
-                    placeholder={placeholder}
-                    className={classInput} 
+                    name={props.name}
+                    placeholder={props.placeholder}
+                    className={props.classInput} 
                     onChange={handleInputChange}
-                    value={inputField}
+                    value={props.inputField}
+                    onKeyDown={props.onkeypress}
                 />
         </div>
     )

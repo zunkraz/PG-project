@@ -1,10 +1,12 @@
 const router = require ('express').Router();
 const passport = require('passport');
 const { loginAuth } = require('../controllers/auth/roleAuth');
+const comparePassword = require('../controllers/functions/comparePassword');
 const { userCreate, getUsersToForm, userDelete, userUpdate, getUserFullInfo } = require('../controllers/index')
 
 router.post('/', (req, res, next) => {
     const body = req.body;
+    console.log(body)
     userCreate(body)
         .then(result => res.json(result))
         .catch(err => next(err))
@@ -36,6 +38,12 @@ router.put ('/:username', loginAuth, (req,res,next)=>{
     userUpdate(username,updateInfo)
         .then(result => res.json(result))
         .catch(err => next(err))
+});
+
+router.post ('/:username/check', loginAuth, async(req,res,next)=>{
+    let token = req.headers.jwt
+    const response = await comparePassword(req.body,token)
+    res.json(response)
 });
 
 module.exports = router; 

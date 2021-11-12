@@ -1,6 +1,6 @@
 import React , { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, useHistory } from 'react-router'
+import { Redirect } from 'react-router'
 import { checkLoginAction, cleanLoginCheck } from '../../../Controllers/actions/loginAction'
 import { getAllUsers } from '../../../Controllers/actions/userActions'
 
@@ -25,8 +25,12 @@ function LoginComponentsContainer() {
         window.scrollTo(0, 0)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    const history = useHistory()
+    const LogError = useSelector(state =>  state.sessionReducer.status.error)
+    useEffect(() => {
+        if(LogError){
+            setShowErrorText(true)
+        }
+    }, [LogError])
 
     const users = useSelector(state => state.userReducer.users)
     const userNames = users.map(elem=>elem.username)
@@ -87,7 +91,7 @@ function LoginComponentsContainer() {
             setUserCanLog(false)
         }
     }
-
+    
     const handleFields=(e)=>{
         if(e.target.name==='username'){
             setuserFields({
@@ -130,18 +134,14 @@ function LoginComponentsContainer() {
             }
             return
         }
-        
     }
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
     
-    const checkLog=()=>{
+    const checkLog=async()=>{
         if(!UserLog.error && UserLog.token.length){
-            console.log('NO TENGO ERROR')
             setShowErrorText(false)
         }else if(UserLog.error){
-            console.log('SI TENGO ERROR')
-            console.log(UserLog)
             setShowErrorText(true)
             setUserCanLog(true)
             setPassError(true)
@@ -153,8 +153,29 @@ function LoginComponentsContainer() {
         }
     }
 
+    const goAlert=()=>{
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            
+            Toast.fire({
+                icon: 'success',
+                title: 'Ingreso Exitoso'
+            })
+            return true
+    }
+
     const logIn = ()=>{
         dispatch(checkLoginAction({username:userNames[userIndex], password: userFields.password}))
+        setShowErrorText(false)
         checkLog()
     }
 
@@ -193,14 +214,16 @@ function LoginComponentsContainer() {
                     email: googleData.email,
                     googleAccount: true
                 })
-                setGoogleData({})
                 await Swal.fire({
-                            icon: 'success',
-                            title: 'Cuenta creada!',
-                            showConfirmButton: false,
-                            timer: 1500
-                    })
-                window.location.reload(false);
+                    icon: 'success',
+                    title: 'Cuenta creada!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                dispatch(checkLoginAction({username:googleData.email.slice(0, endUN), password:googleData.googleId}))
+                setGoogleData({})
+                setShowErrorText(false)
+                //window.location.reload(false);
             }
             catch(e){
                 console.log(e)
@@ -230,7 +253,7 @@ function LoginComponentsContainer() {
                                             onCancel={changeRegisterStatus}
                                         />}
                 />
-            {(UserLog.token && UserLog.token.length>0) ? 
+            {((UserLog.token && UserLog.token.length>0) && goAlert()) ? 
                 <Redirect to={`/miperfil/${UserLog.username}`}/>
                     :
             ( UserLog!=='Correcto') &&

@@ -1,4 +1,4 @@
-import { GET_USERS, PUT_USER} from '../../constants'
+import { GET_USERS } from '../../constants'
 
 
 const initialState = {
