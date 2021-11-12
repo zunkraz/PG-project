@@ -15,7 +15,7 @@ import FullInfo from './FullInfo'
 export default function ProfessionalContainer({username, login}) {
     
     const profData= useSelector(state=> state.professionalReducer.profDetail)
-    console.log(profData)
+    
     const session = useSelector(state => state.sessionReducer.status.token)
     const divClass = 'flex justify-center items-center h-screen w-screen'
     const imgClass= 'w-96 h-96'
