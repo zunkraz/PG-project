@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const invoice = new Schema(
+const clientInvoice = new Schema(
   {
     customerId: {
       type: Schema.Types.ObjectId,
@@ -29,7 +29,8 @@ const invoice = new Schema(
     description: {
       type: String
     },
-    schedules:[{type: Schema.Types.ObjectId,
+    schedules: [{
+      type: Schema.Types.ObjectId,
       ref: 'schedules',
       required: true
     }]
@@ -44,6 +45,6 @@ const invoice = new Schema(
 // payerID: "P9TCTBGVG3NSS"
 // paymentID: null
 
-const Invoice = mongoose.model('invoices', invoice);
+const ClientInvoice = mongoose.model('clientInvoices', clientInvoice);
 
-module.exports = Invoice;
+module.exports = ClientInvoice;
