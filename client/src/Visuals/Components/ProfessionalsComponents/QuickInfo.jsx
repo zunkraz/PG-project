@@ -6,12 +6,12 @@ import ImageComponent from "../ImageComponent";
 
 export default function QuickInfo({data}) {
 
-    const {name, lastname, img, likes, dislikes, country, isProfessional, appointments, isVerified} = data;
+    const {name, lastname, username, img, likes, dislikes, country, isProfessional, appointments, isVerified} = data;
     
     return (
         <div>
             <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
-                {name} {lastname}
+                {username}
             </div>
             <div className="mrg-lg-t border-radius-sm overflow-hidden">
                 <ImageComponent img={img} ratio={"ratio-1-1"}/>
