@@ -1,6 +1,6 @@
 const {Router} = require("express");
 const router = Router();
-const {invoiceCreate,getInvoicesByUserId,deleteOneInvoice} = require('../controllers/index.js');
+const {invoiceCreate,getInvoicesUser,deleteOneInvoice} = require('../controllers/index.js');
 
 //POST NEW INVOICE
 router.post('/',(req,res,next)=>{
@@ -14,7 +14,7 @@ router.post('/',(req,res,next)=>{
 router.get('/:userId',(req,res,next)=>{
   let {userId} = req.params;
   let {as} = req.query;
-  getInvoicesByUserId(userId,as)
+  getInvoicesUser(userId,as)
     .then(result => res.json(result))
     .catch(err => next(err));
 });

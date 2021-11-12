@@ -27,7 +27,7 @@ const profInvoice = new Schema(
     },
     availableDate: {
       type: Date,
-      default: Date.now + 336*60*60*1000 //2 semanas
+      default: ()=>Date.now() + 336*60*60*1000 //2 semanas
     }
   },
   { timestamp: true }
