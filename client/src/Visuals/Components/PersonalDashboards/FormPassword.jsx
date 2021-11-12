@@ -18,22 +18,22 @@ function FormPassword(props) {
         error:true,
         'protección media':false,
         'protección alta':false,
-        'mas de 8 caracteres':false
+        'más de 8 caracteres':false
     })
 
     const checkRegex=(value)=>{
         if(validPassLength.test(value)){
             setPassErrors({
                 ...passErrors,
-                'mas de 8 caracteres':true
+                'más de 8 caracteres':true
             });
             (validPassMedium.test(value) && validPassLength.test(value))&&
                 setPassErrors({
                     ...passErrors,
                     'protección media': true,
-                    'mas de 8 caracteres': true
+                    'más de 8 caracteres': true
                 });
-            ((validPassHard.test(value) && passErrors['protección media']) && passErrors['mas de 8 caracteres'])&&
+            ((validPassHard.test(value) && passErrors['protección media']) && passErrors['más de 8 caracteres'])&&
                 setPassErrors({
                     ...passErrors,
                     error:false,
@@ -45,7 +45,7 @@ function FormPassword(props) {
                     error:true,
                     'protección media':false,
                     'protección alta':false,
-                    'mas de 8 caracteres':false
+                    'más de 8 caracteres':false
                 });
             }
         }
@@ -155,12 +155,12 @@ function FormPassword(props) {
                     <div className='flex flex-col'> 
                         <div className='flex flex-col mb-2 pb-2 border-b border-gray-500 items-center'>
                             <h4 className='text-bold font-xl'>La nueva contraseña debe poseer</h4>
-                            <p>Mayusculas, minusculas, numeros, y simbolos</p>
+                            <p>Mayúsculas, minúsculas, números, y símbolos</p>
                         </div>
                         <form className='p-2 rounded-md'>
                             <label  className=''
                                 ><p className={passErrors.error?withError:noError}
-                                    >Ingrese la nueva contraseña</p></label>
+                                    >Ingresa la nueva contraseña</p></label>
                             <input  className={passErrors.error?inputWithError:inputnoError}
                                     onChange={handleFieldsPassword}
                                     autocomplete="off"
@@ -172,7 +172,7 @@ function FormPassword(props) {
                                 <div>
                                     {(passErrors['protección media'] && !passErrors['protección alta'])?'protección media':''}
                                     {passErrors['protección alta']?'protección alta':''}
-                                    {passErrors['mas de 8 caracteres']?'':'Debe tener mas de 8 caracteres'}
+                                    {passErrors['más de 8 caracteres']?'':'Debe tener más de 8 caracteres'}
                                 </div>}
                                 
         {!passErrors.error && <label  className=''

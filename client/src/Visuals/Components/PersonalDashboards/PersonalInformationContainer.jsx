@@ -269,7 +269,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     {!userData.googleAccount && <button
                         className="width-30 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
                         onClick={editPass}
-                        >Cambiar contraseña<span className='ml-6'><FaMarker/></span>
+                        >Cambiar Contraseña<span className='ml-6'><FaMarker/></span>
                     </button>}
                     {userData.isProfessional && <button
                         className="width-30 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
