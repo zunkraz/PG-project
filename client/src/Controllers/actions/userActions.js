@@ -1,5 +1,5 @@
 
-import { CREATE_USER, GET_USERS, PUT_USER } from "../../constants";
+import { CREATE_USER, GET_USERS, PUT_USER, SET_PROFESSIONAL } from "../../constants";
 import { createUser, getUsers, updateUserData } from "../../ApiReq/users";
 
 
@@ -31,6 +31,11 @@ export function putUser(username, body){
     };
 };
 
+export function setProfessional(username, body){
+    return {
+        type: SET_PROFESSIONAL
+    };
+};
 
 //post tips
 

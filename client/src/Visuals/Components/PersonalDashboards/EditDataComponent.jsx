@@ -1,6 +1,7 @@
 import React from 'react'
 import EditInputComponent from './EditInputComponent'
 import '../../Assets/css/editData.custom.css'
+import PopBtns from './PopBtns'
 
 
 
@@ -50,16 +51,6 @@ function EditDataComponent(props) {
                                     inputClass={inputClass}
                                     onChange={props.onChange}
                             />
-                        <EditInputComponent
-                                    key='#Contraseña'
-                                    label='Contraseña'
-                                    inputName='password'
-                                    type='password'
-                                    divClass={divClass}
-                                    labelClass={labelClass}
-                                    inputClass={inputClass}
-                                    onChange={props.onChange}
-                            />
                     </div>
                 }
                 {props.userInfo==='professionalInfo' &&
@@ -84,11 +75,21 @@ function EditDataComponent(props) {
                                     inputClass={inputClass}
                                     onChange={props.onChange}
                             />
-                            <EditInputComponent
+                        <EditInputComponent
                                     key='Universidad'
                                     label='Universidad'
                                     inputName='institute'
                                     value={props.data.institute}
+                                    divClass={divClass}
+                                    labelClass={labelClass}
+                                    inputClass={inputClass}
+                                    onChange={props.onChange}
+                            />
+                        <EditInputComponent
+                                    key='Link - Google Meet'
+                                    label='Link - Google Meet'
+                                    inputName='meetingUrl'
+                                    value={props.data.meetingUrl}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
@@ -126,53 +127,12 @@ function EditDataComponent(props) {
                             /> 
                     </div>
                 }
-                <div className='flex justify-around'>
-                    <button className='w-48 h-10 mr-4 bg-white rounded-xl duration-700
-                                        hover:bg-green-500 ring-white bg-opacity-5
-                                        ring-4 ring-offset-1 ring-offset-green-500'
-                            onClick={props.onSuccess}
-                        ><span  className='text-green-500 font-medium tracking-widest 
-                                        duration-700 hover:text-white'
-                            >Confirmar</span></button>
-                    <button className='w-48 ml-4 bg-white bg-opacity-5
-                                        hover:bg-red-500 rounded-xl duration-700
-                                        ring-white ring-4 ring-offset-1 ring-offset-red-500'
-                            onClick={props.onCancel}
-                        ><span  className='text-red-500 font-medium tracking-widest
-                                        duration-700 hover:text-white'
-                            >Cancelar</span></button>
-                </div>
+                <PopBtns    onSuccess={props.onSuccess}
+                            onCancel={props.onCancel}
+                        />
             </div>
         </div>
     )
 }
 
 export default EditDataComponent
-
-/*
-//PERSONAL INFO CONTAINER
-<div className='flex flex-col items-center'>
-                                {
-                                    Object.keys(userNormalInfo)?.map((elem, index)=>{
-                                        let data=userNormalInfo[elem]
-                                        return (
-                                            <div key={index+1} className='flex'>
-                                                <ShowData   key={index} title={elem} 
-                                                                data={data}
-                                                                divClass={showDataDiv}
-                                                                spanClass={showDataSpan} 
-                                                                pClass={showDataP}
-                                                        />
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-
-                            <PersonalEditComponent  trigger={popState}
-                                        principalDiv={popClass}
-                                        children={<EditDataComponent 
-                                                        onCancel={editData}
-                                                    />}
-                        />
-*/
