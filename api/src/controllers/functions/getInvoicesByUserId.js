@@ -1,12 +1,9 @@
 const ClientInvoice = require("../../models/ClientInvoice");
 const ProfInvoice = require('../../models/ProfInvoice');
 
-module.exports = ({userId}) =>{
-  return ClientInvoice.find({customerId:userId})
-    .then(r => {
-      if(r.length) return r;
-      else return ProfInvoice.find({professionalId:userId})
-    })
+module.exports = ({userId,as}) =>{
+  if (as === 'prof')return ProfInvoice.find({professionalId:userId}); //:userId?as=prof
+  else return ClientInvoice.find({customerId:userId});                //:userId?as=client o sin query
 }
 
 // IGNORAR COMENTARIOS  (son ayuda memoria que voy a borrar)

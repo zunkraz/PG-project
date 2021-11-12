@@ -13,7 +13,8 @@ router.post('/',(req,res,next)=>{
 //GET INVOICEs BY userId
 router.get('/:userId',(req,res,next)=>{
   let {userId} = req.params;
-  getInvoicesByUserId(userId)
+  let {as} = req.query;
+  getInvoicesByUserId(userId,as)
     .then(result => res.json(result))
     .catch(err => next(err));
 });

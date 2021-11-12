@@ -1,17 +1,34 @@
-const Invoice = require("../../models/Invoice");
+const ClientInvoice = require("../../models/ClientInvoice");
+const ProfInvoice = require("../../models/ProfInvoice");
 
-module.exports = (data) =>{
-  const newInvoice = {
+module.exports = (data) => {
+  let allInvoices = [];
+  let profData = {};
+  const newClientInvoice = {
     customerId:data.customerId,
     numberOfSessions:data.cart.length,
     orderID: data.orderID,
     payerID: data.payerID,
     totalCost: data.cart.reduce((total,session)=>{return total+session.price},0),
-    schedules: data.cart.map(session => {return {_id:session.id}}),
+    schedules: data.cart.map(session => {
+      profData[session.professionalId]?profData[session.professionalId].push(session.id):profData[session.professionalId]=[session.id];
+      return {_id:session.id}
+    }),
     description: data.cart.reduce((text,session)=>{
       if (text.includes(session.name)) return text
       else return text + session.name + ', ' },'').slice(0,-2)
   }
-  const newInv = new Invoice(newInvoice);
-  return newInv.save();
+  const newCInv = new ClientInvoice(newClientInvoice);
+  allInvoices.push(newCInv.save());
+  for(let prof in profData){
+    let i = new ProfInvoice ({
+      orderID: data.orderID,
+      profit: newClientInvoice.payerID*0.75,
+      customerId: data.customerId,
+      schedules: profData[prof],
+      professionalId: prof,
+    });
+    allInvoices.push(i.save());
+  }
+  return Promise.all(allInvoices);
 }
