@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('mongoose-type-url');
 const Schema = mongoose.Schema;
 
 const user = new Schema(
@@ -110,6 +111,9 @@ const user = new Schema(
         invoiceAsClient: [{
           type: Schema.Types.ObjectId, ref: 'clientInvoices'
       }],
+        meetingUrl:{
+          type: mongoose.SchemaTypes.Url
+      }
     },
     { timestamp: true }
 )
