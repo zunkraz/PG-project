@@ -19,8 +19,8 @@ const {
   getAllReviewsAdmin, reviewUpdate, reviewDelete
 } = require('../controllers/index.js');
 const Appointment = require('../models/Appointment');
-const Invoice = require("../models/Invoice");
-
+const ClientInvoice = require("../models/ClientInvoice");
+const ProfInvoice = require('../models/ProfInvoice');
 //GET ALL USERS
 router.get('/users', loginAuth, roleAuth, (req,res,next)=>{
   getAllUsersAdmin()
@@ -140,13 +140,16 @@ router.delete('/reviews/:id', loginAuth, roleAuth, (req,res,next)=>{
     .catch(err => next(err));
 });
 
-//GET ALL INVOICES
-router.post('/invoices', passport.authenticate('jwt', {session: false}), roleAuth,(req,res,next)=>{
-  Invoice.find()
-    .populate([{path: 'customerId', select: 'username'},
-      {path: 'schedules',select: 'userId'}])
-    .then(result => res.json(result))
-    .catch(err => next(err));
+//GET "ALL" INVOICES
+router.get('/invoices', loginAuth, roleAuth,(req,res,next)=>{
+  let resp = [];
+  ClientInvoice.find()
+    .then(r => resp.push(r))
+    .then(() => ProfInvoice.find())
+    .then(r => {
+          resp.push(r);
+          res.json(resp)})
+    .catch(err => next(err))
 });
 
 module.exports = router;
