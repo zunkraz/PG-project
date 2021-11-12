@@ -160,7 +160,7 @@ function FormPassword(props) {
                         <form className='p-2 rounded-md'>
                             <label  className=''
                                 ><p className={passErrors.error?withError:noError}
-                                    >Ingresa la nueva contraseña</p></label>
+                                    >Ingrese la nueva contraseña</p></label>
                             <input  className={passErrors.error?inputWithError:inputnoError}
                                     onChange={handleFieldsPassword}
                                     autocomplete="off"
