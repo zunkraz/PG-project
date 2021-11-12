@@ -193,7 +193,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 denyButtonText: `Luego`,
                 denyButtonColor: '#d36363'
             })
-            console.log(setMeet)
+            
             if(setMeet.isConfirmed){
                 const url = await Swal.fire({
                     input: 'url',
@@ -202,7 +202,6 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     inputPlaceholder: 'Enter the URL',
                     showCloseButton: true,
                 })
-                console.log('url',url)
                 if (!url.dismiss==='close') {
                     Swal.fire(`Entered URL: ${url}`)
                     }
@@ -279,7 +278,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     <div className='flex flex-col'>
                         {
                             Object.keys(userNormalInfo)?.map((elem, index)=>{
-                                let dateIndex = (!userData.googleAccount && elem==='cumpleaños') ? userNormalInfo[elem].indexOf('T'):0
+                                let dateIndex = (userData.birthdate && (!userData.googleAccount && elem==='cumpleaños')) ? userNormalInfo[elem].indexOf('T'):0
                                 let data = (elem==='cuenta bancaria'|| elem==='contraseña')?'*************':userNormalInfo[elem]
                                 let date = (userData.birthdate && elem==='cumpleaños') && userNormalInfo[elem].slice(0, dateIndex)
                                 return (
