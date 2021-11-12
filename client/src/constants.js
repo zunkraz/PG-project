@@ -32,6 +32,7 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const FILTER_PROF = 'FILTER_PROF';
 export const DATA_NOT_FOUND = 'DATA_NOT_FOUND';
 export const CHECK_PASSWORD = 'CHECK_PASSWORD';
+export const SET_PROFESSIONAL = 'SET_PROFESSIONAL'
 
 
 export const SET_ERROR = 'SET_ERROR'

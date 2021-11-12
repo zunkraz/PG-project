@@ -4,7 +4,8 @@ import {
     REMOVE_FROM_CART,
     ADD_TO_CART,
     REMOVE_FROM_CART_ALL,
-    SET_ERROR, 
+    SET_ERROR,
+    SET_PROFESSIONAL, 
 
 } from './../../constants';
 
@@ -15,6 +16,7 @@ const initialState = {
         username:'',
         id:'',
         isAdmin: false,
+        isProfessional:false,
         error: false
     },
     cart: [],
@@ -42,6 +44,7 @@ export default function sessionReducer(state=initialState, {type,payload}){
                     token:'',
                     username:'',
                     isAdmin: false,
+                    isProfessional:false,
                     error: false
                 }
             }
@@ -52,9 +55,19 @@ export default function sessionReducer(state=initialState, {type,payload}){
                     token:'',
                     username:'',
                     isAdmin: false,
+                    isProfessional:false,
                     error:true
                 }
             }
+        case SET_PROFESSIONAL:
+            return {
+                ...state,
+                status:{
+                    ...state.status,
+                    isProfessional:true
+                }
+            }
+
         case ADD_TO_CART:
             return {
                 ...state,

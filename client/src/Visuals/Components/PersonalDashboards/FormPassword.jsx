@@ -160,7 +160,7 @@ function FormPassword(props) {
                         <form className='p-2 rounded-md'>
                             <label  className=''
                                 ><p className={passErrors.error?withError:noError}
-                                    >Ingrese la nueva contraseña</p></label>
+                                    >Ingresa la nueva contraseña</p></label>
                             <input  className={passErrors.error?inputWithError:inputnoError}
                                     onChange={handleFieldsPassword}
                                     autocomplete="off"
@@ -177,7 +177,7 @@ function FormPassword(props) {
                                 
         {!passErrors.error && <label  className=''
                                 ><p className={passCoincidence?noError:withError}
-                                >Repita la nueva contraseña</p></label>}
+                                >Repite la nueva contraseña</p></label>}
         {!passErrors.error && <input  className={passCoincidence?inputnoError:inputWithError}
                                     onChange={handleFieldsPassword}
                                     autocomplete="off"

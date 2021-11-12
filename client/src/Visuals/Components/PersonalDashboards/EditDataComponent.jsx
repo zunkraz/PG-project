@@ -75,11 +75,21 @@ function EditDataComponent(props) {
                                     inputClass={inputClass}
                                     onChange={props.onChange}
                             />
-                            <EditInputComponent
+                        <EditInputComponent
                                     key='Universidad'
                                     label='Universidad'
                                     inputName='institute'
                                     value={props.data.institute}
+                                    divClass={divClass}
+                                    labelClass={labelClass}
+                                    inputClass={inputClass}
+                                    onChange={props.onChange}
+                            />
+                        <EditInputComponent
+                                    key='Link - Google Meet'
+                                    label='Link - Google Meet'
+                                    inputName='meetingUrl'
+                                    value={props.data.meetingUrl}
                                     divClass={divClass}
                                     labelClass={labelClass}
                                     inputClass={inputClass}
@@ -126,31 +136,3 @@ function EditDataComponent(props) {
 }
 
 export default EditDataComponent
-
-/*
-//PERSONAL INFO CONTAINER
-<div className='flex flex-col items-center'>
-                                {
-                                    Object.keys(userNormalInfo)?.map((elem, index)=>{
-                                        let data=userNormalInfo[elem]
-                                        return (
-                                            <div key={index+1} className='flex'>
-                                                <ShowData   key={index} title={elem} 
-                                                                data={data}
-                                                                divClass={showDataDiv}
-                                                                spanClass={showDataSpan} 
-                                                                pClass={showDataP}
-                                                        />
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-
-                            <PersonalEditComponent  trigger={popState}
-                                        principalDiv={popClass}
-                                        children={<EditDataComponent 
-                                                        onCancel={editData}
-                                                    />}
-                        />
-*/

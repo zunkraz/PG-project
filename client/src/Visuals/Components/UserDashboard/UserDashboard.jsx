@@ -6,25 +6,29 @@ import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsC
 import PopContainer from '../PopContainer'
 import SchedulerRecurrent from './SchedulerRecurrent'
 import {Link} from 'react-router-dom'
-
+import Swal from 'sweetalert2'
+import { useDispatch } from 'react-redux'
+import { setProfessional } from '../../../Controllers/actions/userActions'
 
 
 
 function UserDashboard({userData}) {
+    
+    const dispatch = useDispatch()
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        userData.isProfessional && dispatch(setProfessional())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
-
     const [userInfo, setUserInfo] = useState('personalInfo')
-    
     const [scheduleFlag, setScheduleFlag] = useState(false)
+
     const scheFlag = ()=>{
         setScheduleFlag(!scheduleFlag)
     }
-    
+
     const changeUserState = (e)=>{
         setUserInfo(e.target.name)
     }

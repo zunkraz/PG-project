@@ -138,7 +138,7 @@ function LoginComponentsContainer() {
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
     
-    const checkLog=()=>{
+    const checkLog=async()=>{
         if(!UserLog.error && UserLog.token.length){
             setShowErrorText(false)
         }else if(UserLog.error){
@@ -151,6 +151,26 @@ function LoginComponentsContainer() {
             })
             dispatch(cleanLoginCheck())
         }
+    }
+
+    const goAlert=()=>{
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            
+            Toast.fire({
+                icon: 'success',
+                title: 'Ingreso Exitoso'
+            })
+            return true
     }
 
     const logIn = ()=>{
@@ -233,7 +253,7 @@ function LoginComponentsContainer() {
                                             onCancel={changeRegisterStatus}
                                         />}
                 />
-            {(UserLog.token && UserLog.token.length>0) ? 
+            {((UserLog.token && UserLog.token.length>0) && goAlert()) ? 
                 <Redirect to={`/miperfil/${UserLog.username}`}/>
                     :
             ( UserLog!=='Correcto') &&

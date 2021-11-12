@@ -48,6 +48,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 matricula: userData.professionalRegistration,
                 titulo : userData.title,
                 universidad: userData.institute,
+                'Link - Google Meet': userData.meetingUrl,
                 'cuenta bancaria': userData.bankAccount,
                 pais : userData.country.name,
                 estado : userData.state,
@@ -69,6 +70,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         img: userData.img,
         title : userProfInfo.titulo,
         institute: userData.institute,
+        meetingUrl: userData.meetingUrl,
         bankAccount: userData.bankAccount,
         state : userData.state,
         city : userData.city,
@@ -111,6 +113,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 setpostProfData({
                     ...postProfData,
                     institute: e.target.value
+                })
+                break;
+            case 'meetingUrl':
+                setpostProfData({
+                    ...postProfData,
+                    meetingUrl: e.target.value
                 })
                 break;
             case 'bankAccount':
@@ -171,6 +179,46 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     const editOffer=()=>{
         setPopOffer(!popOffer)
     }
+
+    const [meetAlert, setMeetAlert] = useState(true)
+    const goAlert= async()=>{
+            if(userData.isProfessional && !userData.meetingUrl){
+            const setMeet = await Swal.fire({
+                title: 'No olvides setear tu meet !',
+                icon: 'warning',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Ahora',
+                confirmButtonColor: '#5ac18e',
+                denyButtonText: `Luego`,
+                denyButtonColor: '#d36363'
+            })
+            console.log(setMeet)
+            if(setMeet.isConfirmed){
+                const url = await Swal.fire({
+                    input: 'url',
+                    inputLabel: 'Ingresa tu link profesional de Google Meet',
+                    html:'<a href ="/guia-meet" target="_blank">Guia sobre Google Meet</a>',
+                    inputPlaceholder: 'Enter the URL',
+                    showCloseButton: true,
+                })
+                console.log('url',url)
+                if (!url.dismiss==='close') {
+                    Swal.fire(`Entered URL: ${url}`)
+                    }
+                if(url.value){
+                    dispatch(putUser(userData.username, {meetingUrl:url.value, token}))
+                }
+            }
+            if(setMeet.isDenied){
+                setMeetAlert(false)
+            }
+            
+            
+        }
+    }
+
+    meetAlert && setTimeout(goAlert,2500)
 
     /////////////// CLASS ///////////////
 
