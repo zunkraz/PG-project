@@ -147,12 +147,12 @@ function UserDashboard({userData}) {
                                 <PersonalTaskComponent data={userData.isProfessional?pendienteNormal:pendientePro} />
                             </div>
                         </div>
-                        {/* Container: Posts */}
+                        {userData.isProfessional && 
                         <div className='col-1-5@xl col-2-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t6-'>
                             <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
                                 <ProfessionalPostsContainer userId={userData._id}/>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                 </section>
             </div>

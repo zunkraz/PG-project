@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {updateReviewUser,postReviewUser} from '../../../ApiReq/users'
+import {useSelector} from 'react-redux'
  
 export default function EditReview({close,review,setReview,userId}){
 
@@ -7,7 +8,7 @@ export default function EditReview({close,review,setReview,userId}){
     const [rate,setRate] = useState(review?.rate || '')
     const [disabled,setDisabled] = useState(!review)
     const [characters,setCharacters] = useState(200-(review? review.text.length : 0))
-
+    const token = useSelector(state=>state.sessionReducer.status.token)
 
     function rewChange(e){
         if(e.target.value.length <= 200){
@@ -19,14 +20,14 @@ export default function EditReview({close,review,setReview,userId}){
 
     function editRew(e){
         e.preventDefault()
-        updateReviewUser({text:rew,rate:rate, reviewId:review._id})
+        updateReviewUser({text:rew,rate:rate, reviewId:review._id, token})
         .then(r=>setReview(r))
         close()
     }
 
     function sendReview(e){
         e.preventDefault()
-        postReviewUser({text:rew,rate,userId})
+        postReviewUser({text:rew,rate,userId},token)
         .then(r=>setReview(r))
         close()
     }

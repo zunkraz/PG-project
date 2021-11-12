@@ -10,7 +10,12 @@ const tip = new Schema(
         isApproved:{
             type: Boolean,
             default: false,
-        }     
+        },
+        userId: {
+            type: Schema.Types.ObjectId, 
+            ref: 'users',
+            required: true,
+        },
     },
     { timestamp: true }
 )
