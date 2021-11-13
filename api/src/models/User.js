@@ -113,6 +113,10 @@ const user = new Schema(
       }],
         meetingUrl:{
           type: mongoose.SchemaTypes.Url
+      },
+      memberSince: {
+        type:Date,
+        default: Date.now
       }
     },
     { timestamp: true }

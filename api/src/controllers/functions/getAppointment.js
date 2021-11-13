@@ -1,4 +1,4 @@
-const Appointment = require("../models/Appointment");
+const Appointment = require("../../models/Appointment");
 
 module.exports = (userId,as) => {
   if (as === 'prof') return Appointment.find({professionalId: userId})
