@@ -73,6 +73,7 @@ let history = useHistory();
         date={o.appointment.date}
         sessions={o.appointment.sessions}
         price={o.price}
+        id={o.id}
         />
     </li>)
     

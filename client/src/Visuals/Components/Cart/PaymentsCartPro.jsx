@@ -10,23 +10,23 @@ const PaymentsCartPro = ({render}) => {
                 <thead className="justify-between">
                 <tr className="bg-primary">
                 
-                    <th className="px-16 py-2">
+                    <th className="px-8 py-2">
                     <span className="text-gray-300">Clientes</span>
                     </th>
-                    <th className="px-16 py-2">
+                    <th className="px-8 py-2">
                     <span className="text-gray-300">Fecha de cita</span>
                     </th>
-                    <th className="px-16 py-2">
+                    <th className="px-8 py-2">
                     <span className="text-gray-300">Fecha para cobro</span>
                     </th>
 
-                    <th className="px-16 py-2">
+                    <th className="px-8 py-2">
                     <span className="text-gray-300">Costo Total</span>
                     </th>
-                    <th className="px-16 py-2">
+                    <th className="px-8 py-2">
                     <span className="text-gray-300">Estado</span>
                     </th>
-                    <th className="px-16 py-2">
+                    <th className="px-8 py-2">
                     <span className="text-gray-300">Orden de Pago</span>
                     </th>
                 </tr>
@@ -39,10 +39,10 @@ const PaymentsCartPro = ({render}) => {
                     <td>
                     <span className="text-center mx-12 font-semibold">{e.customerId.username}</span>
                     </td>
-                    <td className="px-16 py-2 text-center">
-                    <span>{e.schedules[0].date.dayNumber} de {e.schedules[0].date.month} del {e.schedules[0].date.year} </span>
+                    <td className="px-8 py-2 text-center">
+                    <span>{e.schedules[0].date.year}-{e.schedules[0].date.shortcut.toString().slice(3,5)}-{e.schedules[0].date.dayNumber} </span>
                     </td> 
-                    <td className="px-16 py-2">
+                    <td className="px-8 py-2">
                     <span>{e.availableDate.slice(0,10)}</span>
                     </td>
                     <td className="px-16 py-2">

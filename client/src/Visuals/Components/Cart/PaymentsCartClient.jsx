@@ -7,23 +7,23 @@ const PaymentsCartClient = ({render}) => {
             <thead className="justify-between">
             <tr className="bg-primary">
             
-                <th className="px-16 py-2">
+                <th className="px-8 py-2">
                 <span className="text-gray-300">Contratados</span>
                 </th>
-                <th className="px-16 py-2">
+                <th className="px-8 py-2">
                 <span className="text-gray-300">Precio</span>
                 </th>
-                <th className="px-16 py-2">
+                <th className="px-8 py-2">
                 <span className="text-gray-300">Fecha</span>
                 </th>
 
-                <th className="px-16 py-2">
+                <th className="px-8 py-2">
                 <span className="text-gray-300">Sesiones (30 min)</span>
                 </th>
-                <th className="px-16 py-2">
+                <th className="px-8 py-2">
                 <span className="text-gray-300">Estado</span>
                 </th>
-                <th className="px-16 py-2">
+                <th className="px-8 py-2">
                 <span className="text-gray-300">Orden de Pago</span>
                 </th>
             </tr>
@@ -38,7 +38,7 @@ const PaymentsCartClient = ({render}) => {
                 <td className="px-16 py-2">
                     $ {e.totalCost}
                 </td>
-                <td className="px-16 py-2">
+                <td className="px-8 py-2">
                 <span>{e.date.slice(0,10)}</span>
                 </td>
                 <td className="px-16 py-2 text-center">
