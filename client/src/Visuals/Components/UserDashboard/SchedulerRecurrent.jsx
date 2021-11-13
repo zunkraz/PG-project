@@ -106,28 +106,3 @@ function date (day, time, userId) {
     }
     return days
   }
-
-//   <input type="checkbox" className="w-6 inline mt-2" name={d} onClick={showTimePicker}/> 
-/* Lunes <input type="checkbox" name="Lunes" onClick={showTimePicker}/> 
-        {showTime.Lunes ? <DatePicker
-                    selected={new Date(2021,1,1)}
-                    onChange={(date) => onChangeTime(date)}
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeCaption="Time"
-                    dateFormat="h:mm aa"
-                />: null}
-        
-        Martes <input type="checkbox" name="Martes" onClick={showTimePicker}/>
-        {showTime.Martes ? <DatePicker
-                    selected={new Date(2021,1,2)}
-                    onChange={(date) => onChangeTime(date)}
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeCaption="Time"
-                    dateFormat="h:mm aa"
-                />: null}
-        Miercoles <input type="checkbox" name="Miercoles" onClick={showTimePicker}/>
-        Jueves <input type="checkbox" name="Jueves" onClick={showTimePicker}/>
-        Viernes <input type="checkbox" name="Viernes" onClick={showTimePicker}/>
-        Sabado <input type="checkbox" name="Sabado" onClick={showTimePicker}/> */

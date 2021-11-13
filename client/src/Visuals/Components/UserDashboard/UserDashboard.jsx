@@ -101,7 +101,7 @@ function UserDashboard({userData}) {
                                             >
                                                 <span className="text-green-500 font-medium tracking-widest 
                                                             duration-700 hover:text-white">
-                                                Horario
+                                                Modificar horario
                                                 </span>
                                         </button>
                                     </div>

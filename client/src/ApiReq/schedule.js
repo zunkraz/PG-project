@@ -16,3 +16,8 @@ export async function setAvailability(id, token){
     const data= await axios.put(`${BASIC_URL}/schedules/${id}`, {headers: {jwt: token}, withCredentials: true})
     return data
 }
+
+export async function deleteSchedulebyId(id, token){
+    const data= await axios.delete(`${BASIC_URL}/schedules/${id}`, {headers: {jwt: token}, withCredentials: true})
+    return data
+}

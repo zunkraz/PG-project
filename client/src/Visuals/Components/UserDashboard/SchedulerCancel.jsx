@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import {  useSelector } from "react-redux";
-import { getSchedulesById } from "../../../ApiReq/schedule";
+import { deleteSchedulebyId, getSchedulesById } from "../../../ApiReq/schedule";
 
 export default function SchedulerCancel ({userId}){
     const [day, setDay]= useState("Todos")
@@ -42,10 +42,18 @@ export default function SchedulerCancel ({userId}){
         const sched= await getSchedulesById(userId)
         const filteredSched= filter(sched)
         setApp(filteredSched)
+        if (filteredSched.length===0){
+            alert("No hay turnos en la fecha bucada")
+        }
     }
 
-    function handleClick (){
-        console.log("borrado")
+    function handleClick (e){
+        const {id}= e.target
+        const m = window.confirm("Estas seguro que quieres borrar el turno?")
+        if (m == true) {
+            deleteSchedulebyId(id)
+            setApp(app.filter(e=> e._id !== id));
+        } 
     }
 
     return (
@@ -70,13 +78,13 @@ export default function SchedulerCancel ({userId}){
                     return <option value={m} key={months.indexOf(m)}>{m}</option>
                 })}
             </select>
-            <button onClick={clickSearch}>Buscar</button>
+            <button onClick={clickSearch} className="btn-prof w-24 my-2 ml-3">Buscar</button>
             </div>
         </div>
         <ul>
         {
         app.length>0 ?
-        app.slice(0, 5).map((elem, index)=>{
+        app.slice(0, 4).map((elem, index)=>{
             
             return  <li className='bg-color-extra4-a20 mrg-lg-t w-1/3 padd-lg border-color-dark-a20 border-radius-sm' 
                     key={index}
@@ -89,7 +97,7 @@ export default function SchedulerCancel ({userId}){
                         </div>
                     </li>
         })
-        : <p className="py-4">Sin turnos agendados para la fecha</p>
+        : null
         }
         </ul>
     </div>
