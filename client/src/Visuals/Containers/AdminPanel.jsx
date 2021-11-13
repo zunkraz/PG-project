@@ -24,17 +24,17 @@ function AdminPanel(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[userDeleted,userModified]);
 
-  const [shownData,setShownData] = useState('Users');
+  const [shownData,setShownData] = useState('Usuarios');
   const buttonSelected = 'bg-gray-300 p-0 font-medium rounded-md mr-5 h-7 w-28';
   const buttonNonSelected = 'bg-gray-100 p-0 font-medium rounded-md mr-5 h-7 w-28';
   const buttonsOff = {
-    Users:buttonNonSelected,
-    Appointments:buttonNonSelected,
-    Categories:buttonNonSelected,
-    Countries:buttonNonSelected,
+    Usuarios:buttonNonSelected,
+    Facturacion:buttonNonSelected,
+    Categorias:buttonNonSelected,
+    Paises:buttonNonSelected,
     Tips:buttonNonSelected,
-    Reviews:buttonNonSelected };
-  const [buttons,setButtons] = useState({...buttonsOff,Users:buttonSelected});
+    Opiniones:buttonNonSelected };
+  const [buttons,setButtons] = useState({...buttonsOff,Usuarios:buttonSelected});
 
   const divStyle ={
     display: 'flex',
@@ -52,19 +52,19 @@ function AdminPanel(){
     <div className="min-h-screen">
       <h1 className='uk-padding text-bold font-main font-1x'>Panel de Administrador</h1>
       <div style={divStyle}>
-        <BigButton text= "Users" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Users} />
-        <BigButton text="Appointments" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Appointments} />
-        <BigButton text="Categories" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Categories} />
-        <BigButton text="Countries" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Countries} />
+        <BigButton text= "Usuarios" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Usuarios} />
+        <BigButton text="Facturación" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Facturacion} />
+        <BigButton text="Categorías" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Categorias} />
+        <BigButton text="Países" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Paises} />
         <BigButton text="Tips" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Tips} />
-        <BigButton text="Reviews" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Reviews} />
+        <BigButton text="Opiniones" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Opiniones} />
       </div>
-      {shownData==="Users" && <UserTable usersAdmin={usersAdmin} token={token}/>}
-      {shownData==="Categories" && <CategoryDashboard token={token}/>}
-      {shownData==="Appointments" && <AppointmentDashboard token={token}/>}
-      {shownData==="Countries" && <CountryDashboard token={token}/>}
+      {shownData==="Usuarios" && <UserTable usersAdmin={usersAdmin} token={token}/>}
+      {shownData==="Categorías" && <CategoryDashboard token={token}/>}
+      {shownData==="Facturación" && <AppointmentDashboard token={token}/>}
+      {shownData==="Países" && <CountryDashboard token={token}/>}
       {shownData==="Tips" && <TipDashboard token={token}/>}
-      {shownData==="Reviews" && <ReviewDashboard token={token}/>}
+      {shownData==="Opiniones" && <ReviewDashboard token={token}/>}
     </div>);
   else {
     return <Redirect to={'/'}/>

@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import * as FaIcons from 'react-icons/fa';
 import {useDispatch, useSelector} from "react-redux";
 import {deleteAdminReview,putAdminReview,getAdminReviews} from "../../../Controllers/actions/adminActions";
+import Swal from 'sweetalert2';
 
 function ReviewDashboard({token}){
   const dispatch = useDispatch();
@@ -10,10 +11,40 @@ function ReviewDashboard({token}){
   const reviewModified = useSelector(state=>state.adminReducer.reviewModified);
 
   function handleReviewDelete(id){
-    dispatch(deleteAdminReview(id));
+    return Swal.fire({
+          text:`Desea borrar a esta opinión? Esta acción no se puede deshacer.`,
+          icon: 'question',
+          showCancelButton: true,
+          cancelButtonText: 'Cancelar',
+          confirmButtonText: 'Si',
+          confirmButtonColor: "rgba(232,52,84,0.84)",
+          cancelButtonColor: "#8c8f9a",
+        }).then(result=>{
+          if(result.isConfirmed){
+            dispatch(deleteAdminReview(id,token));
+            Swal.fire({
+              text:`Eliminada.`,
+              icon:'error',
+              confirmButtonColor: "rgba(232,52,84,0.84)"})
+          }})
   }
   function handleReviewChange(status,id){
-    dispatch(putAdminReview({rate:status==="Good"?"Bad":"Good"},id,token))
+    return Swal.fire({
+          text:`Desea cambiar la calificación?`,
+          icon: 'question',
+          showCancelButton: true,
+          cancelButtonText: 'Cancelar',
+          confirmButtonText: 'Si',
+          confirmButtonColor: "rgb(165 220 134)",
+          cancelButtonColor: "#8c8f9a",
+        }).then(result => {
+          if(result.isConfirmed){
+            dispatch(putAdminReview({rate:status==="Good"?"Bad":"Good"},id,token))
+            Swal.fire({
+              text:`Calificación cambiada.`,
+              icon:'success',
+              confirmButtonColor: "rgb(165 220 134)"})
+          }})
   }
   useEffect(()=>{
     dispatch(getAdminReviews(token));

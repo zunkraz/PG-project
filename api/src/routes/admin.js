@@ -97,8 +97,8 @@ router.get('/tips', loginAuth, roleAuth, (req,res,next)=>{
 });
 //TIP CREATE
 router.post('/tips', loginAuth, roleAuth, (req,res,next)=>{
-  let {text} = req.body;
-  postTips({text,isApproved:true})
+  let data = req.body;
+  postTips(data)
     .then(result => res.json(result))
     .catch(err => next(err));
 });

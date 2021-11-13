@@ -3,6 +3,7 @@ import * as FaIcons from 'react-icons/fa';
 import BasicForm from "./BasicForm";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteAdminTip,putAdminTip,getAdminTips} from "../../../Controllers/actions/adminActions";
+import Swal from 'sweetalert2';
 
 function TipDashboard({token}){
   const dispatch = useDispatch();
@@ -12,14 +13,44 @@ function TipDashboard({token}){
   const tipPosted = useSelector(state=>state.adminReducer.tipPosted);
 
   function handleTipDelete(id){
-    dispatch(deleteAdminTip(id, token));
+    return Swal.fire({
+          text:`Desea borrar este tip? Esta acción no se puede deshacer.`,
+          icon: 'question',
+          showCancelButton: true,
+          cancelButtonText: 'Cancelar',
+          confirmButtonText: 'Si',
+          confirmButtonColor: "rgba(232,52,84,0.84)",
+          cancelButtonColor: "#8c8f9a",
+        }).then(result=>{
+          if(result.isConfirmed){
+            dispatch(deleteAdminTip(id, token));
+            Swal.fire({
+              text:`Tip eliminado.`,
+              icon:'error',
+              confirmButtonColor: "rgba(232,52,84,0.84)"})}})
   }
+
   function handleTipChange(status,id){
-    dispatch(putAdminTip({isApproved:!status}, id, token))
+    return Swal.fire({
+          text:`Desea ${!status?'aprobar':'desaprobar'} este tip? Si ${status?'no':''} está aprobado ${status?'no':''} se mostrará en la página.`,
+          icon: 'question',
+          showCancelButton: true,
+          cancelButtonText: 'Cancelar',
+          confirmButtonText: `${!status?'Aprobar':'Desaprobar'}`,
+          confirmButtonColor: `${!status?'rgb(165 220 134)':'rgba(232,52,84,0.84)'}`,
+          cancelButtonColor: "#8c8f9a",
+        }).then(result=>{
+          if(result.isConfirmed){
+            dispatch(putAdminTip({isApproved:!status}, id, token));
+            Swal.fire({
+              text:`Estado cambiado.`,
+              icon:'success',
+              confirmButtonColor: "rgb(165 220 134)"})}})
   }
   useEffect(()=>{
     dispatch(getAdminTips(token));
   },[tipPosted, tipDeleted, tipModified, dispatch, token]);
+
   useEffect(()=>{
     if(!allTips.length) dispatch(getAdminTips(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps

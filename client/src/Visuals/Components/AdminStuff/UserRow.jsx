@@ -62,11 +62,11 @@ function UserRow({user, token}){
   }
   function handleVerifyUser(username,isVerified){
     return Swal.fire({
-      text:`Desea ${!isVerified?'aprobar':'desactivar'} la cuenta de ${username}? Si no está verificado no se ofrecerán sus servicios.`,
+      text:`Desea ${!isVerified?'verificar':'remover la verificación de'} la cuenta de ${username}? Si ${!isVerified?'':'no'} está verificada ${!isVerified?'':'no'} se ofrecerán sus servicios.`,
       icon: 'question',
       showCancelButton: true,
       cancelButtonText: 'Cancelar',
-      confirmButtonText: `${!isVerified?'Aprobar':'Desactivar'}`,
+      confirmButtonText: `${!isVerified?'Verificar':'Remover'}`,
       confirmButtonColor: `${!isVerified?'rgb(165 220 134)':'rgba(232,52,84,0.84)'}`,
       cancelButtonColor: "#8c8f9a",
     }).then(result=>{
