@@ -6,7 +6,7 @@ export const addToCart = (appointment) => {
    return function (dispatch){
        setTimeout(() => {
          dispatch(removeFromCart(appointment.id))
-       }, 10000);
+       }, 60000);
        return dispatch({
            type: ADD_TO_CART, 
            payload: appointment
