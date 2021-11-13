@@ -4,6 +4,7 @@ import BasicForm from "./BasicForm";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllCategories} from "../../../Controllers/actions/constantInfoActions";
 import {deleteAdminCategory,putAdminCategory} from "../../../Controllers/actions/adminActions";
+import Swal from 'sweetalert2';
 
 function CategoryDashboard({token}){
   const dispatch = useDispatch();
@@ -13,15 +14,48 @@ function CategoryDashboard({token}){
   const catPosted = useSelector(state=>state.adminReducer.categoryPosted);
 
   function handleCatDelete(name,id){
-    if(window.confirm(`Desea eliminar la categoría ${name}?`)) dispatch(deleteAdminCategory(id, token));
+    return Swal.fire({
+          text:`Desea eliminar la categoría ${name}? Esta acción no se puede deshacer.`,
+          icon: 'question',
+          showCancelButton: true,
+          cancelButtonText: 'Cancelar',
+          confirmButtonText: 'Si',
+          confirmButtonColor: "rgba(232,52,84,0.84)",
+          cancelButtonColor: "#8c8f9a",
+        }).then(result=>{
+          if(result.isConfirmed){
+            dispatch(deleteAdminCategory(id, token));
+            Swal.fire({
+              text:`Categoría ${name} eliminada.`,
+              icon:'error',
+              confirmButtonColor: "rgba(232,52,84,0.84)"})
+          }})
   }
+
   function handleCatReset(name,id){
-    if(window.confirm(`Desea resetear la cantidad de búsquedas de ${name}?`)) dispatch(putAdminCategory(id,{searchCount: 0}, token));
+    return Swal.fire({
+      text:`Desea resetear la cantidad de búsquedas de ${name}?`,
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si',
+      confirmButtonColor: "rgba(232,52,84,0.84)",
+      cancelButtonColor: "#8c8f9a",
+    }).then(result=>{
+      if(result.isConfirmed){
+        dispatch(putAdminCategory(id,{searchCount: 0}, token));
+        Swal.fire({
+          text:`Cantidad de búsquedas reseteada.`,
+          icon:'error',
+          confirmButtonColor: "rgba(232,52,84,0.84)"})
+      }})
   }
+
   useEffect(()=>{
     dispatch(getAllCategories(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[catDeleted,catModified,catPosted]);
+
   useEffect(()=>{
     if(!allCategories.length) dispatch(getAllCategories(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,4 +118,5 @@ function CategoryDashboard({token}){
       </div>
     )
 }
+
 export default CategoryDashboard;

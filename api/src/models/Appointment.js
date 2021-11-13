@@ -4,9 +4,12 @@ const Schema = mongoose.Schema;
 const appointment = new Schema(
     {
         date:{
-            type: String,
-            required: true,
-            unique: true,
+          shortcut:{
+            type: Number
+          },
+          datefull:{
+            type:String
+          }
         },
         status: {
             type: String,
@@ -22,7 +25,10 @@ const appointment = new Schema(
             type: Schema.Types.ObjectId, 
             ref: 'users',
             required: true,
-        },       
+        },
+        meetingToken: {
+          type: String
+        }
     },
     { timestamp: true }
 )

@@ -207,6 +207,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     }
                 if(url.value){
                     dispatch(putUser(userData.username, {meetingUrl:url.value, token}))
+                    setMeetAlert(false)
                 }
             }
             if(setMeet.isDenied){

@@ -4,19 +4,39 @@ import BasicForm from "./BasicForm";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllCountries} from "../../../Controllers/actions/constantInfoActions";
 import {deleteAdminCountry} from "../../../Controllers/actions/adminActions";
+import Swal from 'sweetalert2';
 
 function CountryDashboard({token}){
+
   const dispatch = useDispatch();
   const allCountries = useSelector(state=>state.constantInfoReducer.countries);
   const countriesDel = useSelector(state=>state.adminReducer.countryDeleted);
   const countriesPost = useSelector(state=>state.adminReducer.countryPosted);
+
   function handleCountryDelete(name,id){
-    if(window.confirm(`Desea eliminar ${name} de la lista?`)) dispatch(deleteAdminCountry(id));
+    return Swal.fire({
+              text:`Desea eliminar ${name} de la lista? Esta acción no se puede deshacer.`,
+              icon: 'question',
+              showCancelButton: true,
+              cancelButtonText: 'Cancelar',
+              confirmButtonText: 'Si',
+              confirmButtonColor: "rgba(232,52,84,0.84)",
+              cancelButtonColor: "#8c8f9a",
+            }).then(result=>{
+              if(result.isConfirmed){
+                dispatch(deleteAdminCountry(id,token));
+                Swal.fire({
+                  text:`${name} eliminado.`,
+                  icon:'error',
+                  confirmButtonColor: "rgba(232,52,84,0.84)"})
+              }})
   }
+
   useEffect(()=>{
     dispatch(getAllCountries(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[countriesDel,countriesPost]);
+
   useEffect(()=>{
     if(!allCountries.length) dispatch(getAllCountries(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,6 +80,6 @@ function CountryDashboard({token}){
             </div></div></div></div>
       <BasicForm component={"countries"}/>
     </div>)
-
 }
+
 export default CountryDashboard;
