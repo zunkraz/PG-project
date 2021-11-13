@@ -3,12 +3,12 @@ import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardC
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
-import PopContainer from '../PopContainer'
-import SchedulerRecurrent from './SchedulerRecurrent'
+// import PopContainer from '../PopContainer'
 import {Link} from 'react-router-dom'
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux'
 import { setProfessional } from '../../../Controllers/actions/userActions'
+import SchedulerCont from './SchedulerContainer'
 
 
 
@@ -47,10 +47,10 @@ function UserDashboard({userData}) {
         '30 minutos con Claudio'
     ]
     
-    const popClass=`bg-white mt-2 h-4/5 w-4/5 flex flex-col items-center 
-                    justify-center rounded-lg shadow-lg
-                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
-    
+    // const popClass=`bg-white mt-2 h-4/5 w-4/5 flex flex-col items-center 
+    //                 justify-center rounded-lg shadow-lg
+    //                 ring-white ring-4 ring-offset-1 ring-offset-red-500	`
+    if(!scheduleFlag){
     return (
         <React.Fragment>
             <div className="wrapper bg-professional-title">
@@ -85,13 +85,13 @@ function UserDashboard({userData}) {
                                 {
                                     userData.isProfessional && 
                                     <div>
-                                        <PopContainer   trigger={scheduleFlag}
+                                        {/* <PopContainer   trigger={scheduleFlag}
                                                         principalDiv={popClass}
                                                         children={<SchedulerRecurrent 
                                                                     userId={userData._id}
                                                                     onCancel={scheFlag}
                                                                 />}
-                                            />
+                                            /> */}
                                         <button
                                             className="my-3 w-full h-10 mr-4 rounded-xl duration-700
                                             ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
@@ -100,7 +100,7 @@ function UserDashboard({userData}) {
                                             >
                                                 <span className="text-green-500 font-medium tracking-widest 
                                                             duration-700 hover:text-white">
-                                                Horario
+                                                Modificar horario
                                                 </span>
                                         </button>
                                     </div>
@@ -161,7 +161,37 @@ function UserDashboard({userData}) {
                 </section>
             </div>
         </React.Fragment>
+    )}
+    if(scheduleFlag){
+    return (
+        <React.Fragment>
+            <div className="wrapper bg-professional-title">
+                <div className="wrapper padd-lg bg-color-light-a80">
+                    <section>
+                        <div className="col-1-1@xl col-1-1@lg col-1-1@md">
+                            <div className='font-main font-2x'>
+                                {userData.isProfessional?
+                                <div>
+                                    <span className="padd-md-b padd-lg-r text-bold border-bottom-color-main">
+                                        {`${userData.name} ${userData.lastname}`}
+                                    </span>
+                                    <div className="mrg-sm-t">
+                                        {userData.category.name}
+                                    </div>
+                                </div>
+                                :<span>{`${userData.name} ${userData.lastname}`}</span>}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div className="wrapper mrg-lg-t">
+                <button onClick={scheFlag} className="my-2 w-24 border-radius-sm action action-user-dashboard-cancel">Volver a mi perfil</button>
+                <SchedulerCont userId={userData._id} />
+            </div>
+        </React.Fragment>
     )
+    }
 }
 
 export default UserDashboard
