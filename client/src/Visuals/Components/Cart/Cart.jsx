@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ReactDOM from "react-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
@@ -73,11 +73,17 @@ let history = useHistory();
         date={o.appointment.date}
         sessions={o.appointment.sessions}
         price={o.price}
+        id={o.id}
         />
     </li>)
     
     let suma= 0
     order.forEach(o=> suma += o.price)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         

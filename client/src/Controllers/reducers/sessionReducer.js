@@ -76,7 +76,7 @@ export default function sessionReducer(state=initialState, {type,payload}){
         case REMOVE_FROM_CART:
             return {
                 ...state,
-                cart: state.cart.filter(a => a.appointment.date !== payload)   
+                cart: state.cart.filter(a => a.id !== payload)   
             };
         case REMOVE_FROM_CART_ALL:
             return {
