@@ -2,7 +2,7 @@ import React from 'react'
 
 const PaymentsCartClient = ({render}) => {
     return ( 
-        <div>
+        <div className='mt-4 mb-8 mx-auto shadow-xl w-11/12 table-auto'>
             <table className="min-w-full table-auto">
             <thead className="justify-between">
             <tr className="bg-primary">
@@ -18,7 +18,7 @@ const PaymentsCartClient = ({render}) => {
                 </th>
 
                 <th className="px-16 py-2">
-                <span className="text-gray-300">Sessiones (30 min)</span>
+                <span className="text-gray-300">Sesiones (30 min)</span>
                 </th>
                 <th className="px-16 py-2">
                 <span className="text-gray-300">Estado</span>
