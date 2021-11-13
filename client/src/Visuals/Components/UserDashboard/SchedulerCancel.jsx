@@ -1,5 +1,4 @@
 import React, { useState} from "react";
-import {  useSelector } from "react-redux";
 import { deleteSchedulebyId, getSchedulesById } from "../../../ApiReq/schedule";
 
 export default function SchedulerCancel ({userId}){
@@ -50,7 +49,7 @@ export default function SchedulerCancel ({userId}){
     function handleClick (e){
         const {id}= e.target
         const m = window.confirm("Estas seguro que quieres borrar el turno?")
-        if (m == true) {
+        if (m === true) {
             deleteSchedulebyId(id)
             setApp(app.filter(e=> e._id !== id));
         } 

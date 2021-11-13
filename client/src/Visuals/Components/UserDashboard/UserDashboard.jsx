@@ -3,10 +3,9 @@ import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardC
 import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
 import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
 import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
-import PopContainer from '../PopContainer'
-import SchedulerRecurrent from './SchedulerRecurrent'
+// import PopContainer from '../PopContainer'
 import {Link} from 'react-router-dom'
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux'
 import { setProfessional } from '../../../Controllers/actions/userActions'
 import SchedulerCont from './SchedulerContainer'
@@ -48,9 +47,9 @@ function UserDashboard({userData}) {
         '30 minutos con Claudio'
     ]
     
-    const popClass=`bg-white mt-2 h-4/5 w-4/5 flex flex-col items-center 
-                    justify-center rounded-lg shadow-lg
-                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
+    // const popClass=`bg-white mt-2 h-4/5 w-4/5 flex flex-col items-center 
+    //                 justify-center rounded-lg shadow-lg
+    //                 ring-white ring-4 ring-offset-1 ring-offset-red-500	`
     if(!scheduleFlag){
     return (
         <React.Fragment>
