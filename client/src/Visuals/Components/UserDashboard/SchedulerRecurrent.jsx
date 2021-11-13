@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import { addtoSchedule } from "../../../ApiReq/schedule";
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function SchedulerRecurrent ({userId, onCancel}){
+export default function SchedulerRecurrent ({userId}){
     const days= ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
     const deng= {Lunes: "Mon", Martes:"Tue", Miercoles:"Wed", Jueves:"Thu", Viernes:"Fri", Sabado:"Sat", Domingo:"Sun"}
 
@@ -27,7 +27,7 @@ export default function SchedulerRecurrent ({userId, onCancel}){
         if(app1.length===0){return alert("Tu agenda esta vacía")}
         alert('¡Hecho! Tus horarios han sido guardados')
         addtoSchedule(app1)
-        onCancel()
+        
     }
     
     const handleClickFilt= (e)=>{
@@ -39,7 +39,7 @@ export default function SchedulerRecurrent ({userId, onCancel}){
     return (
     <div>
         <p className="flex justify-center pb-5 text-2xl">Fija tu agenda</p>
-        <div className="w-full px-3 flex flex-row divide-x h-80">
+        <div className="w-full px-3 flex flex-row justify-center divide-x h-80">
         {days.map((d)=>{
             return (
             <div key={days.indexOf(d)} className="py-2 px-6 flex flex-col">
@@ -70,7 +70,7 @@ export default function SchedulerRecurrent ({userId, onCancel}){
         </div>
         <div className="flex justify-center mt-2">
             <button onClick={handleClick} className="btn-prof w-24 my-2 mr-3"><span>Confirmar</span></button>
-            <button className="my-2 w-24 border-radius-sm action action-user-dashboard-cancel" onClick={onCancel}><span>Cancelar</span></button>
+            {/* <button className="my-2 w-24 border-radius-sm action action-user-dashboard-cancel" onClick={onCancel}><span>Cancelar</span></button> */}
         </div>
     </div>
   )
