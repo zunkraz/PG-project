@@ -51,7 +51,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 '  ':'',
                 'Link - Google Meet': userData.meetingUrl,
                 'Cuenta Bancaria': userData.bankAccount,
-                'Precio por hora': `${userData.cost} USD`,
+                'Precio por hora': `USD $ ${userData.cost}`,
                 '   ' : '',
                 pais : userData.country.name,
                 estado : userData.state,
@@ -81,8 +81,8 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     const [postDetails, setPostDetails] = useState({
         biography: userData.biography,
-        usd : userData.cost?.toString().split(',')[0],
-        cent : userData.cost?.toString().split(',')[1]
+        usd : userData.cost?.toString().split('.')[0],
+        cent : userData.cost?.toString().split('.')[1]
     })
 
     console.log(postDetails)

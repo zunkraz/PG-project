@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Textarea from "@material-tailwind/react/Textarea";
 import PopBtns from '../PopBtns';
 
@@ -6,11 +6,15 @@ function EditPresentation(props) {
     const [textarea, setTextarea] = useState(props.data.biography?props.data.biography:' ')
     const [costHour, setCostHour] = useState(props.data.usd?props.data.usd:10)
     const [costCent, setCostCent] = useState(props.data.cent?props.data.cent:0)
-    const [limitChar, setLimitChar] = useState(250)
+    const [limitChar, setLimitChar] = useState(250-(props.data.biography?props.data.biography.length:textarea.length))
+
+    useEffect(() => {
+        setLimitChar(250 - textarea.length)
+    }, [textarea])
+
 
     const handleText=(e)=>{
         setTextarea(e.target.value)
-        setLimitChar(250 - textarea.length)
         props.onChange(e)
     }
 
@@ -23,6 +27,7 @@ function EditPresentation(props) {
     }
 
     const NumberGood = 'text-green-600';
+    const NumberMiddle = 'text-orange-500';
     const NumberBad = 'text-red-500'
 
     return (
@@ -34,6 +39,7 @@ function EditPresentation(props) {
                         <Textarea   color="lightBlue"
                                     name='biography'
                                     size="regular"
+                                    maxlength='250'
                                     value={textarea}
                                     onChange={handleText}
                                     outline={false}
@@ -41,14 +47,15 @@ function EditPresentation(props) {
                             /> 
                     </div>
                     <div className='flex items-center justify-start border-gray-300 border-b pb-4' >
-                        <span className='font-normal mr-2 '>Caracteres disponible : </span>
-                        <p className={limitChar>10?NumberGood:NumberBad}>{limitChar}</p>
+                        <span className='font-normal mr-2 '>Te quedan </span>
+                        <p className={limitChar>100?NumberGood:limitChar>10?NumberMiddle:NumberBad}>{limitChar}</p>
+                        <span className='font-normal ml-2'>caracteres</span>
                     </div>
                 </div>
                 <div>
                     <label className='font-bold text-medium tracking-wider'
                         >Precio por hora de servicio 
-                        <span className='ml-2 text-green-600'>{`$${costHour}`}</span>,
+                        <span className='ml-2 text-green-600'>{`$${costHour}`}</span>.
                         <span className='mr-2 text-green-600'>{costCent}</span>
                         USD
                     </label>
