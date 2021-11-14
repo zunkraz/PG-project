@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import * as FaIcons from 'react-icons/fa';
 import {useDispatch, useSelector} from "react-redux";
 import {deleteAdminReview,putAdminReview,getAdminReviews} from "../../../Controllers/actions/adminActions";
@@ -9,7 +9,26 @@ function ReviewDashboard({token}){
   const allReviews = useSelector(state=>state.adminReducer.adminReviews);
   const reviewDeleted = useSelector(state=>state.adminReducer.reviewDeleted);
   const reviewModified = useSelector(state=>state.adminReducer.reviewModified);
+  const [reviewsSearch,setReviewsSearch] = useState([]);
+  const [search,searchHappened] = useState(false);
 
+  function handleSearch(e){
+    e.preventDefault();
+    searchHappened(true);
+    let searchValue = e.target.value;
+    if(searchValue==='') {
+      setReviewsSearch([]);
+      return;
+    }
+    setReviewsSearch(allReviews.filter(r=>{
+      if(!r.userId) return false;
+      return (r.userId.username.includes(searchValue)||r.userId.username.includes(searchValue.slice(0,1).toUpperCase()+searchValue.slice(1)));
+    }));
+  }
+  function shownReviews(){
+   if (reviewsSearch.length>0) return reviewsSearch.slice(0,10);
+    else return allReviews && allReviews.slice(0,10);
+  }
   function handleReviewDelete(id){
     return Swal.fire({
           text:`Desea borrar a esta opinión? Esta acción no se puede deshacer.`,
@@ -46,9 +65,11 @@ function ReviewDashboard({token}){
               confirmButtonColor: "rgb(165 220 134)"})
           }})
   }
+
   useEffect(()=>{
     dispatch(getAdminReviews(token));
   },[reviewDeleted, reviewModified, dispatch, token]);
+
   useEffect(()=>{
     if(!allReviews.length) dispatch(getAdminReviews(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,7 +102,7 @@ function ReviewDashboard({token}){
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                {allReviews && allReviews.map(r => {
+                {shownReviews().map(r => {
                   return (<tr key={r._id}>
                     <td className="px-6 py-2 whitespace-wrap">
                      <div className="text-sm font-normal text-gray-900">
@@ -109,6 +130,11 @@ function ReviewDashboard({token}){
                 </tbody>
               </table>
             </div></div></div></div>
+      <form>
+        <input type="text" name="username" defaultValue="" onChange={handleSearch} className="border rounded-b mrg-lg-t width-80" autoComplete="off"/><br/>
+        <input type="submit" className="border rounded-b width-80 text-xs font-medium text-gray-400 uppercase tracking-wide" value="username"/>
+        {((reviewsSearch.length===0)&&search)?<div className="width-80 uk-margin-top text-xs font-medium text-red-600">No hay resultados</div>:' '}
+      </form>
     </div>
   )
 }

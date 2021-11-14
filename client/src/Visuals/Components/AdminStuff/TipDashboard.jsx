@@ -19,8 +19,6 @@ function TipDashboard({token}){
     setTipCateg(ev.target.value);
   }
 
-  let shownTips = allTips.filter(t => t.categoryId===tipCateg);
-
   function handleTipDelete(id){
     return Swal.fire({
           text:`Desea borrar este tip? Esta acción no se puede deshacer.`,
@@ -81,7 +79,7 @@ function TipDashboard({token}){
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Categoría
                     </th>
-                    :<span/>}
+                    :<th/>}
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Estado
                   </th>
@@ -111,7 +109,7 @@ function TipDashboard({token}){
                           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-400 text-gray-800">
                     No TIENE</span>}
                       </td>
-                        :<span/>}
+                        :<td/>}
                     <td className="px-6 py-4 whitespace-nowrap text-left">
                       {t.isApproved?
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">

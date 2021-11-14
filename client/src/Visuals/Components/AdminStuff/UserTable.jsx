@@ -31,7 +31,7 @@ function UserTable({usersAdmin, token}){
   }
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row mrg-2x-b">
 <div className="flex flex-col ">
   <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-3">
     <div className="py-2 align-middle inline-block min-w-min sm:px-6 lg:px-8">
