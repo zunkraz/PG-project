@@ -203,7 +203,7 @@ export default function RegisterFormUser(){
                 <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="password" className="p-2">
-                            Contraseña - (minimo 6 caracteres)
+                            Contraseña - (mínimo 6 caracteres)
                         </label>
                         <input
                             className="uk-input width-100 border-radius-sm"
@@ -238,9 +238,8 @@ export default function RegisterFormUser(){
                 </div>
                 {/* Términos */}
                 <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md flex-center">
-                    <label htmlFor="acceptT" className="p-2 font-sm">
-                        Acepto los términos y condiciones del servicio
-                    </label>
+                <label  htmlFor="acceptT" 
+                            className="p-2">Acepto los <a href ="/terminos-y-condiciones" target="_blank">términos y condiciones del servicio</a></label>
                     <input
                         className="uk-checkbox mrg-xs-t"
                         type="checkbox"
