@@ -1,10 +1,12 @@
 const Tip = require ('./../../models/Tip');
 
 module.exports = (body) => {
-    const {text,userId} = body
+    const {text,userId,isApproved,categoryId} = body
     const newTip = new Tip ({
         text,
-        userId
+        userId,
+        isApproved,
+        categoryId
     })
     return newTip.save()
 };

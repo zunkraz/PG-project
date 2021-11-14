@@ -21,6 +21,7 @@ import Terms from './Containers/Terms';
 import SalesPolicy from './Containers/SalesPolicy';
 import Faq from './Containers/Faq';
 import Review from './Components/Review/Review';
+import MeetGuide from './Containers/MeetGuide';
 
 
 
@@ -73,6 +74,9 @@ function App() {
         </Route>
         <Route path="/preguntas-frecuentes">
           <Faq/>
+        </Route>
+        <Route path="/guia-meet">
+          <MeetGuide/>
         </Route>
         <Route path="/opinion">
           <Review/>

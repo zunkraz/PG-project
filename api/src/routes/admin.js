@@ -1,7 +1,7 @@
 //admin routes
 const {Router} = require("express");
 const router = Router();
-const passport = require('passport');
+//const passport = require('passport');
 const {roleAuth, loginAuth} = require('../controllers/auth/roleAuth');
 const {
   getAllUsersAdmin,
@@ -19,11 +19,14 @@ const {
   getAllReviewsAdmin, reviewUpdate, reviewDelete
 } = require('../controllers/index.js');
 const Appointment = require('../models/Appointment');
-const Invoice = require("../models/Invoice");
+const ClientInvoice = require('../models/ClientInvoice');
+const ProfInvoice = require('../models/ProfInvoice');
+const Report = require('../models/Report');
 
 //GET ALL USERS
-router.get('/users', loginAuth, roleAuth, (req,res,next)=>{
-  getAllUsersAdmin()
+router.get('/users/:myId', loginAuth, roleAuth, (req,res,next)=>{
+  let {myId} = req.params;
+  getAllUsersAdmin(myId)
     .then(result => res.json(result))
     .catch(err => next(err));
 });
@@ -97,8 +100,8 @@ router.get('/tips', loginAuth, roleAuth, (req,res,next)=>{
 });
 //TIP CREATE
 router.post('/tips', loginAuth, roleAuth, (req,res,next)=>{
-  let {text} = req.body;
-  postTips({text,isApproved:true})
+  let data = req.body;
+  postTips(data)
     .then(result => res.json(result))
     .catch(err => next(err));
 });
@@ -140,11 +143,21 @@ router.delete('/reviews/:id', loginAuth, roleAuth, (req,res,next)=>{
     .catch(err => next(err));
 });
 
-//GET ALL INVOICES
-router.post('/invoices', passport.authenticate('jwt', {session: false}), roleAuth,(req,res,next)=>{
-  Invoice.find()
-    .populate([{path: 'customerId', select: 'username'},
-      {path: 'schedules',select: 'userId'}])
+//GET "ALL" INVOICES
+router.get('/invoices', loginAuth, roleAuth,(req,res,next)=>{
+  let resp = [];
+  ClientInvoice.find()
+    .then(r => resp.push(r))
+    .then(() => ProfInvoice.find())
+    .then(r => {
+          resp.push(r);
+          res.json(resp)})
+    .catch(err => next(err))
+});
+
+//GET ALL REPORTS
+router.get('/report',(req,res,next)=>{
+  Report.find().populate('userId','username')
     .then(result => res.json(result))
     .catch(err => next(err));
 });

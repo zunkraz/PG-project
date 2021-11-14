@@ -12,6 +12,7 @@ const schedules = require('./schedules');
 const feedback = require('./feedback');
 const invoice = require('./invoice');
 const emails = require('./emails');
+const appointment = require('./appointment');
 
 
 router.use('/tips', tips);
@@ -26,6 +27,7 @@ router.use('/schedules', schedules);
 router.use('/feedback', feedback);
 router.use('/invoice',invoice);
 router.use('/emails', emails);
+router.use('/appointment',appointment);
 
 router.get('/', (req, res) => {
     res.send({

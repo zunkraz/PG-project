@@ -24,12 +24,14 @@ function UserTable({usersAdmin, token}){
   function handleSearch(e){
     e.preventDefault();
     searchHappened(true);
-    if(e.target.name==='username') setUsersSearch(usersAdmin.filter(u=>u.username.includes(e.target.value)));
-    if(e.target.name==='email') setUsersSearch(usersAdmin.filter(u=>u.email.includes(e.target.value)));
+    let searchValue = e.target.value;
+    setUsersSearch(usersAdmin.filter(u=> {
+      return (u.email.includes(searchValue)||u.username.includes(searchValue)||u.username.includes(searchValue.slice(0,1).toUpperCase()+searchValue.slice(1)));
+    }));
   }
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row mrg-2x-b">
 <div className="flex flex-col ">
   <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-3">
     <div className="py-2 align-middle inline-block min-w-min sm:px-6 lg:px-8">
@@ -63,19 +65,15 @@ function UserTable({usersAdmin, token}){
             </th>
           </tr>
           </thead>
-          {usersSearch.length? usersSearch.map(u=> <UserRow key={u._id} user={u} token={token}/>):
-            usersAdmin.map(u=> <UserRow key={u._id} user={u} token={token}/>)}
+          {usersSearch.length>0? usersSearch.slice(0,10).map(u=> <UserRow key={u._id} user={u} token={token}/>):
+            usersAdmin.slice(0,10).map(u=> <UserRow key={u._id} user={u} token={token}/>)}
         </table>
         {/*<div className="flex-bar position-absolute">{buttonLeft()} {page} {buttonRight()}</div>*/}
       </div></div></div></div>
       <form className="" onSubmit={event => handleSearch(event)} >
-        <input type="text" name="username" defaultValue="" onChange={event => handleSearch(event)} className="border rounded-b mrg-lg-t width-70" autoComplete="off"/><br/>
-        <input type="submit" className="border rounded-b width-70 text-xs font-medium text-gray-400 uppercase tracking-wide" value="Buscar por username"/>
-
-        <input type="text" name="email" defaultValue="" onChange={event => handleSearch(event)} className="border rounded-b mrg-lg-t width-70" autoComplete="off"/><br/>
-        <input type="submit" className="border rounded-b width-70 text-xs font-medium text-gray-400 uppercase tracking-wide" value="Buscar por correo"/>
-
-        {((usersSearch.length===0)&&search)?<div className="width-70 uk-margin-top text-xs font-medium text-red-600">No hay resultados</div>:' '}
+        <input type="text" name="username" defaultValue="" onChange={event => handleSearch(event)} className="border rounded-b mrg-lg-t width-80" autoComplete="off"/><br/>
+        <input type="submit" className="border rounded-b width-80 text-xs font-medium text-gray-400 uppercase tracking-wide" value="username/email"/>
+        {((usersSearch.length===0)&&search)?<div className="width-80 uk-margin-top text-xs font-medium text-red-600">No hay resultados</div>:' '}
       </form>
     </div>
   )

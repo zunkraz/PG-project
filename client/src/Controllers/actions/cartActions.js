@@ -1,17 +1,23 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, REMOVE_FROM_CART_ALL } from "../../constants";
+// import Timer from "../../Visuals/Components/Cart/helperTime";
+
 
 export const addToCart = (appointment) => {
-    console.log(appointment);
-    return {
-        type: ADD_TO_CART, 
-        payload: appointment
-    }
+   return function (dispatch){
+       setTimeout(() => {
+         dispatch(removeFromCart(appointment.id))
+       }, 60000);
+       return dispatch({
+           type: ADD_TO_CART, 
+           payload: appointment
+       })
+   }
 }
 
-export const removeFromCart = (date) => {
+export const removeFromCart = (code) => {
     return {
         type: REMOVE_FROM_CART, 
-        payload: date
+        payload: code
     }
 }
 

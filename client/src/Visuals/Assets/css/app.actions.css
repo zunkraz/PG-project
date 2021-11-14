@@ -168,3 +168,58 @@
     border: solid 2px var(--color-primary);
 	color: var(--color-light)!important;   
 }
+
+.action-user-dashboard-success {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-success);
+	color: var(--color-success)!important;    
+}
+.action-user-dashboard-success:hover {
+	background-color: var(--color-success);
+    border: solid 2px var(--color-success);
+	color: var(--color-light)!important;   
+}
+
+.action-user-dashboard-danger {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-danger);
+	color: var(--color-danger)!important;    
+}
+.action-user-dashboard-danger:hover {
+	background-color: var(--color-danger);
+    border: solid 2px var(--color-danger);
+	color: var(--color-light)!important;   
+}
+
+.action-user-login {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-main);
+	color: var(--color-main)!important;    
+}
+.action-user-login:hover {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-light)!important;   
+}
+
+.action-user-register {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-light)!important;   
+}
+.action-user-register-inactive {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-main);
+	color: var(--color-main)!important;   
+}
+
+.action-user-register-submit {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-main);
+	color: var(--color-main)!important;   
+}
+.action-user-register-submit:hover {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-light)!important;   
+}

@@ -1,23 +1,39 @@
-import React, {useEffect} from "react";
-import * as FaIcons from 'react-icons/fa';
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteAdminReview,putAdminReview,getAdminReviews} from "../../../Controllers/actions/adminActions";
+import {getAdminReviews} from "../../../Controllers/actions/adminActions";
+import ReviewDashboardItem from "./ReviewDashboardItem";
 
 function ReviewDashboard({token}){
   const dispatch = useDispatch();
   const allReviews = useSelector(state=>state.adminReducer.adminReviews);
   const reviewDeleted = useSelector(state=>state.adminReducer.reviewDeleted);
   const reviewModified = useSelector(state=>state.adminReducer.reviewModified);
+  const [reviewsSearch,setReviewsSearch] = useState([]);
+  const [search,searchHappened] = useState(false);
 
-  function handleReviewDelete(id){
-    dispatch(deleteAdminReview(id));
+  function handleSearch(e){
+    e.preventDefault();
+    searchHappened(true);
+    let searchValue = e.target.value;
+    if(searchValue==='') {
+      setReviewsSearch([]);
+      searchHappened(false);
+      return;
+    }
+    setReviewsSearch(allReviews.filter(r=>{
+      if(!r.userId) return false;
+      return (r.userId.username.includes(searchValue)||r.userId.username.includes(searchValue.slice(0,1).toUpperCase()+searchValue.slice(1)));
+    }));
   }
-  function handleReviewChange(status,id){
-    dispatch(putAdminReview({rate:status==="Good"?"Bad":"Good"},id,token))
+  function shownReviews(){
+   if (reviewsSearch.length>0) return reviewsSearch.slice(0,10);
+    else return allReviews && allReviews.slice(0,10);
   }
+
   useEffect(()=>{
     dispatch(getAdminReviews(token));
   },[reviewDeleted, reviewModified, dispatch, token]);
+
   useEffect(()=>{
     if(!allReviews.length) dispatch(getAdminReviews(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,34 +66,15 @@ function ReviewDashboard({token}){
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                {allReviews && allReviews.map(r => {
-                  return (<tr key={r._id}>
-                    <td className="px-6 py-2 whitespace-wrap">
-                     <div className="text-sm font-normal text-gray-900">
-                          {r.text}
-                        </div>
-                    </td>
-                    <td className="text-sm text-left font-medium text-gray-900">
-                      {r.userId!==null?r.userId.username:'anónimo'}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-left">
-                      {r.rate==="Good"?
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">
-                    Bueno </span> :
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-gray-800">
-                    Malo</span>}
-                    </td>
-                    <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-                      <button onClick={()=>handleReviewChange(r.rate,r._id)}><FaIcons.FaRedo/></button>
-                    </td>
-                    <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-                      <button onClick={()=>handleReviewDelete(r._id)}><FaIcons.FaRegTrashAlt/></button>
-                    </td>
-                  </tr>)
-                })}
+                {shownReviews().map(r => <ReviewDashboardItem key={r._id} review={r} token={token}/>)}
                 </tbody>
               </table>
             </div></div></div></div>
+      <form>
+        <input type="text" name="username" defaultValue="" onChange={handleSearch} className="border rounded-b mrg-lg-t width-80" autoComplete="off"/><br/>
+        <input type="submit" className="border rounded-b width-80 text-xs font-medium text-gray-400 uppercase tracking-wide" value="username"/>
+        {((reviewsSearch.length===0)&&search)?<div className="width-80 uk-margin-top text-xs font-medium text-red-600">No hay resultados</div>:' '}
+      </form>
     </div>
   )
 }

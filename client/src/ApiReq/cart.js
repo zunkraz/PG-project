@@ -7,8 +7,14 @@ export function postCartInfo(obj){
     .catch(r => r.response.data)
 }
 
-export  function getCartInfo(customerId){
-    return  axios.get(`${BASIC_URL}/invoice/${customerId}`)
-    .then(r => r.data)
-    .catch(r => r.response.data)
+export  function getCartInfo(customerId,pro){
+    if(pro){
+        return  axios.get(`${BASIC_URL}/invoice/${customerId}?as=prof`)
+        .then(r => r.data)
+        .catch(r => r.response.data)
+    }else{
+        return  axios.get(`${BASIC_URL}/invoice/${customerId}`)
+        .then(r => r.data)
+        .catch(r => r.response.data)
+    }
 }

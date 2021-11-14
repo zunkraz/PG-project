@@ -40,5 +40,6 @@ const loginAuth = async (req, res, next) => {
 
 module.exports = {
     roleAuth,
-    loginAuth
+    loginAuth,
+    decodeJwt
 }

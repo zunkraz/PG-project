@@ -2,5 +2,5 @@
 const Tip = require('../../models/Tip');
 
 module.exports = () => {
-  return Tip.find();
+  return Tip.find().sort({isApproved:1}).populate('categoryId','name');
 }

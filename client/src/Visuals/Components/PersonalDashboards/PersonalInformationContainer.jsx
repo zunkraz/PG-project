@@ -9,16 +9,18 @@ import Swal from 'sweetalert2'
 import { updateUserData } from '../../../ApiReq/users';
 import { useDispatch, useSelector } from 'react-redux'
 import { putUser } from '../../../Controllers/actions/userActions';
+import EditPresentation from './EditPresentation';
+import FormPassword from './FormPassword';
 
 
 
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
 
-    console.log(userData)
 
     const [popState, setPopState] = useState(false)
     const [popOffer, setPopOffer] = useState(false)
+    const [popPass, setPopPass] = useState(false)
 
     const history = useHistory()
     // {
@@ -46,6 +48,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 matricula: userData.professionalRegistration,
                 titulo : userData.title,
                 universidad: userData.institute,
+                'Link - Google Meet': userData.meetingUrl,
                 'cuenta bancaria': userData.bankAccount,
                 pais : userData.country.name,
                 estado : userData.state,
@@ -61,13 +64,13 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         name : userData.name,
         lastname : userData.lastname,
         birthdate : userData.birthdate,
-        password: userData.password,
     })
 
     const [postProfData, setpostProfData] = useState({
         img: userData.img,
         title : userProfInfo.titulo,
         institute: userData.institute,
+        meetingUrl: userData.meetingUrl,
         bankAccount: userData.bankAccount,
         state : userData.state,
         city : userData.city,
@@ -94,12 +97,6 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 })
                 break;
 
-            case 'password':
-                setpostPersData({
-                    ...postPersData,
-                    password: e.target.value
-                })
-                break;
             case 'img':
                 setpostProfData({
                     ...postProfData,
@@ -116,6 +113,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 setpostProfData({
                     ...postProfData,
                     institute: e.target.value
+                })
+                break;
+            case 'meetingUrl':
+                setpostProfData({
+                    ...postProfData,
+                    meetingUrl: e.target.value
                 })
                 break;
             case 'bankAccount':
@@ -169,18 +172,59 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         setPopState(!popState)
     }
 
-    const setOffer=()=>{
+    const editPass=()=>{
+        setPopPass(!popPass)
+    }
+
+    const editOffer=()=>{
         setPopOffer(!popOffer)
     }
+
+    const [meetAlert, setMeetAlert] = useState(true)
+    const goAlert= async()=>{
+            if(userData.isProfessional && !userData.meetingUrl){
+            const setMeet = await Swal.fire({
+                title: 'No olvides setear tu meet !',
+                icon: 'warning',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Ahora',
+                confirmButtonColor: '#5ac18e',
+                denyButtonText: `Luego`,
+                denyButtonColor: '#d36363'
+            })
+            
+            if(setMeet.isConfirmed){
+                const url = await Swal.fire({
+                    input: 'url',
+                    inputLabel: 'Ingresa tu link profesional de Google Meet',
+                    html:'<a href ="/guia-meet" target="_blank">Guia sobre Google Meet</a>',
+                    inputPlaceholder: 'Enter the URL',
+                    showCloseButton: true,
+                })
+                if (!url.dismiss==='close') {
+                    Swal.fire(`Entered URL: ${url}`)
+                    }
+                if(url.value){
+                    dispatch(putUser(userData.username, {meetingUrl:url.value, token}))
+                    setMeetAlert(false)
+                }
+            }
+            if(setMeet.isDenied){
+                setMeetAlert(false)
+            }
+            
+            
+        }
+    }
+
+    meetAlert && setTimeout(goAlert,2500)
 
     /////////////// CLASS ///////////////
 
     const showDataDiv='mrg-lg-t padd-md-tb border-bottom-color-dark-a20 flex justify-between';
     const showDataSpan='capitalize mr-4 font-bold text-base';
     const showDataP='text-sm font-normal ml-4';
-    const popClass = `bg-white mt-2 h-4/5 w-2/5 flex flex-col items-center 
-                    justify-center rounded-lg shadow-lg 
-                    ring-white ring-4 ring-offset-1 ring-offset-red-500	`
 
     /////////////// CLASS ///////////////
 
@@ -206,7 +250,6 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     </button>
                 }
                 <PopContainer   trigger={popState}
-                                principalDiv={popClass}
                                 children={<EditDataComponent
                                         onChange={handleEditFields}
                                         onSuccess={userInfo==='personalInfo'?sendPersData:sendProfData}
@@ -215,13 +258,18 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                                         userInfo={userInfo}
                                     />}
                     />
-                <PopContainer   trigger={popState}
-                                principalDiv={popClass}
-                                children={<EditDataComponent
+                <PopContainer   trigger={popPass}
+                                children={<FormPassword
+                                        onSuccess={userInfo==='personalInfo'?sendPersData:sendProfData}
+                                        onCancel={editPass}
+                                    />}
+                    />
+                <PopContainer   trigger={popOffer}
+                                children={<EditPresentation
                                         onChange={handleEditFields}
                                         onSuccess={userInfo==='personalInfo'?sendPersData:sendProfData}
                                         data={userInfo==='personalInfo'?postPersData:postProfData}
-                                        onCancel={editData}
+                                        onCancel={editOffer}
                                         userInfo={userInfo}
                                     />}
                     />
@@ -231,10 +279,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     <div className='flex flex-col'>
                         {
                             Object.keys(userNormalInfo)?.map((elem, index)=>{
-                                let data=(elem==='cuenta bancaria'|| elem==='contraseña')?'*************':userNormalInfo[elem]
+                                let dateIndex = (userData.birthdate && (!userData.googleAccount && elem==='cumpleaños')) ? userNormalInfo[elem].indexOf('T'):0
+                                let data = (elem==='cuenta bancaria'|| elem==='contraseña')?'*************':userNormalInfo[elem]
+                                let date = (userData.birthdate && elem==='cumpleaños') && userNormalInfo[elem].slice(0, dateIndex)
                                 return (
                                         <ShowData   key={index} title={elem} 
-                                                        data={data}
+                                                        data={elem==='cumpleaños'?date:data}
                                                         divClass={showDataDiv}
                                                         spanClass={showDataSpan} 
                                                         pClass={showDataP}
@@ -258,16 +308,23 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                                 )
                     })
                 }
-                {!userData.googleAccount && <button
-                    className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
-                    onClick={editData}
-                    >Editar Información <span className='ml-6'><FaMarker/></span>
-                </button>}
-                {userData.isProfessional && <button
-                    className="width-100 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
-                    onClick={setOffer}
-                    >Presentación Profesional<span className='ml-6'><FaMarker/></span>
-                </button>}
+                <div className='flex justify-around'>
+                    {!userData.googleAccount && <button
+                        className="width-30 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                        onClick={editData}
+                        >Editar Información <span className='ml-6'><FaMarker/></span>
+                    </button>}
+                    {!userData.googleAccount && <button
+                        className="width-30 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                        onClick={editPass}
+                        >Cambiar Contraseña<span className='ml-6'><FaMarker/></span>
+                    </button>}
+                    {userData.isProfessional && <button
+                        className="width-30 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                        onClick={editOffer}
+                        >Presentación Profesional<span className='ml-6'><FaMarker/></span>
+                    </button>}
+                </div>
             </div>            
         </div>
     )
