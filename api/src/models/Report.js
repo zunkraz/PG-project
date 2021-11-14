@@ -5,13 +5,12 @@ const report = new Schema(
     {
       reason: {
         type: String,
-        enum: ['Service','App','Payment','Account','Other'],
+        enum: ['Service','App','Payment','Account','Suggestion','Other'],
         required: true,
       },
         userId: {
             type: Schema.Types.ObjectId,
             ref: 'users',
-            required: true,
         },
         text: {
             type: String,

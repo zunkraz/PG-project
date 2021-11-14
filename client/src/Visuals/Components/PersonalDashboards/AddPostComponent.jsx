@@ -1,28 +1,28 @@
-import React, {useState} from 'react'
-import {useSelector} from 'react-redux'
-import {postTipUser} from '../../../ApiReq/users'
+import React, {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {postTipUser} from '../../../ApiReq/users';
 
-function AddPostComponent({close,setTips,userId}) {
+function AddPostComponent({close,setTips,userId,categoryId}) {
 
-    const token = useSelector(state=>state.sessionReducer.status.token)
+    const token = useSelector(state=>state.sessionReducer.status.token);
 
-    const [post, setPost] = useState('')
-    const [disabled,setDisabled] = useState(true)
-    const [characters,setCharacters] = useState(80)
+    const [post, setPost] = useState('');
+    const [disabled,setDisabled] = useState(true);
+    const [characters,setCharacters] = useState(80);
     
     function postChange(e){
         if(e.target.value.length <= 80){
-            setPost(e.target.value)
-            setDisabled(e.target.value.length<1)
-            setCharacters(80-e.target.value.length)
+            setPost(e.target.value);
+            setDisabled(e.target.value.length<1);
+            setCharacters(80-e.target.value.length);
         }
     }
 
     function postTip(e){
-        e.preventDefault()
-        postTipUser({text:post,userId},token)
-        .then(r => setTips(s => [...s,r]))
-        close()
+        e.preventDefault();
+        postTipUser({text:post,userId,categoryId},token)
+        .then(r => setTips(s => [...s,r]));
+        close();
     }
 
 
@@ -60,4 +60,4 @@ function AddPostComponent({close,setTips,userId}) {
     )
 }
 
-export default AddPostComponent
+export default AddPostComponent;

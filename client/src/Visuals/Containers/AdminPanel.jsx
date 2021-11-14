@@ -9,6 +9,7 @@ import TipDashboard from "../Components/AdminStuff/TipDashboard";
 import ReviewDashboard from "../Components/AdminStuff/ReviewDashboard";
 import AppointmentDashboard from "../Components/AdminStuff/AppointmentDashboard";
 import {Redirect} from "react-router-dom";
+import Swal from 'sweetalert2';
 
 function AdminPanel(){
   const dispatch = useDispatch();
@@ -19,8 +20,22 @@ function AdminPanel(){
   const {token} = userOnPage;
 
   useEffect(()=>{
+    if(userOnPage.username==='sccocogaston') Swal.fire({
+      title: 'Hola Gastón!',
+      width: 260,
+      confirmButtonText: '👻',
+      confirmButtonColor: 'rgb(239 239 239)',
+      padding: '2em',
+      backdrop: `rgb(63 81 181 / 68%)
+      url("https://sweetalert2.github.io/images/nyan-cat.gif")
+      center`,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
+  useEffect(()=>{
     window.scrollTo(0,0);
-    dispatch(getAdminUsers(token));
+    dispatch(getAdminUsers(userOnPage.id,token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[userDeleted,userModified]);
 

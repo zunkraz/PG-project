@@ -1,7 +1,7 @@
 //admin routes
 const {Router} = require("express");
 const router = Router();
-const passport = require('passport');
+//const passport = require('passport');
 const {roleAuth, loginAuth} = require('../controllers/auth/roleAuth');
 const {
   getAllUsersAdmin,
@@ -19,11 +19,14 @@ const {
   getAllReviewsAdmin, reviewUpdate, reviewDelete
 } = require('../controllers/index.js');
 const Appointment = require('../models/Appointment');
-const ClientInvoice = require("../models/ClientInvoice");
+const ClientInvoice = require('../models/ClientInvoice');
 const ProfInvoice = require('../models/ProfInvoice');
+const Report = require('../models/Report');
+
 //GET ALL USERS
-router.get('/users', loginAuth, roleAuth, (req,res,next)=>{
-  getAllUsersAdmin()
+router.get('/users/:myId', loginAuth, roleAuth, (req,res,next)=>{
+  let {myId} = req.params;
+  getAllUsersAdmin(myId)
     .then(result => res.json(result))
     .catch(err => next(err));
 });
@@ -150,6 +153,13 @@ router.get('/invoices', loginAuth, roleAuth,(req,res,next)=>{
           resp.push(r);
           res.json(resp)})
     .catch(err => next(err))
+});
+
+//GET ALL REPORTS
+router.get('/report',(req,res,next)=>{
+  Report.find().populate('userId','username')
+    .then(result => res.json(result))
+    .catch(err => next(err));
 });
 
 module.exports = router;

@@ -33,9 +33,9 @@ import {
   getAllReviews,deleteReview,putReview
 } from '../../ApiReq/admin'
 
-export function getAdminUsers(token){
+export function getAdminUsers(id,token){
     return async function(dispatch){
-        let data = await getAllUsers(token)
+        let data = await getAllUsers(id,token)
         return dispatch({
             type: GET_ADMIN_USERS,
             payload: data
