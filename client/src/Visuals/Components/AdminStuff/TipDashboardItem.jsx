@@ -71,7 +71,6 @@ function TipDashboardItem({tip,tipCateg,token}){
         <button onClick={()=>handleTipDelete(tip._id)}><FaIcons.FaRegTrashAlt/></button>
       </td>
     </tr>)
-
 }
 
 export default TipDashboardItem;
