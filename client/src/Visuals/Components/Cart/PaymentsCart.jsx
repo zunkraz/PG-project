@@ -5,6 +5,8 @@ import React, {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux';
 
 const PaymentsCart =  () => {
+  const userOnPage = useSelector(state=>state.sessionReducer.status);
+  const {token} = userOnPage;
   const customerId = useSelector(state => state.sessionReducer.status.id)
   const order= useSelector(state=>state.sessionReducer.status)
   const {isProfessional} = order;
@@ -13,10 +15,10 @@ const PaymentsCart =  () => {
  useEffect( () => {
   window.scrollTo(0, 0)
    if(isProfessional){
-    const payRender =   getCartInfo(customerId,true)
+    const payRender =   getCartInfo(customerId,true,token)
      payRender.then(data => setRender(data));
    }else{
-     const payRender =   getCartInfo(customerId,false)
+     const payRender =   getCartInfo(customerId,false,token)
      payRender.then(data => setRender(data));
    }
     
