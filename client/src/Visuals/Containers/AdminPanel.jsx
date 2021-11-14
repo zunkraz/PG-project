@@ -35,7 +35,7 @@ function AdminPanel(){
 
   useEffect(()=>{
     window.scrollTo(0,0);
-    dispatch(getAdminUsers(token));
+    dispatch(getAdminUsers(userOnPage.id,token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[userDeleted,userModified]);
 
