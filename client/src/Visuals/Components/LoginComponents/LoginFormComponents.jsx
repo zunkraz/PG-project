@@ -85,7 +85,9 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
             {(showError===true && LogError) &&
                 <span className={wrogPassClass}>Contraseña incorrecta</span>
             }
-            
+            {(showError===true && LogError) &&
+                <span className={wrogPassClass}>Contraseña incorrecta</span>
+            }
             <BigButton  disactive={UserCanLog} 
                         onClickFunction={handleClickCheck}
                         type='submit'

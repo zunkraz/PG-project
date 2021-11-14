@@ -182,7 +182,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         setPopState(!popState);
         dispatch(putUser(userData.username, {...postPersData, token}));
         Swal.fire(
-            'Datos enviados! personal',
+            'Datos enviados!',
             'Pronto vera los cambios efectuados',
             'success'
         );
