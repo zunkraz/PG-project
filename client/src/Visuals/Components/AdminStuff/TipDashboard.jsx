@@ -1,16 +1,25 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import * as FaIcons from 'react-icons/fa';
-import BasicForm from "./BasicForm";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteAdminTip,putAdminTip,getAdminTips} from "../../../Controllers/actions/adminActions";
 import Swal from 'sweetalert2';
+import TipsForm from "./TipsForm";
 
 function TipDashboard({token}){
   const dispatch = useDispatch();
   const allTips = useSelector(state=>state.adminReducer.adminTips);
+  const allCategories = useSelector(state => state.constantInfoReducer.categories);
   const tipDeleted = useSelector(state=>state.adminReducer.tipDeleted);
   const tipModified = useSelector(state=>state.adminReducer.tipModified);
   const tipPosted = useSelector(state=>state.adminReducer.tipPosted);
+  const [tipCateg,setTipCateg] = useState('Todas'); //allCategories[0]._id
+
+  function handleChange(ev){
+    ev.preventDefault();
+    setTipCateg(ev.target.value);
+  }
+
+  let shownTips = allTips.filter(t => t.categoryId===tipCateg);
 
   function handleTipDelete(id){
     return Swal.fire({
@@ -68,9 +77,11 @@ function TipDashboard({token}){
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Texto
                   </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  {tipCateg==="Todas"?
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Categoría
-                  </th>
+                    </th>
+                    :''}
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Estado
                   </th>
@@ -83,20 +94,24 @@ function TipDashboard({token}){
                 </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                {allTips && allTips.map(t=> {
-                  return (<tr key={t._id}>
+                {allTips && allTips.filter(t => {
+                  if (tipCateg==='Todas') return true;
+                  else return t.categoryId?t.categoryId._id === tipCateg:false;})
+                  .map(t=> {
+                    return (<tr key={t._id}>
                     <td className="px-6 py-2 whitespace-wrap">
                       <div className="text-sm font-normal text-gray-900">
                         {t.text}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-left">
-                      {t.categoryId?
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-400 text-gray-800">
+                      {tipCateg==="Todas"?<td className="px-6 py-4 whitespace-nowrap text-left">
+                        {t.categoryId?
+                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-400 text-gray-800">
                     {t.categoryId.name} </span> :
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-400 text-gray-800">
+                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-400 text-gray-800">
                     No TIENE</span>}
-                    </td>
+                      </td>
+                        :''}
                     <td className="px-6 py-4 whitespace-nowrap text-left">
                       {t.isApproved?
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">
@@ -115,7 +130,13 @@ function TipDashboard({token}){
                 </tbody>
               </table>
             </div></div></div></div>
-      <BasicForm component={"tips"}/>
+      <div>
+      <TipsForm />
+      <select className="bg-gray-200 border-2 rounded-md width-80" name="categoryId" value={tipCateg} onChange={handleChange}>
+        <option readOnly>Todas</option>
+        {allCategories&&allCategories.map(c=><option key={c._id} value={c._id} >{c.name}</option>)}
+      </select>
+      </div>
     </div>
   )
 }
