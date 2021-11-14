@@ -100,7 +100,7 @@ export default function RegisterFormPro(){
                 {/* Titulo */}
                 <div className="col-1-1@xl padd-md border-bottom-color-main">
                     <h2 className="text-2xl">
-                        Informacion personal - Profesional
+                        Información personal - Profesional
                     </h2>
                 </div>
                 {/* Correo Electrónico */}
@@ -146,7 +146,7 @@ export default function RegisterFormPro(){
                 {/* Contraseña */}
                 <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
                     <div className="uk-flex uk-flex-column">
-                        <label htmlFor="password" className="p-2"> Contraseña - (minimo 6 caracteres)</label>
+                        <label htmlFor="password" className="p-2"> Contraseña - (mínimo 6 caracteres)</label>
                         <input
                             className="uk-input width-100 border-radius-sm"
                             type="password"
@@ -229,7 +229,7 @@ export default function RegisterFormPro(){
                             type="tel"
                             name="telNum1"
                             id="telNum1"
-                            placeholder="Ingresa tu telefono" 
+                            placeholder="Ingresa tu teléfono" 
                             onChange={handleChange}
                             required
                         />
@@ -268,7 +268,7 @@ export default function RegisterFormPro(){
                 <div className="col-1-1@xl col-1-1@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="country" className="p-2">
-                            Pais
+                            País
                         </label>
                         <select
                             name="country"
@@ -314,7 +314,7 @@ export default function RegisterFormPro(){
                                                     className="uk-input width-100 border-radius-sm"
                                                     type="text"
                                                     name="professionalRegistration"
-                                                    placeholder="Nro de matricula" 
+                                                    placeholder="Nro de matrícula" 
                                                     onChange={handleChange}
                                                     required
                                                 />
@@ -323,9 +323,8 @@ export default function RegisterFormPro(){
                     }
                 {/* Términos */}
                 <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md flex-center">
-                    <label htmlFor="acceptT" className="p-2 font-sm">
-                        Acepto los términos y condiciones del servicio
-                    </label>
+                <label  htmlFor="acceptT" 
+                            className="p-2">Acepto los <a href ="/terminos-y-condiciones" target="_blank">términos y condiciones del servicio</a></label>
                     <input
                         className="uk-checkbox uk-margin-left"
                         type="checkbox"
