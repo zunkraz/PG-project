@@ -22,7 +22,7 @@ import SalesPolicy from './Containers/SalesPolicy';
 import Faq from './Containers/Faq';
 import Review from './Components/Review/Review';
 import MeetGuide from './Containers/MeetGuide';
-
+import "@material-tailwind/react/tailwind.css";
 
 
 

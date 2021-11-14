@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const { update } = require('../../models/User');
 
 module.exports = async(username,updateInfo) => {
+  console.log(updateInfo)
   if(updateInfo.password){
     const userData = await User.findOne({username});
     if(userData){
