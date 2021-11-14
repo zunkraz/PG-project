@@ -4,7 +4,7 @@ import { getTips } from "../../../ApiReq/constantInfo";
 import PopContainer from "../PopContainer";
 import AddPostComponent from "./AddPostComponent";
 
-function ProfessionalPostsContainer({ userId }) {
+function ProfessionalPostsContainer({ userId,categoryId }) {
   const [popUp, setPopUp] = useState(false);
   const [tips, setTips] = useState([]);
 
@@ -33,6 +33,7 @@ function ProfessionalPostsContainer({ userId }) {
             close={setPopUp}
             setTips={setTips}
             userId={userId}
+            categoryId={categoryId}
           />
         }
         trigger={popUp}

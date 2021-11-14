@@ -2,5 +2,5 @@
 const Tip = require('../../models/Tip');
 
 module.exports = () => {
-  return Tip.find();
+  return Tip.find().populate('categoryId','name');
 }

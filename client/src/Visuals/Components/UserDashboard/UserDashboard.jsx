@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardContainer'
-import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer'
-import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent'
-import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer'
-// import PopContainer from '../PopContainer'
-import {Link} from 'react-router-dom'
-// import Swal from 'sweetalert2'
-import { useDispatch } from 'react-redux'
-import { setProfessional } from '../../../Controllers/actions/userActions'
-import SchedulerCont from './SchedulerContainer'
+import React, { useEffect, useState } from 'react';
+import PersonalDashboardContainer from '../PersonalDashboards/PersonalDashboardContainer';
+import PersonalInformationContainer from '../PersonalDashboards/PersonalInformationContainer';
+import PersonalTaskComponent from '../PersonalDashboards/PersonalTaskComponent';
+import ProfessionalPostsContainer from '../PersonalDashboards/ProfessionalPostsContainer';
+// import PopContainer from '../PopContainer';
+import {Link} from 'react-router-dom';
+// import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
+import { setProfessional } from '../../../Controllers/actions/userActions';
+import SchedulerCont from './SchedulerContainer';
 
 
 
 function UserDashboard({userData}) {
     
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-        userData.isProfessional && dispatch(setProfessional())
+        window.scrollTo(0, 0);
+        userData.isProfessional && dispatch(setProfessional());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
-    const [userInfo, setUserInfo] = useState('personalInfo')
-    const [scheduleFlag, setScheduleFlag] = useState(false)
+    const [userInfo, setUserInfo] = useState('personalInfo');
+    const [scheduleFlag, setScheduleFlag] = useState(false);
 
     const scheFlag = ()=>{
-        setScheduleFlag(!scheduleFlag)
+        setScheduleFlag(!scheduleFlag);
     }
 
     const changeUserState = (e)=>{
-        setUserInfo(e.target.name)
+        setUserInfo(e.target.name);
     }
 
     const pendienteNormal=[
         '1 hora con Raul - Arquitecto',
         '2 horas con Ana - Artista',
         '1/2 hora con Romina - Abogada'
-    ]
+    ];
     
     const pendientePro = [
         '30 minutos con Raul',
@@ -45,7 +45,7 @@ function UserDashboard({userData}) {
         '1 hora con Romina',
         '2 horas con Rocio',
         '30 minutos con Claudio'
-    ]
+    ];
     
     // const popClass=`bg-white mt-2 h-4/5 w-4/5 flex flex-col items-center 
     //                 justify-center rounded-lg shadow-lg
@@ -154,7 +154,7 @@ function UserDashboard({userData}) {
                         {userData.isProfessional && 
                         <div className='col-1-5@xl col-2-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t6-'>
                             <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
-                                <ProfessionalPostsContainer userId={userData._id}/>
+                                <ProfessionalPostsContainer categoryId={userData.category._id} userId={userData._id}/>
                             </div>
                         </div>}
                     </div>
@@ -194,4 +194,4 @@ function UserDashboard({userData}) {
     }
 }
 
-export default UserDashboard
+export default UserDashboard;

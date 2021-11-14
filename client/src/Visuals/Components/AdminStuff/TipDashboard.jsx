@@ -69,6 +69,9 @@ function TipDashboard({token}){
                     Texto
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Categoría
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Estado
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium whitespace-nowrap text-gray-500 uppercase tracking-wider">
@@ -86,6 +89,13 @@ function TipDashboard({token}){
                       <div className="text-sm font-normal text-gray-900">
                         {t.text}
                       </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-left">
+                      {t.categoryId?
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-400 text-gray-800">
+                    {t.categoryId.name} </span> :
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-400 text-gray-800">
+                    No TIENE</span>}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-left">
                       {t.isApproved?

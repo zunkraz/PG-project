@@ -16,6 +16,10 @@ const tip = new Schema(
             ref: 'users',
             required: true,
         },
+        categoryId: {
+          type: Schema.Types.ObjectId,
+          ref: 'categories',
+        }
     },
     { timestamp: true }
 )
