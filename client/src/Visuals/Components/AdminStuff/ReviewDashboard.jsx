@@ -18,6 +18,7 @@ function ReviewDashboard({token}){
     let searchValue = e.target.value;
     if(searchValue==='') {
       setReviewsSearch([]);
+      searchHappened(false);
       return;
     }
     setReviewsSearch(allReviews.filter(r=>{
