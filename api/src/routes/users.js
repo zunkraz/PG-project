@@ -6,7 +6,6 @@ const { userCreate, getUsersToForm, userDelete, userUpdate, getUserFullInfo } = 
 
 router.post('/', (req, res, next) => {
     const body = req.body;
-    console.log(body)
     userCreate(body)
         .then(result => res.json(result))
         .catch(err => next(err))

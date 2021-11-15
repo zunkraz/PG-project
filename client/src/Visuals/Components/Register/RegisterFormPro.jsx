@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import validate from "../../../Tools/validations";
 import { createUser } from "../../../ApiReq/users";
+import { sendMail } from "../../../ApiReq/mails";
 import {useSelector} from "react-redux"
 
 export default function RegisterFormPro(){
@@ -90,6 +91,9 @@ export default function RegisterFormPro(){
             
             createUser(newUser)
             setDone(true)
+            sendMail('welcome',{
+                username:newUser.username,
+                email:newUser.email})
         }
       }
     

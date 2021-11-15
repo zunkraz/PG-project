@@ -3,9 +3,9 @@ const transporter = require("../config/mailer");
 const reader = require("../config/plantillas/index.js");
 const getLinkProf = require("../config/mailHelpers/getLinkProf.js");
 
-router.get("/", (req, res, next) => {
+router.post("/", (req, res, next) => {
   const { type } = req.query;
-  const info = req.headers;
+  const info = req.body;
 
   let data = reader(type, info.username);
   let subject;
