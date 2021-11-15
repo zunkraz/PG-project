@@ -59,7 +59,7 @@ export default function SchedulerRecurrent ({userId}){
             Configura tu agenda
         </div>
         <div className='padd-md-b font-main text-bold text-center- font-lg margin-bottom-xl'>
-            Aquí puedes configurar tus turnos. Selecciona los horarios según cada día de la semana, y presiona "Confirmar" para agregar los turnos a tu agenda.
+            Aquí puedes configurar tus turnos. Selecciona los horarios según cada día de la semana y presiona "Confirmar" para agregar los turnos a tu agenda.
         </div>
         <div className="padd-md-b w-full px-3 flex flex-row justify-center divide-x h-80">
         {days.map((d)=>{
