@@ -71,7 +71,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     const [postProfData, setpostProfData] = useState({
         img: userData.img,
-        title : userData.titulo,
+        title : userData.title,
         institute: userData.institute,
         meetingUrl: userData.meetingUrl,
         bankAccount: userData.bankAccount,
