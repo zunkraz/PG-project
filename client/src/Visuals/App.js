@@ -22,6 +22,7 @@ import SalesPolicy from './Containers/SalesPolicy';
 import Faq from './Containers/Faq';
 import Review from './Components/Review/Review';
 import MeetGuide from './Containers/MeetGuide';
+import ManageSchedule from './Components/ProfessionalsComponents/ManageSchedule';
 import "@material-tailwind/react/tailwind.css";
 
 
@@ -41,7 +42,10 @@ function App() {
         </Route>
         <Route path='/profesionales/:username'>
           <ProfessionalDashboard/>
-        </Route>        
+        </Route>
+        <Route path='/:username/horarios'>
+          <ManageSchedule/>
+        </Route>      
         <Route path='/miperfil/:username'
           render={({match})=><Dashboard match={match}/>}>
         </Route>

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import DatePicker from 'react-datepicker';
 import { addtoSchedule } from "../../../ApiReq/schedule";
 import 'react-datepicker/dist/react-datepicker.css';
+import Swal from 'sweetalert2';
 
 export default function SchedulerRecurrent ({userId}){
     const days= ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
@@ -16,7 +17,7 @@ export default function SchedulerRecurrent ({userId}){
             setDt({...daystime, 
             [day]: [...daystime[day], hour]})
         }
-    }
+    };
 
     const handleClick= ()=>{
         const app=[]
@@ -24,22 +25,43 @@ export default function SchedulerRecurrent ({userId}){
             daystime[key].forEach(t=> app.push(date(key, t, userId)))
         }
         let app1= app.flat()
-        if(app1.length===0){return alert("Tu agenda esta vacía")}
-        alert('¡Hecho! Tus horarios han sido guardados')
+
+        if(app1.length===0){
+            return Swal.fire({
+                title: '¡Error!',
+                text: 'Debes agregar tus turnos',
+                icon:'warning',
+                confirmButtonColor: "#FF214F",
+                allowOutsideClick:false,
+            })
+        }
         addtoSchedule(app1)
+        setDt({Mon:[], Tue:[], Wed:[], Thu:[], Fri:[], Sat:[], Sun:[]});
         
-    }
+        return Swal.fire({
+                title: '¡Realizado exitosamente!',
+                text: 'Turnos agregados a tu agenda',
+                icon:'success',
+                confirmButtonColor: "#FF214F",
+                allowOutsideClick:false,
+            })
+    };
     
     const handleClickFilt= (e)=>{
         const {name, value}= e.target
         setDt({...daystime,
             [name]: daystime[name].filter(t=>t!==value)})
-    }
+    };
 
     return (
     <div>
-        <p className="flex justify-center pb-5 text-2xl">Fija tu agenda</p>
-        <div className="w-full px-3 flex flex-row justify-center divide-x h-80">
+        <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
+            Configura tu agenda
+        </div>
+        <div className='padd-md-b font-main text-bold text-center- font-lg margin-bottom-xl'>
+            Aquí puedes configurar tus turnos. Selecciona los horarios según cada día de la semana y presiona "Confirmar" para agregar los turnos a tu agenda.
+        </div>
+        <div className="padd-md-b w-full px-3 flex flex-row justify-center divide-x h-80">
         {days.map((d)=>{
             return (
             <div key={days.indexOf(d)} className="py-2 px-6 flex flex-col">
@@ -70,7 +92,7 @@ export default function SchedulerRecurrent ({userId}){
         </div>
         <div className="flex justify-center mt-2">
             <button onClick={handleClick} className="btn-prof w-24 my-2 mr-3"><span>Confirmar</span></button>
-            {/* <button className="my-2 w-24 border-radius-sm action action-user-dashboard-cancel" onClick={onCancel}><span>Cancelar</span></button> */}
+            
         </div>
     </div>
   )
