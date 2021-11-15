@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import PopContainer from "../PopContainer";
 import LoginCreateAccount from './LoginCreateAccount'
 import { createUser } from '../../../ApiReq/users'
+import { sendMail } from '../../../ApiReq/mails'
 import Swal from 'sweetalert2'
 
 
@@ -214,6 +215,10 @@ function LoginComponentsContainer() {
                     email: googleData.email,
                     googleAccount: true
                 })
+                sendMail('welcome', {
+                    username:googleData.email.slice(0, endUN),
+                    email:googleData.email
+                });
                 await Swal.fire({
                     icon: 'success',
                     title: 'Cuenta creada!',
@@ -243,7 +248,7 @@ function LoginComponentsContainer() {
                     justify-center rounded-lg shadow-lg	`
 
     return (
-        <div class='flex flex-col items-center justify-start mt-10 h-screen'>
+        <div className='flex flex-col items-center justify-start mt-10 h-screen'>
             <PopContainer   trigger={register}
                             principalDiv={modalDiv}
                             children={<LoginCreateAccount 
