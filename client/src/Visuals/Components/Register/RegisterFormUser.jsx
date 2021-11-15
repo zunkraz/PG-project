@@ -85,7 +85,6 @@ export default function RegisterFormUser(){
     }
     
     const responseGoogle =(res)=>{
-        console.log(res)
         const endUN = res.profileObj.email.indexOf('@')
         if(userData.find(user=> user.email===res.profileObj.email)){
             return alert("Esa cuenta de google ya esta registrada")
