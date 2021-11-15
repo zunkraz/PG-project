@@ -12,6 +12,8 @@ const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 export default function Cart(){
 
+const userOnPage = useSelector(state=>state.sessionReducer.status);
+const {token} = userOnPage; 
 const order= useSelector(state=>state.sessionReducer.cart)
 const objInfo = {};
 const dispatch = useDispatch();
@@ -20,6 +22,7 @@ let history = useHistory();
 
 // PAYPAL
     const createOrder = (data,actions) => {
+        
         return actions.order.create({
            purchase_units: [
               {
@@ -52,7 +55,7 @@ let history = useHistory();
             professionalId: e.professionalId
         }
     })
-    postCartInfo(objInfo)
+    postCartInfo(objInfo,token)
     .catch(err => alert(err))
 
     dispatch(removeFromCartAll())
