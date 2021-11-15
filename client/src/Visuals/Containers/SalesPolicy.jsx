@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const pageData = {
     title: "Politica de Ventas",
@@ -7,6 +7,10 @@ const pageData = {
 }
 
 function Terms() {
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
+
     return (
         <React.Fragment>
             <div className="wrapper bg-professional-title">
