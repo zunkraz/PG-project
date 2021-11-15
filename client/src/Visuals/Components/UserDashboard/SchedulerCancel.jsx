@@ -77,7 +77,7 @@ export default function SchedulerCancel ({userId}){
             Quitar turno
         </div>
         <div className='padd-md-b font-main text-bold text-center- font-lg'>
-            Si necesitas eliminar de tu agenda un turno en particular, podés filtrar por día y mes, y eliminar el turno correspondiente
+            Si necesitas eliminar de tu agenda un turno en particular, puedes filtrar por día y/o mes y eliminar el turno correspondiente
         </div>
         <div>
         <p className="my-2">Buscar por: </p>
