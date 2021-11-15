@@ -1,5 +1,6 @@
 import React, { useState} from "react";
 import { deleteSchedulebyId, getSchedulesById } from "../../../ApiReq/schedule";
+import Swal from 'sweetalert2';
 
 export default function SchedulerCancel ({userId}){
     const [day, setDay]= useState("Todos")
@@ -42,23 +43,41 @@ export default function SchedulerCancel ({userId}){
         const filteredSched= filter(sched)
         setApp(filteredSched)
         if (filteredSched.length===0){
-            alert("No hay turnos en la fecha bucada")
+            return Swal.fire({
+                title: '¡No encontrado!',
+                text: 'No hay turnos en el rango indicado',
+                icon:"error",
+                confirmButtonColor: "#FF214F",
+                allowOutsideClick:false,
+            })
         }
-    }
+    };
+
 
     function handleClick (e){
         const {id}= e.target
-        const m = window.confirm("Estas seguro que quieres borrar el turno?")
-        if (m === true) {
-            deleteSchedulebyId(id)
-            setApp(app.filter(e=> e._id !== id));
-        } 
-    }
+        return Swal.fire({
+            title: "¿Está seguro de borrar este turno?",
+            icon:"warning",
+            showCancelButton: true,
+            confirmButtonText: "Si, estoy seguro",
+            cancelButtonText: "No, mejor lo mantengo"
+        }).then((result) => {
+            if(result['isConfirmed']) {
+                deleteSchedulebyId(id)
+                setApp(app.filter(e=>e._id !== id))
+                return new Swal({title:"Eliminado con éxito",icon:"success"})
+            }
+        })
+    };
 
     return (
         <div className="padd-lg">
         <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
             Quitar turno
+        </div>
+        <div className='padd-md-b font-main text-bold text-center- font-lg'>
+            Si necesitas eliminar de tu agenda un turno en particular, podés filtrar por día y mes, y eliminar el turno correspondiente
         </div>
         <div>
         <p className="my-2">Buscar por: </p>

@@ -44,11 +44,10 @@ export default function Schedules({id, login, name, lastname, category}) {
             icon:'success',
             confirmButtonColor: "#FF214F",
             allowOutsideClick:false,
-        }
-        )
+        })
     };
     const dateJoin= (date)=>{
-        return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time
+        return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time+" hs"
     }
 
     const months= ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
