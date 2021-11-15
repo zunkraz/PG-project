@@ -92,7 +92,7 @@ function UserDashboard({userData}) {
                                         className="text-green-500 font-medium tracking-widest 
                                                         duration-700 hover:text-white"
                                         >
-                                        Gestioná tus turnos 
+                                        Gestiona tus turnos 
                                         </span>
                                     </button>
                                 </Link>
