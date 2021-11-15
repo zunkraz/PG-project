@@ -24,6 +24,7 @@ import Review from './Components/Review/Review';
 import MeetGuide from './Containers/MeetGuide';
 import ManageSchedule from './Components/ProfessionalsComponents/ManageSchedule';
 import "@material-tailwind/react/tailwind.css";
+import ContactForm from './Components/ContactForm';
 
 
 
@@ -84,6 +85,9 @@ function App() {
         </Route>
         <Route path="/opinion">
           <Review/>
+        </Route>
+        <Route path="/contacto">
+          <ContactForm/>
         </Route>
       </Switch>
         <Footer/>
