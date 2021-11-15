@@ -11,9 +11,10 @@ function Footer() {
         {name:'Politica de privacidad',url:'#'},
         {name:'Politica de ventas',url:'/politica-ventas'},
         {name:'Terminos y condiciones',url:'/terminos-y-condiciones'},
-        {name:'Reclamos',url:'#'},
+        // {name:'Reclamos',url:'#'},
         {name:'Soporte',url:'/soporte/servicios'},
-        {name:'Servicio Tecnico',url:'#'},
+        // {name:'Servicio Tecnico',url:'#'},
+        {name:'Contacto', url:'/contacto'}
         //{name:'Derechos de propiedad intelectual',url:'#'},
     ]
 
