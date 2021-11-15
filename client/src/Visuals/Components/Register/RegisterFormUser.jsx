@@ -3,8 +3,9 @@ import validate from "../../../Tools/validations";
 import { Link } from "react-router-dom";
 import {useSelector} from "react-redux"
 import { createUser } from "../../../ApiReq/users";
-import GoogleLogin from 'react-google-login'
-import { GOOGLE_ID } from '../../../constants'
+import GoogleLogin from "react-google-login";
+import { GOOGLE_ID } from "../../../constants";
+import { sendMail } from "../../../ApiReq/mails";
 
 export default function RegisterFormUser(){
     const [newUser, setNewuser]= useState({
@@ -77,6 +78,9 @@ export default function RegisterFormUser(){
             e.target.reset();
             createUser(newUser)
             setDone(true)
+            sendMail('welcome',{
+                username:newUser.username,
+                email: newUser.email})
         }
     }
     
@@ -99,6 +103,9 @@ export default function RegisterFormUser(){
                 email: res.profileObj.email,
                 googleAccount: true
             })
+            sendMail('welcome',{
+                username:res.profileObj.email.slice(0, endUN),
+                email:res.profileObj.email})
         }
         catch(e){
             console.log(e)
