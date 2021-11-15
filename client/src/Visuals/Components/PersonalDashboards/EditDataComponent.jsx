@@ -1,7 +1,7 @@
 import React from 'react'
 import EditInputComponent from './EditInputComponent'
 import '../../Assets/css/editData.custom.css'
-import PopBtns from './PopBtns'
+import PopBtns from '../PopBtns'
 
 
 
