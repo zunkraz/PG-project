@@ -38,7 +38,7 @@ function CreateReview(props) {
                 setRating(4)
                 break;
             default:
-                setRating(0)
+                setRating(3)
                 break;
         }
     }
@@ -69,11 +69,11 @@ function CreateReview(props) {
                 </div>
                 <div className='flex justify-center'>
                     {
-                        rating===1?<BsFillEmojiAngryFill className={redClass}/>:
+                        rating<2?<BsFillEmojiAngryFill className={redClass}/>:
                         rating===2?<BsFillEmojiFrownFill className={redClass}/>:
                         rating===3?<BsFillEmojiNeutralFill className={yellowClass}/>:
                         rating===4?<BsFillEmojiSmileFill className={greenClass}/>:
-                        <BsFillEmojiLaughingFill className={greenClass}/>
+                        rating===5 && <BsFillEmojiLaughingFill className={greenClass}/>
                     }
                 </div>
                 <div className='flex justify-around w-4/5 m-auto border-b-2 pb-4'>
