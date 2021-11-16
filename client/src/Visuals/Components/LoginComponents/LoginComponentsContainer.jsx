@@ -99,7 +99,7 @@ function LoginComponentsContainer() {
         }
     }
     
-    const handleFields=(e)=>{
+    const handleFields=async(e)=>{
         if(e.target.name==='username'){
             setuserFields({
                 ...userFields, username:e.target.value
@@ -127,7 +127,7 @@ function LoginComponentsContainer() {
             if(e.target.value.length>=5){
                 setPassVerified('Password Verified')
                 cleanErrors('password')
-                setuserFields({
+                await setuserFields({
                     ...userFields, password:e.target.value
                 })
                 checkErrors()
