@@ -16,7 +16,7 @@ import FormPassword from './FormPassword';
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
 
-    console.log(userData)
+    
     const [popState, setPopState] = useState(false)
     const [popOffer, setPopOffer] = useState(false)
     const [popPass, setPopPass] = useState(false)
@@ -71,7 +71,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     const [postProfData, setpostProfData] = useState({
         img: userData.img,
-        title : userData.titulo,
+        title : userData.title,
         institute: userData.institute,
         meetingUrl: userData.meetingUrl,
         bankAccount: userData.bankAccount,
@@ -85,10 +85,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         cent : userData.cost?.toString().split('.')[1]
     })
 
-    console.log(postDetails)
-
     const handleEditFields=(e)=>{
-        console.log(e.target.name, e.target.value)
         switch (e.target.name) {
             case 'name':
                 setpostPersData({
