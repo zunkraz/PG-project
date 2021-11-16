@@ -23,6 +23,7 @@ import Faq from './Containers/Faq';
 import Review from './Components/Review/Review';
 import MeetGuide from './Containers/MeetGuide';
 import ManageSchedule from './Components/ProfessionalsComponents/ManageSchedule';
+import Nosotros from './Containers/Nosotros'
 import "@material-tailwind/react/tailwind.css";
 
 
@@ -84,6 +85,9 @@ function App() {
         </Route>
         <Route path="/opinion">
           <Review/>
+        </Route>
+        <Route path="/nosotros">
+          <Nosotros/>
         </Route>
       </Switch>
         <Footer/>
