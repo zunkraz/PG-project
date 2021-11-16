@@ -70,15 +70,70 @@ function BasicForm({component}){
   }
 
   if (component==='categories') return (
-  <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitCat(ev)}>
-    <label className="m-2" htmlFor={"name"}>Nombre</label>
-    <input className="padd-md-l" name="name" type={"text"} value={info.name} onChange={(ev)=>handleChange(ev)} required={true}/>
-    <label className="m-2" htmlFor={"searchCount"}>Cantidad de búsquedas</label>
-    <input className="padd-md-l" name="searchCount" type="number" step={1} min={0} value={info.searchCount} onChange={ev=>handleChange(ev)} required={true}/>
-    <label className="m-2" htmlFor={"img"}>URL imagen</label>
-    <input className="padd-md-l" name="img" type="url" value={info.img} onChange={(ev)=>handleChange(ev)}/>
-    <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-300" value="Agregar / editar categoría"/>
-  </form>);
+    <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md" data-uk-height-match=".normalize">
+      <form autoComplete="off" onSubmit={(ev)=>handleSubmitCat(ev)}>
+        <div className="col-1-5@xl col-1-1@lg padd-md normalize flex-center-left">
+          <label className="font-lg font-main text-bold" htmlFor={"name"}>
+            Agregar / Editar Categoría:
+          </label>
+        </div>
+        {/* <label className="m-2" htmlFor={"name"}>Nombre</label> */}
+        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
+          <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"name"}>
+            Nombre
+          </label>
+          <input
+            className="uk-input border-radius-sm font-sm"
+            name="name"
+            type={"text"}
+            value={info.name}
+            onChange={(ev)=>handleChange(ev)}
+            required={true}
+            placeholder="Categoría"
+          />
+        </div>
+        {/* <label className="m-2" htmlFor={"searchCount"}>Cantidad de búsquedas</label> */}
+        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
+          <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"searchCount"}>
+            Cantidad de búsquedas
+          </label>
+          <input
+            className="uk-input border-radius-sm font-sm"
+            name="searchCount"
+            type="number"
+            step={1}
+            min={0}
+            value={info.searchCount}
+            onChange={ev=>handleChange(ev)}
+            required={true}
+            placeholder="Cantidad de búsquedas"
+          />
+        </div>
+        {/* <label className="m-2" htmlFor={"img"}>URL imagen</label> */}
+        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
+          <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"img"}>
+            URL imagen
+          </label>
+          <input
+            className="uk-input border-radius-sm font-sm"
+            name="img"
+            type="url"
+            value={info.img}
+            onChange={(ev)=>handleChange(ev)}
+            placeholder="Imagen"
+          />
+        </div>
+        <div className="col-1-5@xl col-1-4@lg padd-md normalize position-relative">
+          <div className="uk-position-bottom padd-md">
+            <input
+              type="submit"
+              className="padd-md border-radius-sm font-sm action action-add-post"
+              value="Agregar / editar categoría"/>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 
   if (component==='tips') return (
     <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitTip(ev)}>
@@ -95,11 +150,33 @@ function BasicForm({component}){
     </form>);
 
   if (component==='countries') return (
-    <form className="m-5 border-2 width-20 bg-gray-100 rounded-md" autoComplete="off" onSubmit={(ev)=>handleSubmitCountry(ev)}>
-      <label className="m-2" htmlFor={"name"}>Nombre</label>
-      <input className="padd-md-l" name="name" type={"text"} value={info.name} onChange={(ev)=>handleChange(ev)} required={true}/>
-      <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-400" value="Agregar país"/>
-    </form>);
-
+    <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md" data-uk-height-match=".normalize">
+      <form autoComplete="off" onSubmit={(ev)=>handleSubmitCountry(ev)}>
+        <div className="col-1-8@xl col-1-8@lg padd-md">
+          <label className="font-lg font-main text-bold normalize flex-center-left" htmlFor={"name"}>
+            Agregar País:
+          </label>
+        </div>
+        <div className="col-6-8@xl col-2-4@lg padd-md">
+          <input
+            className="uk-input border-radius-sm font-sm normalize"
+            name="name"
+            type={"text"}
+            value={info.name}
+            onChange={(ev)=>handleChange(ev)}
+            required={true}
+            placeholder="Escriba aquí el nombre del país que desea agregar"
+          />
+        </div>
+        <div className="col-1-8@xl col-1-8@lg padd-md">
+          <input
+            type="submit"
+            className="padd-md border-radius-sm font-sm action action-add-post normalize"
+            value="Agregar País"
+          />
+        </div>
+      </form>
+    </div>
+  );
 }
 export default BasicForm;

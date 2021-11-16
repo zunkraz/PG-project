@@ -62,7 +62,12 @@ function CategoryDashboard({token}){
   },[]);
 
   return (
-      <div className="flex items-start mrg-2x-b">
+    <React.Fragment>
+      {/* Barra de Edicion - Busqueda */}
+      <BasicForm component={"categories"}/>
+      {/* Listado de Categorias */}
+      <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
+        {/*
         <div className="flex flex-col ">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-3">
         <div className="py-2 align-middle inline-block min-w-min sm:px-6 lg:px-8">
@@ -85,37 +90,98 @@ function CategoryDashboard({token}){
           </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
+          */}
             {allCategories && allCategories.map(c=> {
-              return (<tr key={c._id}>
-              <td className="px-6 py-2 whitespace-nowrap">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 h-8 w-10">
-                    <img className="h-10 w-10 rounded-full"
-                         src={c.img || "https://cambodiaict.net/wp-content/uploads/2019/12/computer-icons-user-profile-google-account-photos-icon-account.jpg"} alt=""/>
-                  </div>
-                  <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">
-                      {c.name}
+              return (
+                <div key={c._id} className="col-1-3@xl col-1-3@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                  <div className="wrapper bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">
+                    <div className="element-xl-lg-md-sm">
+                      <div className="col-1-1@xl col-1-1@xs padd-md flex-center">
+                        {/* Image */}
+                        <div className="col-1-3@xl col-1-4@xs padd-md">
+                          <div
+                            className="ratio-1-1 uk-background-cover border-radius-100"
+                            data-src={c.img || "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?b=1&k=20&m=1300845620&s=170667a&w=0&h=JbOeyFgAc6-3jmptv6mzXpGcAd_8xqkQa_oUK2viFr8="}
+                            data-uk-img="">
+                          </div>
+                        </div>
+                        {/* Info */}
+                        <div className="col-2-3@xl col-3-4@xs padd-md">
+                          {/* Name */}
+                          <div className="padd-md font-sm flex-bar">
+                            <div className="text-bold">Categoría:</div>
+                            <span>{c.name}</span>
+                          </div>
+                          {/* Searches */}
+                          <div className="padd-md font-sm flex-bar">
+                            <div className="text-bold">Búsquedas:</div>
+                            <span>{c.searchCount}</span>
+                          </div>                      
+                        </div>
+                      </div>
                     </div>
+                    <div className="element-xs">
+                      {/* Image */}
+                      <div className="col-1-1@xs padd-md flex-center">
+                        <div className="width-50">
+                        <div
+                          className="ratio-1-1 uk-background-cover border-radius-100"
+                          data-src={c.img || "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?b=1&k=20&m=1300845620&s=170667a&w=0&h=JbOeyFgAc6-3jmptv6mzXpGcAd_8xqkQa_oUK2viFr8="}
+                          data-uk-img="">
+                        </div>
+                        </div>
+                      </div>
+                      {/* Info */}
+                      <div className="col-1-1@xs padd-md">
+                        {/* Name */}
+                        <div className="padd-md font-sm flex-bar">
+                          <div className="text-bold">Categoría:</div>
+                          <span>{c.name}</span>
+                        </div>
+                        {/* Searches */}
+                        <div className="padd-md font-sm flex-bar">
+                          <div className="text-bold">Búsquedas:</div>
+                          <span>{c.searchCount}</span>
+                        </div>                      
+                      </div>
+                    </div>
+                    {/* Buttons */}
+                    <div className="col-1-1@xl col-1-1@xs padd-md">
+                    {/* Reset Searches */}
+                      <div className="padd-md font-sm">
+                        <button
+                          className="width-100 padd-sm border-radius-sm action action-primary flex-center"
+                          onClick={()=>handleCatReset(c.name,c._id)}
+                        >
+                          <FaIcons.FaRedo/>&emsp;Restablecer Búsquedas
+                        </button>
+                      </div>
+                      {/* Delete Category */}
+                      <div className="padd-md font-sm">
+                          <button 
+                            className="width-100 padd-sm border-radius-sm action action-danger flex-center"
+                            onClick={()=>handleCatDelete(c.name,c._id)}
+                          >
+                            <FaIcons.FaRegTrashAlt/>&emsp;Eliminar Categoría
+                          </button>
+                        </div>
+                      </div>
                     </div>
                 </div>
-              </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center">
-                  {c.searchCount}
-                </td>
-                <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  <button onClick={()=>handleCatReset(c.name,c._id)}><FaIcons.FaRedo/></button>
-                </td>
-                <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-                  <button onClick={()=>handleCatDelete(c.name,c._id)}><FaIcons.FaRegTrashAlt/></button>
-                </td>
-              </tr>)
+              )
             })}
+            {/*
           </tbody>
         </table>
-      </div></div></div></div>
-        <BasicForm component={"categories"}/>
+        
       </div>
+      </div>
+      </div>
+      </div>
+      */}
+        
+      </div>
+    </React.Fragment>
     )
 }
 

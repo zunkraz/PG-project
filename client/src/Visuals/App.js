@@ -25,6 +25,7 @@ import MeetGuide from './Containers/MeetGuide';
 import ManageSchedule from './Components/ProfessionalsComponents/ManageSchedule';
 import Nosotros from './Containers/Nosotros'
 import "@material-tailwind/react/tailwind.css";
+import ContactForm from './Components/ContactForm';
 
 
 
@@ -88,6 +89,9 @@ function App() {
         </Route>
         <Route path="/nosotros">
           <Nosotros/>
+        </Route>
+        <Route path="/contacto">
+          <ContactForm/>
         </Route>
       </Switch>
         <Footer/>
