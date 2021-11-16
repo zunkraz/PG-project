@@ -71,7 +71,7 @@ let history = useHistory();
 }
   
     
-   const elements= order.map(o=><li className="mb-2" key={o._id}>
+   const elements= order.map((o, index)=><li className="mb-2" key={index}>
         <CartElement 
         name={o.name}
         date={o.appointment.date}
