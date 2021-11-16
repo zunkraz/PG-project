@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ComponentHeader from './../Components/ComponentHeader';
 
 const componentHeaderData = {
@@ -51,6 +51,10 @@ const containerItems = [
 ]
 
 function Faq() {
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
+
     return (
         <React.Fragment>
             <ComponentHeader data={componentHeaderData} />
