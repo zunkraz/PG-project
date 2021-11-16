@@ -40,7 +40,7 @@ const ServicesSupport = () => {
     })
 
     return ( 
-<div className='flex flex-wrap justify-center overflow-y-auto h-96'>
+<div className='flex flex-wrap justify-center '>
         {publication}
 </div>
      );

@@ -10,7 +10,7 @@ const SuggestionsSupport = () => {
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
         author: 'LATAM EXPONENTIAL'
         },
-        {title:'sugerencia tres',
+        {title:'Sugerencia tres',
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
         author: 'LATAM EXPONENTIAL'
         },
@@ -40,7 +40,7 @@ const SuggestionsSupport = () => {
     })
 
     return ( 
-<div className='flex flex-wrap justify-center overflow-y-auto h-96'>
+<div className='flex flex-wrap justify-center'>
         {publication}
 </div>
      );

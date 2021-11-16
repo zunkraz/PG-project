@@ -11,7 +11,7 @@ export default function Profesionals() {
 
     const profs =  useSelector(state => state.professionalReducer.professionalsRender)
     useEffect(() => {
-
+        window.scrollTo(0, 0)
         if(!profs.length){
             dispatch(getAllProfs())
         }

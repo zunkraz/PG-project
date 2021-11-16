@@ -76,7 +76,7 @@ export default function SchedulerCancel ({userId}){
         <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
             Quitar turno
         </div>
-        <div className='padd-md-b font-main text-bold text-center- font-lg'>
+        <div className='padd-md-b font-main text-bold text-center- font-lg py-2'>
             Si necesitas eliminar de tu agenda un turno en particular, puedes filtrar por día y/o mes y eliminar el turno correspondiente
         </div>
         <div>
@@ -96,7 +96,7 @@ export default function SchedulerCancel ({userId}){
                     return <option value={m} key={months.indexOf(m)}>{m}</option>
                 })}
             </select>
-            <button onClick={clickSearch} className="btn-prof w-24 my-2 ml-3">Buscar</button>
+            <button onClick={clickSearch} className="btn-prof w-24 my-2 ml-3"><span>Buscar</span></button>
             </div>
         </div>
         <ul>
