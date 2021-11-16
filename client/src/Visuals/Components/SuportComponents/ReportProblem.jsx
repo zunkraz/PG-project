@@ -48,7 +48,7 @@ const handleChangeOrder= e=>{
 }
 
     return (  
-        <div className='m-24'>
+        <div className='m-20'>
             <form onSubmit={handleSubmit}>
             <div className="flex flex-col">
 
