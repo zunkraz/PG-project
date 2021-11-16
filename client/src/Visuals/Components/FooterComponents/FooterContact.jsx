@@ -15,7 +15,9 @@ function FooterContact() {
     return (
         <React.Fragment>
             <div className="font-color-light font-main font-xl">
-                <span className="padd-md-b padd-lg-r font-bold border-bottom-color-main">Seguinos en redes!</span>
+
+                <span className="padd-md-b padd-lg-r font-bold border-bottom-color-main">Síguenos en redes!</span>
+      
             </div>
             <ul className="vertical-list mrg-lg-t">
                 {
