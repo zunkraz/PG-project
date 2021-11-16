@@ -64,7 +64,7 @@ const PaymentsCartPro = ({render}) => {
                 return Render
                 })
             :
-            <h1>No hay Facturas que mostrar</h1>
+            <h1 className=' my-4 text-2xl'>No hay Facturas que mostrar</h1>
             }
                 </tbody>
             </table>

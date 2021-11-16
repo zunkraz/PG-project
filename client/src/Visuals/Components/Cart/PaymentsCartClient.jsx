@@ -60,10 +60,13 @@ const PaymentsCartClient = ({render}) => {
             return Render
             })
         :
-        <h1>No hay Facturas que mostrar</h1>
+        null
         }
             </tbody>
         </table>
+        <div className='flex justify-center'>
+            {render.length === 0 && <h1 className=' my-4 text-2xl'>No hay Facturas que mostrar</h1>}
+        </div>
         </div>
      );
 }
