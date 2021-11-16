@@ -43,34 +43,64 @@ function TipDashboardItem({tip,tipCateg,token}){
   }
 
   return (
-    <tr>
-      <td className="px-6 py-2 whitespace-wrap">
-        <div className="text-sm font-normal text-gray-900">
+    <div className="col-1-5@xl col-1-3@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
+      <div className="wrapper padd-md bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">
+        {/* Tip Text */}
+        <div className="padd-md font-sm normalize">
           {tip.text}
         </div>
-      </td>
-      {tipCateg==="Todas"?<td className="px-6 py-4 whitespace-nowrap text-left">
-          {tip.categoryId?
-            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-400 text-gray-800">
-                    {tip.categoryId.name} </span> :
-            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-400 text-gray-800">
-                    No TIENE</span>}
-        </td>
-        :<td/>}
-      <td className="px-6 py-4 whitespace-nowrap text-left">
-        {tip.isApproved?
-          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">
-                    Aprobado </span> :
-          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-gray-800">
-                    No aprobado</span>}
-      </td>
-      <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleTipChange(tip.isApproved,tip._id)}><FaIcons.FaRedo/></button>
-      </td>
-      <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleTipDelete(tip._id)}><FaIcons.FaRegTrashAlt/></button>
-      </td>
-    </tr>)
+        {/* Tip Category */}
+        <div className="padd-md font-sm flex-bar">
+          <div>Categoría:</div>
+          <span>
+            {
+              tip.categoryId ?
+                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-400 text-gray-800">
+                  { tip.categoryId.name }
+                </span>
+              :
+                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-400 text-gray-800">
+                  No Aplica
+                </span>
+            }
+          </span>
+        </div>
+        {/* Tip State */}
+        <div className="padd-md font-sm flex-bar">
+          <div>Estado:</div>
+          <span>
+            {
+              tip.isApproved ?
+              <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">
+                Aprobado
+              </span>
+              :
+              <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-gray-800">
+                No aprobado
+              </span>
+            }
+          </span>
+        </div>
+        {/* Button Reset Searches */}
+        <div className="padd-md font-sm">
+            <button
+              className="width-100 padd-sm border-radius-sm action action-primary flex-center"
+              onClick={()=>handleTipChange(tip.isApproved,tip._id)}
+            >
+              <FaIcons.FaRedo/>&emsp;Cambiar Estado
+            </button>
+        </div>
+        {/* Button Delete */}
+        <div className="padd-md font-sm">
+          <button
+            className="width-100 padd-sm border-radius-sm action action-danger flex-center"
+            onClick={()=>handleTipDelete(tip._id)}>
+            <FaIcons.FaRegTrashAlt/>&emsp;Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default TipDashboardItem;
