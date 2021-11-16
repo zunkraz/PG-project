@@ -22,7 +22,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
     const customerId= useSelector(state=>state.sessionReducer.status.id)
     
     
-    const price = cost?cost:0;
+    const price = cost?cost:0.01;
 
     function handleClick(e) {
         setLoad([...load, e.target.id])
