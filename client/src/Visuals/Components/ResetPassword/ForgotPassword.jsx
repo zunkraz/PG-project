@@ -33,7 +33,7 @@ function ForgotPassword() {
   }
 
   function submit(e) {
-    
+
     e.preventDefault();
     if (inputs.mail1 && inputs.mail2 && !error) {
         if(emails.includes(inputs.mail1)){
@@ -41,7 +41,7 @@ function ForgotPassword() {
             let password = passwordGenerator();
             updateUserPass(username, { password })
               .then((r) =>
-                r._id ? sendMail("resetPass", { password, email: r.email }) : null
+                r._id ? sendMail("resetPass", { password, username, email: r.email }) : null
               )
         }
         Swal.fire({
