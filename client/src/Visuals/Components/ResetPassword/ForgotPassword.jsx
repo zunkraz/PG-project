@@ -63,13 +63,13 @@ function ForgotPassword() {
           bg: "https://images.pexels.com/photos/776615/pexels-photo-776615.jpeg?auto=compress&cs=tinysrgb&dpr=2&&w=1920",
         }}
       />
-      <div className="w-3/5 h-96 md:w-2/5 my-4 flex flex-col items-center">
+      <div className="w-4/5 h-96 md:w-2/5 my-4 flex flex-col items-center">
         <p className="text-justify font-lg mb-4">
           Ingresa tu correo electrónico para confirmar tu identidad, te
           enviaremos los pasos a seguir a esa dirección
         </p>
         <form
-          className="w-4/5 flex flex-col h-full justify-evenly"
+          className="w-full md:w-4/5 flex flex-col h-full justify-evenly"
           autoComplete="off"
         >
           <div>
