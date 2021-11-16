@@ -12,8 +12,8 @@ function RomoveFromCartBtn({date}) {
     const {token} = userOnPage; 
 
     const handleSubmit = () => {
-        dispatch(removeFromCart(date));
-        setAvailability(date,true,token);
+        dispatch(removeFromCart(date,token));
+        // setAvailability(date,true,token);
         return
     }
     return (
