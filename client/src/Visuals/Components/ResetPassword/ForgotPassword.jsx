@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 function ForgotPassword() {
   const dispatch = useDispatch();
   const usernames = useSelector((state) => state.userReducer.users);
+  const emails = usernames?.map(u=>u.email);
 
   const [inputs, setInputs] = useState({
     mail1: "",
@@ -34,21 +35,21 @@ function ForgotPassword() {
   function submit(e) {
     e.preventDefault();
     if (inputs.mail1 && inputs.mail2 && !error) {
-      let username = usernames.find((u) => u.email === inputs.mail1).username;
-      let password = passwordGenerator()
-    //   let password = "123456789";
-      updateUserPass(username, { password })
-        .then((r) =>
-          r._id ? sendMail("resetPass", { password, email: r.email }) : null
-        )
-        .then((r) =>
-          Swal.fire({
+        if(emails.includes(inputs.mail1)){
+            let username = usernames.find((u) => u.email === inputs.mail1).username;
+            let password = passwordGenerator();
+            updateUserPass(username, { password })
+              .then((r) =>
+                r._id ? sendMail("resetPass", { password, email: r.email }) : null
+              )
+        }
+        Swal.fire({
             icon: "success",
             title:
               "Si tu correo está en nuestro sistema, te llegarán las instrucciones allí",
             timer: 3000,
           })
-        );
+      setInputs({ mail1: "", mail2: "" });
     }
   }
 
@@ -66,7 +67,10 @@ function ForgotPassword() {
           Ingresa tu correo electrónico para confirmar tu identidad, te
           enviaremos los pasos a seguir a esa dirección
         </p>
-        <form className="w-4/5 flex flex-col h-full justify-evenly">
+        <form
+          className="w-4/5 flex flex-col h-full justify-evenly"
+          autoComplete="off"
+        >
           <div>
             <label>Ingresa tu correo electrónico</label>
             <div className="my-4">
