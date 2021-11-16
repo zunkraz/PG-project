@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PaymentsSupport from '../Components/SuportComponents/PaymentsSupport';
 import ReportProblem from '../Components/SuportComponents/ReportProblem';
 import ServicesSupport from '../Components/SuportComponents/ServicesSupport';
@@ -7,32 +7,35 @@ import PrivacySupport from '../Components/SuportComponents/PrivacySupport';
 import { Link, Route, Switch  } from 'react-router-dom';
 
 const Supports = () => {
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
     return ( 
 
 
         <div className='grid grid-cols-6'>
             <div className=' ml-1 col-start-0 col-end-2  shadow-2xl'>
-                <aside className='flex flex-wrap justify-center '>
+                <aside className='flex flex-wrap justify-center pb-4'>
                     <h1 className='text-2xl text-center mt-2'>Selecciona una Categoría</h1>
                     <div className='flex flex-col'>
 
                     <Link to='/soporte/servicios'>
-                        <button className='rounded-md  mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Servicios</button>
+                        <button className="my-2 padd-md border-radius-sm action action-professional w-full" type='button'>Servicios</button>
                     </Link>
                     <Link to='/soporte/sugerencias'>
-                        <button className='rounded-md mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Sugerencias</button>
+                        <button className="my-2 padd-md border-radius-sm action action-professional w-full" type='button'>Sugerencias</button>
                     </Link>
                     <Link to='/soporte/pagos'>
-                        <button className='rounded-md mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Sobre los Pagos</button>
+                        <button className="my-2 padd-md border-radius-sm action action-professional w-full" type='button'>Sobre los Pagos</button>
                     </Link>
                     <Link to='/soporte/politicas'>
-                        <button className='rounded-md mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Políticas y Privacidad</button>
+                        <button className="my-2 padd-md border-radius-sm action action-professional w-full" type='button'>Políticas y Privacidad</button>
                     </Link>
                     <Link to='/soporte/reporte'>
-                        <button className='rounded-md  mt-2 w-full bg-primary  font-bold py-2 px-4 transition duration-300 ease-in-out' type='button'>Reportar un Problema</button>
+                        <button className="my-2 padd-md border-radius-sm action action-professional w-full" type='button'>Reportar un Problema</button>
                     </Link>
                     <Link to='/'>
-                        <button className=' rounded-md  mt-2 w-full bg-primary font-bold py-2 px-4 transition duration-300 ease-in-out mb-3' type='button'>Volver al inicio</button>
+                        <button className="my-2 padd-md border-radius-sm action action-professional w-full" type='button'>Volver al inicio</button>
                     </Link>
                     </div>
                 </aside>
