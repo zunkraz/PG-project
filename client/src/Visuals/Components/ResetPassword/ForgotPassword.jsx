@@ -33,6 +33,7 @@ function ForgotPassword() {
   }
 
   function submit(e) {
+    
     e.preventDefault();
     if (inputs.mail1 && inputs.mail2 && !error) {
         if(emails.includes(inputs.mail1)){
