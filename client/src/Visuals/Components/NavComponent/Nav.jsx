@@ -102,12 +102,14 @@ const Nav = () => {
                             <li className="uk-nav-header">Menu</li>
                             {items}         
                             {loggedUser.token && 
-                                <li>
-                                    <Link to='/' onClick={Logout}>Salir</Link>
-                                </li>}
-                            <li>
-                                <CartIcon/>
-                            </li>
+                                <>
+                                    <li>
+                                        <Link to='/' onClick={Logout}>Salir</Link>
+                                    </li>
+                                    <li>
+                                        <CartIcon/>
+                                    </li>
+                                </>}
                         </ul>
                     </div>
                 </div>
