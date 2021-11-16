@@ -34,7 +34,6 @@ function ForgotPassword() {
 
   function submit(e) {
     e.preventDefault();
-    
     if (inputs.mail1 && inputs.mail2 && !error) {
         if(emails.includes(inputs.mail1)){
             let username = usernames.find((u) => u.email === inputs.mail1).username;
