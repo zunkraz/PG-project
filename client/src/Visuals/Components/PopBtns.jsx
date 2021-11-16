@@ -3,12 +3,12 @@ import Button from "@material-tailwind/react/Button";
 
 function PopBtns(props) {
 
-    const btnActive = `w-48 h-10 mr-4 bg-white rounded-xl duration-700
-                        hover:bg-green-500 ring-white bg-opacity-5
-                        ring-4 ring-offset-1 ring-offset-green-500`
-    const btnDisactive = `w-48 h-10 mr-4 bg-white rounded-xl duration-700
-                        hover:bg-gray-500 ring-white bg-opacity-5
-                        ring-4 ring-offset-1 ring-offset-gray-500 cursor-not-allowed`
+    // const btnActive = `w-48 h-10 mr-4 bg-white rounded-xl duration-700
+    //                     hover:bg-green-500 ring-white bg-opacity-5
+    //                     ring-4 ring-offset-1 ring-offset-green-500`
+    // const btnDisactive = `w-48 h-10 mr-4 bg-white rounded-xl duration-700
+    //                     hover:bg-gray-500 ring-white bg-opacity-5
+    //                     ring-4 ring-offset-1 ring-offset-gray-500 cursor-not-allowed`
 
     const textActive = `text-green-500 font-medium tracking-widest 
                         duration-700`
