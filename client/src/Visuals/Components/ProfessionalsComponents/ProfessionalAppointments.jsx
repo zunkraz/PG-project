@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
+import { setAvailability } from "../../../ApiReq/schedule";
 import { addToCart } from "../../../Controllers/actions/cartActions";
 
 export default function ProfessionalAppointments ({name}) {
@@ -8,6 +9,9 @@ export default function ProfessionalAppointments ({name}) {
     
     const [day, setDay]= useState("Todos")
     const [month, setMonth]= useState("Todos")
+
+    const userOnPage = useSelector(state=>state.sessionReducer.status);
+    const {token} = userOnPage; 
 
     const dispatch= useDispatch()
     const handleClick= (e)=>{
@@ -20,6 +24,7 @@ export default function ProfessionalAppointments ({name}) {
                     },
                     id:e.target.id
                 }))
+        setAvailability(e.target.id,false,token);
     }
 
     const dateJoin= (date)=>{

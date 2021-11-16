@@ -51,7 +51,8 @@ router.delete('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
     const {id} = req.params;
-    setAvailability(id)
+    const {value} = req.body;
+    setAvailability(id,value)
         .then(result => res.json(result))
         .catch(err => next(err))
 });
