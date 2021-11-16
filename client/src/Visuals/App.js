@@ -18,6 +18,7 @@ import AdminPanel from "./Containers/AdminPanel";
 import Cart from './Components/Cart/Cart';
 import PaymentsCart from './Components/Cart/PaymentsCart';
 import Terms from './Containers/Terms';
+import PrivacyPolicy from './Containers/PrivacyPolicy';
 import SalesPolicy from './Containers/SalesPolicy';
 import Faq from './Containers/Faq';
 import Review from './Components/Review/Review';
@@ -70,11 +71,14 @@ function App() {
         </Route>
         <Route path="/facturas">
           <PaymentsCart/>
-          </Route>
+        </Route>
         <Route path="/terminos-y-condiciones">
           <Terms/>
         </Route>
-        <Route path="/politica-ventas">
+        <Route path="/politica-de-privacidad">
+          <PrivacyPolicy/>
+        </Route>
+        <Route path="/politica-de-ventas">
           <SalesPolicy/>
         </Route>
         <Route path="/preguntas-frecuentes">
