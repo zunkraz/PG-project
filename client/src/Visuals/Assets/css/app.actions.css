@@ -256,3 +256,13 @@
     border: solid 2px var(--color-danger);
 	color: var(--color-light)!important;   
 }
+.action-main-reverse {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-light)!important;   
+}
+.action-main-reverse:hover {
+	background-color: var(--color-success);
+    border: solid 2px var(--color-light);
+	color: var(--color-light)!important;   
+}
