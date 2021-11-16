@@ -66,9 +66,9 @@ function Faq() {
                             {
                                 containerItems.map((elem, index)=>{
                                     return  <li key={index} className="mrg-lg-t">
-                                                <a className="uk-accordion-title padd-lg border-radius-sm bg-t1" href="#">
+                                                <button className="uk-accordion-title width-100 text-left padd-lg border-radius-sm">
                                                     {elem.question}
-                                                </a>
+                                                </button>
                                                 <div className="uk-accordion-content padd-xl border-radius-sm border-color-extra4-a60 bg-color-extra4-a20">
                                                     {elem.answer}
                                                 </div>

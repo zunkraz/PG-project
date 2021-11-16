@@ -44,29 +44,59 @@ function ReviewDashboardItem({review,token}){
       }})
   }
 
-    return (<tr>
-      <td className="px-6 py-2 whitespace-wrap">
-        <div className="text-sm font-normal text-gray-900">
-          {review.text}
+    return (
+      <div className="col-1-6@xl col-1-4@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
+        <div className="wrapper padd-md bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">
+          {/* Review Text */}
+          <div className="padd-md font-sm normalize">
+            {review.text}
+          </div>
+          {/* Review Author */}
+          <div className="padd-md font-sm flex-bar">
+            <div className="text-bold">Autor:</div>
+            <span>
+              {
+                review.userId !== null ? review.userId.username : 'anónimo'
+              }
+            </span>
+          </div>
+          {/* Review Rate */}
+          <div className="padd-md font-sm flex-bar">
+            <div className="text-bold">Calificación:</div>
+            {
+              review.rate === "Good" ?
+                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">
+                  Bueno
+                </span>
+                :
+                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-gray-800">
+                  Malo
+                </span>
+            }
+          </div>
+          {/* Button Reset Searches */}
+          <div className="padd-md font-sm">
+            <button
+              className="width-100 padd-sm border-radius-sm action action-danger flex-center"
+              onClick={()=>handleReviewChange(review.rate,review._id)}
+            >
+              <FaIcons.FaRedo/>&emsp;Eliminar
+            </button>
+          </div>          
+          {/* Button Change Review */}
+          <div className="padd-md font-sm">
+              <button
+                className="width-100 padd-sm border-radius-sm action action-primary flex-center"
+                onClick={()=>handleReviewDelete(review._id)}
+              >
+                <FaIcons.FaRedo/>&emsp;Cambiar Estado
+              </button>
+          </div>
+
+          
         </div>
-      </td>
-      <td className="text-sm text-left font-medium text-gray-900">
-        {review.userId!==null?review.userId.username:'anónimo'}
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-left">
-        {review.rate==="Good"?
-          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">
-                    Bueno </span> :
-          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-gray-800">
-                    Malo</span>}
-      </td>
-      <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleReviewChange(review.rate,review._id)}><FaIcons.FaRedo/></button>
-      </td>
-      <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleReviewDelete(review._id)}><FaIcons.FaRegTrashAlt/></button>
-      </td>
-    </tr>)
+      </div>
+  )
 }
 
 export default ReviewDashboardItem;

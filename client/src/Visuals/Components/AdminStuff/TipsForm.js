@@ -42,14 +42,45 @@ function TipsForm(){
   }
 
   return (
-    <form className="m-5 border-2 width-80 bg-gray-100 rounded-md" autoComplete="off" onSubmit={handleSubmitTip}>
-      <label className="m-2" htmlFor={"name"}>Nuevo tip: </label><br/>
-      <textarea className="form-textarea mt-1 block w-full" name="text" value={info.text} onChange={handleChange} required={true}/>
-      <select className="bg-color-light-a20" name="categoryId" value={info.categoryId} onChange={handleChange}>
-        <option readOnly>Categoría</option>
-        {allCategories&&allCategories.map(c=><option key={c._id} value={c._id} >{c.name}</option>)}
-      </select>
-      <input type="submit" className="font-bold border-1 rounded-b bg-color-dark-a10 hover:bg-gray-300" value="Agregar tip"/>
-    </form>);
+    <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md" data-uk-height-match=".normalize">
+      <form onSubmit={handleSubmitTip}>
+        <div className="col-1-8@xl col-1-8@lg col-1-5@md padd-md">
+          <label className="font-lg font-main text-bold normalize flex-center-left" htmlFor={"name"}>
+            Agregar Tip:
+          </label>
+        </div>
+        <div className="col-4-8@xl col-4-8@lg col-2-5@md padd-md font-sm">
+          {/*<label className="m-2" htmlFor={"name"}>Nuevo tip: </label><br/>*/}
+          <textarea
+            rows={(window.innerWidth >= 960) ? 1 : 6}
+            className="uk-textarea width-100 border-radius-sm normalize"
+            name="text"
+            value={info.text}
+            onChange={handleChange}
+            required={true}
+            placeholder="Escriba aqui el tip que desea agregar."
+          />
+        </div>
+        <div className="col-2-8@xl col-2-8@lg col-1-5@md padd-md font-sm">
+          <select
+            className="uk-select width-100 border-radius-sm normalize"
+            name="categoryId"
+            value={info.categoryId}
+            onChange={handleChange}
+          >
+            <option readOnly>Categoría</option>
+            {allCategories&&allCategories.map(c=><option key={c._id} value={c._id} >{c.name}</option>)}
+          </select>
+        </div>
+        <div className="col-1-8@xl col-1-8@lg col-1-5@md padd-md font-sm">
+          <input
+            type="submit"
+            className="padd-md border-radius-sm font-sm action action-add-post normalize"
+            value="Agregar tip"
+          />
+        </div>
+      </form>
+    </div>
+  );
 }
 export default TipsForm;
