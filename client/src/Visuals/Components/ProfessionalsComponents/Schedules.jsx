@@ -7,7 +7,7 @@ import { addToCart } from '../../../Controllers/actions/cartActions';
 import Swal from 'sweetalert2';
 
 
-export default function Schedules({id, login, name, lastname, category}) {
+export default function Schedules({id, login, name, lastname, category, cost}) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.sessionReducer.status.token);
 
@@ -22,7 +22,7 @@ export default function Schedules({id, login, name, lastname, category}) {
     const customerId= useSelector(state=>state.sessionReducer.status.id)
     
     
-    const price = 10;
+    const price = cost?cost:0.01;
 
     function handleClick(e) {
         setLoad([...load, e.target.id])
