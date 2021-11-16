@@ -3,6 +3,7 @@ import BigButton from '../BigButton'
 import LoginInputComponent from './LoginInputComponent'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog, passError, showError, usernameField, setUsernameField, passField, setPassField}) {
@@ -51,7 +52,7 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
     }
 
     return (
-        <div className='flex flex-col p-10 h-96 justify-around'>
+        <div className='flex flex-col p-10 h-96 justify-around items-center'>
             <LoginInputComponent    handleChange={handleFields} 
                                     text={'Nombre de Usuario'} 
                                     name='username'
@@ -85,9 +86,6 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
             {(showError===true && LogError) &&
                 <span className={wrogPassClass}>Contraseña incorrecta</span>
             }
-            {(showError===true && LogError) &&
-                <span className={wrogPassClass}>Contraseña incorrecta</span>
-            }
             <BigButton  disactive={UserCanLog} 
                         onClickFunction={handleClickCheck}
                         type='submit'
@@ -98,6 +96,9 @@ function LoginFormComponents({handleFields, logIn, tagUser, tagPass, UserCanLog,
                         textDisactive={textNoLog}
                         />
             
+            <Link to='/resetear'  className='mt-4 text-blue-600 font-black'>
+                <span>Olvidé mi contraseña</span>
+            </Link>
         </div>
     )
 }
