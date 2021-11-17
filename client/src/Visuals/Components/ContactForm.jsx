@@ -98,7 +98,7 @@ export default function ContactForm(){
                                         outline={false}
                                         placeholder="Ingresa tu nombre"
                                         onChange={e => handleChange(e)}
-                                        autoComplete="none"
+                                        autoComplete="off"
                                         required
                                         />
                                         {error.name &&
@@ -116,7 +116,7 @@ export default function ContactForm(){
                                         outline={false}
                                         placeholder="Ingresa tu email"
                                         onChange={e => handleChange(e)}
-                                        autoComplete="none"
+                                        autoComplete="off"
                                         required
                                         />
                                         {error.email &&
@@ -132,6 +132,7 @@ export default function ContactForm(){
                                         color="pink"
                                         size="sm"
                                         outline={false}
+                                        autoComplete="off"
                                         placeholder="Ingresa tu teléfono (opcional)"
                                         onChange={e => handleChange(e)}
                                         />
