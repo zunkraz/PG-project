@@ -27,6 +27,7 @@ import ManageSchedule from './Components/ProfessionalsComponents/ManageSchedule'
 import Nosotros from './Containers/Nosotros'
 import "@material-tailwind/react/tailwind.css";
 import ContactForm from './Components/ContactForm';
+import ForgotPassword from './Components/ResetPassword/ForgotPassword'
 
 
 
@@ -96,6 +97,9 @@ function App() {
         </Route>
         <Route path="/contacto">
           <ContactForm/>
+        </Route>
+        <Route path="/resetear">
+          <ForgotPassword/>
         </Route>
       </Switch>
         <Footer/>

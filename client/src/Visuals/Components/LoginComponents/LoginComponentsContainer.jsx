@@ -81,7 +81,6 @@ function LoginComponentsContainer() {
             ...errors, [prop]:''
         })
     }
-    console.log('errors =>',errors)
     const checkErrors=()=>{
         if(errors.username.length>0){
             setUserCanLog(true)
@@ -90,11 +89,9 @@ function LoginComponentsContainer() {
             setUserCanLog(true)
         }
         if(!errors.username.length && !errors.password.length){
-            console.log('tomate')
             setUserCanLog(false)
         }
         if(!errors.password.length && !errors.username.length){
-            console.log('naranja')
             setUserCanLog(false)
         }
     }
