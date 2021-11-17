@@ -15,7 +15,9 @@ export default function FullInfo({profData}) {
             </div>
 
             <div >
-                <span className='full-info-span'>¿Por qué elegirme?</span>
+                <div className='full-info-span'>
+                    <span >¿Por qué elegirme?</span>
+                </div>
                 <div className='full-info-container'>
                     <div className='full-info-up'>
                         {biography

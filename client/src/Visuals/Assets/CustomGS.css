@@ -349,6 +349,7 @@
 .full-info-span{
     font-weight: bold;
     font-size:1.2rem;
+    margin-top: 1rem;
 }
 .full-info-down{
     display: flex;
