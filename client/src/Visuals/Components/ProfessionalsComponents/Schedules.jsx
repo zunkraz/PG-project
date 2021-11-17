@@ -34,7 +34,6 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
     const { error, jitsi } = useJitsi(jitsiConfig);
     console.log(jitsi);
     
-    const price = 10;
     const meetingRoom = (<div className='hidden' id={jitsiConfig.parentNode} />);
 
     const price = cost?cost:0.01;
