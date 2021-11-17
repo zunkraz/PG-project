@@ -28,13 +28,13 @@ router.post("/", (req, res, next) => {
     case "resetPassAdmin":
       subject = "El administrador ha reseteado tu contraseña - No Reply";
 
-      data = data.replace(/{newPassword}/gi, info.new_password);
+      data = data.replace(/{newPassword}/gi, info.password);
       break;
 
     case "resetPass":
       subject = "Solicitud de reseteo de contraseña - No Reply";
 
-      data = data.replace(/{newPassword}/gi, info.new_password);
+      data = data.replace(/{newPassword}/gi, info.password);
       break;
   }
 
@@ -50,7 +50,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.get("/newAppointment", (req, res, next) => {
-  const info = req.headers;
+  const info = req.body;
 
   let dataCustom = reader('reserveCustom', info.custom_username);
   let dataProf = reader('reserveProf', info.prof_username);
