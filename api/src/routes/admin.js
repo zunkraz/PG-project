@@ -81,7 +81,7 @@ router.put('/category/:id', loginAuth, roleAuth, (req,res,next)=>{
     .catch(err => next(err));
 });
 //CATEGORY CLEAN SEARCHCOUNT
-router.put('/category/set', (req, res, next)  => {
+router.put('/category/set', loginAuth, roleAuth, (req, res, next)  => {
   setSearchCount()
     .then(result => res.json(result))
     .catch(err => next(err));

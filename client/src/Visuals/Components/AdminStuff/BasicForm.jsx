@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {postAdminCategory,postAdminCountry,postAdminTip,putAdminCategory} from "../../../Controllers/actions/adminActions";
+import {adminSetCategCount, postAdminCategory,postAdminCountry,postAdminTip,putAdminCategory} from "../../../Controllers/actions/adminActions";
 import Swal from 'sweetalert2';
 
 function BasicForm({component}){
@@ -132,6 +132,7 @@ function BasicForm({component}){
           </div>
         </div>
       </form>
+        <button onClick={(e) => dispatch(adminSetCategCount(token))}>PRUEBA</button>
     </div>
   );
 

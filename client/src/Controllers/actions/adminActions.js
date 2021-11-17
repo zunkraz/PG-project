@@ -31,8 +31,9 @@ import {
     postCountry,
     getAllTips, deleteTip, putTip, postTip,
     getAllReviews, deleteReview, putReview,
-    getAllInvoices, getAllReports
+    getAllInvoices, getAllReports, setCategoriesCount
 } from '../../ApiReq/admin'
+import { getAllCategories } from './constantInfoActions';
 
 export function getAdminUsers(token){
     return async function(dispatch){
@@ -208,5 +209,11 @@ export function getAdminReports(token){
             type: "GET_ADMIN_REPORTS",
             payload: data
         })
+    }
+}
+export function adminSetCategCount(token) {
+    return async function (dispatch) {
+        await setCategoriesCount(token)
+        .then(dispatch(getAllCategories()))
     }
 }

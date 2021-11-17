@@ -71,6 +71,8 @@ function CategoryDashboard({token}){
               return (
                 <div key={c._id} className="col-1-3@xl col-1-3@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
                   <div className="wrapper bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">
+
+                    
                     <div className="element-xl-lg-md-sm">
                       <div className="col-1-1@xl col-1-1@xs padd-md flex-center">
                         {/* Image */}
@@ -96,6 +98,8 @@ function CategoryDashboard({token}){
                         </div>
                       </div>
                     </div>
+
+
                     <div className="element-xs">
                       {/* Image */}
                       <div className="col-1-1@xs padd-md flex-center">
@@ -120,7 +124,9 @@ function CategoryDashboard({token}){
                           <span>{c.searchCount}</span>
                         </div>                      
                       </div>
-                    </div>
+                    </div>   
+                    
+                                     
                     {/* Buttons */}
                     <div className="col-1-1@xl col-1-1@xs padd-md">
                     {/* Reset Searches */}
