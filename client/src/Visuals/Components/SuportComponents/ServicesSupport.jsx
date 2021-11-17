@@ -21,7 +21,7 @@ const ServicesSupport = () => {
     ]
     let publication = obj.map(e => {
         let card = 
-        <div className='m-1 mb-6 max-w-md py-4 px-8 bg-white shadow-2xl rounded-lg my-2'>
+        <div key={obj.indexOf(e)} className='m-1 mb-6 max-w-md py-4 px-8 bg-white shadow-2xl rounded-lg my-2'>
             <div>
                 <h2 className='text-gray-800 text-3xl font-semibold'>
                     {e.title}
