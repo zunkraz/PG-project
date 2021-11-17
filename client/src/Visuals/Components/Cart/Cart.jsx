@@ -46,7 +46,7 @@ let history = useHistory();
     //     setAvailability(e.id)
     // })
     objInfo.customerId = order[0].customerId;
-    objInfo.cart = order.map((e, i) => {
+    objInfo.cart = order.map(e => {
         return {
             name: e.name,
             price: e.price,
