@@ -1,3 +1,268 @@
+.FooterPrimaryDiv{
+    background-color:rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh 0px;
+}
+
+.FooterListPrimaryDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.FooterEndPrimaryDiv{
+    width: 80%;
+}
+
+.SellerDiv{
+    height: 40vh;
+    width: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.SellerLogo{
+    font-weight: bold;
+    font-size: x-large;
+    color: aliceblue;
+}
+
+.SellerText{
+    color: rgb(173, 173, 173);
+    font-weight: 600;
+}
+
+.SellerSubmit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SellerSubmit input{
+    background-color: transparent;
+    border: transparent;
+    height: 5vh;
+    width: 34vh;
+    border-bottom: 2px solid white;
+    color: white;
+    font-weight: bold;
+    margin-right: 1vh;
+}.SellerSubmit input::placeholder{
+    padding-left: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.SellerSubmit button{
+    color: white;
+    font-weight: 400;
+    font-size: larger;
+    background-color: red;
+    border: transparent;
+    height: 5vh;
+    width: 5vh;
+    transition: 0.5s;
+}
+.SellerSubmit button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+.ContactDiv{
+    width: 40vh;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ContactTitle{
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 3vh;
+    color: aliceblue;
+}
+
+.ContactLink{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 30vh;
+    color: rgb(173, 173, 173);
+}
+
+.ContactLink a{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.ContactLink a:hover{
+    text-decoration: none;
+    color: red;
+}
+
+.ContactLink span{
+    margin-left: 2vh;
+}
+
+.FooterListDiv{
+    display: flex;
+    flex-direction: column;
+}
+.FooterListTitle{
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 3vh;
+    color: aliceblue;
+}
+
+.FooterListTex{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.FooterListTex a{
+    color: rgb(173, 173, 173);
+    text-decoration: none;
+    transition: 0.5s;
+}
+.FooterListTex a:hover{
+    color: red;
+}
+
+
+.FooterEndDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(253, 253, 253);
+    margin-top: 4vh;
+    border-top: 2px solid gray;
+    padding-top: 4vh;
+}
+
+.FooterEndTitle{
+    font-weight: bold;
+}
+
+.FooterEndText{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.WeekTipsDiv{
+    background-color: rgba(128, 128, 128, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    padding: 5vh 20vh;
+}
+
+.WeekTipsTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.WeekTipsTitle span{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-bottom: 3px solid red;
+}
+
+.WeekTipsCardsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.WeekTipsCard{
+    background-color: rgba(128, 128, 128, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2vh;
+    overflow-y: scroll;
+    border-radius: 1vh;
+    margin-left: 3vh;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    width: 30vh;
+    height: 25vh;
+    max-height: 25vh;
+}
+
+.WeekTipsCard::-webkit-scrollbar, .scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+}.WeekTipsCard::-webkit-scrollbar-thumb, .scroll::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.2);;
+    border-radius: 4px;
+}
+.WeekTipsCard::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.3);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.WeekTipsCard::-webkit-scrollbar-thumb:active {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+.WeekTipsCard::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+.WeekTipsCard::-webkit-scrollbar-track:hover,
+.WeekTipsCard::-webkit-scrollbar-track:active {
+    background: transparent;
+}
+
+.PaginationBtnDiv button{
+    border: transparent;
+    height: 10vh;
+    width: 10vh;
+    border-radius: 20vh;
+    background-color: rgba(128, 128, 128, 0.1);
+    margin: 0px 10vh;
+    transition: 0.5s;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.PaginationBtnDiv button:hover{
+    transform: scale(1.5);
+    background-color: rgba(128, 128, 128, 0.00);
+    cursor: pointer;
+}
+
+.PaginationBtnDiv button:disabled{
+    background-color: transparent;
+    color: transparent;
+}
+
+.ProfessionalCard img{
+    width: 350px;
+}
+
+.ProfessionalSimilarCard{
+    width: 200px;
+}
 
 .nbg{
     height: 1100px;
