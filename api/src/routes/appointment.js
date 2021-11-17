@@ -5,15 +5,14 @@ const Appointment = require("../models/Appointment");
 
 const {appointmentDelete, appointmentUpdate,getAppointment} = require("../controllers/index.js");
 
-
-//POST APPOINTMENT
-router.post('/',(req,res,next)=>{
-  let data = req.body;
-  const newAppointment = new Appointment(data);
-  newAppointment.save()
-    .then(result => res.json(result))
-    .catch(err => next(err));
-});
+//POST APPOINTMENT      appointments are created at post(/INVOICE)
+// router.post('/',(req,res,next)=>{
+//   let data = req.body;
+//   const newAppointment = new Appointment(data);
+//   newAppointment.save()
+//     .then(result => res.json(result))
+//     .catch(err => next(err));
+// });
 
 //GET APPOINTMENTS by USER_ID
 router.get('/:userId',(req, res, next)=>{
@@ -24,7 +23,7 @@ router.get('/:userId',(req, res, next)=>{
     .catch(err => next(err));
 });
 
-//GET ALL APPOINTMENTS
+//GET ALL APPOINTMENTS     only for testing, it will be deleted later
 router.get('/',(req, res, next)=>{
   Appointment.find().populate('customerId', 'id username')
     .populate('professionalId', 'id username')
