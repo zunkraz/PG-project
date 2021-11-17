@@ -48,6 +48,7 @@ let history = useHistory();
     objInfo.customerId = order[0].customerId;
     objInfo.cart = order.map(e => {
         return {
+            key: e.id,
             name: e.name,
             price: e.price,
             id: e.id,
