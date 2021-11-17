@@ -36,7 +36,7 @@ function UserTable({usersAdmin, token}){
               onChange={event => handleSearch(event)}
               className="uk-input font-sm border-radius-sm"
               autoComplete="off"
-              placeholder="Buscar usuarios por: nombre, apellidos, correo, número de identificación"
+              placeholder="Buscar usuarios por: nombre, apellidos o correo."
             />
           </div>
         </div>

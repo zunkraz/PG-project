@@ -56,7 +56,7 @@ module.exports = (response,ML) => {
             description:description,
             numberOfSessions:auxArray[day].length
           });
-          allAppointments.push(d);
+          allAppointments.push(d.save());
         }
       }
       console.log('ALL APPOINTMENTS: ',allAppointments);
