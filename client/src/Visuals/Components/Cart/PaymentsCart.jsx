@@ -16,15 +16,13 @@ const PaymentsCart =  () => {
   window.scrollTo(0, 0)
    if(isProfessional){
     const payRender =   getCartInfo(customerId,true,token)
-     payRender.then(data => setRender(data));
+    payRender.then(data => setRender(data));
    }else{
-     const payRender =   getCartInfo(customerId,false,token)
-     payRender.then(data => setRender(data));
+    const payRender =   getCartInfo(customerId,false,token)
+    payRender.then(data => setRender(data));
    }
-    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[customerId, isProfessional, token]);
 
-  },[]);
     return ( 
     <div>
       {

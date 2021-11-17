@@ -37,7 +37,7 @@ function MeetGuide() {
                             </p>
                             <p className="mrg-xl-t">
                                 Antes de comenzar, recuerda estar logueado con tu cuenta de Google en <a href ="https://meet.google.com/" 
-                                target="_blank">Meet</a>
+                                target="_blank" rel="noreferrer">Meet</a>
                             </p>
                             <p className="mrg-xl-t">
                                 Ahora sigue las siguientes imagenes paso a paso!

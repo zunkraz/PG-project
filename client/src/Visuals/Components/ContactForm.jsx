@@ -36,9 +36,7 @@ export default function ContactForm(){
             }  else setError({});
         }
         if (name === "message" && value.length > 0) {
-            if(Object.entries(error).length > 0) {
-                setError({...error, message:''})
-            } else setError({})
+            setError({})
         }
     }
 
@@ -100,7 +98,7 @@ export default function ContactForm(){
                                         outline={false}
                                         placeholder="Ingresa tu nombre"
                                         onChange={e => handleChange(e)}
-                                        autocomplete="none"
+                                        autoComplete="none"
                                         required
                                         />
                                         {error.name &&
@@ -118,7 +116,7 @@ export default function ContactForm(){
                                         outline={false}
                                         placeholder="Ingresa tu email"
                                         onChange={e => handleChange(e)}
-                                        autocomplete="none"
+                                        autoComplete="none"
                                         required
                                         />
                                         {error.email &&
@@ -143,7 +141,7 @@ export default function ContactForm(){
                                     </div>
 
                                     <div>
-                                        <label style={labelStyle, {fontSize:"small"}}>Selecciona una temática para tu consulta</label>
+                                        <label>Selecciona una temática para tu consulta</label>
                                         <select
                                         name="thematic"
                                         onChange={e => handleChange(e)}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAvailability } from '../../../ApiReq/schedule';
+// import { setAvailability } from '../../../ApiReq/schedule';
 import { removeFromCart } from '../../../Controllers/actions/cartActions';
 
 //NO TOCAR CARRITO POR AHORA
