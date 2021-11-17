@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions';
 import * as FaIcons from "react-icons/fa";
 import Swal from 'sweetalert2';
@@ -9,9 +9,11 @@ import Swal from 'sweetalert2';
 function UserRow({user, token}){
   const dispatch = useDispatch();
   const [shown,setShown] = useState(true);
+  const userOnPage = useSelector(state=>state.sessionReducer.status);
 
   function handleUserDelete(username){
-    return Swal.fire({
+    if(userOnPage.id===user._id) return Swal.fire({text:'No puedes realizar esta acción sobre tu propio usuario, debe hacerlo otro administrador.',showConfirmButton:false,icon:"error"});
+    else return Swal.fire({
       text:`Desea borrar a ${username}? Esta acción no se puede deshacer.`,
       icon: 'question',
       showCancelButton: true,
@@ -50,6 +52,7 @@ function UserRow({user, token}){
       }});
   }
   function handleChangeRole(username,isAdmin){
+    if(userOnPage.id===user._id) return Swal.fire({text:'No puedes realizar esta acción sobre tu propio usuario, debe hacerlo otro administrador.',showConfirmButton:false,icon:"error"});
     return Swal.fire({
       text:`Desea cambiar el rol de ${username}?`,
       icon: 'question',
