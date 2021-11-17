@@ -107,7 +107,9 @@ function UserDashboard({userData}) {
                                     userData.isProfessional && 
                                     <PersonalDashboardContainer user={userData}/>
                                 }
-                                <Link to={`/${userData.username}/horarios`} >
+                                {
+                                    userData.isProfessional &&
+                                    <Link to={`/${userData.username}/horarios`} >
                                     <button
                                         className="my-3 w-full h-10 mr-4 rounded-xl duration-700
                                             ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
@@ -121,6 +123,7 @@ function UserDashboard({userData}) {
                                         </span>
                                     </button>
                                 </Link>
+                                }
 
                                 <Link to='/opinion' >
                                     <button

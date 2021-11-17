@@ -24,7 +24,7 @@ function ForgotPassword() {
     if (!usernames.length) {
       dispatch(getAllUsers());
     }
-  }, [usernames]);
+  }, [dispatch, usernames]);
 
   function changeInput(e) {
     setInputs((state) => ({ ...state, [e.target.name]: e.target.value }));
