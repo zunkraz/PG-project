@@ -44,28 +44,28 @@ function Nosotros() {
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/69180670?v=4'
                         title={<p className='font-main'>Sabrina Noel Vettorelo</p>}
-                        text='Soy Sabri, Reina en memes'
+                        text='Full Stack Developer | Biomedical Engineer'
                         name='sabrina'
                         onClick={handleRedirects}
                     />
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/83995401?v=4'
                         title={<p className='font-main'>Adriana Marta Cejas</p>}
-                        text='Soy Adri, la jefa del back'
+                        text='Web Developer'
                         name='adriana'
                         onClick={handleRedirects}
                     />
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/86806193?v=4'
                         title={<p className='font-main'>Agustin Ecker</p>}
-                        text='Soy Agus, pestaneo y te programo el Schedule'
+                        text='Full Stack Developer | International Business || Javascript | React | Nodejs | Python'
                         name='agustin'
                         onClick={handleRedirects}
                     />
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/85126037?v=4'
                         title={<p className='font-main'>Juan Pablo Lozano</p>}
-                        text='Soy Juan Pablo, Mientras como el postre te acomodo el responsive'
+                        text='Desarrollador Frontend | Diseñador UX / UI'
                         name='juanpablo'
                         onClick={handleRedirects}
                     />
@@ -74,28 +74,28 @@ function Nosotros() {
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/32313172?v=4'
                         title={<p className='font-main'>Antonio Rodríguez</p>}
-                        text='Soy Antonio, Te ordeno el Trello mientras pedaleo'
+                        text='Full-stack Developer en Independiente (freelance)'
                         name='antonio'
                         onClick={handleRedirects}
                     />
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/82003379?v=4'
                         title={<p className='font-main'>Nohelia Joeliana Rincon</p>}
-                        text='Soy Nohelia, mientras se hace la pizza te programo media App'
+                        text='Full Stack Web Developer || JavaScript || React || Express'
                         name='nohelia'
                         onClick={handleRedirects}
                     />
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/86378753?v=4'
                         title={<p className='font-main'>Mauricio Portillo</p>}
-                        text='Soy Mauri, Sale un fernecito mientras armamos el back?'
+                        text='Full Stack Dev | React - Redux - Boostrap - Node.js - Express - MongoDB - PostgreSQL'
                         name='mauricio'
                         onClick={handleRedirects}
                     />
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/49795628?v=4'
                         title={<p className='font-main'>Gaston Scocco</p>}
-                        text='Soy Gaston, dealer de memes y stickers'
+                        text='Full Stack Web Developer || JavaScript || React - Redux || NodeJS - Express - PostgresSQL 💻'
                         name='gaston'
                         onClick={handleRedirects}
                     />
