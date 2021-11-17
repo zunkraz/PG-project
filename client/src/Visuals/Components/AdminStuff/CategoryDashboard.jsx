@@ -67,31 +67,7 @@ function CategoryDashboard({token}){
       <BasicForm component={"categories"}/>
       {/* Listado de Categorias */}
       <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
-        {/*
-        <div className="flex flex-col ">
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-3">
-        <div className="py-2 align-middle inline-block min-w-min sm:px-6 lg:px-8">
-         <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-          <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-          <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Categoría
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Cantidad de búsquedas
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Resetear búsquedas
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Borrar
-            </th>
-          </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-          */}
-            {allCategories && allCategories.map(c=> {
+          {allCategories && allCategories.map(c=> {
               return (
                 <div key={c._id} className="col-1-3@xl col-1-3@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
                   <div className="wrapper bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">
@@ -170,16 +146,6 @@ function CategoryDashboard({token}){
                 </div>
               )
             })}
-            {/*
-          </tbody>
-        </table>
-        
-      </div>
-      </div>
-      </div>
-      </div>
-      */}
-        
       </div>
     </React.Fragment>
     )

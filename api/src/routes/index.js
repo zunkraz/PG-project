@@ -44,7 +44,8 @@ router.get('/', (req, res) => {
         schedules: 'http://localhost:3001/schedules',
         feedback: 'http://localhost:3001/feedback',
         invoice: 'http://localhost:3001/invoice',
-        report: 'http://localhost:3001/report'
+        report: 'http://localhost:3001/report',
+        appointment: 'http://localhost:3001/appointment'
     })
 });
 

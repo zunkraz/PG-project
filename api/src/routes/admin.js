@@ -1,7 +1,6 @@
 //admin routes
 const {Router} = require("express");
 const router = Router();
-//const passport = require('passport');
 const {roleAuth, loginAuth} = require('../controllers/auth/roleAuth');
 const {
   getAllUsersAdmin,
@@ -15,18 +14,15 @@ const {
   postTips,
   tipUpdate,
   tipDelete,
-  getAllTipsAdmin,
+  getAllTipsAdmin, getAllInvoicesAdmin,
   getAllReviewsAdmin, reviewUpdate, reviewDelete
 } = require('../controllers/index.js');
 const Appointment = require('../models/Appointment');
-const ClientInvoice = require('../models/ClientInvoice');
-const ProfInvoice = require('../models/ProfInvoice');
 const Report = require('../models/Report');
 
 //GET ALL USERS
-router.get('/users/:myId', loginAuth, roleAuth, (req,res,next)=>{
-  let {myId} = req.params;
-  getAllUsersAdmin(myId)
+router.get('/users', loginAuth, roleAuth, (req,res,next)=>{
+    getAllUsersAdmin()
     .then(result => res.json(result))
     .catch(err => next(err));
 });
@@ -46,8 +42,8 @@ router.put('/users/:username', loginAuth, roleAuth, (req,res,next)=>{
     .catch(err => next(err));
 });
 
-//GET ALL APPOINTMENTS
-router.get('/appointment', loginAuth, roleAuth,(req,res,next)=>{
+//GET ALL APPOINTMENTS      , loginAuth, roleAuth
+router.get('/appointment',(req,res,next)=>{
   Appointment.find().populate('customerId', 'id username')
     .populate('professionalId', 'id username')
     .then(result => res.json(result))
@@ -145,18 +141,13 @@ router.delete('/reviews/:id', loginAuth, roleAuth, (req,res,next)=>{
 
 //GET "ALL" INVOICES
 router.get('/invoices', loginAuth, roleAuth,(req,res,next)=>{
-  let resp = [];
-  ClientInvoice.find()
-    .then(r => resp.push(r))
-    .then(() => ProfInvoice.find())
-    .then(r => {
-          resp.push(r);
-          res.json(resp)})
+  getAllInvoicesAdmin()
+    .then(result => res.json(result))
     .catch(err => next(err))
 });
 
-//GET ALL REPORTS
-router.get('/report',(req,res,next)=>{
+//GET ALL REPORTS        , loginAuth, roleAuth
+router.get('/reports',(req,res,next)=>{
   Report.find().populate('userId','username')
     .then(result => res.json(result))
     .catch(err => next(err));

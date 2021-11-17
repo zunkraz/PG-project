@@ -48,47 +48,12 @@ function TipDashboard({token}){
       <div className="wrapper">
         {/* Listado de Tips */}
         <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md" data-uk-height-match=".normalize">
-        {/*
-        <div className="flex flex-col ">
-          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-3">
-            <div className="py-2 align-middle inline-block min-w-min sm:px-6 lg:px-8">
-              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                  <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Texto
-                    </th>
-                    {tipCateg==="Todas"?
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Categoría
-                      </th>
-                      :<th/>}
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Estado
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium whitespace-nowrap text-gray-500 uppercase tracking-wider">
-                      Cambiar estado
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Borrar
-                    </th>
-                  </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                  */}
-                  {
-                    allTips && allTips.filter(t => {
-                      if (tipCateg==='Todas') return true;
-                      else return t.categoryId?t.categoryId._id === tipCateg:false;
-                    }).map(t=> <TipDashboardItem key={t._id} tip={t}  token={token} tipCateg={tipCateg}/>)
-                  }
-                    {/*
-                  </tbody>
-                </table>
-              </div></div></div></div>
-        <div>        
-        */}
+             {
+                allTips && allTips.filter(t => {
+                   if (tipCateg==='Todas') return true;
+                   else return t.categoryId?t.categoryId._id === tipCateg:false;
+                }).map(t=> <TipDashboardItem key={t._id} tip={t}  token={token} tipCateg={tipCateg}/>)
+             }
         </div>
       </div>
     </React.Fragment> 
