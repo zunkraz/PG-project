@@ -88,6 +88,7 @@ export default function RegisterFormUser(){
                 icon: 'success',
                 title: 'Cuenta creada!',
                 confirmButtonText: 'Iniciar sesión',
+                allowOutsideClick:false
             }).then(function() {
                 window.location = "/ingresar";
             })
@@ -133,6 +134,7 @@ export default function RegisterFormUser(){
                 icon: 'success',
                 title: 'Cuenta creada!',
                 confirmButtonText: 'Iniciar sesión',
+                allowOutsideClick:false
             }).then(function() {
                 window.location = "/ingresar";
             })

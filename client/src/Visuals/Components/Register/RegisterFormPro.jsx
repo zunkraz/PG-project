@@ -101,6 +101,7 @@ export default function RegisterFormPro(){
                 icon: 'success',
                 title: 'Cuenta creada!',
                 confirmButtonText: 'Iniciar sesión',
+                allowOutsideClick:false
             }).then(function() {
                 window.location = "/ingresar";
             })
