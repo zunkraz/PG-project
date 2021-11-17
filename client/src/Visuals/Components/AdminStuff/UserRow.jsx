@@ -1,14 +1,19 @@
-import React from 'react';
-import {useDispatch} from "react-redux";
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions';
 import * as FaIcons from "react-icons/fa";
 import Swal from 'sweetalert2';
+//import {sendMail} from "../../../ApiReq/mails";
+//import passwordGenerator from "../ResetPassword/passwordGenerator";
 
 function UserRow({user, token}){
   const dispatch = useDispatch();
+  const [shown,setShown] = useState(true);
+  const userOnPage = useSelector(state=>state.sessionReducer.status);
 
   function handleUserDelete(username){
-    return Swal.fire({
+    if(userOnPage.id===user._id) return Swal.fire({text:'No puedes realizar esta acción sobre tu propio usuario, debe hacerlo otro administrador.',showConfirmButton:false,icon:"error"});
+    else return Swal.fire({
       text:`Desea borrar a ${username}? Esta acción no se puede deshacer.`,
       icon: 'question',
       showCancelButton: true,
@@ -22,9 +27,11 @@ function UserRow({user, token}){
         Swal.fire({
           text:`${username} eliminado.`,
           icon:'error',
-          confirmButtonColor: "rgba(232,52,84,0.84)"})}})
+          confirmButtonColor: "rgba(232,52,84,0.84)"});
+      setShown(false);
+      }});
   }
-  function handleResetPassword(username){
+  function handleResetPassword(username,email){
     return Swal.fire({
       text:`Desea resetear el password de ${username}?`,
       icon: 'question',
@@ -35,13 +42,17 @@ function UserRow({user, token}){
       cancelButtonColor: "#8c8f9a",
     }).then(result => {
       if(result.isConfirmed){
-        dispatch(putAdminUser(username, {password: '123456'}, token));
+        let password = '123456'//passwordGenerator();
+        dispatch(putAdminUser(username, {password}, token));  //modificar putUser en apireq/admin con {...info,force:true}?
         Swal.fire({
-          text:`Password cambiado.`,
+          text:`Password cambiado, instrucciones enviadas a ${email}.`,
           icon:'success',
-          confirmButtonColor: "rgb(165 220 134)"})}})
+          confirmButtonColor: "rgb(165 220 134)"});
+        // sendMail("resetPassAdmin",{password,username,email})
+      }});
   }
   function handleChangeRole(username,isAdmin){
+    if(userOnPage.id===user._id) return Swal.fire({text:'No puedes realizar esta acción sobre tu propio usuario, debe hacerlo otro administrador.',showConfirmButton:false,icon:"error"});
     return Swal.fire({
       text:`Desea cambiar el rol de ${username}?`,
       icon: 'question',
@@ -52,12 +63,12 @@ function UserRow({user, token}){
       cancelButtonColor: "#8c8f9a",
   }).then(result => {
       if (result.isConfirmed) {
-        if (isAdmin) dispatch(putAdminUser(username, {isAdmin: false}, token));
-        else dispatch(putAdminUser(username, {isAdmin: true}, token));
+        dispatch(putAdminUser(username, {isAdmin: !isAdmin}, token));
         Swal.fire({
           text:`${username} ahora es ${isAdmin?'usuario':'administrador'}.`,
           icon:'success',
-          confirmButtonColor: "rgb(165 220 134)"})
+          confirmButtonColor: "rgb(165 220 134)"});
+        user.isAdmin = !user.isAdmin;
       }})
   }
   function handleVerifyUser(username,isVerified){
@@ -75,10 +86,12 @@ function UserRow({user, token}){
         Swal.fire({
           text:`Estado de cuenta cambiado.`,
           icon:'success',
-          confirmButtonColor: "rgb(165 220 134)"})}})
+          confirmButtonColor: "rgb(165 220 134)"});
+        user.isVerified = !user.isVerified;
+      }});
   }
 
-  return (
+  return ( shown &&
     <div className="col-1-4@xl col-1-3@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
       <div className="padd-md bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">
         {/* Image - Username - User */}
@@ -136,7 +149,7 @@ function UserRow({user, token}){
 
         {/* Is Verified */}
         <div className="padd-md font-sm flex-bar">
-          <div className="text-bold">Usuario Verficado:</div>
+          <div className="text-bold">Usuario Verificado:</div>
           {user.isProfessional?<button onClick={() => handleVerifyUser(user.username, user.isVerified)}>{
             user.isVerified ? <FaIcons.FaCheck color={'green'}/> : <FaIcons.FaTimes color={'red'}/>}</button>:'No Aplica'}
         </div>
@@ -145,7 +158,7 @@ function UserRow({user, token}){
         <div className="padd-md font-sm">
           <button
             className="width-100 padd-sm border-radius-sm action action-primary flex-center"
-            onClick={()=>handleResetPassword(user.username)}
+            onClick={()=>handleResetPassword(user.username,user.email)}
           >
             <FaIcons.FaRedo/>&emsp;Restablecer Contraseña
           </button>

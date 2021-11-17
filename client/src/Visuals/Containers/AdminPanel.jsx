@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {getAdminUsers} from '../../Controllers/actions/adminActions';
 import {useDispatch, useSelector} from "react-redux";
 import UserTable from "../Components/AdminStuff/UserTable";
-//import BigButton from "../Components/BigButton";
 import CategoryDashboard from "../Components/AdminStuff/CategoryDashboard";
 import CountryDashboard from "../Components/AdminStuff/CountryDashboard";
 import TipDashboard from "../Components/AdminStuff/TipDashboard";
 import ReviewDashboard from "../Components/AdminStuff/ReviewDashboard";
-import AppointmentDashboard from "../Components/AdminStuff/AppointmentDashboard";
+import ReportDashboard from "../Components/AdminStuff/ReportDashboard";
+import InvoicesDashboard from "../Components/AdminStuff/InvoicesDashboard";
 import {Redirect} from "react-router-dom";
 import Swal from 'sweetalert2';
 import ComponentHeader from '../Components/ComponentHeader';
@@ -27,8 +27,8 @@ function AdminPanel(){
   const {token} = userOnPage;
 
   useEffect(()=>{
-    if(userOnPage.username==='sccocogaston') Swal.fire({
-      title: 'Hola Gastón!',
+    if(btoa(userOnPage.username)==='c2Njb2NvZ2FzdG9u') Swal.fire({
+      title: atob('SG9sYSBHYXN0824h'),
       width: 260,
       confirmButtonText: '👻',
       confirmButtonColor: 'rgb(239 239 239)',
@@ -42,7 +42,7 @@ function AdminPanel(){
 
   useEffect(()=>{
     window.scrollTo(0,0);
-    dispatch(getAdminUsers(userOnPage.id,token));
+    dispatch(getAdminUsers(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[userDeleted,userModified]);
 
@@ -56,15 +56,10 @@ function AdminPanel(){
     Paises:buttonNonSelected,
     Tips:buttonNonSelected,
     Opiniones:buttonNonSelected,
+    Reportes:buttonNonSelected
   };
   const [buttons,setButtons] = useState({...buttonsOff,Usuarios:buttonSelected});
-
-  const divStyle ={
-    display: 'flex',
-    marginLeft:'30px',
-    marginBottom:'5px'
-  }
-
+  console.log(buttons[0]);
   function handleShown(e){
     if(e.target.type === 'submit') {
       setButtons({...buttonsOff,[e.target.innerText]:buttonSelected});
@@ -74,14 +69,13 @@ function AdminPanel(){
       setShownData(e.target.value);
     }    
   }
-  //const userOnPage = {isAdmin:true};
+
   if (userOnPage.isAdmin) return (
     <React.Fragment>
       <div className="wrapper">
         <ComponentHeader data={componentHeaderData} />
       </div>
       <div className="wrapper">
-        {/* <h1 className='uk-padding text-bold font-main font-1x'>Panel de Administrador</h1> style={divStyle}*/}
         <section>
           <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm padd-md element-sm-xs">
             <div className="padd-md">
@@ -93,6 +87,7 @@ function AdminPanel(){
                 <option value="Países">Países</option>
                 <option value="Tips">Tips</option>
                 <option value="Opiniones">Opiniones</option>
+                <option value="Reportes">Reportes</option>
               </select>
             </div>
           </div>
@@ -146,21 +141,22 @@ function AdminPanel(){
                 Opiniones
               </button>
             </div>
-            {/*
-            <BigButton text="Usuarios" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Usuarios} />
-            <BigButton text="Facturación" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Facturacion} />
-            <BigButton text="Categorías" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Categorias} />
-            <BigButton text="Países" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Paises} />
-            <BigButton text="Tips" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Tips} />
-            <BigButton text="Opiniones" onClickFunction={(e)=>handleShown(e)} cssActive={buttons.Opiniones} />
-            */}
+            <div className="col-1-6@xl col-1-6@lg col-1-6@md padd-md">
+              <button
+                className={`width-100 padd-sm border-2x border-radius-sm ${shownData === 'Reportes' ? 'bg-color-main font-color-light border-color-main' : 'action action-main'}`}
+                onClick={(e)=>handleShown(e)}
+              >
+                Reportes
+              </button>
+            </div>
           </div>
           {shownData==="Usuarios" && <UserTable usersAdmin={usersAdmin} token={token}/>}
           {shownData==="Categorías" && <CategoryDashboard token={token}/>}
-          {shownData==="Facturación" && <AppointmentDashboard token={token}/>}
+          {shownData==="Facturación" && <InvoicesDashboard token={token}/>}
           {shownData==="Países" && <CountryDashboard token={token}/>}
           {shownData==="Tips" && <TipDashboard token={token}/>}
           {shownData==="Opiniones" && <ReviewDashboard token={token}/>}
+          {shownData==="Reportes" && <ReportDashboard token={token}/>}
         </section>
       </div>
     </React.Fragment>

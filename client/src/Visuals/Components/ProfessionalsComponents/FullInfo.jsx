@@ -64,6 +64,7 @@ export default function FullInfo({profData}) {
                             }</h3>
                         </div>
                     </div>
+
                 </div>
                 
             

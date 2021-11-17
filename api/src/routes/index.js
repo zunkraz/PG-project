@@ -48,6 +48,7 @@ router.get('/', (req, res) => {
         invoice: 'http://localhost:3001/invoice',
         report: 'http://localhost:3001/report',
         contactForm: 'http://localhost:3001/contact',
+        appointment: 'http://localhost:3001/appointment'
     })
 });
 

@@ -31,5 +31,6 @@ module.exports = (data) => {
     });
     allInvoices.push(i.save());
   }
+
   return Promise.all(allInvoices);
 }
