@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import CartElement from "./CartElement";
 import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
-// import { setAvailability } from "../../../ApiReq/schedule";
+import { setAvailability } from "../../../ApiReq/schedule";
 import Swal from 'sweetalert2'
 import { postCartInfo } from "../../../ApiReq/cart";
 
