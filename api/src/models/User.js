@@ -116,7 +116,7 @@ const user = new Schema(
       },
       memberSince: {
         type:Date,
-        default: Date.now
+        default: ()=>Date.now()
       }
     },
     { timestamp: true }
