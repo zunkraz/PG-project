@@ -116,7 +116,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
                             {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
-                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof">Contratar</button>
+                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="padd-sm mt-1 border-radius-sm font-sm action action-add-post w-full">Contratar</button>
                             
                             }
                         </div>
@@ -124,7 +124,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
                         <div>
                             {dateJoin(elem.date)}
                             <Link to='/ingresar'>
-                                <button className="btn-prof-nologin">
+                                <button className="padd-sm mt-1 border-radius-sm font-sm w-full action action-user-register-submit">
                                 <span>Inicia sesion para reservar</span>
                                 </button>
                                 </Link>
