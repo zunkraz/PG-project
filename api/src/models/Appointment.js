@@ -3,32 +3,41 @@ const Schema = mongoose.Schema;
 
 const appointment = new Schema(
     {
-        date:{
+      day:{
+        type: String
+      },
+      description: {
+        type: String
+      },
+      dates:[{
           shortcut:{
             type: Number
           },
           datefull:{
             type:String
           }
-        },
-        status: {
+        }],
+      numberOfSessions:{
+        type:Number
+      },
+      status: {
             type: String,
             enum: ['attended', 'pending'],
             default: 'pending',
         },
-        customerId: {
+      customerId: {
             type: Schema.Types.ObjectId, 
             ref: 'users',
             required: true,
         },
-        professionalId: {
+      professionalId: {
             type: Schema.Types.ObjectId, 
             ref: 'users',
             required: true,
         },
-        meetingToken: {
+      meetingLink: [{
           type: String
-        }
+        }]
     },
     { timestamp: true }
 )
