@@ -29,9 +29,9 @@ import {
     deleteCategory,
     deleteCountry,
     postCountry,
-    getAllTips,deleteTip,putTip,postTip,
-  getAllReviews,deleteReview,putReview,
-  getAllInvoices
+    getAllTips, deleteTip, putTip, postTip,
+    getAllReviews, deleteReview, putReview,
+    getAllInvoices, getAllReports
 } from '../../ApiReq/admin'
 
 export function getAdminUsers(token){
@@ -197,6 +197,15 @@ export function getAdminInvoices(token){
         let data = await getAllInvoices(token)
         return dispatch({
             type: "GET_ADMIN_INVOICES",
+            payload: data
+        })
+    }
+}
+export function getAdminReports(token){
+    return async function(dispatch){
+        let data = await getAllReports(token)
+        return dispatch({
+            type: "GET_ADMIN_REPORTS",
             payload: data
         })
     }

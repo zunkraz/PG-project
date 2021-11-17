@@ -100,3 +100,8 @@ export function getAllInvoices(token){
       .then(r => r.data)
       .catch(err=>err.response.data)
 }
+export function getAllReports(token){
+    return axios.get(`${url}/reports`, {headers: {jwt: token}, withCredentials: true})
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}
