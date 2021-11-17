@@ -3,6 +3,7 @@ import Button from "@material-tailwind/react/Button";
 import Textarea from "@material-tailwind/react/Textarea";
 import Input from "@material-tailwind/react/Input";
 import Swal from "sweetalert2";
+import { postContactForm } from "../../ApiReq/contactForm";
 
 export default function ContactForm(){
 
@@ -42,16 +43,27 @@ export default function ContactForm(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if(!input.hasOwnProperty("thematic")) {
+            return new Swal({
+                title:"Error",
+                text:"Debes informar la temática de tu consulta",
+                icon:"warning",
+                confirmButtonText:"Ok",
+                confirmButtonColor:"green"
+            })
+        }
         if(!input.message) {
             return setError({...error, message:"No olvides escribir tu consulta"})
         }
         if (Object.entries(error).length === 0) {
-            new Swal({
+            postContactForm(input)
+            return new Swal({
                 title:"¡Gracias!",
                 text:"Hemos recibido tu consulta",
                 width:"30vh",
-                type:"success",
+                icon:"success",
                 confirmButtonText:"Ok",
+                confirmButtonColor:"green"
             }).then(() => {
                 window.location.href = '/'
             })
@@ -98,7 +110,7 @@ export default function ContactForm(){
                                         outline={false}
                                         placeholder="Ingresa tu nombre"
                                         onChange={e => handleChange(e)}
-                                        autoComplete="off"
+                                        autoComplete="none"
                                         required
                                         />
                                         {error.name &&
@@ -116,7 +128,7 @@ export default function ContactForm(){
                                         outline={false}
                                         placeholder="Ingresa tu email"
                                         onChange={e => handleChange(e)}
-                                        autoComplete="off"
+                                        autoComplete="none"
                                         required
                                         />
                                         {error.email &&
@@ -132,7 +144,7 @@ export default function ContactForm(){
                                         color="pink"
                                         size="sm"
                                         outline={false}
-                                        autoComplete="off"
+                                        autoComplete="on"
                                         placeholder="Ingresa tu teléfono (opcional)"
                                         onChange={e => handleChange(e)}
                                         />

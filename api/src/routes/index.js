@@ -14,6 +14,7 @@ const invoice = require('./invoice');
 const emails = require('./emails');
 const appointment = require('./appointment');
 const report =  require('./report');
+const contact = require('./contact');
 
 router.use('/tips', tips);
 router.use('/professionals', professionals);
@@ -29,6 +30,7 @@ router.use('/invoice',invoice);
 router.use('/emails', emails);
 router.use('/appointment',appointment);
 router.use('/report', report);
+router.use('/contact', contact);
 
 router.get('/', (req, res) => {
     res.send({
@@ -45,6 +47,7 @@ router.get('/', (req, res) => {
         feedback: 'http://localhost:3001/feedback',
         invoice: 'http://localhost:3001/invoice',
         report: 'http://localhost:3001/report',
+        contactForm: 'http://localhost:3001/contact',
         appointment: 'http://localhost:3001/appointment'
     })
 });
