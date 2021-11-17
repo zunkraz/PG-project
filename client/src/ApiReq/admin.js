@@ -3,8 +3,8 @@ import {BASIC_URL} from '../constants'
 
 const url = `${BASIC_URL}/admin`;
 
-export function getAllUsers(id,token){
-    return axios.get(`${url}/users/${id}`, {headers: {jwt: token}, withCredentials: true})
+export function getAllUsers(token){
+    return axios.get(`${url}/users`, {headers: {jwt: token}, withCredentials: true})
     .then(r => r.data)
     .catch(err=>err.response.data)
 };
@@ -92,6 +92,11 @@ export function deleteReview(_id, token){
 }
 export function putReview(info, _id, token){
     return axios.put(`${url}/reviews/${_id}`, info, {headers: {jwt: token}, withCredentials: true})
+      .then(r => r.data)
+      .catch(err=>err.response.data)
+}
+export function getAllInvoices(token){
+    return axios.get(`${url}/invoices`, {headers: {jwt: token}, withCredentials: true})
       .then(r => r.data)
       .catch(err=>err.response.data)
 }

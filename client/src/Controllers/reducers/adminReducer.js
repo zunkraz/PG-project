@@ -31,6 +31,7 @@ const initialState = {
     adminReviews:[],
     reviewModified:{},
     reviewDeleted:{},
+    adminInvoices:[]
 }
 
 export default function adminReducer(state=initialState,{type,payload}){
@@ -119,6 +120,11 @@ export default function adminReducer(state=initialState,{type,payload}){
             return {
                 ...state,
                 reviewDeleted: payload
+            }
+        case "GET_ADMIN_INVOICES":
+            return {
+                ...state,
+                adminInvoices: payload
             }
         default:
             return {
