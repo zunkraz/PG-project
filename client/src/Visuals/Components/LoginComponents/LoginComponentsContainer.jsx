@@ -16,16 +16,19 @@ import Swal from 'sweetalert2'
 
 
 
-function LoginComponentsContainer() {
+function LoginComponentsContainer({match}) {
 
     //funcion que llame el listado de usernames y mails
     const dispatch = useDispatch()
-    
+    const username = match.query.username
+    const password = match.params.password
+
     useEffect(() => {
         dispatch(getAllUsers())
         window.scrollTo(0, 0)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    
     const LogError = useSelector(state =>  state.sessionReducer.status.error)
     useEffect(() => {
         if(LogError){
@@ -60,6 +63,10 @@ function LoginComponentsContainer() {
 
     // FUNCTIONS ///////////////
 
+    const paramLogin=()=>{
+        (username && password) &&  dispatch(checkLoginAction({username, password}))
+    }
+
     const handleErrors=()=>{
         if(userFind.length>0){
             setErrors({
@@ -81,7 +88,6 @@ function LoginComponentsContainer() {
             ...errors, [prop]:''
         })
     }
-    console.log('errors =>',errors)
     const checkErrors=()=>{
         if(errors.username.length>0){
             setUserCanLog(true)
@@ -90,11 +96,9 @@ function LoginComponentsContainer() {
             setUserCanLog(true)
         }
         if(!errors.username.length && !errors.password.length){
-            console.log('tomate')
             setUserCanLog(false)
         }
         if(!errors.password.length && !errors.username.length){
-            console.log('naranja')
             setUserCanLog(false)
         }
     }
@@ -131,6 +135,7 @@ function LoginComponentsContainer() {
                     ...userFields, password:e.target.value
                 })
                 checkErrors()
+                
                 setShowErrorText(false)
             }else if(e.target.value.length<=5){
                 setUserCanLog(true)
@@ -246,7 +251,8 @@ function LoginComponentsContainer() {
             }
         }
     }
-
+    console.log(username, password)
+    
 
     const changeCheck=()=>{
         setChecked(!checked);

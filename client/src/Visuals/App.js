@@ -39,8 +39,8 @@ function App() {
         <Route exact path='/'>
           <Home/>
         </Route>
-        <Route path='/ingresar'>
-          <LoginComponentsContainer/>
+        <Route path='/ingresar'
+          render={({match})=><LoginComponentsContainer match={match}/>}>
         </Route>
         <Route path='/profesionales/:username'>
           <ProfessionalDashboard/>
