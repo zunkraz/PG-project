@@ -32,7 +32,7 @@ export default function FullInfo({profData}) {
                             <h3 className='capitalize'>{
                                 title
                                 ? title
-                                : "N/A"
+                                : " - "
                                 }
                             </h3>
                         </div>
@@ -41,19 +41,26 @@ export default function FullInfo({profData}) {
                             <h3 className='capitalize'>{
                                 institute
                                 ? institute
-                                : "N/A"
+                                : " - "
                                 }
                             </h3>
                         </div>
                         <div className='little-box'>
                             <span>Ubicación</span>
-                            <h3 className='capitalize'>{`${city} (${state})`}</h3>
+                            <h3 className='capitalize'>
+                                {
+                                    city
+                                    ?city
+                                    :state
+                                    ?state
+                                    : " - "
+                                }</h3>
                         </div>
                         <div className='little-box'>
                             <span>Miembro desde</span>
                             <h3>{memberSince
                                 ? memberSince.slice(0,10)
-                                : "01/01/2000"
+                                : "01/11/2021"
                             }</h3>
                         </div>
                     </div>
