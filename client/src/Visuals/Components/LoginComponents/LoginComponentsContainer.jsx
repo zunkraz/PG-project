@@ -1,6 +1,6 @@
 import React , { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect } from 'react-router'
+import { Redirect, useHistory, useLocation } from 'react-router'
 import { checkLoginAction, cleanLoginCheck } from '../../../Controllers/actions/loginAction'
 import { getAllUsers } from '../../../Controllers/actions/userActions'
 
@@ -20,8 +20,12 @@ function LoginComponentsContainer({match}) {
 
     //funcion que llame el listado de usernames y mails
     const dispatch = useDispatch()
-    //const username = match.query.username
-    //const password = match.params.password
+    const history = useHistory()
+
+    const {search} = useLocation()
+    const query= new URLSearchParams(search)
+    const usernameQ = query.get('username');
+    const passwordQ = query.get('helper')
 
     useEffect(() => {
         dispatch(getAllUsers())
@@ -63,10 +67,8 @@ function LoginComponentsContainer({match}) {
 
     // FUNCTIONS ///////////////
 
-    const paramLogin=()=>{
-        //(username && password) &&  dispatch(checkLoginAction({username, password}))
-    }
-
+    
+    
     const handleErrors=()=>{
         if(userFind.length>0){
             setErrors({
@@ -97,9 +99,11 @@ function LoginComponentsContainer({match}) {
         }
         if(!errors.username.length && !errors.password.length){
             setUserCanLog(false)
+            return true
         }
         if(!errors.password.length && !errors.username.length){
             setUserCanLog(false)
+            return true
         }
     }
     
@@ -251,8 +255,22 @@ function LoginComponentsContainer({match}) {
             }
         }
     }
-    //console.log(username, password)
-    
+    const helperLogin=(username, password)=>{
+        !userFields.username && setuserFields({
+            username,
+            password
+        })
+        errors.username&&setErrors({
+            ...errors,
+            username:''
+        })
+        errors.password&&setErrors({
+            ...errors,
+            password:''
+        })
+        dispatch(checkLoginAction({username, password}))
+    }
+    (usernameQ && passwordQ) && helperLogin(usernameQ, passwordQ);
 
     const changeCheck=()=>{
         setChecked(!checked);
