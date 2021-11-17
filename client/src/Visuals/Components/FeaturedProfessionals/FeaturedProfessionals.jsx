@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import FeaturedProfessional from './FeaturedProfessional';
 import ProfessionalCardComponent from './../ProfessionalCardComponent';
 import {getProfessionals} from '../../../ApiReq/professionals';
 

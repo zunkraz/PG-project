@@ -11,8 +11,9 @@ const reviews = require('./reviews')
 const schedules = require('./schedules');
 const feedback = require('./feedback');
 const invoice = require('./invoice');
+const emails = require('./emails');
 const appointment = require('./appointment');
-
+const report =  require('./report');
 
 router.use('/tips', tips);
 router.use('/professionals', professionals);
@@ -25,7 +26,9 @@ router.use('/countries', countries);
 router.use('/schedules', schedules);
 router.use('/feedback', feedback);
 router.use('/invoice',invoice);
+router.use('/emails', emails);
 router.use('/appointment',appointment);
+router.use('/report', report);
 
 router.get('/', (req, res) => {
     res.send({
@@ -40,7 +43,8 @@ router.get('/', (req, res) => {
         tips: 'http://localhost:3001/tips',
         schedules: 'http://localhost:3001/schedules',
         feedback: 'http://localhost:3001/feedback',
-        invoice: 'http://localhost:3001/invoice'
+        invoice: 'http://localhost:3001/invoice',
+        report: 'http://localhost:3001/report'
     })
 });
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import EditInputComponent from './EditInputComponent'
 import '../../Assets/css/editData.custom.css'
-import PopBtns from './PopBtns'
+import PopBtns from '../PopBtns'
 
 
 
@@ -17,7 +17,7 @@ function EditDataComponent(props) {
     
     return (
         <div className='flex'>
-            <div className='flex flex-col items-center justify-between h-80 w-96'>
+            <div className='flex flex-col items-center justify-between h-80 w-96 my-10'>
                 {props.userInfo==='personalInfo'&&
                     <div className='flex flex-col h-64 justify-around w-96 max-h-72'>
                         <EditInputComponent

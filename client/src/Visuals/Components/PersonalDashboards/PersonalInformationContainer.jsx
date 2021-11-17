@@ -6,7 +6,6 @@ import PopContainer from '../PopContainer';
 import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
 import Swal from 'sweetalert2'
-import { updateUserData } from '../../../ApiReq/users';
 import { useDispatch, useSelector } from 'react-redux'
 import { putUser } from '../../../Controllers/actions/userActions';
 import EditPresentation from './EditPresentation';
@@ -17,7 +16,7 @@ import FormPassword from './FormPassword';
 
 function PersonalInformationContainer({userData, changeUserState, userInfo, isProf}) {
 
-
+    
     const [popState, setPopState] = useState(false)
     const [popOffer, setPopOffer] = useState(false)
     const [popPass, setPopPass] = useState(false)
@@ -39,6 +38,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         nombre : userData.name,
         apellido : userData.lastname,
         cumpleaños : userData.birthdate,
+        'Miembro desde' : userData.memberSince,
     }
 
     const getValue=(data)=>{
@@ -48,8 +48,11 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 matricula: userData.professionalRegistration,
                 titulo : userData.title,
                 universidad: userData.institute,
+                '  ':'',
                 'Link - Google Meet': userData.meetingUrl,
-                'cuenta bancaria': userData.bankAccount,
+                'Cuenta Bancaria': userData.bankAccount,
+                'Precio por hora': `USD $ ${userData.cost}`,
+                '   ' : '',
                 pais : userData.country.name,
                 estado : userData.state,
                 ciudad : userData.city,
@@ -68,12 +71,18 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
 
     const [postProfData, setpostProfData] = useState({
         img: userData.img,
-        title : userProfInfo.titulo,
+        title : userData.title,
         institute: userData.institute,
         meetingUrl: userData.meetingUrl,
         bankAccount: userData.bankAccount,
         state : userData.state,
         city : userData.city,
+    })
+
+    const [postDetails, setPostDetails] = useState({
+        biography: userData.biography,
+        usd : userData.cost?.toString().split('.')[0],
+        cent : userData.cost?.toString().split('.')[1]
     })
 
     const handleEditFields=(e)=>{
@@ -139,6 +148,25 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     city: e.target.value
                 })
                 break;
+
+            case 'biography':
+                setPostDetails({
+                    ...postDetails,
+                    biography: e.target.value,
+                })
+                break;
+            case 'usd':
+                setPostDetails({
+                    ...postDetails,
+                    usd: e.target.value,
+                })
+                break;
+            case 'cent':
+                setPostDetails({
+                    ...postDetails,
+                    cent: e.target.value,
+                })
+                break;
             default:
                 break;
         }
@@ -148,24 +176,37 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
     const dispatch = useDispatch()
 
     const sendPersData=()=>{
-        setPopState(!popState)
-        dispatch(putUser(userData.username, {...postPersData, token}))
-        Swal.fire(
-            'Datos enviados! personal',
-            'Pronto vera los cambios efectuados',
-            'success'
-        )
-        history.push(`/miperfil/${userData.username}`)
-    }
-    const sendProfData=()=>{
-        setPopState(!popState)
-        dispatch(putUser(userData.username, {...postProfData, token}))
+        setPopState(!popState);
+        dispatch(putUser(userData.username, {...postPersData, token}));
         Swal.fire(
             'Datos enviados!',
             'Pronto vera los cambios efectuados',
             'success'
-        )
-        history.push(`/miperfil/${userData.username}`)
+        );
+        history.push(`/miperfil/${userData.username}`);
+    }
+    const sendProfData=()=>{
+        setPopState(!popState);
+        dispatch(putUser(userData.username, {...postProfData, token}));
+        Swal.fire(
+            'Datos enviados!',
+            'Pronto vera los cambios efectuados',
+            'success'
+        );
+        history.push(`/miperfil/${userData.username}`);
+    }
+    const sendBioCost=()=>{
+        setPopOffer(!popOffer);
+        dispatch(putUser(userData.username, {
+            biography: postDetails.biography, 
+            cost: parseFloat(`${postDetails.usd}.${postDetails.cent}`),
+            token,
+        }));
+        Swal.fire(
+            'Datos enviados!',
+            'Pronto vera los cambios efectuados',
+            'success'
+        );
     }
 
     const editData=()=>{
@@ -267,10 +308,9 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 <PopContainer   trigger={popOffer}
                                 children={<EditPresentation
                                         onChange={handleEditFields}
-                                        onSuccess={userInfo==='personalInfo'?sendPersData:sendProfData}
-                                        data={userInfo==='personalInfo'?postPersData:postProfData}
+                                        onSuccess={sendBioCost}
+                                        data={postDetails}
                                         onCancel={editOffer}
-                                        userInfo={userInfo}
                                     />}
                     />
             </div>
@@ -280,11 +320,13 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                         {
                             Object.keys(userNormalInfo)?.map((elem, index)=>{
                                 let dateIndex = (userData.birthdate && (!userData.googleAccount && elem==='cumpleaños')) ? userNormalInfo[elem].indexOf('T'):0
+                                let sinceIndex = (userData.memberSince && (!userData.googleAccount && elem==='Miembro desde')) ? userNormalInfo[elem].indexOf('T'):0
                                 let data = (elem==='cuenta bancaria'|| elem==='contraseña')?'*************':userNormalInfo[elem]
                                 let date = (userData.birthdate && elem==='cumpleaños') && userNormalInfo[elem].slice(0, dateIndex)
+                                let since = (userData.memberSince && elem==='Miembro desde') && userNormalInfo[elem].slice(0, sinceIndex)
                                 return (
                                         <ShowData   key={index} title={elem} 
-                                                        data={elem==='cumpleaños'?date:data}
+                                                        data={elem==='cumpleaños'?date:elem==='Miembro desde'?since:data}
                                                         divClass={showDataDiv}
                                                         spanClass={showDataSpan} 
                                                         pClass={showDataP}

@@ -27,7 +27,7 @@ select {
     width: 100%;
 }
 button {
-    color: inherit!important;
+    /*color: inherit!important;*/
     font-family: inherit; /* 1 */
     font-size: 100%; /* 1 */
     font-weight: inherit;

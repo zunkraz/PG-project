@@ -11,10 +11,8 @@ export default function ProfesionalsCatalog(){
     const profis= useSelector(state=>state.professionalReducer.professionalsRender)
     const error= useSelector(state=>state.professionalReducer.error)
 
-    const profPerPage= profis.length<12 ? profis.length : 12
-    const pageVisited= pageNumber * profPerPage
-    
-    const defImg= "https://media.istockphoto.com/photos/confident-businessman-portrait-isolated-picture-id455586761?s=612x612"
+    const profPerPage= profis.length<12 ? profis.length : 12;
+    const pageVisited= pageNumber * profPerPage;
 
     const displayProfs= profis.slice(pageVisited, pageVisited + profPerPage).map(data=>{
         return(
@@ -23,18 +21,7 @@ export default function ProfesionalsCatalog(){
             </div>
         )
     })
-    {/*
-    <ProfessionalCard 
-        key={data._id}
-        username={data.username}
-        name={data.name}
-        lastName= {data.lastname}
-        img={data.img ? data.img : defImg}
-        category= {data.category[0] ? data.category[0].name : null}
-        likes= {data.likes}
-        dislikes= {data.dislikes}
-    />
-    */}
+
     const pageCount= Math.ceil(profis.length / profPerPage)
     const changePage= ({selected})=>{
         setPageNumber(selected)

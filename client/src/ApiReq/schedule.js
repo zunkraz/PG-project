@@ -12,8 +12,8 @@ export async function getSchedulesById(id, token){
     .catch(r=>r.response.data);
 }
 
-export async function setAvailability(id, token){
-    const data= await axios.put(`${BASIC_URL}/schedules/${id}`, {headers: {jwt: token}, withCredentials: true})
+export async function setAvailability(id,value,token){
+    const data= await axios.put(`${BASIC_URL}/schedules/${id}`,{value}, {headers: {jwt: token}, withCredentials: true})
     return data
 }
 

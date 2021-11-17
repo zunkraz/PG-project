@@ -8,22 +8,31 @@ import FooterContact from './FooterContact'
 function Footer() {
 
     const utilLink = [
-        {name:'Politica de privacidad',url:'#'},
-        {name:'Politica de ventas',url:'/politica-ventas'},
-        {name:'Terminos y condiciones',url:'/terminos-y-condiciones'},
-        {name:'Reclamos',url:'#'},
-        {name:'Soporte',url:'/soporte/servicios'},
-        {name:'Servicio Tecnico',url:'#'},
-        //{name:'Derechos de propiedad intelectual',url:'#'},
+        {name:'Soporte', url:'/soporte/servicios'},
+        {name:'Preguntas Frecuentes', url:'/preguntas-frecuentes'},
+        {name:'Política de privacidad', url:'/politica-de-privacidad'},
+        {name:'Política de ventas', url:'/politica-de-ventas'},
+        {name:'Términos y condiciones',url:'/terminos-y-condiciones'},
+        // {name:'Contacto', url:'/contacto'},
+        // {name:'Reclamos',url:'#'},
+        // {name:'Servicio Tecnico',url:'#'},
+        // {name:'Derechos de propiedad intelectual',url:'#'},
     ]
 
     const info = [
+        {name:'Inicio',url:'/'},
+        {name:'Profesionales',url:'/profesionales'},
         {name:'Opinión',url:'/opinion'},
-        {name:'Nosotros',url:'#'},
-        {name:'Noticias',url:'#'},
-        {name:'Servicios',url:'#'},
-        {name:'Inversiones',url:'#'},
-        {name:'Proyectos',url:'#'}
+        {name:'Nosotros',url:'/nosotros'},        
+        {name:'Contacto',url:'/contacto'},
+        /*
+            {name:'Opinión',url:'/opinion'},
+            {name:'Nosotros',url:'#'},
+            {name:'Noticias',url:'#'},
+            {name:'Servicios',url:'#'},
+            {name:'Inversiones',url:'#'},
+            {name:'Proyectos',url:'#'}
+        */
     ]
 
 

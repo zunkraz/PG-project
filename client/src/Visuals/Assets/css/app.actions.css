@@ -223,3 +223,46 @@
     border: solid 2px var(--color-main);
 	color: var(--color-light)!important;   
 }
+
+.action-primary {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-primary);
+	color: var(--color-primary)!important;   
+}
+.action-primary:hover {
+	background-color: var(--color-primary);
+    border: solid 2px var(--color-primary);
+	color: var(--color-light)!important;   
+}
+
+.action-main {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-main);
+	color: var(--color-main)!important;   
+}
+.action-main:hover {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-light)!important;   
+}
+
+.action-danger {
+	background-color: var(--color-light);
+    border: solid 2px var(--color-danger);
+	color: var(--color-danger)!important;   
+}
+.action-danger:hover {
+	background-color: var(--color-danger);
+    border: solid 2px var(--color-danger);
+	color: var(--color-light)!important;   
+}
+.action-main-reverse {
+	background-color: var(--color-main);
+    border: solid 2px var(--color-main);
+	color: var(--color-light)!important;   
+}
+.action-main-reverse:hover {
+	background-color: var(--color-success);
+    border: solid 2px var(--color-light);
+	color: var(--color-light)!important;   
+}

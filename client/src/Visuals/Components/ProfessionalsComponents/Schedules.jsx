@@ -6,9 +6,9 @@ import {Link} from 'react-router-dom';
 import { addToCart } from '../../../Controllers/actions/cartActions';
 import Swal from 'sweetalert2';
 import { useJitsi } from 'react-jutsu';
+import { setAvailability } from '../../../ApiReq/schedule';
 
-
-export default function Schedules({id, login, name, lastname, category}) {
+export default function Schedules({id, login, name, lastname, category, cost}) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.sessionReducer.status.token);
 
@@ -37,6 +37,8 @@ export default function Schedules({id, login, name, lastname, category}) {
     const price = 10;
     const meetingRoom = (<div className='hidden' id={jitsiConfig.parentNode} />);
 
+    const price = cost?cost:0.01;
+
     function handleClick(e) {
         setLoad([...load, e.target.id])
         dispatch(addToCart({
@@ -53,17 +55,17 @@ export default function Schedules({id, login, name, lastname, category}) {
             professionalId:id,
             customerId:customerId
         }))
+        setAvailability(e.target.id,false,token);
         return Swal.fire({
             title: '¡Reserva hecha!',
             text: 'En tu carrito podrás abonar tu reserva',
             icon:'success',
             confirmButtonColor: "#FF214F",
             allowOutsideClick:false,
-        }
-        )
+        })
     };
     const dateJoin= (date)=>{
-        return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time
+        return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time+" hs"
     }
 
     const months= ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]

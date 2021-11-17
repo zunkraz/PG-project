@@ -1,30 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import ComponentHeader from './../Components/ComponentHeader';
 
-const pageData = {
-    title: "Terminos y Condiciones",
+const componentHeaderData = {
+    title: "Términos y Condiciones",
     subtitle: "Fecha de entrada en vigor: 10 de Noviembre 2021",
-    content: ""
+    bg: null,// Si esta propiedad se envia null, se asigna un fondo aleatorio.
 }
 
 function Terms() {
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
+    
     return (
         <React.Fragment>
-            <div className="wrapper bg-professional-title">
-                <div className="wrapper padd-lg bg-color-light-a80">
-                    <section>
-                        <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs">
-                            <div className='font-main'>
-                                <span className="padd-md-b padd-lg-r text-bold font-2x border-bottom-color-main">
-                                    {pageData.title}
-                                </span>
-                                <div className="mrg-sm-t font-lg">
-                                    {pageData.subtitle}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
+            <ComponentHeader data={componentHeaderData} />
             <div className="wrapper">
                 <div className="wrapper padd-lg">
                     <section>

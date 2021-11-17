@@ -18,11 +18,15 @@ import AdminPanel from "./Containers/AdminPanel";
 import Cart from './Components/Cart/Cart';
 import PaymentsCart from './Components/Cart/PaymentsCart';
 import Terms from './Containers/Terms';
+import PrivacyPolicy from './Containers/PrivacyPolicy';
 import SalesPolicy from './Containers/SalesPolicy';
 import Faq from './Containers/Faq';
 import Review from './Components/Review/Review';
 import MeetGuide from './Containers/MeetGuide';
-
+import ManageSchedule from './Components/ProfessionalsComponents/ManageSchedule';
+import Nosotros from './Containers/Nosotros'
+import "@material-tailwind/react/tailwind.css";
+import ContactForm from './Components/ContactForm';
 
 
 
@@ -41,7 +45,10 @@ function App() {
         </Route>
         <Route path='/profesionales/:username'>
           <ProfessionalDashboard/>
-        </Route>        
+        </Route>
+        <Route path='/:username/horarios'>
+          <ManageSchedule/>
+        </Route>      
         <Route path='/miperfil/:username'
           render={({match})=><Dashboard match={match}/>}>
         </Route>
@@ -65,11 +72,14 @@ function App() {
         </Route>
         <Route path="/facturas">
           <PaymentsCart/>
-          </Route>
+        </Route>
         <Route path="/terminos-y-condiciones">
           <Terms/>
         </Route>
-        <Route path="/politica-ventas">
+        <Route path="/politica-de-privacidad">
+          <PrivacyPolicy/>
+        </Route>
+        <Route path="/politica-de-ventas">
           <SalesPolicy/>
         </Route>
         <Route path="/preguntas-frecuentes">
@@ -80,6 +90,12 @@ function App() {
         </Route>
         <Route path="/opinion">
           <Review/>
+        </Route>
+        <Route path="/nosotros">
+          <Nosotros/>
+        </Route>
+        <Route path="/contacto">
+          <ContactForm/>
         </Route>
       </Switch>
         <Footer/>

@@ -3,16 +3,11 @@ import * as FaIcons from 'react-icons/fa';
 import {Link} from 'react-router-dom'
 import ImageComponent from "./ImageComponent";
 
-
-
 const ProfessionalCardComponent = ({data}) => {
-
-    const defImg= "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?b=1&k=20&m=1300845620&s=170667a&w=0&h=JbOeyFgAc6-3jmptv6mzXpGcAd_8xqkQa_oUK2viFr8="
-
     const {username, name, lastname, likes, dislikes} = data;
     const category = data.category.name;
     const country = data.country.name;
-    const img = data.img ? data.img : defImg;
+    const img = data.img ? data.img : "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?b=1&k=20&m=1300845620&s=170667a&w=0&h=JbOeyFgAc6-3jmptv6mzXpGcAd_8xqkQa_oUK2viFr8=";
     return (
         <div className="border-color-dark-a20 border-radius-sm overflow-hidden shadow-lg">
             <Link to={`/profesionales/${username}`} style={{ "textDecoration": "none" }}>

@@ -15,7 +15,7 @@ function LoginInputComponent(props) {
                 <BigButton onClickFunction={props.handleShowPass} text={props.textPassBtn} cssClass={props.classBtnPass}/>
             </div>
             <input  type={props.type}
-                    autocomplete="off" 
+                    autoComplete="off" 
                     name={props.name}
                     placeholder={props.placeholder}
                     className={props.classInput} 

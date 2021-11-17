@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import PopContainer from "../PopContainer";
 import LoginCreateAccount from './LoginCreateAccount'
 import { createUser } from '../../../ApiReq/users'
+import { sendMail } from '../../../ApiReq/mails'
 import Swal from 'sweetalert2'
 
 
@@ -44,7 +45,6 @@ function LoginComponentsContainer() {
     const [register, setRegister] = useState(false)
     const [checked, setChecked] = useState(false)
     const [googleData, setGoogleData] = useState({})
-
     const [usernameField, setUsernameField] = useState()
     const [passField, setPassField] = useState()
     
@@ -81,13 +81,20 @@ function LoginComponentsContainer() {
             ...errors, [prop]:''
         })
     }
-
-    const checkErrors = ()=>{
+    console.log('errors =>',errors)
+    const checkErrors=()=>{
         if(errors.username.length>0){
             setUserCanLog(true)
-        }else if(errors.password.length>0){
+        }
+        if(errors.password.length>0){
             setUserCanLog(true)
-        }else {
+        }
+        if(!errors.username.length && !errors.password.length){
+            console.log('tomate')
+            setUserCanLog(false)
+        }
+        if(!errors.password.length && !errors.username.length){
+            console.log('naranja')
             setUserCanLog(false)
         }
     }
@@ -103,15 +110,16 @@ function LoginComponentsContainer() {
                     cleanErrors('username')
                     checkErrors()
                     return
-                }else if(!userNames.includes(e.target.value)){
+                }
+                if(!userNames.includes(e.target.value)){
                     setUserIndex({})
                     setUserFind('')
                     handleErrors(e.target.name)
                     setUserCanLog(true)
                 }
                 userFind.length===0 && setErrors({
-                    username:'have some error',
-                    password:'have some error'
+                    ...errors,
+                    username:'have some error'
                 })
             return
         }
@@ -131,6 +139,10 @@ function LoginComponentsContainer() {
                 setuserFields({
                     ...userFields, password:''
                 })
+                setErrors({
+                    ...errors,
+                    password:'have some error'
+                })
             }
             return
         }
@@ -138,7 +150,7 @@ function LoginComponentsContainer() {
 
     const UserLog = useSelector(state=> state.sessionReducer.status)
     
-    const checkLog=async()=>{
+    const checkLog=()=>{
         if(!UserLog.error && UserLog.token.length){
             setShowErrorText(false)
         }else if(UserLog.error){
@@ -214,6 +226,10 @@ function LoginComponentsContainer() {
                     email: googleData.email,
                     googleAccount: true
                 })
+                sendMail('welcome', {
+                    username:googleData.email.slice(0, endUN),
+                    email:googleData.email
+                });
                 await Swal.fire({
                     icon: 'success',
                     title: 'Cuenta creada!',
@@ -243,7 +259,7 @@ function LoginComponentsContainer() {
                     justify-center rounded-lg shadow-lg	`
 
     return (
-        <div class='flex flex-col items-center justify-start mt-10 h-screen'>
+        <div className='flex flex-col items-center justify-start mt-10 h-screen'>
             <PopContainer   trigger={register}
                             principalDiv={modalDiv}
                             children={<LoginCreateAccount 

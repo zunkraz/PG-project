@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
 import validate from "../../../Tools/validations";
 import { createUser } from "../../../ApiReq/users";
+import { sendMail } from "../../../ApiReq/mails";
 import {useSelector} from "react-redux"
+import Swal from 'sweetalert2'
 
 export default function RegisterFormPro(){
     const [newUser, setNewuser]= useState({
@@ -21,7 +22,6 @@ export default function RegisterFormPro(){
     const [checked, setChecked]= useState(false)
     const [profchecked, setProfchecked]= useState(false)
     const [error, setError]= useState({})
-    const [done, setDone]= useState(false)
 
     const userData= useSelector(state => state.userReducer.users)
     const categorylist= useSelector(state => state.constantInfoReducer.categories)
@@ -70,7 +70,12 @@ export default function RegisterFormPro(){
     function handleSubmit(e) {
         e.preventDefault();
         if(!checked) {
-            alert("Por favor indica que aceptas los Términos y Condiciones");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Acepta los terminos primero',
+                showConfirmButton: false,
+                timer: 1500
+            })
             return false
         }
         if(validate(newUser, setError, userData)){
@@ -89,22 +94,30 @@ export default function RegisterFormPro(){
             e.target.reset();
             
             createUser(newUser)
-            setDone(true)
+            sendMail('welcome',{
+                username:newUser.username,
+                email:newUser.email})
+            Swal.fire({
+                icon: 'success',
+                title: 'Cuenta creada!',
+                confirmButtonText: 'Iniciar sesión',
+            }).then(function() {
+                window.location = "/ingresar";
+            })
         }
       }
     
-    if(!done){
     return (
         <div className="col-3-4@xl col-3-4@lg col-5-6@md col-1-1@sm padd-md bg-color-light border-radius-sm border-color-extra4-a20 shadow-lg">
             <form onSubmit={handleSubmit} autoComplete="off">
                 {/* Titulo */}
-                <div className="col-1-1@xl padd-md border-bottom-color-main">
+                <div className="col-1-1@xl padd-md border-bottom-color-main mb-2">
                     <h2 className="text-2xl">
                         Información personal - Profesional
                     </h2>
                 </div>
                 {/* Correo Electrónico */}
-                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="email" className="p-2">
                             Correo Electrónico
@@ -119,12 +132,12 @@ export default function RegisterFormPro(){
                             required
                         />
                         {
-                            error.email ? <span className="uk-alert-danger">{error.email}</span> : null
+                            error.email ? <span className="uk-alert-danger px-2">{error.email}</span> : <span>&nbsp;</span>
                         }
                     </div>
                 </div>
                 {/* Nombre de Usuario */}
-                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="username" className="p-2">
                             Nombre de usuario
@@ -139,12 +152,12 @@ export default function RegisterFormPro(){
                             required
                         />
                         {
-                            error.username ? <span className="uk-alert-danger">{error.username}</span> : null
+                            error.username ? <span className="uk-alert-danger px-2">{error.username}</span> : <span>&nbsp;</span>
                         }
                     </div>
                 </div>
                 {/* Contraseña */}
-                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="password" className="p-2"> Contraseña - (mínimo 6 caracteres)</label>
                         <input
@@ -156,10 +169,11 @@ export default function RegisterFormPro(){
                             onChange={handleChange}
                             required
                         />
+                        <span>&nbsp;</span>
                     </div>
                 </div>
                 {/* Contraseña Confirmación */}
-                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="confirmPassword" className="p-2">
                             Confirmar contraseña
@@ -174,12 +188,12 @@ export default function RegisterFormPro(){
                             required
                         />
                         {
-                            error.password ? <span className="uk-alert-danger">{error.password}</span> : null
+                            error.password ? <span className="uk-alert-danger px-2">{error.password}</span> : <span>&nbsp;</span>
                         }
                     </div>
                 </div>
                 {/* Nombres */}
-                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="name" className="p-2">
                             Nombre
@@ -194,12 +208,12 @@ export default function RegisterFormPro(){
                             required
                         />
                         {
-                            error.name ? <span className="uk-alert-danger">{error.name}</span> : null
+                            error.name ? <span className="uk-alert-danger px-2">{error.name}</span> : <span>&nbsp;</span>
                         }
                     </div>
                 </div>
                 {/* Apellidos */}
-                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="lastname" className="p-2">
                             Apellido
@@ -214,12 +228,12 @@ export default function RegisterFormPro(){
                             required
                         />
                         {
-                            error.lastname ? <span className="uk-alert-danger">{error.lastname}</span> : null
+                            error.lastname ? <span className="uk-alert-danger px-2">{error.lastname}</span> : <span>&nbsp;</span>
                         }
                     </div>
                 </div>
                 {/* Teléfono */}
-                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="telNum1" className="p-2">
                             Teléfono
@@ -234,12 +248,12 @@ export default function RegisterFormPro(){
                             required
                         />
                         {
-                            error.phone ? <span className="uk-alert-danger">{error.phone}</span> : null
+                            error.phone ? <span className="uk-alert-danger px-2">{error.phone}</span> : <span>&nbsp;</span>
                         }
                     </div>
                 </div>
                 {/* Categoría */}
-                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-2@xl col-1-2@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="category-choice" className="p-2">
                             Categoría
@@ -262,10 +276,11 @@ export default function RegisterFormPro(){
                                 })
                             }
                         </select>
+                        <span>&nbsp;</span>
                     </div>
                 </div>
                 {/* País */}
-                <div className="col-1-1@xl col-1-1@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+                <div className="col-1-1@xl col-1-1@lg col-1-2@md col-1-1@sm col-1-1@xs px-2">
                     <div className="uk-flex uk-flex-column">
                         <label htmlFor="country" className="p-2">
                             País
@@ -291,7 +306,7 @@ export default function RegisterFormPro(){
                     </div>
                 </div>
                 {/* Certificación */}
-                <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md flex-center">
+                <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs px-2 mt-2 flex-center">
                     <label htmlFor="prof-check" className="uk-padding-right p-2">
                         Eres profesional certificado?
                     </label>
@@ -305,7 +320,7 @@ export default function RegisterFormPro(){
                 </div>
                  {/* Numero de Certificación */}
                     {
-                        profchecked &&  <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
+                        profchecked &&  <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs px-2">
                                             <div className="uk-flex uk-flex-column">
                                                 <label className="p-2">
                                                     Número de Matrícula
@@ -343,17 +358,6 @@ export default function RegisterFormPro(){
                 </div>
             </form>
         </div>
-    )}
-    if(done){
-        return (
-            <div className="w-full p-24 flex flex-col justify-center content-center">
-                <h1 className="text-3xl flex justify-center">Te has registrado exitosamente!</h1>
-                <div className="flex justify-center py-12">
-                <Link to="/ingresar">
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded ">Iniciar sesion</button>
-                </Link>
-                </div>
-            </div>
-        )
-    }
+    )
+    
 }

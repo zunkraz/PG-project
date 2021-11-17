@@ -79,56 +79,98 @@ function UserRow({user, token}){
   }
 
   return (
-    <tbody className="bg-white divide-y divide-gray-200">
-    <tr>
-    <td className="px-6 py-4 whitespace-nowrap">
-      <div className="flex items-center">
-        <div className="flex-shrink-0 h-10 w-10">
-          <img className="h-10 w-10 rounded-full"
-               src={user.img || "https://cambodiaict.net/wp-content/uploads/2019/12/computer-icons-user-profile-google-account-photos-icon-account.jpg"} alt=""/>
+    <div className="col-1-4@xl col-1-3@lg col-1-2@md col-1-1@sm col-1-1@xs padd-md">
+      <div className="padd-md bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">
+        {/* Image - Username - User */}
+        <div className="padd-md flex-center-left">
+          <div
+            className="icon-2x uk-background-cover border-radius-100"
+            data-src={user.img || "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?b=1&k=20&m=1300845620&s=170667a&w=0&h=JbOeyFgAc6-3jmptv6mzXpGcAd_8xqkQa_oUK2viFr8="}
+            data-uk-img="">
+          </div>
+          <div className="padd-md-l">
+            <div className="font-main text-bold normalize">
+              {(user.name || '')  + ' ' + (user.lastname || '')}
+            </div>
+            <div className="font-sm font-main text-bold">
+              {user.username}
+            </div>          
+          </div>
         </div>
-        <div className="ml-4">
-          <div className="text-sm font-medium text-gray-900">
-            {user.username}
-          </div>
-          <div className="text-sm text-gray-500">
-            {(user.name || '')  + ' ' + (user.lastname || '')}
-          </div>
+
+        {/* Email */}
+        <div className="padd-md font-sm flex-bar">
+          <div className="text-bold">Email:</div>
+          <span>{user.email}</span>
+        </div>
+
+        {/* User Role */}
+        <div className="padd-md font-sm flex-bar">
+          <div className="text-bold">Rol:</div>
+            {
+              user.isAdmin?
+              <span className="padd-xs-tb padd-md-lr text-bold font-xs border-radius-xl bg-red-200 text-gray-800">
+                Admin
+              </span>
+              :
+              <span className="padd-xs-tb padd-md-lr text-bold font-xs border-radius-xl bg-green-200 text-gray-800">
+                Usuario
+              </span>
+            }  
+        </div>
+
+        {/* User Type */}
+        <div className="padd-md font-sm flex-bar">
+          <div className="text-bold">Tipo de Usuario:</div>
+          {
+            user.isProfessional ?
+            <span className="padd-xs-tb padd-md-lr text-bold font-xs border-radius-xl bg-blue-200 text-gray-800">
+              Profesional
+            </span>
+            :
+            <span className="padd-xs-tb padd-md-lr text-bold font-xs border-radius-xl bg-pink-300 text-gray-800">
+              Cliente
+            </span>
+          }
+        </div>
+
+        {/* Is Verified */}
+        <div className="padd-md font-sm flex-bar">
+          <div className="text-bold">Usuario Verficado:</div>
+          {user.isProfessional?<button onClick={() => handleVerifyUser(user.username, user.isVerified)}>{
+            user.isVerified ? <FaIcons.FaCheck color={'green'}/> : <FaIcons.FaTimes color={'red'}/>}</button>:'No Aplica'}
+        </div>
+
+        {/* Reset Password */}
+        <div className="padd-md font-sm">
+          <button
+            className="width-100 padd-sm border-radius-sm action action-primary flex-center"
+            onClick={()=>handleResetPassword(user.username)}
+          >
+            <FaIcons.FaRedo/>&emsp;Restablecer Contraseña
+          </button>
+        </div>
+
+        {/* Change Role */}
+        <div className="padd-md font-sm">
+          <button
+            className="width-100 padd-sm border-radius-sm action action-primary flex-center"
+            onClick={()=>handleChangeRole(user.username,user.isAdmin)}>
+            <FaIcons.FaUserFriends/>&emsp;Cambiar Rol
+          </button>
+        </div>
+
+        {/* Delete Account */}
+        <div className="padd-md font-sm">
+          <button 
+            className="width-100 padd-sm border-radius-sm action action-danger flex-center"
+            onClick={()=>handleUserDelete(user.username)}
+          >
+            <FaIcons.FaRegTrashAlt/>&emsp;Eliminar Usuario
+          </button>
         </div>
       </div>
-    </td>
-    <td className="px-6 py-4 whitespace-nowrap">
-      {user.email}
-    </td>
-    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-      {user.isAdmin?
-        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-gray-800">
-          Admin </span> :
-        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-gray-800">
-          Usuario</span>}
-    </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        {user.isProfessional?
-            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-200 text-gray-800">
-          Profesional</span> :
-          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-300 text-gray-800">
-          Cliente</span>}
-    </td>
-    <td className="px-5 py-4 whitespace-nowrap text-center text-sm font-medium">
-      {user.isProfessional?<button onClick={() => handleVerifyUser(user.username, user.isVerified)}>{
-        user.isVerified ? <FaIcons.FaCheck color={'green'}/> : <FaIcons.FaTimes color={'red'}/>}</button>:' '}
-    </td>
-      <td className="px-10 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleResetPassword(user.username)}><FaIcons.FaRedo/></button>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleChangeRole(user.username,user.isAdmin)}><FaIcons.FaUserFriends/></button>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-        <button onClick={()=>handleUserDelete(user.username)}><FaIcons.FaRegTrashAlt/></button>
-      </td>
-  </tr>
-  </tbody>)
-
+    </div>
+  )
 }
 export default UserRow;
