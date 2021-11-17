@@ -20,8 +20,8 @@ function LoginComponentsContainer({match}) {
 
     //funcion que llame el listado de usernames y mails
     const dispatch = useDispatch()
-    const username = match.query.username
-    const password = match.params.password
+    //const username = match.query.username
+    //const password = match.params.password
 
     useEffect(() => {
         dispatch(getAllUsers())
@@ -64,7 +64,7 @@ function LoginComponentsContainer({match}) {
     // FUNCTIONS ///////////////
 
     const paramLogin=()=>{
-        (username && password) &&  dispatch(checkLoginAction({username, password}))
+        //(username && password) &&  dispatch(checkLoginAction({username, password}))
     }
 
     const handleErrors=()=>{
@@ -251,7 +251,7 @@ function LoginComponentsContainer({match}) {
             }
         }
     }
-    console.log(username, password)
+    //console.log(username, password)
     
 
     const changeCheck=()=>{

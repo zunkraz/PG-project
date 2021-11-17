@@ -54,7 +54,7 @@ function EditPresentation(props) {
                 </div>
                 <div>
                     <label className='font-bold text-medium tracking-wider'
-                        >Precio por sesion
+                        >Precio por sesión
                         <span className='ml-2 text-green-600'>{`$${costHour}`}</span>.
                         <span className='mr-2 text-green-600'>{costCent}</span>
                         USD
