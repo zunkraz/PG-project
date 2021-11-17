@@ -5,6 +5,7 @@ import logoMain from "../../Assets/media/logo-main.svg";
 import logoMobile from "../../Assets/media/logo-mobile.svg";
 import { cleanLoginCheck } from '../../../Controllers/actions/loginAction';
 import CartIcon from './CartIcon'
+import Swal from 'sweetalert2';
 
 
 const Nav = () => {
@@ -15,7 +16,28 @@ const Nav = () => {
 
     function Logout(){
         dispatch(cleanLoginCheck())
+        goAlert()
     }
+
+    function goAlert(){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        
+        Toast.fire({
+            icon: 'success',
+            title: 'Cerraste sesión'
+        })
+        return true
+}
 
     let btns = !loggedUser.token ? [{
             title:'Crea tu cuenta',
@@ -102,12 +124,14 @@ const Nav = () => {
                             <li className="uk-nav-header">Menu</li>
                             {items}         
                             {loggedUser.token && 
-                                <li>
-                                    <Link to='/' onClick={Logout}>Salir</Link>
-                                </li>}
-                            <li>
-                                <CartIcon/>
-                            </li>
+                                <>
+                                    <li>
+                                        <Link to='/' onClick={Logout}>Salir</Link>
+                                    </li>
+                                    <li>
+                                        <CartIcon/>
+                                    </li>
+                                </>}
                         </ul>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import { getProfSchedule } from '../../../Controllers/actions/professionalsActio
 import {Link} from 'react-router-dom';
 import { addToCart } from '../../../Controllers/actions/cartActions';
 import Swal from 'sweetalert2';
-
+import { setAvailability } from '../../../ApiReq/schedule';
 
 export default function Schedules({id, login, name, lastname, category, cost}) {
     const dispatch = useDispatch();
@@ -38,6 +38,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
             professionalId:id,
             customerId:customerId
         }))
+        setAvailability(e.target.id,false,token);
         return Swal.fire({
             title: '¡Reserva hecha!',
             text: 'En tu carrito podrás abonar tu reserva',
@@ -115,7 +116,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
                             {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
-                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="btn-prof">Contratar</button>
+                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="padd-sm mt-1 border-radius-sm font-sm action action-add-post w-full">Contratar</button>
                             
                             }
                         </div>
@@ -123,7 +124,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
                         <div>
                             {dateJoin(elem.date)}
                             <Link to='/ingresar'>
-                                <button className="btn-prof-nologin">
+                                <button className="padd-sm mt-1 border-radius-sm font-sm w-full action action-user-register-submit">
                                 <span>Inicia sesion para reservar</span>
                                 </button>
                                 </Link>

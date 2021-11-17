@@ -15,7 +15,9 @@ export default function FullInfo({profData}) {
             </div>
 
             <div >
-                <span className='full-info-span'>¿Por qué elegirme?</span>
+                <div className='full-info-span'>
+                    <span >¿Por qué elegirme?</span>
+                </div>
                 <div className='full-info-container'>
                     <div className='full-info-up'>
                         {biography
@@ -27,25 +29,32 @@ export default function FullInfo({profData}) {
                     <div className='full-info-down'>
                         <div className='little-box'>
                             <span>Titulo profesional</span>
-                            <h3>{
+                            <h3 className='capitalize'>{
                                 title
                                 ? title
-                                : "N/A"
+                                : " - "
                                 }
                             </h3>
                         </div>
                         <div className='little-box'>
                             <span>Institución</span>
-                            <h3>{
+                            <h3 className='capitalize'>{
                                 institute
                                 ? institute
-                                : "N/A"
+                                : " - "
                                 }
                             </h3>
                         </div>
                         <div className='little-box'>
                             <span>Ubicación</span>
-                            <h3>{`${city} (${state})`}</h3>
+                            <h3 className='capitalize'>
+                                {
+                                    city
+                                    ?city
+                                    :state
+                                    ?state
+                                    : " - "
+                                }</h3>
                         </div>
                         <div className='little-box'>
                             <span>Miembro desde</span>
@@ -55,6 +64,7 @@ export default function FullInfo({profData}) {
                             }</h3>
                         </div>
                     </div>
+
                 </div>
                 
             

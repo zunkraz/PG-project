@@ -19,9 +19,10 @@ const ServicesSupport = () => {
         author: 'LATAM EXPONENTIAL'
         },
     ]
-    let publication = obj.map(e => {
+    let publication = obj.map((e,i) => {
         let card = 
-        <div className='m-1 mb-6 max-w-md py-4 px-8 bg-white shadow-2xl rounded-lg my-2'>
+        <div key={i} className='m-1 mb-6 max-w-md py-4 px-8 bg-white shadow-2xl rounded-lg my-2'>
+
             <div>
                 <h2 className='text-gray-800 text-3xl font-semibold'>
                     {e.title}

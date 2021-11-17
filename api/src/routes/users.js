@@ -39,6 +39,14 @@ router.put ('/:username', loginAuth, (req,res,next)=>{
         .catch(err => next(err))
 });
 
+router.put ('/:username/password', (req,res,next)=>{
+    let {username} = req.params
+    let updateInfo = req.body
+    userUpdate(username,updateInfo)
+        .then(result => res.json(result))
+        .catch(err => next(err))
+});
+
 router.post ('/:username/check', loginAuth, async(req,res,next)=>{
     let token = req.headers.jwt
     const response = await comparePassword(req.body,token)

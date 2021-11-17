@@ -43,9 +43,9 @@ let history = useHistory();
 
  function  handlePay(){
 
-    order.forEach(e =>{
-        setAvailability(e.id)
-    })
+    // order.forEach(e =>{
+    //     setAvailability(e.id)
+    // })
     objInfo.customerId = order[0].customerId;
     objInfo.cart = order.map(e => {
         return {

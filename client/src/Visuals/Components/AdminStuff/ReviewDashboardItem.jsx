@@ -80,7 +80,7 @@ function ReviewDashboardItem({review,token}){
               className="width-100 padd-sm border-radius-sm action action-danger flex-center"
               onClick={()=>handleReviewChange(review.rate,review._id)}
             >
-              <FaIcons.FaRedo/>&emsp;Eliminar
+              <FaIcons.FaRedo/>&emsp;Cambiar Estado
             </button>
           </div>          
           {/* Button Change Review */}
@@ -89,7 +89,7 @@ function ReviewDashboardItem({review,token}){
                 className="width-100 padd-sm border-radius-sm action action-primary flex-center"
                 onClick={()=>handleReviewDelete(review._id)}
               >
-                <FaIcons.FaRedo/>&emsp;Cambiar Estado
+                <FaIcons.FaRegTrashAlt/>&emsp;Eliminar
               </button>
           </div>
 
