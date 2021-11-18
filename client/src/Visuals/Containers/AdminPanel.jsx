@@ -14,7 +14,7 @@ import ComponentHeader from '../Components/ComponentHeader';
 
 const componentHeaderData = {
   title: "Panel de Administrador",
-  subtitle: "Quisque eget mauris eget nisi consectetur lobortis at eu massa.",
+  subtitle: "Modificar usuarios e información de la plataforma",
   bg: null,// Si esta propiedad se envia null, se asigna un fondo aleatorio.
 }
 
