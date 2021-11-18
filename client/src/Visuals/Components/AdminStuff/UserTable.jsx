@@ -14,6 +14,7 @@ function UserTable({usersAdmin, token}){
       if(ev.target.value==='Todos') return true;
       if(ev.target.value==='Prof') return a.isProfessional;
       if(ev.target.value==="User") return !a.isProfessional;
+      else return false;
     }));
   }
   function handleSearch(e){
@@ -31,11 +32,28 @@ function UserTable({usersAdmin, token}){
       if(userType==='Todos') return true;
       if(userType==='Prof') return s.isProfessional;
       if(userType==="User") return !s.isProfessional;
+      else return false;
     }))
   }
 
   return (
-    <React.Fragment>  
+    <React.Fragment>
+      <div>
+        <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
+          <div className="col-1-8@xl col-1-8@lg col-1-5@md padd-md">
+            <label className="font-lg font-main text-bold normalize flex-center-left" htmlFor={"name"}>
+              Filtrar:
+            </label>
+          </div>
+          <div className="col-7-8@xl col-7-8@lg col-4-5@md padd-md">
+            <select className="uk-select font-sm border-radius-sm" name="name" value={userType} onChange={handleChange}>
+              <option key={'todos'} value={'Todos'}>Todos</option>
+              <option key={'user'} value={"User"}>Cliente</option>
+              <option key={'prof'} value={"Prof"}>Profesional</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <form onSubmit={event => handleSearch(event)}>
         <div className="col-1-1@xl col-1-1@lg col-1-1@md padd-md flex-center-xl-lg-md">
           <div className="col-1-8@xl col-1-5@lg col-1-1@xs padd-md">
@@ -51,27 +69,12 @@ function UserTable({usersAdmin, token}){
               onChange={event => handleSearch(event)}
               className="uk-input font-sm border-radius-sm"
               autoComplete="off"
-              placeholder="Buscar usuarios por: nombre, apellidos o correo."
+              placeholder="Buscar usuarios por: nombre, apellidos o correo"
             />
           </div>
         </div>
         </form>
-      <div>
-          <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
-            <div className="col-1-8@xl col-1-8@lg col-1-5@md padd-md">
-              <label className="font-lg font-main text-bold normalize flex-center-left" htmlFor={"name"}>
-            Filtrar Usuarios:
-          </label>
-        </div>
-        <div className="col-7-8@xl col-7-8@lg col-4-5@md padd-md">
-          <select className="uk-select font-sm border-radius-sm" name="name" value={userType} onChange={handleChange}>
-            <option key={'todos'} value={'Todos'}>Todos</option>
-            <option key={'user'} value={"User"}>Cliente</option>
-            <option key={'prof'} value={"Prof"}>Profesional</option>
-          </select>
-        </div>
-      </div>
-    </div>
+
         {
           ((usersSearch.length === 0) && search) ?
           <div className="col-1-1@xl col-1-1@lg col-1-1@md padd-lg">
