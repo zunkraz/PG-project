@@ -65,7 +65,7 @@ function UserDashboard({userData, userId, token}) {
                                 }
                                 {
                                     userData.isProfessional &&
-                                    <>
+                                    
                                     <Link to={`/${userData.username}/horarios`} >
 
                                     <button
