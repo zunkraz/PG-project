@@ -109,30 +109,32 @@ function UserDashboard({userData}) {
                                 }
                                 {
                                     userData.isProfessional &&
+                                    <>
                                     <Link to={`/${userData.username}/horarios`} >
-                                    <button
-                                        className="my-3 w-full h-10 mr-4 rounded-xl duration-300
+                                        <button
+                                            className="my-3 w-full h-10 mr-4 rounded-xl duration-300
+                                                text-green-500 font-medium tracking-widest
+                                                ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
+                                                bg-white hover:bg-green-500 hover:text-white"
+                                        >
+                                            Gestiona tus turnos 
+                                            
+                                        </button>
+                                    </Link>
+                                
+
+                                    <Link to={`/profesionales/${userData.username}`} >
+                                        <button
+                                            className="my-3 w-full h-10 mr-4 rounded-xl duration-300
                                             text-green-500 font-medium tracking-widest
                                             ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
                                             bg-white hover:bg-green-500 hover:text-white"
-                                    >
-                                        Gestiona tus turnos 
-                                        
-                                    </button>
-                                </Link>
+                                        >
+                                            Ver mi perfil profesional
+                                        </button>
+                                    </Link>
+                                </>
                                 }
-
-                                <Link to='/opinion' >
-                                    <button
-                                        className="my-3 w-full h-10 mr-4 rounded-xl duration-300
-                                        text-green-500 font-medium tracking-widest
-                                        ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
-                                        bg-white hover:bg-green-500 hover:text-white"
-                                    >
-                                        Deja tu opinión
-                                    </button>
-                                </Link>
-                                
                                 <Link to='/facturas' >
                                     <button
                                         className="my-3 w-full h-10 mr-4 rounded-xl duration-300
