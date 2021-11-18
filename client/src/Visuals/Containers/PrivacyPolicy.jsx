@@ -20,25 +20,32 @@ function PrivacyPolicy() {
                     <section>
                         <div className="col-1-1@xl col-1-1@lg col-1-1@md padd-xl-b">
                             <p className="mrg-xl-t font-lg">                
-                                LATAM EXPONENTIAL, en su interés de ofrecer el mejor servicio y una atención oportuna durante todo el proceso comercial, informa las políticas de ventas, las cuales establecen las condiciones para garantizar y fortalecer la relación comercial con nuestros clientes. Al realizar sus compras usted está aceptando las Políticas establecidas por nuestra organización las cuales se detallan a continuación:
+                                LATAM EXPONENTIAL, en su interés de ofrecer el mejor servicio y una atención oportuna durante todo el proceso comercial, informa las políticas de privacidad, las cuales establecen las condiciones para garantizar y fortalecer la relación comercial con nuestros clientes. Al realizar sus compras usted está aceptando las Políticas establecidas por nuestra organización las cuales se detallan a continuación:
                             </p>
                             <p className="mrg-xl-t">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare iaculis dictum. Curabitur libero sapien, lacinia in dolor ac, pellentesque laoreet tellus. Pellentesque ultrices velit non dui eleifend, a suscipit velit porttitor. Sed sit amet feugiat risus. Morbi ullamcorper consectetur turpis et gravida. Aliquam dignissim, ipsum pharetra tempus vulputate, mi quam suscipit sem, quis gravida lectus sem a velit. Proin sed condimentum dui. Suspendisse in iaculis sem. Donec congue lacus sed augue aliquet, dictum eleifend erat vestibulum. Maecenas ac consequat eros, nec pellentesque quam. Ut tempor ipsum in dolor cursus, vitae bibendum tortor consequat. Nam id maximus risus. Suspendisse ornare diam tellus, non laoreet dui vestibulum nec. Integer in luctus ipsum, sagittis pretium lorem.
+                            En LATAM EXPONENTIAL entendemos a la protección de los datos personales como una oportunidad para generar valor para nuestros usuarios. Haciendo un uso responsable de la información personal, no sólo protegemos la privacidad de quienes nos confiaron sus datos, sino que les permitimos operar con seguridad y confianza en nuestro ecosistema.
+                            Por eso, tu privacidad es muy importante para nosotros y nos esforzamos para protegerla.
                             </p>
                             <p className="mrg-xl-t">
-                                Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed vulputate felis nec commodo fermentum. Vivamus purus ipsum, euismod a aliquam ac, vulputate ut odio. Fusce ornare, dolor rhoncus imperdiet semper, massa lorem malesuada elit, et semper velit est vitae turpis. Aenean ultricies rutrum ex eu rutrum. Praesent eget mi gravida, varius massa sit amet, congue lorem. Curabitur consectetur malesuada sollicitudin. Mauris neque nisl, tristique id magna id, mollis fringilla dui. Mauris ut massa luctus, congue velit at, gravida diam. Aliquam facilisis, dolor eu suscipit fringilla, magna lacus pharetra arcu, eu dignissim orci enim dignissim lectus. Aliquam erat volutpat. Donec nibh tellus, varius in libero quis, aliquam lacinia sem. Phasellus ac orci nec dui rhoncus venenatis sed vitae tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                            </p> 
-                            <p className="mrg-xl-t">
-                                Praesent fermentum, augue sit amet ullamcorper rhoncus, purus nunc feugiat metus, at volutpat nulla diam eu tellus. Fusce id nunc metus. Quisque ut urna eleifend, pulvinar metus id, tempor neque. Nam quis suscipit mi. In volutpat ante sem, sit amet vulputate erat tincidunt vitae.
+                            LATAM EXPONENTIAL recolecta tu información personal para que puedas disfrutar de nuestros servicios, y poder mejorarlos de manera continua.
+                            En algunos casos, la información la facilitás tu mismo, al registrarte o al proveer información cuando utilizás alguno de nuestros servicios. En otros, los recolectamos automáticamente, como cuando navegás por nuestras páginas y utilizás nuestros servicios. También podemos recolectar información acerca de ti de otras fuentes confiables. 
                             </p>
                             <ol className="mrg-xl-t">
-                                <li>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                <li>2. Phasellus volutpat tellus nec vestibulum imperdiet.</li>
-                                <li>3. Quisque et tellus eu nisi rutrum malesuada eu quis orci.</li>
-                                <li>4. Mauris viverra ligula id pretium aliquam.</li>
-                                <li>5. Nam blandit orci vel ex fermentum egestas.</li>
-                                <li>6. Sed nec odio ac lorem faucibus pharetra.</li>
+                                <li>Estos son los tipos de datos que podríamos recolectar:</li>
+                                <li>1. Apodo o seudónimo para operar en las plataformas de MercadoLibre.</li>
+                                <li>2. Nombre, imagen personal.</li>
+                                <li>3. Número de matrícula.</li>
+                                <li>4. Información de contacto (como número de teléfono o dirección de correo electrónico).</li>
+                                <li>5. Información de los dispositivos o computadoras desde los que accedes a la plataforma de LATAM EXPONENTIAL y otros datos capturados automáticamente (como el tipo o versión del navegador o del sistema operativo, configuraciones, datos de conexión, información sobre algunas de las aplicaciones descargadas y parámetros).</li>
+                                <li>6. Dirección IP de internet que utilizás al conectarte a nuestros servicios o al navegar nuestros sitios web.</li>
                             </ol>
+                            <p className="mrg-xl-t">
+                            El resguardo de tu privacidad es muy importante para LATAM EXPONENTIAL. Por ello, no vendemos ni comercializamos información que identifique a nuestros usuarios. Tampoco compartimos o transferimos de ningún otro modo tu información personal a terceros.
+                            </p> 
+                            <p className="mrg-xl-t">
+                            Solo almacenaremos la información personal durante el tiempo necesario para cumplir con el propósito para el que se ha recopilado, para cumplir con requisitos reglamentarios o legales, o durante el periodo de prescripción legal de posibles responsabilidades legales o contractuales.
+                            Una vez concluido el lapso, los datos serán eliminados o anonimizados de manera tal que no pueda ser individualizada ninguna persona, según lo permita la normativa de cada país.
+                            </p> 
                         </div>
                     </section>
                 </div>

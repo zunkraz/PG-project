@@ -3,50 +3,50 @@ import ComponentHeader from './../Components/ComponentHeader';
 
 const componentHeaderData = {
     title: "Preguntas Frecuentes",
-    subtitle: "Quisque eget mauris eget nisi consectetur lobortis at eu massa.",
+    subtitle: "Aquí encontrará la respuesta a las dudas más frecuentes.",
     bg: null,// Si esta propiedad se envia null, se asigna un fondo aleatorio.
 }
 
 const containerItems = [
     {
         question: "¿Puedo cancelar o cambiar la fecha de una asesoría?",
-        answer: "Nullam cursus tincidunt interdum. Aenean elementum aliquam enim ac molestie. Nulla non auctor dui. Phasellus volutpat vel augue non fermentum.",
+        answer: "En casos excepcionales es posible cambiar o cancelar la fecha, para eso póngase en contacto con nosotros.",
     },
     {
         question: "¿Se puede pedir un reembolso después de pagar una asesoría?",
-        answer: "Maecenas a tempus sem. Integer posuere lacus ac neque laoreet, at accumsan tellus ultrices. Etiam sit amet tempus tellus, ac auctor nulla. Nam at ligula quis magna sodales semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        answer: "Sí, pero sólo en caso que la asesoría aún no haya sido llevada a cabo. Los plazos de devolución y el lugar donde se acreditará el reembolso dependen del medio que haya elegido para hacer el pago.",
     },
     {
         question: "¿Si no estoy satisfecho con el servicio que recibo, puedo presentar una queja o reclamo al profesional contratado directamente?",
-        answer: "Sed ac lorem neque. Suspendisse potenti. Nullam lorem metus, lacinia eget condimentum gravida, placerat vel dolor. Nullam vitae diam dictum, aliquet magna ac, pulvinar sem. Ut elementum quam nec tortor rhoncus, vitae fringilla turpis venenatis. Suspendisse tincidunt risus at mollis condimentum.",
+        answer: "No, en ese caso por favor póngase en contacto con nosotros y atenderemos su reclamo personalmente.",
     },
     {
         question: "¿Cuáles son los métodos de pago aceptados en LATAM EXPONENTIAL?",
-        answer: "Praesent molestie neque id massa lacinia lacinia. Donec enim odio, varius ut porta id, dapibus vitae tortor. Praesent scelerisque odio a risus euismod pretium.",
+        answer: "Paypal o tarjeta de débito y crédito.",
     },
     {
         question: "¿Como puedo ofrecer mis servicios en LATAM EXPONENTIAL?",
-        answer: "Ut elementum quam nec tortor rhoncus, vitae fringilla turpis venenatis. Suspendisse tincidunt risus at mollis condimentum. Sed sed consectetur diam. In sit amet consectetur risus. Sed ac consectetur orci. Vivamus id ex maximus, bibendum libero non, venenatis felis. Donec semper scelerisque turpis at suscipit. Praesent auctor volutpat ipsum.",
+        answer: "Para ofrecer sus servicios usted debe registrarse en el sitio como profesional. Luego nosotros verificaremos sus datos y lo daremos de alta para que pueda comenzar a trabajar en nuestra plataforma.",
     },
     {
         question: "¿Puedo si tengo más de una profesión puedo ofrecer múltiples servicios con un mismo perfil?",
-        answer: "Quisque id tortor molestie, tempus ex ac, interdum ante. Aenean sed felis justo. Nunc porta tempus eros sit amet feugiat. Etiam id metus massa. Donec accumsan neque eu metus sodales tincidunt. Nulla facilisi. Nulla imperdiet libero vitae condimentum fringilla.",
+        answer: "No, en ese caso deberá crear otra cuenta a su nombre.",
     },
     {
         question: "¿Es requisito obligatorio tener una tarjeta o certificado profesional para ofrecer mis servicios en LATAM EXPONENTIAL?",
-        answer: "Aenean euismod massa sed sodales semper. In eget tincidunt orci. Aliquam maximus mauris at ligula auctor facilisis. Duis vitae ante vel sem vulputate varius ut id erat. Morbi nec neque at dolor pretium lacinia nec id purus. Duis ut convallis dolor, posuere imperdiet diam. Proin quis tristique libero.",
+        answer: "Eso dependerá de su profesión y los requisitos legales aplicables a cada país. Si su profesión requiere algún tipo de matrícula usted deberá proveernosla durante el registro para que podamos activar su cuenta.",
     },
     {
         question: "¿Con que frecuencia puedo retirar mis utilidades en LATAM EXPONENTIAL?",
-        answer: "Cras feugiat ante sit amet augue consectetur vulputate. Curabitur vel egestas urna. Nulla facilisi. Vestibulum finibus, dui non tempus pulvinar, augue ipsum condimentum diam, nec tristique leo mauris in ipsum. Vestibulum sed hendrerit turpis. Nulla facilisi. Morbi vitae ex aliquam, blandit erat et, mollis metus. Aenean euismod massa sed sodales semper. In eget tincidunt orci. Aliquam maximus mauris at ligula auctor facilisis. Duis vitae ante vel sem vulputate varius ut id erat.",
+        answer: "Una vez cada dos semanas usted podrá retirar las utilidades acumuladas del período.",
     },
     {
         question: "¿Puedo ofrecer mis servicios en un horario autónomo o el horario es estipulado por LATAM EXPONENTIAL?",
-        answer: "Nullam cursus tincidunt interdum. Aenean elementum aliquam enim ac molestie. Nulla non auctor dui. Phasellus volutpat vel augue non fermentum.",
+        answer: "Usted podrá establecer sus propios horarios una vez se haya registrado y estos serán los que se muestren a los clientes en su perfil profesional.",
     },
     {
         question: "¿Como puedo dar de baja mi perfil profesional en LATAM EXPONENTIAL?",
-        answer: "Nullam cursus tincidunt interdum. Aenean elementum aliquam enim ac molestie. Nulla non auctor dui. Phasellus volutpat vel augue non fermentum.",
+        answer: "Para dar de baja su perfil profesional por favor póngase en contacto con nostros y nos contactaremos con usted a la brevedad para dar de baja su cuenta.",
     },
 ]
 
