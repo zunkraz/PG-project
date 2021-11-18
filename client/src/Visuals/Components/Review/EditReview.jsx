@@ -27,9 +27,7 @@ export default function EditReview({close,review,setReview,userId}){
     }
 
     function sendReview(e){
-        console.log('BARCO DE MAYONESA')
         e.preventDefault()
-        console.log({text:rew,rate,userId},token)
         postReviewUser({text:rew,rate,userId},token)
         .then(r=>setReview(r))
         close()
