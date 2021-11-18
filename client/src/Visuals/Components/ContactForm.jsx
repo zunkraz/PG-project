@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from "@material-tailwind/react/Button";
 import Textarea from "@material-tailwind/react/Textarea";
 import Input from "@material-tailwind/react/Input";
 import Swal from "sweetalert2";
@@ -11,7 +10,7 @@ export default function ContactForm(){
         window.scrollTo(0,0)
     }, []);
 
-    const [input, setInput] = useState({});
+    const [input, setInput] = useState({name:"", email:"", phone:"", message:""});
     const [error, setError] = useState({});
 
     function handleChange({ target }) {
@@ -183,11 +182,10 @@ export default function ContactForm(){
                                         <span style={danger}>{error.message}</span>
                                     }
                                     
-                                    <Button
-                                    style={color}
-                                    size="sm"
-                                    ripple="light"
-                                    >Enviar datos</Button>
+                                    <button
+                                    className="uk-button uk-button-danger w-full border-radius-sm action action-user-register-submit"
+                                    type='submit'
+                                    >Enviar datos</button>
 
                                 </form>
                             </div>
@@ -223,10 +221,10 @@ const labelStyle = {
     fontWeight:"bold"
 }
 
-const color = {
-    backgroundColor: "#FF214F",
-    marginTop:"1rem"
-}
+// const color = {
+//     backgroundColor: "#FF214F",
+//     marginTop:"1rem"
+// }
 
 const danger = {
     color: "red",
