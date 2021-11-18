@@ -4,9 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import CartElement from "./CartElement";
 import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
-import { setAvailability } from "../../../ApiReq/schedule";
+// import { setAvailability } from "../../../ApiReq/schedule";
 import Swal from 'sweetalert2'
 import { postCartInfo } from "../../../ApiReq/cart";
+import { sendMailAppointment, sendMailInvoice } from '../../../ApiReq/mails'
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -54,10 +55,13 @@ let history = useHistory();
             price: e.price,
             id: e.id,
             professionalId: e.professionalId,
-            meetingLink: e.meetingLink
+            meetingLink: e.appointment.meetingLink
         }
     })
     postCartInfo(objInfo,token)
+    .then(r => {
+        r.forEach(r=>sendMailAppointment(r))
+    })
     .catch(err => alert(err))
 
     dispatch(removeFromCartAll())
