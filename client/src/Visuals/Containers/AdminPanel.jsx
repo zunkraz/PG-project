@@ -59,10 +59,10 @@ function AdminPanel(){
     Reportes:buttonNonSelected
   };
   const [buttons,setButtons] = useState({...buttonsOff,Usuarios:buttonSelected});
-  console.log(buttons[0]);
+
   function handleShown(e){
     if(e.target.type === 'submit') {
-      setButtons({...buttonsOff,[e.target.innerText]:buttonSelected});
+      buttons && setButtons({...buttonsOff,[e.target.innerText]:buttonSelected});
       setShownData(e.target.innerText);
     }
     else {

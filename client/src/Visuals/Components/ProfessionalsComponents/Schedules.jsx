@@ -9,9 +9,10 @@ import { useJitsi } from 'react-jutsu';
 import { setAvailability } from '../../../ApiReq/schedule';
 
 export default function Schedules({id, login, name, lastname, category, cost}) {
+    
     const dispatch = useDispatch();
     const token = useSelector(state => state.sessionReducer.status.token);
-
+    
     useEffect(() => {
         dispatch(getProfSchedule(id, token))
     },[]);
@@ -129,7 +130,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
                             {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
-                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="padd-sm mt-1 border-radius-sm font-sm action action-add-post w-full">Contratar</button>
+                                <button disabled={id===customerId} id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="padd-sm mt-1 border-radius-sm font-sm action action-add-post w-full">Contratar</button>
                             
                             }
                         </div>

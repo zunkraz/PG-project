@@ -65,7 +65,9 @@ function UserDashboard({userData, userId, token}) {
                                 }
                                 {
                                     userData.isProfessional &&
+                                    <>
                                     <Link to={`/${userData.username}/horarios`} >
+
                                     <button
                                         className={lateralBtn}
                                     >
@@ -82,7 +84,7 @@ function UserDashboard({userData, userId, token}) {
                                         Perfil Profesional
                                     </button>
                                 </Link>
-                                
+
                                 <Link to='/facturas' >
                                     <button
                                         className={lateralBtn}
