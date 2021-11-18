@@ -32,7 +32,7 @@ function PopBtns(props) {
                             onClick={props.onSuccess}
                         >
                         <span  className={props.disabled?textDisactive:textActive}
-                            >Confirmar</span>
+                            >{props.textBtn?props.textBtn:'Confirmar'}</span>
                     </Button>
                     <Button color='red'
                             buttonType="outline"

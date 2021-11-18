@@ -395,3 +395,8 @@
     color: #ffffff !important;
     background-color: red !important;
 }
+
+.btngb{
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+}

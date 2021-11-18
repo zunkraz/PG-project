@@ -4,7 +4,7 @@ import { TiThumbsUp , TiThumbsDown } from "react-icons/ti";
 import ImageComponent from "../ImageComponent";
 
 
-function PersonalCardUser({img, likes, dislikes, sessions, isVerified, professional}) {
+function PersonalCardUser({img, likes, dislikes, session, isVerified, professional}) {
     return (
         <div>
             <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
@@ -32,7 +32,7 @@ function PersonalCardUser({img, likes, dislikes, sessions, isVerified, professio
                     <div className='text-bold text-gray-600'>Sesiones Completadas:</div>
                 }
                 {professional && 
-                    <span className='text-bold font-color-success'>{sessions?sessions:0}</span>
+                    <span className='text-bold font-color-success'>{session?session:0}</span>
                 }
             </div>
         </div>

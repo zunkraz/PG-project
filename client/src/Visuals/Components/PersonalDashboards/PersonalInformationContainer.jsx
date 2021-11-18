@@ -277,7 +277,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
             <div className="mrg-lg-t">
                 <button 
                     name='personalInfo' 
-                    className={`padd-md-tb padd-lg-lr font-main ${userInfo === 'personalInfo' ? 'user-dashboard-info-tab-active' : 'user-dashboard-info-tab-inactive'}`} 
+                    className={`focus:outline-none padd-md-tb padd-lg-lr font-main ${userInfo === 'personalInfo' ? 'user-dashboard-info-tab-active' : 'user-dashboard-info-tab-inactive'}`} 
                     onClick={changeUserState}>
                     Personal
                 </button>
@@ -285,7 +285,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     isProf && 
                     <button 
                         name='professionalInfo'
-                        className={`mrg-lg-l padd-md-tb padd-lg-lr font-main ${userInfo === 'professionalInfo' ? 'user-dashboard-info-tab-active' : 'user-dashboard-info-tab-inactive'}`} 
+                        className={`focus:outline-none mrg-lg-l padd-md-tb padd-lg-lr font-main ${userInfo === 'professionalInfo' ? 'user-dashboard-info-tab-active' : 'user-dashboard-info-tab-inactive'}`} 
                         onClick={changeUserState}>
                         Profesional
                     </button>

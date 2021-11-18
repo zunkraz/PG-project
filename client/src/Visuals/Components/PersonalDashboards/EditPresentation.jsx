@@ -3,7 +3,7 @@ import Textarea from "@material-tailwind/react/Textarea";
 import PopBtns from '../PopBtns';
 
 function EditPresentation(props) {
-    const [textarea, setTextarea] = useState(props.data.biography?props.data.biography:' ')
+    const [textarea, setTextarea] = useState(props.data.biography?props.data.biography:'')
     const [costHour, setCostHour] = useState(props.data.usd?props.data.usd:10)
     const [costCent, setCostCent] = useState(props.data.cent?props.data.cent:0)
     const [limitChar, setLimitChar] = useState(250-(props.data.biography?props.data.biography.length:textarea.length))

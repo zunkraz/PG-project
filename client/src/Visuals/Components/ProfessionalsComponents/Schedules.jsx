@@ -31,7 +31,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
         onMeetingEnd: () => alert('Meeting has ended'),
     };
     // eslint-disable-next-line
-    const { error, jitsi } = useJitsi(jitsiConfig);
+    //const { error, jitsi } = useJitsi(jitsiConfig);
 
     const price = cost?cost:0.01;
 
@@ -42,7 +42,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
             appointment:{
             date:e.target.name,
             sessions:1,
-            meetingLink: jitsi._url || error,
+            //meetingLink: jitsi._url || error,
             },
             price:price,
             id:e.target.id,

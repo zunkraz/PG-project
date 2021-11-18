@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import CartElement from "./CartElement";
 import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
-import { setAvailability } from "../../../ApiReq/schedule";
 import Swal from 'sweetalert2'
 import { postCartInfo } from "../../../ApiReq/cart";
 
@@ -12,6 +11,11 @@ const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 export default function Cart(){
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    
 const userOnPage = useSelector(state=>state.sessionReducer.status);
 const {token} = userOnPage; 
 const order= useSelector(state=>state.sessionReducer.cart)
@@ -23,24 +27,24 @@ let history = useHistory();
     const createOrder = (data,actions) => {
         
         return actions.order.create({
-           purchase_units: [
-              {
-                 amount: {
-                    value: suma,
-                 }
-              }
-           ]
-        })
-     }
- 
-   const onApprove = (data, actions) => {
-      objInfo.orderID = data.orderID;
-      objInfo.payerID = data.payerID;
-    return actions.order.capture(handlePay());
-  }
+            purchase_units: [
+                {
+                    amount: {
+                        value: suma,
+                    }
+                }
+            ]
+            })
+        }
+    
+    const onApprove = (data, actions) => {
+        objInfo.orderID = data.orderID;
+        objInfo.payerID = data.payerID;
+        return actions.order.capture(handlePay());
+    }
 //////////////////// FIN PP
 
- function  handlePay(){
+function  handlePay(){
 
     // order.forEach(e =>{
     //     setAvailability(e.id)
@@ -60,7 +64,7 @@ let history = useHistory();
     .catch(err => alert(err))
 
     dispatch(removeFromCartAll())
-     Swal.fire({
+    Swal.fire({
         title: 'Pago Realizado!',
         text: 'Redireccionado al panel de facturación',
         icon:'success',
@@ -69,9 +73,9 @@ let history = useHistory();
     history.push('/facturas')
     
 }
-  
+
     
-   const elements= order.map(o=><li className="mb-2" key={o._id}>
+    const elements= order.map(o=><li className="mb-2" key={o._id}>
         <CartElement 
         name={o.name}
         date={o.appointment.date}
@@ -84,10 +88,6 @@ let history = useHistory();
     let suma= 0
     order.forEach(o=> suma += o.price)
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     return (
         
@@ -115,7 +115,7 @@ let history = useHistory();
                 className="width-100"
                 createOrder={(data, actions) => createOrder(data, actions)}
                 onApprove={(data, actions) => onApprove(data, actions)}
-             />
+                />
                 </div>
             </div>
     </div>

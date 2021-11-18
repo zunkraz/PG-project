@@ -8,6 +8,8 @@ function PersonalDashboardContainer({user}) {
             likes={user.likes} 
             dislikes={user.dislikes} 
             professional={user.isProfessional}
+            isVerified={user.isVerified}
+            session={user.session}
         />
     )
 }
