@@ -5,7 +5,8 @@ import {useSelector} from 'react-redux'
 
 
 function CartIcon() {
-    const items = useSelector(state=>state.sessionReducer.cart.length)
+    const id = useSelector(state=>state.sessionReducer.status.id)
+    const items = useSelector(state=>state.sessionReducer.cart.filter(o=>o.customerId===id).length)
     return (
         <Link to='/carrito'>
             <div className='relative min-w-max flex items-center'>
