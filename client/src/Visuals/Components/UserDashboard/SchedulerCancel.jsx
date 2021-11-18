@@ -82,7 +82,7 @@ export default function SchedulerCancel ({userId}){
             <div className="wrapper padd-md flex-center-xl-lg" data-uk-height-match=".normalize"> 
                 <div className="col-1-8@xl col-1-6@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
                     {/*<label htmlFor="days" className="mr-2">Día:</label>*/}
-                    <div class="flex-center-left normalize">Seleccione la fecha</div>
+                    <div className="flex-center-left normalize">Seleccione la fecha</div>
                 </div>
                 <div className="col-3-8@xl col-2-6@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
                     {/* <label htmlFor="month" className="mx-2">Mes:</label> */}
