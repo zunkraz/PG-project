@@ -1,19 +1,32 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getAdminInvoices} from "../../../Controllers/actions/adminActions";
 
 function InvoicesDashboard({token}){
   const dispatch = useDispatch();
   const allInvoices = useSelector(state=>state.adminReducer.adminInvoices);
+  const [invoicesSearch,setInvoicesSearch] = useState([]);
+  const [search,searchHappened] = useState(false);
 
   useEffect(()=>{
-      if(!allInvoices.length) dispatch(getAdminInvoices(token));
+      if(!allInvoices[0].length) dispatch(getAdminInvoices(token));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
   function handleSearch(e){
     e.preventDefault();
-
+    searchHappened(true);
+    let searchValue = e.target.value;
+    allInvoices[0].length && setInvoicesSearch(allInvoices[0].filter(u=> {
+      return (
+        u.orderID.includes(searchValue)
+        || u.customerId.username.toLowerCase().includes(searchValue.toLowerCase())
+      );
+    }))
+  }
+  function resultsToShow(){
+    if (invoicesSearch.length>0) return invoicesSearch;
+    else return allInvoices[0];
   }
   return (
     <React.Fragment>
@@ -32,12 +45,20 @@ function InvoicesDashboard({token}){
               onChange={event => handleSearch(event)}
               className="uk-input font-sm border-radius-sm"
               autoComplete="off"
-              placeholder="Buscar por nombre de cliente o código de orden"
+              placeholder="Buscar por nombre de cliente o número de orden"
             />
           </div>
         </div>
       </form>
-      {allInvoices[0] && allInvoices[0].map(i => {
+      {
+        ((invoicesSearch.length===0)&& search)?
+          <div className="col-1-1@xl col-1-1@lg col-1-1@md padd-lg">
+            <div className="bg-color-extra4-a20 border-radius-sm height-25vh font-lg text-bold text-red-600 flex-center">
+              Ningua factura coincide con el concepto de búsqueda.
+            </div>
+          </div> :
+          <div className="col-1-1@xl col-1-1@lg padd-md"data-uk-height-match=".normalize">
+            {resultsToShow().slice(0,9).map(i => {
        return (
          <div key={i._id} className="col-1-5@xl col-1-3@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
              <div className="wrapper padd-md bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">                 {/* invoice data */}
@@ -55,14 +76,14 @@ function InvoicesDashboard({token}){
                   </div>
                    {/* Hired Prof */}
                    <div className="padd-md font-sm flex-bar">
-                      <div className="text-bold">Profesional Contratado:</div>
+                      <div className="text-bold">Profesional contratado:</div>
                       <span>
                        {i.description}
                       </span>
                     </div>
                     {/* Order */}
                     <div className="padd-md font-sm flex-bar">
-                      <div className="text-bold">Num de Orden:</div>
+                      <div className="text-bold">N° de Orden:</div>
                       <span>
                        {i.orderID}
                       </span>
@@ -93,7 +114,8 @@ function InvoicesDashboard({token}){
         //numberOfSessions
         //orderID
       })}
-
+          </div>
+      }
     </React.Fragment>
       )
 }
