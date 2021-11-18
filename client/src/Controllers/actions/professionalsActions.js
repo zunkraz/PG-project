@@ -32,7 +32,6 @@ export function filterProfessional(obj,arr){
                 payload: data 
             })
         }else{
-       
             return dispatch({
                 type: DATA_NOT_FOUND, 
             }) 

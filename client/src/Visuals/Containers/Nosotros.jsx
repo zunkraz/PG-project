@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TeamCard from '../Components/Nosotros/TeamCard'
 import '../Assets/CustomGS.css'
 
 function Nosotros() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const handleRedirects=(e)=>{
         console.log(e.target.name)
@@ -40,7 +45,7 @@ function Nosotros() {
 
     return (
         <div className='flex flex-col nbg w-full'>
-                <div className='flex my-10 justify-around'>
+                <div className='flex my-10 justify-around flex-wrap'>
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/69180670?v=4'
                         title={<p className='font-main'>Sabrina Noel Vettorelo</p>}
@@ -70,7 +75,7 @@ function Nosotros() {
                         onClick={handleRedirects}
                     />
             </div>
-            <div className='flex my-10 justify-around'>
+            <div className='flex my-10 justify-around flex-wrap'>
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/32313172?v=4'
                         title={<p className='font-main'>Antonio Rodríguez</p>}

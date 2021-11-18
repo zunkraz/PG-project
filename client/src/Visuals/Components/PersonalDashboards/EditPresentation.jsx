@@ -12,7 +12,6 @@ function EditPresentation(props) {
         setLimitChar(250 - textarea.length)
     }, [textarea])
 
-
     const handleText=(e)=>{
         setTextarea(e.target.value)
         props.onChange(e)
@@ -39,7 +38,7 @@ function EditPresentation(props) {
                         <Textarea   color="lightBlue"
                                     name='biography'
                                     size="regular"
-                                    maxlength='250'
+                                    maxLength='250'
                                     value={textarea}
                                     onChange={handleText}
                                     outline={false}

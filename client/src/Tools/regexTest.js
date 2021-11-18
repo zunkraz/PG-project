@@ -23,6 +23,7 @@ export const validPassMedium = new RegExp(
 );
 
 export const validPassHard = new RegExp(
+    // eslint-disable-next-line
     '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})'
 );
 

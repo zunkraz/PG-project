@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { FcApproval } from "react-icons/fc";
 import { TiThumbsUp , TiThumbsDown } from "react-icons/ti";
 import ImageComponent from "../ImageComponent";
 
 
 function PersonalCardUser({img, likes, dislikes, sessions, isVerified, professional}) {
-
-    const [random, setRandom] = useState()
-
-    useEffect(() => setRandom(Math.ceil(Math.random()*10)) ,[])
-
     return (
         <div>
             <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
@@ -32,12 +27,12 @@ function PersonalCardUser({img, likes, dislikes, sessions, isVerified, professio
                     <span>{dislikes}</span>
                 </div>
             </div>
-            <div className='mrg-lg-t font-main font-lg flex-bar'>
+            <div className='mrg-lg-t font-main font-normal flex-bar'>
                 {professional &&   
-                    <div className='text-bold'>Sesiones Completadas:</div>
+                    <div className='text-bold text-gray-600'>Sesiones Completadas:</div>
                 }
                 {professional && 
-                    <span className='text-bold font-color-success'>{ Math.floor(random*1000/(likes>0?likes:50)) /*sessions*/}</span>
+                    <span className='text-bold font-color-success'>{sessions?sessions:0}</span>
                 }
             </div>
         </div>

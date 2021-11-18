@@ -27,7 +27,7 @@ function AdminPanel(){
   const {token} = userOnPage;
 
   useEffect(()=>{
-    if(btoa(userOnPage.username)==='c2Njb2NvZ2FzdG9u') Swal.fire({
+    if((userOnPage.username)==='scoccogaston') Swal.fire({
       title: atob('SG9sYSBHYXN0824h'),
       width: 260,
       confirmButtonText: '👻',

@@ -30,7 +30,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
         parentNode: 'jitsi-container',
         onMeetingEnd: () => alert('Meeting has ended'),
     };
-
+    // eslint-disable-next-line
     const { error, jitsi } = useJitsi(jitsiConfig);
     console.log(jitsi);
     
