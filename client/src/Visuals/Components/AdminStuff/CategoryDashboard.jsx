@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import * as FaIcons from 'react-icons/fa';
 import BasicForm from "./BasicForm";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllCategories} from "../../../Controllers/actions/constantInfoActions";
-import {deleteAdminCategory,putAdminCategory} from "../../../Controllers/actions/adminActions";
+import { deleteAdminCategory,putAdminCategory} from "../../../Controllers/actions/adminActions";
 import Swal from 'sweetalert2';
 
 function CategoryDashboard({token}){
@@ -12,6 +12,12 @@ function CategoryDashboard({token}){
   const catDeleted = useSelector(state=>state.adminReducer.categoryDeleted);
   const catModified = useSelector(state=>state.adminReducer.categoryModified);
   const catPosted = useSelector(state=>state.adminReducer.categoryPosted);
+  const [sorted, setSort]= useState("AZ")
+
+  if(sorted==="AZ") allCategories.sort(fromAtoZ)
+  if(sorted==="ZA") allCategories.sort(fromZtoA)
+  if(sorted==="-+") allCategories.sort(counter0to1)
+  if(sorted==="+-") allCategories.sort(counter1to0)
 
   function handleCatDelete(name,id){
     return Swal.fire({
@@ -60,12 +66,49 @@ function CategoryDashboard({token}){
     if(!allCategories.length) dispatch(getAllCategories(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
+  
+  const handleChange = (e) => {
+    let {value}=e.target
+    if(value==="AZ") {allCategories.sort(fromAtoZ); setSort(value)}
+    if(value==="ZA") {allCategories.sort(fromZtoA);setSort(value)}
+    if(value==="-+") {allCategories.sort(counter0to1); setSort(value)}
+    if(value==="+-") {allCategories.sort(counter1to0); setSort(value)}
+  };
+  
+
 
   return (
     <React.Fragment>
       {/* Barra de Edicion - Busqueda */}
       <BasicForm component={"categories"}/>
       {/* Listado de Categorias */}
+      
+      <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
+        <div className="col-1-8@xl col-1-8@lg col-1-5@md padd-md">
+          <label className="font-lg font-main text-bold normalize flex-center-left" htmlFor={"name"}>
+            Ordenar Categorías:
+          </label>
+        </div>
+        <div className="col-7-8@xl col-7-8@lg col-4-5@md padd-md">
+          <select
+          className="uk-select font-sm border-radius-sm"
+          name="orderCat"
+          defaultValue="choose"
+          onChange={e => handleChange(e)}
+          >
+            <option readOnly value="choose">Elegir</option>
+            <optgroup label="Alfabéticamente">
+              <option value="AZ"> A a Z</option>
+              <option value="ZA">Z a A</option>
+            </optgroup>
+              <optgroup label="Por número de búsquedas">
+              <option value="-+">Menor a mayor</option>
+              <option value="+-">Mayor a menor</option>
+            </optgroup>
+          </select>
+        </div>
+      </div> 
+
       <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
           {allCategories && allCategories.map(c=> {
               return (
@@ -158,3 +201,24 @@ function CategoryDashboard({token}){
 }
 
 export default CategoryDashboard;
+
+function fromAtoZ(a, b) {
+  if(a.name > b.name) return 1;
+  if (a.name < b.name) return -1;
+  return 0;
+};
+function fromZtoA(a, b) {
+  if(a.name > b.name) return -1;
+  if (a.name < b.name) return 1;
+  return 0;
+};
+function counter0to1(a, b) {
+  if(a.searchCount > b.searchCount) return 1;
+  if (a.searchCount < b.searchCount) return -1;
+  return 0;
+};
+function counter1to0(a, b) {
+  if(a.searchCount > b.searchCount) return -1;
+  if (a.searchCount < b.searchCount) return 1;
+  return 0;
+};
