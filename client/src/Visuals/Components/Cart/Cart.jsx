@@ -18,6 +18,7 @@ const order= useSelector(state=>state.sessionReducer.cart)
 const objInfo = {};
 const dispatch = useDispatch();
 let history = useHistory();
+    
 
 // PAYPAL
     const createOrder = (data,actions) => {
@@ -48,12 +49,10 @@ let history = useHistory();
     objInfo.customerId = order[0].customerId;
     objInfo.cart = order.map(e => {
         return {
-            key: e.id,
             name: e.name,
             price: e.price,
             id: e.id,
-            professionalId: e.professionalId,
-            meetingLink: e.meetingLink
+            professionalId: e.professionalId
         }
     })
     postCartInfo(objInfo,token)
@@ -118,6 +117,7 @@ let history = useHistory();
              />
                 </div>
             </div>
+
     </div>
     )
 
