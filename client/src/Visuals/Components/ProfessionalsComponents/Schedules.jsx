@@ -22,16 +22,17 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
     const carrito= useSelector(state=>state.sessionReducer.cart)
     const customerId= useSelector(state=>state.sessionReducer.status.id)
     
-    const jitsiConfig = {
-        roomName: `Latam Exponential-${id}`,
-        displayName: `${name} ${lastname}`,
-        password: 'latam-exp',
-        subject: 'fan',
-        parentNode: 'jitsi-container',
-        onMeetingEnd: () => alert('Meeting has ended'),
-    };
-    // eslint-disable-next-line
-    //const { error, jitsi } = useJitsi(jitsiConfig);
+
+    // const jitsiConfig = {
+    //     roomName: `Latam Exponential-${id}`,
+    //     displayName: `${name} ${lastname}`,
+    //     password: 'latam-exp',
+    //     subject: 'fan',
+    //     parentNode: 'jitsi-container',
+    //     onMeetingEnd: () => alert('Meeting has ended'),
+    // };
+    // // eslint-disable-next-line
+    // const { error, jitsi } = useJitsi(jitsiConfig);
 
     const price = cost?cost:0.01;
 
@@ -42,7 +43,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
             appointment:{
             date:e.target.name,
             sessions:1,
-            //meetingLink: jitsi._url || error,
+            // meetingLink: jitsi._url || error,
             },
             price:price,
             id:e.target.id,
@@ -147,7 +148,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
         : <p className="py-4">Sin turnos disponibles</p>
         }
         </ul>
-        <div className='hidden' id={jitsiConfig.parentNode} />
+        {/* <div className='hidden' id={jitsiConfig.parentNode} /> */}
     </div>
     )
 };

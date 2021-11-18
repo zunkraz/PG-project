@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //import ProfessionalCard from "./ProfessionalCard";
 import ProfessionalCard from "./../ProfessionalCardComponent";
 import "./../../Assets/css/pagination-style.css"
@@ -7,7 +7,13 @@ import { useSelector } from "react-redux";
 import Loading from '../Loading'
 
 export default function ProfesionalsCatalog(){
+
     const [pageNumber, setPageNumber]= useState(0)
+    
+    useEffect(() => {
+        window.scroll(0,0)
+    }, [pageNumber])
+
     const profis= useSelector(state=>state.professionalReducer.professionalsRender)
     const error= useSelector(state=>state.professionalReducer.error)
 

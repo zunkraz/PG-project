@@ -67,3 +67,9 @@ export function getAppointmentsUser(userId,as,token){
         .then(r=>r.data)
         .catch(r=>r.response.data)
 }
+
+export function getFeedbacks(customerId, professionalId, token){
+    return axios.get(`${BASIC_URL}/feedback?customerId=${customerId}&professionalId=${professionalId}`,{headers: {jwt: token}, withCredentials: true})
+        .then(r=>r.data)
+        .catch(r=>r.response.data)
+}

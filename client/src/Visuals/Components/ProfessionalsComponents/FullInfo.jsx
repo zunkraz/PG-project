@@ -29,7 +29,7 @@ export default function FullInfo({profData}) {
                     <div className='full-info-down'>
                         <div className='little-box'>
                             <span>Titulo profesional</span>
-                            <h3 className='capitalize'>{
+                            <h3 className='normal-case'>{
                                 title
                                 ? title
                                 : " - "
@@ -38,7 +38,7 @@ export default function FullInfo({profData}) {
                         </div>
                         <div className='little-box'>
                             <span>Institución</span>
-                            <h3 className='capitalize'>{
+                            <h3 className='normal-case'>{
                                 institute
                                 ? institute
                                 : " - "
@@ -47,7 +47,7 @@ export default function FullInfo({profData}) {
                         </div>
                         <div className='little-box'>
                             <span>Ubicación</span>
-                            <h3 className='capitalize'>
+                            <h3 className='normal-case'>
                                 {
                                     city
                                     ?city

@@ -53,7 +53,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 'Cuenta Bancaria': userData.bankAccount,
                 'Precio por hora': `USD $ ${userData.cost}`,
                 '   ' : '',
-                pais : userData.country.name,
+                pais : userData.country?userData.country.name:'',
                 estado : userData.state,
                 ciudad : userData.city,
             }
