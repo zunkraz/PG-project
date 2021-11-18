@@ -45,6 +45,12 @@ export function putCategory(categoryID, info, token){
     .catch(r=>r.response.data)
 }
 
+export function setCategoriesCount(token) {
+    return axios.put(`${url}/category/set`, null, {headers: {jwt: token}, withCredentials: true})
+    .then(r=>r.data)
+    .catch(r=>r.response.data)
+}
+
 export function deleteCategory(categoryID, token){
     return axios.delete(`${url}/category/${categoryID}`, {headers: {jwt: token}, withCredentials: true})
     .then(r=>r.data)

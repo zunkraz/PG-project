@@ -2,6 +2,7 @@ const router = require("express").Router();
 const transporter = require("../config/mailer");
 const reader = require("../config/plantillas/index.js");
 const getLinkProf = require("../config/mailHelpers/getLinkProf.js");
+const { appointmentsEmail } = require('../controllers/index')
 
 router.post("/", (req, res, next) => {
   const { type } = req.query;
@@ -49,35 +50,35 @@ router.post("/", (req, res, next) => {
     .catch((r) => next(r));
 });
 
-router.get("/newAppointment", (req, res, next) => {
+router.post("/newAppointment", (req, res, next) => {
   const info = req.body;
 
-  let dataCustom = reader('reserveCustom', info.custom_username);
-  let dataProf = reader('reserveProf', info.prof_username);
+  appointmentsEmail(info)
+    .then(r => {
+      let dataCustom = reader('reserveCustom', r.custom.username);
+      let dataProf = reader('reserveProf', r.prof.username);
 
-  const subjectCustom = "Tu consulta se ha agendado correctamente - No Reply";
-  const subjectProf = "Tienes una nueva consulta agendada - No Reply";
+      const subjectCustom = "Tu consulta se ha agendado correctamente - No Reply";
+      const subjectProf = "Tienes una nueva consulta agendada - No Reply";
 
-  return getLinkProf(info.prof_username)
-    .then((r) => r.toJSON().meetingUrl)
-    .then((link) => {
       dataCustom = dataCustom
-        .replace(/{profName}/gi, info.prof_name)
-        .replace(/{meetingLink}/gi, link)
-        .replace(/{date}/gi, info.date);
+        .replace(/{description}/gi, r.description)
+        .replace(/{meetingLink}/gi, r.meetingLink)
+        .replace(/{numberOfSessions}/gi, r.numberOfSessions)
+        .replace(/{date}/gi, r.date);
 
       dataProf = dataProf
-        .replace(/{customName}/gi, info.custom_name)
-        .replace(/{meetingLink}/gi, link)
-        .replace(/{date}/gi, info.date);
+        .replace(/{meetingLink}/gi, r.meetingLink)
+        .replace(/{customUsername}/gi, r.custom.username)
+        .replace(/{numberOfSessions}/gi, r.numberOfSessions)
+        .replace(/{date}/gi, r.date);
 
-      return [
-        { data: dataCustom, subject: subjectCustom, mail: info.custom_email },
-        { data: dataProf, subject: subjectProf, mail: info.prof_email },
-      ];
-    })
-    .then((arr) => {
-      const emails = arr.map((d) => {
+      let emails = [
+        { data: dataCustom, subject: subjectCustom, mail: r.custom.email },
+        { data: dataProf, subject: subjectProf, mail: r.prof.email }
+      ]
+
+      emails = emails.map((d) => {
         return transporter.sendMail({
           from: "Latam Exponential <latamexp@gmail.com>",
           bcc: d.mail,
@@ -88,8 +89,9 @@ router.get("/newAppointment", (req, res, next) => {
 
       return Promise.all([emails]);
     })
-    .then((r) => res.send('Enviados correctamente'))
-    .catch((err) => next(err));
+    .then(r => res.send('Enviados correctamente'))
+    .catch(r => next(r))
+
 });
 
 module.exports = router;
