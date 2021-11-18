@@ -43,7 +43,6 @@ let history = useHistory();
 //////////////////// FIN PP
 
 function  handlePay(){
-
     // order.forEach(e =>{
     //     setAvailability(e.id)
     // })

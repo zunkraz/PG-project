@@ -43,7 +43,6 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
             appointment:{
             date:e.target.name,
             sessions:1,
-            // meetingLink: jitsi._url || error,
             },
             price:price,
             id:e.target.id,
@@ -61,6 +60,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
         })
     };
     const dateJoin= (date)=>{
+        console.log(date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time+" hs")
         return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time+" hs"
     }
 

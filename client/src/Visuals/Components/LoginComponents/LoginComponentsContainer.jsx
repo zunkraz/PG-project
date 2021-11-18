@@ -194,7 +194,6 @@ function LoginComponentsContainer() {
     }
 
     const responseGoogle =(res)=>{
-        console.log(res)
         setGoogleData({...res.profileObj})
         const endUN = res.profileObj.email?.indexOf('@')
         if(!userNames.includes(res.profileObj.email.slice(0, endUN))){

@@ -26,7 +26,12 @@ function UserDashboard({userData, userId, token}) {
     const changeUserState = (e)=>{
         setUserInfo(e.target.name);
     }
-    
+
+    const lateralBtn=`my-3 w-full h-10 mr-4 rounded-xl duration-300
+    text-green-500 font-medium tracking-widest
+    ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
+    bg-white hover:bg-green-500 hover:text-white`    
+
     return (
         <React.Fragment>
             <div className="wrapper bg-professional-title">
@@ -62,10 +67,7 @@ function UserDashboard({userData, userId, token}) {
                                     userData.isProfessional &&
                                     <Link to={`/${userData.username}/horarios`} >
                                     <button
-                                        className="my-3 w-full h-10 mr-4 rounded-xl duration-300
-                                            text-green-500 font-medium tracking-widest
-                                            ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
-                                            bg-white hover:bg-green-500 hover:text-white"
+                                        className={lateralBtn}
                                     >
                                         Gestiona tus turnos 
                                         
@@ -73,23 +75,17 @@ function UserDashboard({userData, userId, token}) {
                                 </Link>
                                 }
 
-                                <Link to='/opinion' >
+                                <Link to={`/profesionales/${userData.username}`} >
                                     <button
-                                        className="my-3 w-full h-10 mr-4 rounded-xl duration-300
-                                        text-green-500 font-medium tracking-widest
-                                        ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
-                                        bg-white hover:bg-green-500 hover:text-white"
+                                        className={lateralBtn}
                                     >
-                                        Deja tu opinión
+                                        Perfil Profesional
                                     </button>
                                 </Link>
                                 
                                 <Link to='/facturas' >
                                     <button
-                                        className="my-3 w-full h-10 mr-4 rounded-xl duration-300
-                                        text-green-500 font-medium tracking-widest
-                                        ring-white bg-opacity-5 ring-4 ring-offset-1 ring-offset-green-500 
-                                        bg-white hover:bg-green-500 hover:text-white"
+                                        className={lateralBtn}
                                     >
                                         Facturas 
                                     </button>
@@ -110,7 +106,7 @@ function UserDashboard({userData, userId, token}) {
                         {/* Container: Schedule */}
                         <div className='col-1-5@xl col-2-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t5-'>
                             <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
-                                <PersonalTaskComponent isProfessional={userData.isProfessional}/>
+                                <PersonalTaskComponent isProfessional={userData.isProfessional} personalName={`${userData.name} ${userData.lastname}`}/>
                             </div>
                         </div>
                         {userData.isProfessional && 
