@@ -18,8 +18,7 @@ export default function EditReview({close,review,setReview,userId}){
             setCharacters(200-e.target.value.length)
         }
     }
-    console.log('REVIEW=> ',review)
-    console.log('disable => ', disabled)
+    
     function editRew(e){
         e.preventDefault()
         updateReviewUser({text:rew,rate:rate, reviewId:review._id, token})
