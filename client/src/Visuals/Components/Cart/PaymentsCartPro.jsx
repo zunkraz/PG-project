@@ -8,7 +8,8 @@ const componentHeaderData = {
 }
 
 const PaymentsCartPro = ({render}) => {
-    let totalProfit  = 0;
+    let totalProfitPC  = 0;
+    let totalProfitMob  = 0;
     return ( 
         <React.Fragment>
             <ComponentHeader data={componentHeaderData} />
@@ -40,7 +41,7 @@ const PaymentsCartPro = ({render}) => {
                             </thead>
                             <tbody>
                                 {render.length !== 0 ? render.map((e,index) => {
-                                    totalProfit = totalProfit + Number(e.profit);
+                                    totalProfitPC = totalProfitPC + Number(e.profit);
                                     let Render = 
                                     <tr key={index} className="border-gray-200">
                                         <td align="center" className="padd-lg text-center text-bold">
@@ -73,7 +74,7 @@ const PaymentsCartPro = ({render}) => {
                             {/*<div className='grid grid-cols-2 mt-8 pb-8 shadow-xl w-11/12'>*/}
                             <div className='col-3-4@xl col-2-3@lg col-2-3@md'>
                                 <div className='text-green-500 font-bold text-3xl'>
-                                    Monto disponible: $ {totalProfit}
+                                    Monto disponible: $ {totalProfitPC}
                                 </div>
                             </div>
                             <div className='col-1-4@xl col-1-3@lg col-1-3@md'>
@@ -86,7 +87,7 @@ const PaymentsCartPro = ({render}) => {
                     <div className="element-sm-xs">
                         {
                             render.length !== 0 ? render.map((e,index) => {
-                                totalProfit = totalProfit + Number(e.profit);
+                                totalProfitMob = totalProfitMob + Number(e.profit);
                                 let Render = 
                                     <div key={index} className="col-1-1@sm col-1-1@xs mrg-lg-t">
                                         <div className="bg-color-extra4-a20 border-radius-sm border-color-dark-a20 overflow-hidden shadow-lg">
@@ -128,7 +129,7 @@ const PaymentsCartPro = ({render}) => {
                             {/*<div className='grid grid-cols-2 mt-8 pb-8 shadow-xl w-11/12'>*/}
                             <div className='col-1-1@sm col-1-1@xs'>
                                 <div className='text-center text-green-500 font-bold font-xl'>
-                                    Monto disponible: $ {totalProfit}
+                                    Monto disponible: $ {totalProfitMob}
                                 </div>
                             </div>
                             <div className='mrg-xl-t col-1-1@sm col-1-1@xs'>
