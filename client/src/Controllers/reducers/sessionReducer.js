@@ -20,6 +20,7 @@ const initialState = {
         error: false
     },
     cart: [],
+    appointments: []
     //status: {},
 }
 
@@ -82,6 +83,11 @@ export default function sessionReducer(state=initialState, {type,payload}){
             return {
                 ...state,
                 cart: [],
+            }
+        case "GET_APPOINTMENTS_USER":
+            return {
+                ...state,
+                appointments: payload,
             }
         case 'persist/REHYDRATE':
             if(payload){
