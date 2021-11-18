@@ -14,7 +14,8 @@ export default function Cart(){
 
 const userOnPage = useSelector(state=>state.sessionReducer.status);
 const {token} = userOnPage; 
-const order= useSelector(state=>state.sessionReducer.cart)
+const {id} = userOnPage;
+const order = useSelector(state=>state.sessionReducer.cart).filter(o=>o.customerId===id);
 const objInfo = {};
 const dispatch = useDispatch();
 let history = useHistory();
@@ -71,7 +72,7 @@ let history = useHistory();
 }
   
     
-   const elements= order.map(o=><li className="mb-2" key={o._id}>
+   const elements= order.map((o,i)=><li key={i} className="mb-2" key={o._id}>
         <CartElement 
         name={o.name}
         date={o.appointment.date}
