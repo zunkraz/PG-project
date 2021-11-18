@@ -15,10 +15,11 @@ const {
   tipUpdate,
   tipDelete,
   getAllTipsAdmin, getAllInvoicesAdmin,
-  getAllReviewsAdmin, reviewUpdate, reviewDelete
+  getAllReviewsAdmin, reviewUpdate, reviewDelete, setSearchCount
 } = require('../controllers/index.js');
 const Appointment = require('../models/Appointment');
 const Report = require('../models/Report');
+
 
 //GET ALL USERS
 router.get('/users', loginAuth, roleAuth, (req,res,next)=>{
@@ -69,6 +70,12 @@ router.put('/appointment/:id', loginAuth, roleAuth, (req,res,next)=>{
 router.post('/category', loginAuth, roleAuth, (req,res,next)=>{
   let {img,name,searchCount} = req.body;
   categoryCreate({img,name,searchCount})
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
+//CATEGORY CLEAN SEARCHCOUNT
+router.put('/category/set', loginAuth, roleAuth, async (req, res, next)  => {
+  setSearchCount()
     .then(result => res.json(result))
     .catch(err => next(err));
 });
@@ -153,5 +160,12 @@ router.get('/reports',(req,res,next)=>{
     .catch(err => next(err));
 });
 
-module.exports = router;
 
+
+
+
+
+
+
+
+module.exports = router;

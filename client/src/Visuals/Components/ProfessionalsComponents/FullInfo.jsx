@@ -60,7 +60,7 @@ export default function FullInfo({profData}) {
                             <span>Miembro desde</span>
                             <h3>{memberSince
                                 ? memberSince.slice(0,10)
-                                : "01/01/2000"
+                                : "01/11/2021"
                             }</h3>
                         </div>
                     </div>

@@ -17,10 +17,4 @@ router.put('/', (req,res,next)=>{
     .catch(err => next(err));
 });
 
-router.put('/set', (req, res, next)  => {
-  setSearchCount()
-    .then(result => res.json(result))
-    .catch(err => next(err));
-});
-
 module.exports = router;
