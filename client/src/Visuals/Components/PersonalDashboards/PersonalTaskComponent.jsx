@@ -10,9 +10,9 @@ function PersonalTaskComponent({isProfessional}) {
     const appointments = useSelector(state => state.sessionReducer.appointments)
 
     useEffect(() => {
-        appointments && dispatch(getFeeds(appointments[0]?.customerId._id, appointments[0]?.professionalId._id, token))    
+        appointments?.length && dispatch(getFeeds(appointments[0]?.customerId._id, appointments[0]?.professionalId._id, token))    
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [appointments])
+    }, [])
 
     const [feedback, setFeedback] = useState(false)
     const feedbacks = useSelector(state => state.sessionReducer.feedbacks)

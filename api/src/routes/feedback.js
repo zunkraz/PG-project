@@ -12,19 +12,19 @@ router.get('/',(req,res,next)=>{
     .populate('professionalId', 'id username name lastname')
     .then(result => res.json(result))
     .catch(err => next(err));
-  // if(customerId) Feedback.find({customerId}) .populate('customerId', 'id username name lastname')
-  //   .populate('professionalId', 'id username name lastname')
-  //   .then(result => res.json(result))
-  //   .catch(err => next(err));
-  // if(professionalId) Feedback.find({professionalId}) .populate('customerId', 'id username name lastname')
-  //   .populate('professionalId', 'id username name lastname')
-  //   .then(result => res.json(result))
-  //   .catch(err => next(err));
-  // else Feedback.find()
-  //   .populate('customerId', 'id username name lastname')
-  //   .populate('professionalId', 'id username name lastname')
-  //   .then(result => res.json(result))
-  //   .catch(err => next(err));
+  if(customerId) Feedback.find({customerId}) .populate('customerId', 'id username name lastname')
+    .populate('professionalId', 'id username name lastname')
+    .then(result => res.json(result))
+    .catch(err => next(err));
+  if(professionalId) Feedback.find({professionalId}) .populate('customerId', 'id username name lastname')
+    .populate('professionalId', 'id username name lastname')
+    .then(result => res.json(result))
+    .catch(err => next(err));
+  else Feedback.find()
+    .populate('customerId', 'id username name lastname')
+    .populate('professionalId', 'id username name lastname')
+    .then(result => res.json(result))
+    .catch(err => next(err));
 });
 //POST NEW FEEDBACK
 router.post('/', loginAuth, (req,res,next)=>{
