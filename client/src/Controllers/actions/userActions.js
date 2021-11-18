@@ -1,6 +1,6 @@
 
 import { CREATE_USER, GET_USERS, PUT_USER, SET_PROFESSIONAL } from "../../constants";
-import { createUser, getUsers, updateUserData } from "../../ApiReq/users";
+import { createUser, getUsers, updateUserData,getAppointmentsUser } from "../../ApiReq/users";
 
 
 export const createUserAction = (user) => {
@@ -21,7 +21,7 @@ export function getAllUsers(){
             payload: data
         });
     };
-};
+}
 
 export function putUser(username, body){
     const response = updateUserData(username, body);
@@ -35,7 +35,17 @@ export function setProfessional(username, body){
     return {
         type: SET_PROFESSIONAL
     };
-};
+}
+
+export function getAppointments(userId,as,token){
+    return async function(dispatch){
+        const data = await getAppointmentsUser(userId,as,token);
+        return dispatch({
+            type: "GET_APPOINTMENTS_USER",
+            payload: data
+        });
+    };
+}
 
 //post tips
 
