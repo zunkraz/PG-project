@@ -20,6 +20,7 @@ const Nav = () => {
     }
 
     function goAlert(){
+        
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -83,8 +84,8 @@ const Nav = () => {
                                 uk-logo 
                                 uk-margin-sm-left" 
                     to="/">
-                        <img src={logoMain} alt="LatamExponential" className="element-xl-lg-md-sm"/>
-                        <img src={logoMobile} alt="LatamExponential" className="element-xs"/>
+                        <img src={logoMain} alt="LatamExponential" className="element-xl-lg"/>
+                        <img src={logoMobile} alt="LatamExponential" className="element-md-sm-xs"/>
                 </Link>
                 
                 <ul 

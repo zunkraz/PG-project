@@ -1,3 +1,17 @@
-<h1>Hola {username}, tu consulta ha sido agendada exitosamente</h1>
-<p>Has agendado una cita con {profName}, el día {date}. Para llevar a cabo la misma es necesario que ingreses 5 min antes de la hora escogida en el siguiente link:</p>
-<p>{meetingLink}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hola {username}, tu consulta ha sido agendada exitosamente</h1>
+    <p>Detalles de tu cita:</p>
+    <p>{description}, el {date}, cantidad de sesiones: {numberOfSessions}.</p>
+    <p>Para llevar a cabo la misma es necesario que ingreses 5 min antes de la hora escogida en el siguiente link:</p>
+    <a href='{meetingLink}'>Link de videollamada</a>
+    <p>O chequeando en tu agenda en nuestra plataforma</p>
+</body>
+</html>

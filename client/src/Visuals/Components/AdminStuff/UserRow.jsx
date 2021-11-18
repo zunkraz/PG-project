@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {delAdminUser, putAdminUser} from '../../../Controllers/actions/adminActions';
 import * as FaIcons from "react-icons/fa";
 import Swal from 'sweetalert2';
-//import {sendMail} from "../../../ApiReq/mails";
-//import passwordGenerator from "../ResetPassword/passwordGenerator";
+import {sendMail} from "../../../ApiReq/mails";
+import passwordGenerator from "../ResetPassword/passwordGenerator";
 
 function UserRow({user, token}){
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function UserRow({user, token}){
   }
   function handleResetPassword(username,email){
     return Swal.fire({
-      text:`Desea resetear el password de ${username}?`,
+      text:`Desea restablecer el password de ${username}?`,
       icon: 'question',
       showCancelButton: true,
       cancelButtonText: 'Cancelar',
@@ -42,13 +42,13 @@ function UserRow({user, token}){
       cancelButtonColor: "#8c8f9a",
     }).then(result => {
       if(result.isConfirmed){
-        let password = '123456'//passwordGenerator();
+        let password = passwordGenerator();
         dispatch(putAdminUser(username, {password}, token));  //modificar putUser en apireq/admin con {...info,force:true}?
         Swal.fire({
-          text:`Password cambiado, instrucciones enviadas a ${email}.`,
+          text:`Cotraseña cambiada, instrucciones enviadas a ${email}.`,
           icon:'success',
           confirmButtonColor: "rgb(165 220 134)"});
-        // sendMail("resetPassAdmin",{password,username,email})
+        sendMail("resetPassAdmin",{password,username,email})
       }});
   }
   function handleChangeRole(username,isAdmin){
