@@ -14,7 +14,7 @@ export default function EditReview({close,review,setReview,userId}){
     function rewChange(e){
         if(e.target.value.length <= 200){
             setRew(e.target.value)
-            setDisabled(rew.length>5 && rew ? false : true )
+            setDisabled(e.target.value && rate ? false : true )
             setCharacters(200-e.target.value.length)
         }
     }
