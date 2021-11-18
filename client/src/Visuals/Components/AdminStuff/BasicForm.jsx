@@ -78,7 +78,7 @@ function BasicForm({component}){
           </label>
         </div>
         {/* <label className="m-2" htmlFor={"name"}>Nombre</label> */}
-        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
+        <div className="col-1-5@xl col-1-5@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"name"}>
             Nombre
           </label>
@@ -93,7 +93,7 @@ function BasicForm({component}){
           />
         </div>
         {/* <label className="m-2" htmlFor={"searchCount"}>Cantidad de búsquedas</label> */}
-        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
+        <div className="col-1-5@xl col-1-5@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"searchCount"}>
             Cantidad de búsquedas
           </label>
@@ -110,7 +110,7 @@ function BasicForm({component}){
           />
         </div>
         {/* <label className="m-2" htmlFor={"img"}>URL imagen</label> */}
-        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
+        <div className="col-1-5@xl col-1-5@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"img"}>
             URL imagen
           </label>
@@ -123,7 +123,7 @@ function BasicForm({component}){
             placeholder="Imagen"
           />
         </div>
-        <div className="col-1-5@xl col-1-4@lg padd-md normalize position-relative">
+        <div className="col-1-5@xl col-1-5@lg padd-md normalize position-relative">
           <div className="uk-position-bottom padd-md">
             <input
               type="submit"
@@ -132,7 +132,11 @@ function BasicForm({component}){
           </div>
         </div>
       </form>
-        <button onClick={(e) => dispatch(adminSetCategCount(token))}>PRUEBA</button>
+      <div className="col-1-5@xl col-1-5@lg padd-md normalize">
+          <button
+          className="padd-md border-radius-sm font-sm action action-add-post"
+          onClick={(e) => dispatch(adminSetCategCount(token))}>Resetear contador de búsquedas</button>
+      </div>
     </div>
   );
 

@@ -46,7 +46,7 @@ export function putCategory(categoryID, info, token){
 }
 
 export function setCategoriesCount(token) {
-    return axios.put(`${url}/category/set`, {headers: {jwt: token}, withCredentials: true})
+    return axios.put(`${url}/category/set`, null, {headers: {jwt: token}, withCredentials: true})
     .then(r=>r.data)
     .catch(r=>r.response.data)
 }

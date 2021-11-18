@@ -214,6 +214,6 @@ export function getAdminReports(token){
 export function adminSetCategCount(token) {
     return async function (dispatch) {
         await setCategoriesCount(token)
-        .then(dispatch(getAllCategories()))
+        return dispatch(getAllCategories())
     }
 }

@@ -15,10 +15,11 @@ const {
   tipUpdate,
   tipDelete,
   getAllTipsAdmin, getAllInvoicesAdmin,
-  getAllReviewsAdmin, reviewUpdate, reviewDelete
+  getAllReviewsAdmin, reviewUpdate, reviewDelete, setSearchCount
 } = require('../controllers/index.js');
 const Appointment = require('../models/Appointment');
 const Report = require('../models/Report');
+
 
 //GET ALL USERS
 router.get('/users', loginAuth, roleAuth, (req,res,next)=>{
@@ -72,6 +73,12 @@ router.post('/category', loginAuth, roleAuth, (req,res,next)=>{
     .then(result => res.json(result))
     .catch(err => next(err));
 });
+//CATEGORY CLEAN SEARCHCOUNT
+router.put('/category/set', loginAuth, roleAuth, async (req, res, next)  => {
+  setSearchCount()
+    .then(result => res.json(result))
+    .catch(err => next(err));
+});
 //CATEGORY UPDATE
 router.put('/category/:id', loginAuth, roleAuth, (req,res,next)=>{
   let {id} = req.params;
@@ -80,13 +87,6 @@ router.put('/category/:id', loginAuth, roleAuth, (req,res,next)=>{
     .then(result => res.json(result))
     .catch(err => next(err));
 });
-//CATEGORY CLEAN SEARCHCOUNT
-router.put('/category/set', loginAuth, roleAuth, (req, res, next)  => {
-  setSearchCount()
-    .then(result => res.json(result))
-    .catch(err => next(err));
-});
-
 //CATEGORY DELETE
 router.delete('/category/:id', loginAuth, roleAuth, (req,res,next)=>{
   let {id} = req.params;
@@ -160,5 +160,12 @@ router.get('/reports',(req,res,next)=>{
     .catch(err => next(err));
 });
 
-module.exports = router;
 
+
+
+
+
+
+
+
+module.exports = router;
