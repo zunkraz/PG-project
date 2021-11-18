@@ -241,3 +241,10 @@ select.pg-custom:focus {
     border: solid 2px var(--color-main);
     color: var(--color-light);
 }
+
+table.bills tbody tr:nth-child(odd) {
+    background-color: var(--color-light);
+}
+table.bills tbody tr:nth-child(even) {
+    background-color: var(--color-extra4-a20);
+}
