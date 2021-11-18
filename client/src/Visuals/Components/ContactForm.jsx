@@ -10,7 +10,7 @@ export default function ContactForm(){
         window.scrollTo(0,0)
     }, []);
 
-    const [input, setInput] = useState({name:"", email:"", phone:"", message:""});
+    const [input, setInput] = useState({name:"", email:"", phone:"", message:"", thematic:""});
     const [error, setError] = useState({});
 
     function handleChange({ target }) {
