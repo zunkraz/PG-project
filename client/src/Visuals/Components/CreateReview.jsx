@@ -83,19 +83,19 @@ function CreateReview(props) {
                         />
                     <button className={rating===0?grayClass:rating<3?redClass:rating>=4?greenClass:yellowClass}
                             id='1'
-                            onClick={handleRating}>O</button>
+                            onClick={handleRating}>★</button>
                     <button className={rating<2?grayClass:rating<3?redClass:rating>=4?greenClass:yellowClass}
                             id='2'
-                            onClick={handleRating}>O</button>
+                            onClick={handleRating}>★</button>
                     <button className={rating<3?grayClass:rating>=4?greenClass:yellowClass}
                                 id='3'
-                                onClick={handleRating}>O</button>
+                                onClick={handleRating}>★</button>
                     <button className={rating<4?grayClass:rating>=4?greenClass:yellowClass}
                                     id='4'
-                                    onClick={handleRating}>O</button>
+                                    onClick={handleRating}>★</button>
                     <button className={rating<5?grayClass:rating>=4?greenClass:yellowClass}
                             id='5'
-                            onClick={handleRating}>O</button>
+                            onClick={handleRating}>★</button>
                     <BiLike    className={rating>3?likeClass:disactiveLike} 
                                         id='like' 
                                         onClick={handleRating}

@@ -29,10 +29,11 @@ function PersonalTaskComponent({isProfessional}) {
     
     console.log(feedbacks)
 
-
+///////////////////////////////////////////////////////////////////////////////
     // PERMITIR CREAR O EDITAR DURANTE FECHAS IDENTICAS
     // ACTUALIZAR ACTIONS Y RUTAS PARA EDITAR 
     // CREAR GUIA COMPLETA SOBRE COMO HACER EL MEET
+///////////////////////////////////////////////////////////////////////////////
 
     const appoimentSort= appointments.sort((a,b)=>Number(a.day)-Number(b.day))
 
