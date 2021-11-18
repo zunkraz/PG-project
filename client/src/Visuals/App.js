@@ -28,6 +28,7 @@ import Nosotros from './Containers/Nosotros'
 import "@material-tailwind/react/tailwind.css";
 import ContactForm from './Components/ContactForm';
 import ForgotPassword from './Components/ResetPassword/ForgotPassword'
+import Meet from './Components/Meet/Meet';
 
 
 
@@ -100,6 +101,9 @@ function App() {
         </Route>
         <Route path="/resetear">
           <ForgotPassword/>
+        </Route>
+        <Route path="/reunion/:roomName/:displayName"
+          render={({match})=><Meet match={match}/>}>
         </Route>
       </Switch>
         <Footer/>

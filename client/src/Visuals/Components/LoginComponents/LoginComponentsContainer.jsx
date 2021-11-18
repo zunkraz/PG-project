@@ -1,9 +1,8 @@
 import React , { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, useHistory, useLocation } from 'react-router'
+import { Redirect, useLocation } from 'react-router'
 import { checkLoginAction, cleanLoginCheck } from '../../../Controllers/actions/loginAction'
 import { getAllUsers } from '../../../Controllers/actions/userActions'
-
 import LoginFormComponents from './LoginFormComponents'
 import GoogleLogin from 'react-google-login'
 import { GOOGLE_ID } from '../../../constants'
@@ -16,11 +15,10 @@ import Swal from 'sweetalert2'
 
 
 
-function LoginComponentsContainer({match}) {
+function LoginComponentsContainer() {
 
     //funcion que llame el listado de usernames y mails
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const {search} = useLocation()
     const query= new URLSearchParams(search)
@@ -44,7 +42,7 @@ function LoginComponentsContainer({match}) {
     const userNames = users.map(elem=>elem.username)
 
     const [showErrorText, setShowErrorText] = useState(false)
-    const [userIndex, setUserIndex] = useState()
+    const [userIndex, setUserIndex] = useState('')
     const [userFind, setUserFind] = useState('')
     const [passVerified, setPassVerified] = useState('')
     const [UserCanLog, setUserCanLog] = useState(true)
@@ -52,8 +50,8 @@ function LoginComponentsContainer({match}) {
     const [register, setRegister] = useState(false)
     const [checked, setChecked] = useState(false)
     const [googleData, setGoogleData] = useState({})
-    const [usernameField, setUsernameField] = useState()
-    const [passField, setPassField] = useState()
+    const [usernameField, setUsernameField] = useState('')
+    const [passField, setPassField] = useState('')
     
     const [errors, setErrors] = useState({
         username:'have some error',
@@ -66,8 +64,6 @@ function LoginComponentsContainer({match}) {
     })
 
     // FUNCTIONS ///////////////
-
-    
     
     const handleErrors=()=>{
         if(userFind.length>0){
@@ -99,15 +95,13 @@ function LoginComponentsContainer({match}) {
         }
         if(!errors.username.length && !errors.password.length){
             setUserCanLog(false)
-            return true
         }
         if(!errors.password.length && !errors.username.length){
             setUserCanLog(false)
-            return true
         }
     }
     
-    const handleFields=async(e)=>{
+    const handleFields=(e)=>{
         if(e.target.name==='username'){
             setuserFields({
                 ...userFields, username:e.target.value
@@ -133,14 +127,13 @@ function LoginComponentsContainer({match}) {
         }
         if(e.target.name==='password'){
             if(e.target.value.length>=5){
-                setPassVerified('Password Verified')
-                cleanErrors('password')
-                await setuserFields({
+                setuserFields({
                     ...userFields, password:e.target.value
                 })
-                checkErrors()
-                
+                setPassVerified('Password Verified')
+                cleanErrors('password')
                 setShowErrorText(false)
+                checkErrors()
             }else if(e.target.value.length<=5){
                 setUserCanLog(true)
                 setPassVerified('')
@@ -202,7 +195,7 @@ function LoginComponentsContainer({match}) {
 
     const responseGoogle =(res)=>{
         setGoogleData({...res.profileObj})
-        const endUN = res.profileObj.email.indexOf('@')
+        const endUN = res.profileObj.email?.indexOf('@')
         if(!userNames.includes(res.profileObj.email.slice(0, endUN))){
             setRegister(!register)
         }

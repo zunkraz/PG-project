@@ -7,7 +7,7 @@ import { validPassHard, validPassLength, validPassMedium } from '../../../Tools/
 
 
 function FormPassword(props) {
-    const [pass, setPass] = useState()
+    const [pass, setPass] = useState('')
     const [passCoincidence, setPassCoincidence] = useState(false)
     const [newPassword, setNewPassword] = useState('')
     const [passObj, setPassObj] = useState({
@@ -131,7 +131,7 @@ function FormPassword(props) {
                             value={pass}
                             placeholder='Ingresa tu contraseña'
                             onChange={handleFields}
-                            autocomplete="off"
+                            autoComplete="off"
                             className='bg-gray-200 p-2 tracking-widest my-4'
                         />
                     <button className={`flex bg-green-500 bg-opacity-75 mt-2 w-full items-center 
@@ -163,7 +163,7 @@ function FormPassword(props) {
                                     >Ingresa la nueva contraseña</p></label>
                             <input  className={passErrors.error?inputWithError:inputnoError}
                                     onChange={handleFieldsPassword}
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     name='password'
                                     type='password'
                                     placeholder='   Ingresar Contraseña . . . .'
@@ -180,7 +180,7 @@ function FormPassword(props) {
                                 >Repite la nueva contraseña</p></label>}
         {!passErrors.error && <input  className={passCoincidence?inputnoError:inputWithError}
                                     onChange={handleFieldsPassword}
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     name='newPassword'
                                     type='password'
                                     placeholder='   Repetir Contraseña . . . .'

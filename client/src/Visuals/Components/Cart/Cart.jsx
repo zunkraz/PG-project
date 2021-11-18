@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import CartElement from "./CartElement";
 import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
-// import { setAvailability } from "../../../ApiReq/schedule";
+import { setAvailability } from "../../../ApiReq/schedule";
 import Swal from 'sweetalert2'
 import { postCartInfo } from "../../../ApiReq/cart";
 import { sendMailAppointment, sendMailInvoice } from '../../../ApiReq/mails'
@@ -25,25 +25,24 @@ let history = useHistory();
     const createOrder = (data,actions) => {
         
         return actions.order.create({
-           purchase_units: [
-              {
-                 amount: {
-                    value: suma,
-                 }
-              }
-           ]
-        })
-     }
- 
-   const onApprove = (data, actions) => {
-      objInfo.orderID = data.orderID;
-      objInfo.payerID = data.payerID;
-    return actions.order.capture(handlePay());
-  }
+            purchase_units: [
+                {
+                    amount: {
+                        value: suma,
+                    }
+                }
+            ]
+            })
+        }
+
+    const onApprove = (data, actions) => {
+        objInfo.orderID = data.orderID;
+        objInfo.payerID = data.payerID;
+        return actions.order.capture(handlePay());
+    }
 //////////////////// FIN PP
 
- function  handlePay(){
-
+function  handlePay(){
     // order.forEach(e =>{
     //     setAvailability(e.id)
     // })
@@ -65,26 +64,26 @@ let history = useHistory();
     .catch(err => alert(err))
 
     dispatch(removeFromCartAll())
-     Swal.fire({
-        title: 'Pago Realizado!',
-        text: 'Redireccionado al panel de facturación',
-        icon:'success',
-        confirmButtonColor: "#e83454", 
-    });
+        Swal.fire({
+            title: 'Pago Realizado!',
+            text: 'Redireccionado al panel de facturación',
+            icon:'success',
+            confirmButtonColor: "#e83454", 
+        });
     history.push('/facturas')
     
 }
-  
+
     
-   const elements= order.map((o,i)=><li key={i} className="mb-2" key={o._id}>
-        <CartElement 
-        name={o.name}
-        date={o.appointment.date}
-        sessions={o.appointment.sessions}
-        price={o.price}
-        id={o.id}
-        />
-    </li>)
+    const elements= order.map((o,i)=><li key={i} className="mb-2" key={o._id}>
+            <CartElement 
+            name={o.name}
+            date={o.appointment.date}
+            sessions={o.appointment.sessions}
+            price={o.price}
+            id={o.id}
+            />
+        </li>)
     
     let suma= 0
     order.forEach(o=> suma += o.price)
@@ -120,7 +119,7 @@ let history = useHistory();
                 className="width-100"
                 createOrder={(data, actions) => createOrder(data, actions)}
                 onApprove={(data, actions) => onApprove(data, actions)}
-             />
+            />
                 </div>
             </div>
     </div>

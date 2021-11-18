@@ -43,7 +43,7 @@ function Dashboard({match}) {
         <div>
             {(!status.token.length>0 && !userData) && <Redirect to='/'/>}
             {status.token.length>0 && userData?.name?
-            <UserDashboard userData={userData}/>
+            <UserDashboard userData={userData} userId={status.id} token={status.token}/>
                 :
             <Loading divClass={divClass} imgClass={imgClass}/>}
         </div>

@@ -22,6 +22,24 @@ export default function ProfessionalContainer({username, login}) {
 
     if(username===profData.username) {
 
+
+const test = [{
+                score: 4,
+                text: "Excelente atención, es un gran arquitecto. Cuenta buenos chistes.",
+                customerId: {name:'Armando', lastname:'cabezas'},
+                _id: "6195ed21e75cdff47a806b7b"
+            },
+            {
+                score: 4,
+                text: "Excelente atención, es un gran arquitecto. Cuenta buenos chistes.",
+                customerId: {name:'Armando', lastname:'cabezas'},
+                _id: "6195ed21e75cdff47a806b7b"
+            }
+        ]
+
+
+
+
     return (
         <React.Fragment>
         <div className="wrapper bg-professional-title">
@@ -93,7 +111,7 @@ export default function ProfessionalContainer({username, login}) {
                         <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
                             {
                                 profData.isProfessional &&
-                                <Opinions/>
+                                <Opinions opinions={test}/>
                             }
                         </div>
                     </div>
