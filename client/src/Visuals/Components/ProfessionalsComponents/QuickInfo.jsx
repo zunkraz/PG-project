@@ -2,6 +2,7 @@ import React from 'react'
 import { FcApproval } from "react-icons/fc";
 import { TiThumbsUp , TiThumbsDown } from "react-icons/ti";
 import ImageComponent from "../ImageComponent";
+import { FaRegMoneyBillAlt } from "react-icons/fa";
 
 
 export default function QuickInfo({data}) {
@@ -10,8 +11,11 @@ export default function QuickInfo({data}) {
 
     return (
         <div>
-            <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
-                Valor de sesión: ${cost}
+            <div className='flex justify-center padd-md-b font-main text-bold font-xl border-bottom-color-main'>
+                <span className='flex items-center justify-center font-xl w-full'
+                    ><FaRegMoneyBillAlt className='text-green-500 w-10 mr-2'/
+                        >{`  ${cost}`}<p className='text-green-500 font-normal ml-2'>USD</p> 
+                </span>
             </div>
             <div className="mrg-lg-t border-radius-sm overflow-hidden">
                 <ImageComponent img={img} ratio={"ratio-1-1"}/>

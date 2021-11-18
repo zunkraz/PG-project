@@ -62,8 +62,14 @@ export async function checkPassword({username, password, token, newPassword}){
     const response = await axios.post(`${BASIC_URL}/users/${username}/check`, {password, newPassword}, {headers: {jwt: token}, withCredentials: true})
     return response
 }
-export function getAppointmentsUser({userId,as,token}){
+export function getAppointmentsUser(userId,as,token){
     return axios.get(`${BASIC_URL}/appointment/${userId}${as?'?as=prof':''}`,{headers: {jwt: token}, withCredentials: true})
-      .then(r=>r.data)
-      .catch(r=>r.response.data)
+        .then(r=>r.data)
+        .catch(r=>r.response.data)
+}
+
+export function getFeedbacks(customerId, professionalId, token){
+    return axios.get(`${BASIC_URL}/feedback?customerId=${customerId}&professionalId=${professionalId}`,{headers: {jwt: token}, withCredentials: true})
+        .then(r=>r.data)
+        .catch(r=>r.response.data)
 }

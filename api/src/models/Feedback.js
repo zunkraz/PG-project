@@ -20,11 +20,6 @@ const feedback = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'users',
       required: true,
-    },
-    scheduleId: {
-      type: Schema.Types.ObjectId,
-      ref: 'schedules',
-      required: true,
     }
   },
   { timestamp: true }

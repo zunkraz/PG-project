@@ -5,10 +5,7 @@ import PopBtns from '../PopBtns'
 
 
 
-
-
 function EditDataComponent(props) {
-
 
     const divClass = 'border-b-2'
     const labelClass = 'text-lg  tracking-widest font-medium'

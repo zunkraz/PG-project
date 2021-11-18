@@ -105,19 +105,23 @@ const user = new Schema(
             type: Number,
             default: 0
         },
+        session: {
+            type: Number,
+            default: 0
+        },
         invoiceAsProf: [{
-          type: Schema.Types.ObjectId, ref: 'profInvoices'
-      }],
+            type: Schema.Types.ObjectId, ref: 'profInvoices'
+        }],
         invoiceAsClient: [{
-          type: Schema.Types.ObjectId, ref: 'clientInvoices'
-      }],
+            type: Schema.Types.ObjectId, ref: 'clientInvoices'
+        }],
         meetingUrl:{
-          type: mongoose.SchemaTypes.Url
-      },
-      memberSince: {
+            type: mongoose.SchemaTypes.Url
+        },
+        memberSince: {
         type:Date,
-        default: ()=>Date.now()
-      }
+        default: new Date()
+        }
     },
     { timestamp: true }
 )
