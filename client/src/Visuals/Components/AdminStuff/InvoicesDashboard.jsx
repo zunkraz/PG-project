@@ -9,7 +9,7 @@ function InvoicesDashboard({token}){
   const [search,searchHappened] = useState(false);
 
   useEffect(()=>{
-      if(!allInvoices[0].length) dispatch(getAdminInvoices(token));
+      dispatch(getAdminInvoices(token));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -58,7 +58,7 @@ function InvoicesDashboard({token}){
             </div>
           </div> :
           <div className="col-1-1@xl col-1-1@lg padd-md"data-uk-height-match=".normalize">
-            {resultsToShow().slice(0,9).map(i => {
+            {resultsToShow()?.slice(0,9).map(i => {
        return (
          <div key={i._id} className="col-1-5@xl col-1-3@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
              <div className="wrapper padd-md bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">                 {/* invoice data */}
