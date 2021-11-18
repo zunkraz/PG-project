@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getAdminReports} from "../../../Controllers/actions/adminActions";
-import TipsForm from "./TipsForm";
 
 function ReportDashboard({token}){
   const dispatch = useDispatch();
-  const allReports = useSelector(state=>state.adminReducer.adminReports)
+  const allReports = useSelector(state=>state.adminReducer.adminReports);
   const allReasons = ['Service','App','Payment','Account','Suggestion','Other'];
   const [reportReason,setReportReason] = useState('Todos');
-
+  let color= {Service:'green',App:'red',Payment:'blue',Account:'yellow',Suggestion:'pink',Other:'gray'};
   function handleChange(ev){
     ev.preventDefault();
     setReportReason(ev.target.value);
@@ -52,7 +51,7 @@ function ReportDashboard({token}){
               <div className="padd-md font-sm flex-bar">
                 <div className="text-bold">Motivo:</div>
                 <span>
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-400 text-gray-800">
+                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-${color[t.reason]}-400 text-gray-800`}>
                   { t.reason }
                 </span>
                   </span>
