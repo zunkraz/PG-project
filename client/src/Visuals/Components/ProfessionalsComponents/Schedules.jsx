@@ -32,9 +32,6 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
     };
 
     const { error, jitsi } = useJitsi(jitsiConfig);
-    console.log(jitsi);
-    
-    const meetingRoom = (<div className='hidden' id={jitsiConfig.parentNode} />);
 
     const price = cost?cost:0.01;
 
@@ -46,7 +43,6 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
             date:e.target.name,
             sessions:1,
             meetingLink: jitsi._url || error,
-            meetingRoom,
             },
             price:price,
             id:e.target.id,
@@ -151,7 +147,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
         : <p className="py-4">Sin turnos disponibles</p>
         }
         </ul>
-        
+        <div className='hidden' id={jitsiConfig.parentNode} />
     </div>
     )
 };
