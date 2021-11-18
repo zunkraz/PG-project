@@ -7,7 +7,7 @@ import { removeFromCartAll } from "../../../Controllers/actions/cartActions";
 // import { setAvailability } from "../../../ApiReq/schedule";
 import Swal from 'sweetalert2'
 import { postCartInfo } from "../../../ApiReq/cart";
-import { sendMailAppointment } from '../../../ApiReq/mails'
+import { sendMailAppointment, sendMailInvoice } from '../../../ApiReq/mails'
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -60,8 +60,8 @@ let history = useHistory();
     })
     postCartInfo(objInfo,token)
     .then(r => {
-        console.log(r)
-        r.forEach(r=>sendMailAppointment(r))})
+        r.forEach(r=>sendMailAppointment(r))
+    })
     .catch(err => alert(err))
 
     dispatch(removeFromCartAll())
