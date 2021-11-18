@@ -90,43 +90,8 @@ router.post("/newAppointment", (req, res, next) => {
       return Promise.all([emails]);
     })
     .then(r => res.send('Enviados correctamente'))
-    .catch(r => console.log(r))
+    .catch(r => next(r))
 
-  // const subjectCustom = "Tu consulta se ha agendado correctamente - No Reply";
-  // const subjectProf = "Tienes una nueva consulta agendada - No Reply";
-
-  // return getLinkProf(info.prof_username)
-  //   .then((r) => r.toJSON().meetingUrl)
-  //   .then((link) => {
-  //     dataCustom = dataCustom
-  //       .replace(/{profName}/gi, info.prof_name)
-  //       .replace(/{meetingLink}/gi, link)
-  //       .replace(/{date}/gi, info.date);
-
-  //     dataProf = dataProf
-  //       .replace(/{customName}/gi, info.custom_name)
-  //       .replace(/{meetingLink}/gi, link)
-  //       .replace(/{date}/gi, info.date);
-
-  //     return [
-  //       { data: dataCustom, subject: subjectCustom, mail: info.custom_email },
-  //       { data: dataProf, subject: subjectProf, mail: info.prof_email },
-  //     ];
-  //   })
-  //   .then((arr) => {
-  //     const emails = arr.map((d) => {
-  //       return transporter.sendMail({
-  //         from: "Latam Exponential <latamexp@gmail.com>",
-  //         bcc: d.mail,
-  //         subject: d.subject,
-  //         html: d.data,
-  //       });
-  //     });
-
-  //     return Promise.all([emails]);
-  //   })
-  //   .then((r) => res.send('Enviados correctamente'))
-  //   .catch((err) => next(err));
 });
 
 module.exports = router;
