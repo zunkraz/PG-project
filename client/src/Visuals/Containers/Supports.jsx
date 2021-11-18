@@ -15,7 +15,7 @@ const Supports = () => {
 
     const componentHeaderData = {
         title: "Soporte",
-        subtitle: "Sed laoreet pulvinar nibh, in blandit tortor euismod vel.",
+        subtitle: "Ayuda para el uso de la plataforma y potenciales reclamos.",
         bg: null,// Si esta propiedad se envia null, se asigna un fondo aleatorio.
     }
 
