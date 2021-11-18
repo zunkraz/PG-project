@@ -23,21 +23,29 @@ function SalesPolicy() {
                                 LATAM EXPONENTIAL, en su interés de ofrecer el mejor servicio y una atención oportuna durante todo el proceso comercial, informa las políticas de ventas, las cuales establecen las condiciones para garantizar y fortalecer la relación comercial con nuestros clientes. Al realizar sus compras usted está aceptando las Políticas establecidas por nuestra organización las cuales se detallan a continuación:
                             </p>
                             <p className="mrg-xl-t">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare iaculis dictum. Curabitur libero sapien, lacinia in dolor ac, pellentesque laoreet tellus. Pellentesque ultrices velit non dui eleifend, a suscipit velit porttitor. Sed sit amet feugiat risus. Morbi ullamcorper consectetur turpis et gravida. Aliquam dignissim, ipsum pharetra tempus vulputate, mi quam suscipit sem, quis gravida lectus sem a velit. Proin sed condimentum dui. Suspendisse in iaculis sem. Donec congue lacus sed augue aliquet, dictum eleifend erat vestibulum. Maecenas ac consequat eros, nec pellentesque quam. Ut tempor ipsum in dolor cursus, vitae bibendum tortor consequat. Nam id maximus risus. Suspendisse ornare diam tellus, non laoreet dui vestibulum nec. Integer in luctus ipsum, sagittis pretium lorem.
+                            Estas condiciones se aplicarán de manera conjunta en aquellos casos que una persona, siendo usuario, decida contratar alguno de los servicios que se ofrecen en LATAM EXPONENTIAL.
+                            Se entenderá por cliente, para efectos de estas políticas de ventas, aquella persona, usuaria del sitio, que adquiera, o desee adquirir, un servicio de los ofrecidos por los profesionales registrados.
                             </p>
-                            <ol className="mrg-xl-t">
+                            <p className="mrg-xl-t">
+                            Los pagos se podrán realizar con tarjeta de crédito o de débito, o a través de la plataforma de pago PayPal, quienes serán las únicas responsables de los datos suministrados por el comprador, ya que en ningún momento llegan a ser conocimiento de LATAM EXPONENTIAL. Cualquier problema relacionado con el pago o un mal uso de este tipo de datos, PayPal o tarjeta, según corresponda, será el único responsable.
+                            </p> 
+                            {/* <ol className="mrg-xl-t">
                                 <li>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
                                 <li>2. Phasellus volutpat tellus nec vestibulum imperdiet.</li>
                                 <li>3. Quisque et tellus eu nisi rutrum malesuada eu quis orci.</li>
                                 <li>4. Mauris viverra ligula id pretium aliquam.</li>
                                 <li>5. Nam blandit orci vel ex fermentum egestas.</li>
                                 <li>6. Sed nec odio ac lorem faucibus pharetra.</li>
-                            </ol>
+                            </ol> */}
                             <p className="mrg-xl-t">
-                                Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed vulputate felis nec commodo fermentum. Vivamus purus ipsum, euismod a aliquam ac, vulputate ut odio. Fusce ornare, dolor rhoncus imperdiet semper, massa lorem malesuada elit, et semper velit est vitae turpis. Aenean ultricies rutrum ex eu rutrum. Praesent eget mi gravida, varius massa sit amet, congue lorem. Curabitur consectetur malesuada sollicitudin. Mauris neque nisl, tristique id magna id, mollis fringilla dui. Mauris ut massa luctus, congue velit at, gravida diam. Aliquam facilisis, dolor eu suscipit fringilla, magna lacus pharetra arcu, eu dignissim orci enim dignissim lectus. Aliquam erat volutpat. Donec nibh tellus, varius in libero quis, aliquam lacinia sem. Phasellus ac orci nec dui rhoncus venenatis sed vitae tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                                Si existe alguna promoción o descuento, se aplicará solamente a aquellos servicios que aún no hayan sido contratados. Si el cliente ya ha contratado algún servicio, no se podrá aplicar la promoción o descuento con efectos retroactivos.
                             </p> 
                             <p className="mrg-xl-t">
-                                Praesent fermentum, augue sit amet ullamcorper rhoncus, purus nunc feugiat metus, at volutpat nulla diam eu tellus. Fusce id nunc metus. Quisque ut urna eleifend, pulvinar metus id, tempor neque. Nam quis suscipit mi. In volutpat ante sem, sit amet vulputate erat tincidunt vitae.
+                            Todos los impuestos y cargos relacionados con la compra/contratación se indicarán antes de realizar el pago. Una vez efectuado el pago, se procederá al envío de la factura correspondiente, en la cual se incluirán detalladamente los impuestos y cargos que sean aplicables.
+                            Todos los impuestos que por ley deban estar incluidos, serán visualizados en el presupuesto, en la factura y, de ser el caso, en el paso previo al pago dentro del sitio web o de otros afiliados a este y utilizados para vender el servicio.
+                            </p>
+                            <p className="mrg-xl-t">
+                            En todo momento se obrará de buena fe y bajo las instrucciones del cliente, por lo cual, si algún material que este entregue infringe derechos intelectuales o de propiedad industrial de terceros, la responsabilidad legal será de quien contrate el servicio.
                             </p> 
                         </div>
                     </section>

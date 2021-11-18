@@ -3,39 +3,35 @@ import React from 'react'
 const PaymentsSupport = () => {
 
     const obj = [
-        {title:'Pago a sujeto uno',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        {title:'Métodos de pago',
+        description: 'Los pagos se podrán realizar con tarjeta de crédito o de débito, o a través de la plataforma de pago PayPal.',
         author: 'LATAM EXPONENTIAL'
         },
-        {title:'Pago a sujeto dos',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        {title:'Descuentos',
+        description: 'Si existe alguna promoción o descuento, se aplicará solamente a aquellos servicios que aún no hayan sido contratados.',
         author: 'LATAM EXPONENTIAL'
         },
-        {title:'Pago a sujeto tres',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        {title:'Cargos',
+        description: 'Todos los impuestos y cargos relacionados con la compra/contratación en caso de aplicar se indicarán antes de realizar el pago.',
         author: 'LATAM EXPONENTIAL'
         },
-        {title:'Pago a sujeto cuatro',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
-        author: 'LATAM EXPONENTIAL'
-        },
-        {title:'Pago a sujeto cinco',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?',
+        {title:'Impuestos',
+        description: 'Todos los impuestos que por ley deban estar incluidos, serán visualizados en el presupuesto, en la factura y, de ser el caso, en el paso previo al pago dentro del sitio web o de otros afiliados a este y utilizados para vender el servicio.',
         author: 'LATAM EXPONENTIAL'
         },
     ]
     let publication = obj.map((e,i) => {
         let card = 
-        <div key={i} className='m-1 mb-6 max-w-md py-4 px-8 bg-white shadow-2xl rounded-lg my-2'>
+        <div key={i} className='m-1 mb-6 flex flex-col max-w-md py-4 px-8 bg-white shadow-2xl rounded-lg my-2'>
             <div>
                 <h2 className='text-gray-800 text-3xl font-semibold'>
                     {e.title}
                 </h2>
-                <p className='mt-2 text-gray-600'>
+                <p className='mt-2 text-gray-600 pb-6'>
                     {e.description}
                 </p>
             </div>
-            <div className='flex justify-end mt-4'>
+            <div className='flex justify-end mt-auto'>
                 <p className='text-xl font-medium text-red-600'>
                     {e.author}
                 </p>
