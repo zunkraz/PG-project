@@ -4,7 +4,18 @@ import React, {useState} from "react";
 function UserTable({usersAdmin, token}){
   const [usersSearch,setUsersSearch] = useState([]);
   const [search,searchHappened] = useState(false);
+  const [userType,setUserType] = useState('Todos')
 
+  function handleChange(ev){
+    ev.preventDefault();
+    document.getElementById("ii").value= '';
+    setUserType(ev.target.value);
+    setUsersSearch(usersAdmin.filter( a => {
+      if(ev.target.value==='Todos') return true;
+      if(ev.target.value==='Prof') return a.isProfessional;
+      if(ev.target.value==="User") return !a.isProfessional;
+    }));
+  }
   function handleSearch(e){
     e.preventDefault();
     searchHappened(true);
@@ -16,7 +27,11 @@ function UserTable({usersAdmin, token}){
         || u.name.toLowerCase().includes(searchValue.toLowerCase())
         || u.lastname.toLowerCase().includes(searchValue.toLowerCase())
       );
-    }));
+    }).filter(s=>{
+      if(userType==='Todos') return true;
+      if(userType==='Prof') return s.isProfessional;
+      if(userType==="User") return !s.isProfessional;
+    }))
   }
 
   return (
@@ -29,7 +44,7 @@ function UserTable({usersAdmin, token}){
             </div>
           </div>
           <div className="col-7-8@xl col-4-5@lg col-1-1@xs padd-md">
-            <input
+            <input id="ii"
               type="text"
               name="username"
               defaultValue=""
@@ -41,6 +56,22 @@ function UserTable({usersAdmin, token}){
           </div>
         </div>
         </form>
+      <div>
+          <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
+            <div className="col-1-8@xl col-1-8@lg col-1-5@md padd-md">
+              <label className="font-lg font-main text-bold normalize flex-center-left" htmlFor={"name"}>
+            Filtrar Usuarios:
+          </label>
+        </div>
+        <div className="col-7-8@xl col-7-8@lg col-4-5@md padd-md">
+          <select className="uk-select font-sm border-radius-sm" name="name" value={userType} onChange={handleChange}>
+            <option key={'todos'} value={'Todos'}>Todos</option>
+            <option key={'user'} value={"User"}>Cliente</option>
+            <option key={'prof'} value={"Prof"}>Profesional</option>
+          </select>
+        </div>
+      </div>
+    </div>
         {
           ((usersSearch.length === 0) && search) ?
           <div className="col-1-1@xl col-1-1@lg col-1-1@md padd-lg">
