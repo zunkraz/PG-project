@@ -14,12 +14,11 @@ export default function EditReview({close,review,setReview,userId}){
     function rewChange(e){
         if(e.target.value.length <= 200){
             setRew(e.target.value)
-            setDisabled(rew.length>5 && rew ? false : true )
+            setDisabled(e.target.value && rate ? false : true )
             setCharacters(200-e.target.value.length)
         }
     }
-    console.log('REVIEW=> ',review)
-    console.log('disable => ', disabled)
+    
     function editRew(e){
         e.preventDefault()
         updateReviewUser({text:rew,rate:rate, reviewId:review._id, token})
@@ -28,9 +27,7 @@ export default function EditReview({close,review,setReview,userId}){
     }
 
     function sendReview(e){
-        console.log('BARCO DE MAYONESA')
         e.preventDefault()
-        console.log({text:rew,rate,userId},token)
         postReviewUser({text:rew,rate,userId},token)
         .then(r=>setReview(r))
         close()
