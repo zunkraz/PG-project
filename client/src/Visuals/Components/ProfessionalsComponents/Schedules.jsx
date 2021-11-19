@@ -16,6 +16,13 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
     useEffect(() => {
         dispatch(getProfSchedule(id, token))
     },[]);
+
+    useEffect(() => {
+        setTimeout(function() {
+            dispatch(getProfSchedule(id, token))
+        }, 60000)
+    });
+
     const [day, setDay]= useState("Todos")
     const [month, setMonth]= useState("Todos")
     const [load, setLoad]= useState([])
