@@ -1,3 +1,6 @@
+*, input, select, textarea, option, button {
+    outline: none!important;
+}
 .position-middle-parent {
     position: absolute;
     left: 50%;
