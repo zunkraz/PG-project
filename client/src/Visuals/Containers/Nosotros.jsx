@@ -44,8 +44,8 @@ function Nosotros() {
 
 
     return (
-        <div className='flex flex-col nbg w-full'>
-                <div className='flex my-10 justify-around flex-wrap'>
+        <div className='flex flex-col nbg w-full '>
+                <div className='flex my-10 justify-around flex-wrap '>
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/69180670?v=4'
                         title={<p className='font-main'>Sabrina Noel Vettorelo</p>}
@@ -74,8 +74,6 @@ function Nosotros() {
                         name='juanpablo'
                         onClick={handleRedirects}
                     />
-            </div>
-            <div className='flex my-10 justify-around flex-wrap'>
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/32313172?v=4'
                         title={<p className='font-main'>Antonio Rodríguez</p>}
