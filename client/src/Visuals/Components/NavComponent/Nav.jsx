@@ -14,9 +14,25 @@ const Nav = () => {
     const dispatch = useDispatch()
     
 
-    function Logout(){
-        dispatch(cleanLoginCheck())
-        goAlert()
+    const Logout = async()=>{
+        await Swal.fire({
+            text: "Confirme que desea cerrar sesión",
+            icon: 'warning',
+            showCancelButton: true,
+            showDenyButton: false,
+            confirmButtonText: 'Salir',
+            cancelButtonText: `Quedarse`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Adios!',
+                    'Nos vemos pronto!',
+                    'success'
+                )
+                dispatch(cleanLoginCheck())
+                goAlert()
+            }
+        })
     }
 
     function goAlert(){
@@ -27,10 +43,6 @@ const Nav = () => {
             showConfirmButton: false,
             timer: 1000,
             timerProgressBar: true,
-            didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
         })
         
         Toast.fire({

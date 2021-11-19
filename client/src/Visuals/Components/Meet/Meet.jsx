@@ -48,7 +48,7 @@ const Meet = ({match}) => {
     return () => destroy();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(jitsi);
+  console.log('JITSI HERE=>>> ',jitsi);
   return (
         <div className='h-screen' id="jitsi-root"/>
   );

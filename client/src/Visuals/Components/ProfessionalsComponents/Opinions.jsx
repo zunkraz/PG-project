@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function Opinions({opinions}) {
 
-    
     return (
         <div className="padd-lg">
         <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>

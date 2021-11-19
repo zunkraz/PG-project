@@ -7,7 +7,7 @@ import { FaRegMoneyBillAlt } from "react-icons/fa";
 
 export default function QuickInfo({data}) {
 
-    const {cost, img, likes, dislikes, country, isProfessional, appointments, isVerified} = data;
+    const {cost, img, likes, dislikes, country, isProfessional, session, isVerified} = data;
 
     return (
         <div>
@@ -39,15 +39,15 @@ export default function QuickInfo({data}) {
                 </div>
             </div>
             <div className='mrg-lg-t font-main font-lg flex-bar'>
-                <div className='text-bold'>Rating score:</div >
-                <span className='text-bold font-color-success'>5</span>
+                <div className='text-bold'>Valoración:</div >
+                <span className='text-bold font-color-success'>{Math.ceil(likes/dislikes)/5}</span>
             </div>
             <div className='mrg-lg-t font-main font-lg flex-bar'>
                 {isProfessional &&   
-                    <div className='text-bold'>Sesiones Completadas:</div>
+                    <div className='text-bold'>Total de sesiones :</div>
                 }
                 {isProfessional && 
-                    <span className='text-bold font-color-success'>{appointments? appointments.length : 0}</span>
+                    <span className='text-bold font-color-success'>{session? session : 0}</span>
                 }
             </div>
         </div>

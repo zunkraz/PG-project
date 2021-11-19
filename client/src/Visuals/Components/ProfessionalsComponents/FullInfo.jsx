@@ -6,7 +6,7 @@ export default function FullInfo({profData}) {
     
     const {biography, memberSince, title, institute, city, state} = profData;
     const biographyGeneric =
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime minima nisi illum ipsam eveniet eaque suscipit neque officia molestias a amet incidunt consequatur nobis cupiditate, non corporis fugiat in placeat?"
+    "Sin biografia definida"
 
     return (
         <div>

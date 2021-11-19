@@ -59,32 +59,30 @@ function UserDashboard({userData, userId, token}) {
                     <div className='col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs' data-uk-height-match=".normalize">
                         <div className='col-1-5@xl col-1-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t3-'>
                             <div className='padd-lg bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
-                                {
-                                    userData.isProfessional && 
+                                {userData.isProfessional && 
                                     <PersonalDashboardContainer user={userData}/>
                                 }
-                                {
-                                    userData.isProfessional &&
-                                    
+
+                                {userData.isProfessional &&
+
                                     <Link to={`/${userData.username}/horarios`} >
-
-                                    <button
-                                        className={lateralBtn}
-                                    >
-                                        Gestiona tus turnos 
-                                        
-                                    </button>
-                                </Link>
+                                        <button
+                                            className={lateralBtn}
+                                        >
+                                            Gestiona tus turnos
+                                        </button>
+                                    </Link>
                                 }
-
-                                <Link to={`/profesionales/${userData.username}`} >
-                                    <button
-                                        className={lateralBtn}
-                                    >
-                                        Perfil Profesional
-                                    </button>
-                                </Link>
-
+                                {userData.isProfessional &&
+                                    <Link to={`/profesionales/${userData.username}`} >
+                                        <button
+                                            className={lateralBtn}
+                                        >
+                                            Perfil Profesional
+                                        </button>
+                                    </Link>
+                                }
+                                
                                 <Link to='/facturas' >
                                     <button
                                         className={lateralBtn}
@@ -92,7 +90,7 @@ function UserDashboard({userData, userId, token}) {
                                         Facturas 
                                     </button>
                                 </Link>
-                            
+                                
                             </div>
                         </div>
                         <div className='col-2-5@xl col-3-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg'>
@@ -108,7 +106,7 @@ function UserDashboard({userData, userId, token}) {
                         {/* Container: Schedule */}
                         <div className='col-1-5@xl col-2-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t5-'>
                             <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
-                                <PersonalTaskComponent isProfessional={userData.isProfessional} personalName={`${userData.name} ${userData.lastname}`}/>
+                                <PersonalTaskComponent isProfessional={userData.isProfessional} userId={userId} personalName={`${userData.name} ${userData.lastname}`}/>
                             </div>
                         </div>
                         {userData.isProfessional && 
