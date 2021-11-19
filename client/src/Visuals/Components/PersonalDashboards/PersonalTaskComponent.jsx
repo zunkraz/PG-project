@@ -17,9 +17,9 @@ function PersonalTaskComponent({isProfessional, userId, personalName}) {
     const date = today.getDate() + '-' + ( today.getMonth() + 1 ) + '-' + today.getFullYear();
     const dateSplit=date.split('-').reverse().join('')
 
-    const hour = today.getHours();
-    const minutes = today.getMinutes();
-    const fakeDate='20211120';
+    // const hour = today.getHours();
+    // const minutes = today.getMinutes();
+    // const fakeDate='20211120';
 
     const meetAvalaible='text-red-500 text-bold hover:no-underline hover:font-gray-500'
     const meetNoAvalaible='hidden text-gray-300 text-bold hover:no-underline cursor-not-allowed hover:text-gray-300 '
@@ -47,14 +47,11 @@ function PersonalTaskComponent({isProfessional, userId, personalName}) {
                                 {elem.dates && elem.dates?.map((intern, index)=>{
                                 return (
                                     <div className='flex flex-col' key={index}>
-                                        {/* {`FECHA : ${fakeDate} - hora local ${hour-1}:${minutes} - hora que llega ${intern.datefull.slice(-5)}`}
-                                            <br/> */}
                                             <div className='flex items-center justify-between h-10'>
                                                 <p key={index} className='flex'><span className='mr-4'>Hora :</span>{intern.datefull.slice(-5)}</p>
                                                 <a  href={`/reunion/latam-exponential-${elem.professionalId._id}/${personalName}`} 
                                                 
                                                 rel="noreferrer"
-                                                //((elem.day===fakeDate && intern.datefull.slice(-5,-3)===hora-1) && (intern.datefull.slice(-2)===minutos || intern.datefull.slice(-2)<=minutos+15))
                                                 className={ elem.day===dateSplit?
                                                     meetAvalaible
                                                     :meetNoAvalaible

@@ -265,7 +265,7 @@
 }
 
 .nbg{
-    height: 1100px;
+    min-height: 1100px;
 }
 .video {  
     width: 100vw;

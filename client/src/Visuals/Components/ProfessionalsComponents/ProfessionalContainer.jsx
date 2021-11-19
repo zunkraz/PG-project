@@ -28,9 +28,6 @@ export default function ProfessionalContainer({username}) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [profData])
 
-
-    console.log(feedbacks) 
-
     if(username===profData.username) {
 
     return (

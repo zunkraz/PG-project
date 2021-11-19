@@ -1,18 +1,13 @@
 import React from 'react';
-import ComponentHeader from './../../Components/ComponentHeader';
-
-const componentHeaderData = {
-    title: "Facturas",
-    subtitle: "Información detallada de tus compras en la aplicación.",
-    bg: null,// Si esta propiedad se envia null, se asigna un fondo aleatorio.
-}
 
 const PaymentsCartClient = ({render}) => {
     return ( 
         <React.Fragment>
-            <ComponentHeader data={componentHeaderData} />
             <div className={`wrapper padd-lg-lr ${window.innerWidth >= 960 ? 'padd-2x-tb' : 'padd-lg-tb'}`}>
                 <section>
+                    <div className="padd-lg text-bold font-xl font-main">
+                        Sesiones Compradas
+                    </div>
                     <div className="element-xl-lg-md">
                         <table className="shadow-lg table-auto bills">
                             <thead>
@@ -63,7 +58,13 @@ const PaymentsCartClient = ({render}) => {
                                 return Render
                                 })
                             :
-                            <h1>No hay Facturas que mostrar</h1>
+                            <tr>
+                                <td colSpan="6">
+                                    <div className="wrapper bg-color-extra4-a20 padd-xl text-bold font-lg border-radius-sm flex-center">
+                                        No hay Facturas para mostrar.
+                                    </div>
+                                </td>
+                            </tr>
                             }
                             </tbody>
                         </table>
@@ -105,7 +106,9 @@ const PaymentsCartClient = ({render}) => {
                                     return Render
                             })
                             :
-                             <h1>No hay Facturas que mostrar</h1>
+                            <div className="wrapper bg-color-extra4-a20 padd-xl text-bold border-radius-sm flex-center">
+                                No hay Facturas para mostrar
+                            </div>
                         }
                     </div>
                 </section>

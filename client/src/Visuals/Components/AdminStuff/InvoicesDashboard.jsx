@@ -20,7 +20,7 @@ function InvoicesDashboard({token}){
     allInvoices[0].length && setInvoicesSearch(allInvoices[0].filter(u=> {
       return (
         u.orderID.includes(searchValue)
-        || u.customerId.username.toLowerCase().includes(searchValue.toLowerCase())
+        || u.customerId?.username.toLowerCase().includes(searchValue.toLowerCase())
       );
     }))
   }
@@ -30,7 +30,6 @@ function InvoicesDashboard({token}){
   }
   return (
     <React.Fragment>
-      <form onSubmit={event => handleSearch(event)}>
         <div className="col-1-1@xl col-1-1@lg col-1-1@md padd-md flex-center-xl-lg-md">
           <div className="col-1-8@xl col-1-5@lg col-1-1@xs padd-md">
             <div className="font-lg font-main text-bold">
@@ -49,7 +48,6 @@ function InvoicesDashboard({token}){
             />
           </div>
         </div>
-      </form>
       {
         ((invoicesSearch.length===0)&& search)?
           <div className="col-1-1@xl col-1-1@lg col-1-1@md padd-lg">

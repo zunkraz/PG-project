@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { getAppointments, setProfessional } from '../../../Controllers/actions/userActions';
 
 function UserDashboard({userData, userId, token}) {
-    console.log(userData);
+    //console.log(userData);
     const dispatch = useDispatch();
 
     const prof = userData.isProfessional?userData.isProfessional:null;

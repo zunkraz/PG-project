@@ -13,8 +13,8 @@ const [data, setData] = useState({
         name: '',
         profesion: '',
         country: '',
-        min: '',
-        max: '',
+        // min: '',
+        // max: '',
         likes: '',
 });
 
@@ -45,8 +45,8 @@ const handleSubmit = e => {
             name: '',
             profesion: '',
             country: '',
-            min: '',
-            max: '',
+            // min: '',
+            // max: '',
             likes: '',
         })
        

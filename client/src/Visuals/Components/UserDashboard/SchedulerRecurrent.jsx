@@ -55,45 +55,68 @@ export default function SchedulerRecurrent ({userId}){
 
     return (
     <div>
-        <div className='padd-md-b font-main text-bold text-center- font-xl border-bottom-color-main'>
+        <div className='padd-md font-main text-bold text-center- font-xl border-bottom-color-main'>
             Configura tu agenda
         </div>
-        <div className='padd-md-b font-main text-bold text-center- font-lg margin-bottom-xl py-2'>
+        <div className='padd-md font-lg'>
             Aquí puedes configurar tus turnos. Selecciona los horarios según cada día de la semana y presiona "Confirmar" para agregar los turnos a tu agenda.
         </div>
-        <div className="padd-md-b w-full px-3 flex flex-row justify-center divide-x h-80 mt-2">
-        {days.map((d)=>{
-            return (
-            <div key={days.indexOf(d)} className="py-2 px-6 flex flex-col">
-                <div className="flex flex-col justify-center divide-y h-10">
-                    <p className="flex justify-center text-lg mb-1">{d}</p> 
-                    <DatePicker
-                        selected={new Date(2021,1,days.indexOf(d)+1, 8)}
-                        onChange={(date) => onChangeTime(date)}
-                        showTimeSelect
-                        showTimeSelectOnly
-                        className="shadow appearance-none border rounded w-24 py-1 px-3 text-gray-700 leading-tight focus:outline-none flex justify-center focus:shadow-outline"
-                        timeCaption="Time"
-                        dateFormat="h:mm aa"
-                    />
-                </div>
-                <ul className="flex flex-col mt-6">
-                    {daystime[deng[d]].map(e=>{
-                        return (<li className="px-2 py-1 flex justify-center" key={daystime[deng[d]].indexOf(e)}>
-                               {e} <button className="bg-white w-1 mt-0.5 flex justify-center items-center h-5 hover:bg-gray-100 text-gray-800 font-semibold px-2 border border-gray-400 rounded mx-2"
-                                    onClick={handleClickFilt} name={deng[d]} value={e}
-                                    >x</button>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>)
-        })}
+        <div className="wrapper mrg-md-t" data-uk-height-match=".normalize">
+        {
+            days.map((d)=>{
+                return (   
+                    <div key={days.indexOf(d)} className="col-1-7@xl col-1-7@lg col-1-4@md col-1-2@sm col-1-1@xs padd-md">
+                        <div className="bg-color-extra4-a20 border-color-dark-a20 border-radius-sm overflow-hidden normalize">
+                            <div className="bg-color-primary padd-md text-bold text-center font-color-light font-lg">
+                                {d}
+                            </div> 
+                            <div className="mrg-lg-t padd-lg-lr">
+                                <DatePicker
+                                    selected={new Date(2021,1,days.indexOf(d)+1, 8)}
+                                    onChange={(date) => onChangeTime(date)}
+                                    showTimeSelect
+                                    showTimeSelectOnly
+                                    className="width-100 padd-md text-center border-radius-sm action action-schedule"
+                                    timeCaption="Time"
+                                    dateFormat="h:mm aa"
+                                />
+                            </div>
+                            <ul className="padd-lg-b">
+                                {
+                                    daystime[deng[d]].map(e=>{
+                                        return (
+                                            <li className="mrg-lg-t padd-lg-lr" key={daystime[deng[d]].indexOf(e)}>
+                                                <div className="padd-md bg-color-light border-color-dark-a20 border-radius-sm flex-center">
+                                                    {e}&emsp;
+                                                    <button
+                                                        className="icon-sm font-main font-xs border-radius-xl flex-center action action-user-dashboard-cancel"
+                                                        onClick={handleClickFilt} name={deng[d]} value={e}
+                                                    >
+                                                        &#10006;
+                                                    </button>
+                                                </div>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                )
+            })
+        }
         </div>
-        <div className="flex justify-center mt-2">
-            <button onClick={handleClick} className="btn-prof w-24 my-2 mr-3"><span>Confirmar</span></button>
-            
+        <div className="wrapper padd-md flex-center">
+            <div className="mrg-lg-t col-1-3@xl col-1-3@lg col-1-2@md col-1-1@sm col-1-1@xs">
+                <button
+                    onClick={handleClick}
+                    className="width-100 padd-md-tb padd-lg-lr border-radius-sm action action-success"
+                >
+                    Confirmar
+                </button>
+            </div>
         </div>
+        <p className="sm-xs-element">&nbsp;</p>
     </div>
   )
 }

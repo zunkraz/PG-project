@@ -4,6 +4,8 @@ import * as FaIcons from 'react-icons/fa';
 import ImageComponent from "../ImageComponent";
 import { filterProfessional } from '../../../Controllers/actions/professionalsActions';
 import { useHistory } from 'react-router-dom';
+import {updateCategCount} from "../../../ApiReq/constantInfo";
+
 
 function FeaturedProfession({profession}){
   let history = useHistory();
@@ -25,6 +27,7 @@ const dispatch = useDispatch();
 const professionals = useSelector(state => state.professionalReducer.professionals);
 
 const filterByCategory = (e) => {
+  updateCategCount({name:e});
   dispatch(filterProfessional({profesion: e},professionals));
   history.push('./profesionales')
 }
