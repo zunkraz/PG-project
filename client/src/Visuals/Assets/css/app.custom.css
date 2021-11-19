@@ -251,3 +251,18 @@ table.bills tbody tr:nth-child(odd) {
 table.bills tbody tr:nth-child(even) {
     background-color: var(--color-extra4-a20);
 }
+
+.custom-scroll ::-webkit-scrollbar-track {
+    box-shadow: none;
+    background-color: #999;
+    padding: 5px
+}
+
+.custom-scroll ::-webkit-scrollbar {
+    width: 4px;
+    background-color: #fab400
+}
+
+.custom-scroll ::-webkit-scrollbar-thumb {
+    background-color: #222
+}

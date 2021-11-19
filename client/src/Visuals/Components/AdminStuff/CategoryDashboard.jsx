@@ -82,21 +82,15 @@ function CategoryDashboard({token}){
       {/* Barra de Edicion - Busqueda */}
       <BasicForm component={"categories"}/>
       {/* Listado de Categorias */}
-      <div className="col-1-5@xl col-1-5@lg padd-md normalize">
-          <button
-          className="padd-md border-radius-sm font-sm action action-add-post"
-          onClick={(e) => dispatch(adminSetCategCount(token))}>Resetear contador de búsquedas</button>
-      </div>
-      
-      <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
-        <div className="col-1-8@xl col-1-8@lg col-1-5@md padd-md">
-          <label className="font-lg font-main text-bold normalize flex-center-left" htmlFor={"name"}>
+      <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md flex-center-xl-lg" data-uk-height-match=".normalize">
+        <div className="col-1-5@xl col-1-4@lg col-1-4@md padd-md">
+          <label className="font-lg font-main text-bold normalize flex-center-left normalize" htmlFor={"name"}>
             Ordenar Categorías:
           </label>
         </div>
-        <div className="col-7-8@xl col-7-8@lg col-4-5@md padd-md">
+        <div className="col-3-5@xl col-2-4@lg col-3-4@md padd-md">
           <select
-          className="uk-select font-sm border-radius-sm"
+          className="uk-select font-sm border-radius-sm normalize"
           name="orderCat"
           defaultValue="choose"
           onChange={e => handleChange(e)}
@@ -111,6 +105,12 @@ function CategoryDashboard({token}){
               <option value="+-">Mayor a menor</option>
             </optgroup>
           </select>
+        </div>
+        <div className="col-1-5@xl col-1-4@lg padd-md">
+          <p>&nbsp;</p>
+          <button
+          className="width-100 padd-md border-radius-sm font-sm action action-add-post normalize"
+          onClick={(e) => dispatch(adminSetCategCount(token))}>Resetear contador de búsquedas</button>
         </div>
       </div> 
 

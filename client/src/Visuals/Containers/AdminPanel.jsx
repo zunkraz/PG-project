@@ -92,7 +92,7 @@ function AdminPanel(){
             </div>
           </div>
           <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm padd-md element-xl-lg-md">
-            <div className="col-1-6@xl col-1-6@lg col-1-6@md padd-md">
+            <div className="col-1-7@xl col-1-7@lg col-1-7@md padd-md">
               <button 
                 className={`width-100 padd-sm border-2x border-radius-sm ${shownData === 'Usuarios' ? 'bg-color-main font-color-light border-color-main' : 'action action-main'}`}
                 onClick={(e)=>handleShown(e)}
@@ -100,7 +100,7 @@ function AdminPanel(){
                 Usuarios
               </button>
             </div>
-            <div className="col-1-6@xl col-1-6@lg col-1-6@md padd-md">
+            <div className="col-1-7@xl col-1-7@lg col-1-7@md padd-md">
               <button
                 className={`width-100 padd-sm border-2x border-radius-sm ${shownData === 'Facturación' ? 'bg-color-main font-color-light border-color-main' : 'action action-main'}`}
                 onClick={(e)=>handleShown(e)}
@@ -108,7 +108,7 @@ function AdminPanel(){
                 Facturación
               </button>
             </div>
-            <div className="col-1-6@xl col-1-6@lg col-1-6@md padd-md">
+            <div className="col-1-7@xl col-1-7@lg col-1-7@md padd-md">
               <button
                 className={`width-100 padd-sm border-2x border-radius-sm ${shownData === 'Categorías' ? 'bg-color-main font-color-light border-color-main' : 'action action-main'}`}
                 onClick={(e)=>handleShown(e)}
@@ -116,7 +116,7 @@ function AdminPanel(){
                 Categorías
               </button>
             </div>
-            <div className="col-1-6@xl col-1-6@lg col-1-6@md padd-md">
+            <div className="col-1-7@xl col-1-7@lg col-1-7@md padd-md">
               <button
                 className={`width-100 padd-sm border-2x border-radius-sm ${shownData === 'Países' ? 'bg-color-main font-color-light border-color-main' : 'action action-main'}`}
                 onClick={(e)=>handleShown(e)}
@@ -124,7 +124,7 @@ function AdminPanel(){
                 Países
               </button>
             </div>
-            <div className="col-1-6@xl col-1-6@lg col-1-6@md padd-md">
+            <div className="col-1-7@xl col-1-7@lg col-1-7@md padd-md">
               <button
                 className={`width-100 padd-sm border-2x border-radius-sm ${shownData === 'Tips' ? 'bg-color-main font-color-light border-color-main' : 'action action-main'}`}
                 text="Tips"
@@ -133,7 +133,7 @@ function AdminPanel(){
                 Tips
               </button>
             </div>
-            <div className="col-1-6@xl col-1-6@lg col-1-6@md padd-md">
+            <div className="col-1-7@xl col-1-7@lg col-1-7@md padd-md">
               <button
                 className={`width-100 padd-sm border-2x border-radius-sm ${shownData === 'Opiniones' ? 'bg-color-main font-color-light border-color-main' : 'action action-main'}`}
                 onClick={(e)=>handleShown(e)}
@@ -141,7 +141,7 @@ function AdminPanel(){
                 Opiniones
               </button>
             </div>
-            <div className="col-1-6@xl col-1-6@lg col-1-6@md padd-md">
+            <div className="col-1-7@xl col-1-7@lg col-1-7@md padd-md">
               <button
                 className={`width-100 padd-sm border-2x border-radius-sm ${shownData === 'Reportes' ? 'bg-color-main font-color-light border-color-main' : 'action action-main'}`}
                 onClick={(e)=>handleShown(e)}
