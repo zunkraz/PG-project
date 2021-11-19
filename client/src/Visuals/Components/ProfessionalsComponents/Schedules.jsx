@@ -15,7 +15,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
     
     useEffect(() => {
         dispatch(getProfSchedule(id, token))
-    },[])
+    },[]);
 
     useEffect(() => {
         setTimeout(function() {
