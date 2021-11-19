@@ -1,6 +1,4 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, REMOVE_FROM_CART_ALL } from "../../constants";
-// import Swal from 'sweetalert2';
-// var timerCartOne,timerCartTwo;
 
 export const addToCart = (appointment,token) => {
     return function (dispatch){
