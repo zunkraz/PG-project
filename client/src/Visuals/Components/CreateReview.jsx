@@ -3,7 +3,7 @@ import PopBtns from './PopBtns'
 import { BiLike, BiDislike } from "react-icons/bi";
 import Textarea from "@material-tailwind/react/Textarea";
 import { BsFillEmojiAngryFill, BsFillEmojiFrownFill, BsFillEmojiNeutralFill, BsFillEmojiSmileFill, BsFillEmojiLaughingFill } from "react-icons/bs";
-import { useDispatch, useSelector } from 'react-redux';
+//import { useDispatch, useSelector } from 'react-redux';
 
 function CreateReview(props) {
     const [rating, setRating] = useState(3)

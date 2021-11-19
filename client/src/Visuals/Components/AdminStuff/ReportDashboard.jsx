@@ -5,7 +5,7 @@ import {getAdminReports} from "../../../Controllers/actions/adminActions";
 function ReportDashboard({token}){
   const dispatch = useDispatch();
   const allReports = useSelector(state=>state.adminReducer.adminReports);
-  const allReasons = ['Service','App','Payment','Account','Suggestion','Other'];
+  const allReasons = {Service:'Servicio', App:'Aplicación', Payment:'Pagos', Account:'Cuenta', Suggestion:'Sugerencias', Other:'Otros'};
   const [reportReason,setReportReason] = useState('Todos');
   let color= {Service:'green',App:'red',Payment:'blue',Account:'yellow',Suggestion:'pink',Other:'gray'};
   function handleChange(ev){
@@ -14,7 +14,7 @@ function ReportDashboard({token}){
   }
 
   useEffect(()=>{
-    if(!allReports.length) dispatch(getAdminReports(token));
+    if(!Object.keys(allReports).length) dispatch(getAdminReports(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
@@ -30,8 +30,9 @@ function ReportDashboard({token}){
           <select className="uk-select font-sm border-radius-sm" name="reportReason" value={reportReason} onChange={handleChange}>
             <option readOnly>Todos</option>
             {
-              allReasons && allReasons.map((r,i) => <option key={i} value={r} >{r}</option>)
-            }
+              allReasons && Object.keys(allReasons).map((elem,index) =>{
+                return <option key={index} value={elem} >{allReasons[elem]}</option>
+            })}
           </select>
         </div>
       </div>
@@ -41,7 +42,7 @@ function ReportDashboard({token}){
           {allReports && allReports.filter(rep => {
             if (reportReason==='Todos') return true;
             else return rep.reason?rep.reason === reportReason:false;
-          }).map( t => (<div key={t._id} className="col-1-5@xl col-1-3@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
+          }).map( (t, index)=> (<div key={t._id} className="col-1-5@xl col-1-3@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
             <div className="wrapper padd-md bg-color-extra4-a20 border-color-dark-a20 border-radius-sm shadow-md">
               <div className="padd-md font-sm flex-bar">
                 <div className="text-bold">Autor:</div>
@@ -52,7 +53,7 @@ function ReportDashboard({token}){
                 <div className="text-bold">Motivo:</div>
                 <span>
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-${color[t.reason]}-400 text-gray-800`}>
-                  { t.reason }
+                  { Object.values(allReasons)[index] }
                 </span>
                   </span>
               </div>

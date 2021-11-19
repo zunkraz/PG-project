@@ -1,11 +1,10 @@
 import React from 'react';
-import ComponentHeader from './../../Components/ComponentHeader';
 
-const componentHeaderData = {
-    title: "Facturas",
-    subtitle: "Información detallada de tus ventas en la aplicación.",
-    bg: null,// Si esta propiedad se envia null, se asigna un fondo aleatorio.
-}
+// const componentHeaderData = {
+//     title: "Facturas",
+//     subtitle: "Información detallada de tus ventas en la aplicación.",
+//     bg: null,// Si esta propiedad se envia null, se asigna un fondo aleatorio.
+// }
 
 const PaymentsCartPro = ({render}) => {
     let totalProfitPC  = 0;

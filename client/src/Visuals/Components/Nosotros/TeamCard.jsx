@@ -10,7 +10,7 @@ import Button from "@material-tailwind/react/Button";
 export default function TeamCard(props) {
     return (
         <div className='w-80'>
-            <Card className='bg-gray-100 shadow-xl'>
+            <Card className='bg-gray-100 shadow-xl my-6'>
                 <div className=''>
                     <div className='w-56'>
                         <CardImage

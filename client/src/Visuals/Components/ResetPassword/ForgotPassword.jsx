@@ -37,9 +37,10 @@ function ForgotPassword() {
 
   const checkRegex=(mail)=>{
     if(checkMail.test(mail)){
-      setMailCheck(true)
+      !mailCheck && setMailCheck(true)
     }
     if(!checkMail.test(mail)){
+
       setMailCheck(false)
     }
   }

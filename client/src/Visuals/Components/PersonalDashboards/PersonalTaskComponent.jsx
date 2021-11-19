@@ -17,9 +17,9 @@ function PersonalTaskComponent({isProfessional, userId, personalName}) {
     const date = today.getDate() + '-' + ( today.getMonth() + 1 ) + '-' + today.getFullYear();
     const dateSplit=date.split('-').reverse().join('')
 
-    const hour = today.getHours();
-    const minutes = today.getMinutes();
-    const fakeDate='20211120';
+    // const hour = today.getHours();
+    // const minutes = today.getMinutes();
+    // const fakeDate='20211120';
 
     const meetAvalaible='text-red-500 text-bold hover:no-underline hover:font-gray-500'
     const meetNoAvalaible='hidden text-gray-300 text-bold hover:no-underline cursor-not-allowed hover:text-gray-300 '
@@ -60,7 +60,6 @@ function PersonalTaskComponent({isProfessional, userId, personalName}) {
                                             }
                                             >Conectarse</a>
                                         </div>
-                                    
                                 </div>
                             )})}
                             {feedbacks.filter(item=>item.professionalId._id===elem.professionalId._id).length===0 ?
