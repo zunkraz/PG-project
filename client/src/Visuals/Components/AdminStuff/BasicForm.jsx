@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {adminSetCategCount, postAdminCategory,postAdminCountry,postAdminTip,putAdminCategory} from "../../../Controllers/actions/adminActions";
+import {postAdminCategory,postAdminCountry,postAdminTip,putAdminCategory} from "../../../Controllers/actions/adminActions";
 import Swal from 'sweetalert2';
 
 function BasicForm({component}){
@@ -77,7 +77,7 @@ function BasicForm({component}){
             Agregar / Editar Categoría:
           </label>
         </div>
-        {/* <label className="m-2" htmlFor={"name"}>Nombre</label> */}
+        
         <div className="col-1-5@xl col-1-5@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"name"}>
             Nombre
@@ -92,7 +92,7 @@ function BasicForm({component}){
             placeholder="Categoría"
           />
         </div>
-        {/* <label className="m-2" htmlFor={"searchCount"}>Cantidad de búsquedas</label> */}
+        
         <div className="col-1-5@xl col-1-5@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"searchCount"}>
             Cantidad de búsquedas
@@ -109,7 +109,7 @@ function BasicForm({component}){
             placeholder="Cantidad de búsquedas"
           />
         </div>
-        {/* <label className="m-2" htmlFor={"img"}>URL imagen</label> */}
+        
         <div className="col-1-5@xl col-1-5@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"img"}>
             URL imagen
@@ -123,6 +123,7 @@ function BasicForm({component}){
             placeholder="Imagen"
           />
         </div>
+        
         <div className="col-1-5@xl col-1-5@lg padd-md normalize position-relative">
           <div className="uk-position-bottom padd-md">
             <input
@@ -132,11 +133,7 @@ function BasicForm({component}){
           </div>
         </div>
       </form>
-      <div className="col-1-5@xl col-1-5@lg padd-md normalize">
-          <button
-          className="padd-md border-radius-sm font-sm action action-add-post"
-          onClick={(e) => dispatch(adminSetCategCount(token))}>Resetear contador de búsquedas</button>
-      </div>
+
     </div>
   );
 

@@ -3,7 +3,7 @@ import * as FaIcons from 'react-icons/fa';
 import BasicForm from "./BasicForm";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllCategories} from "../../../Controllers/actions/constantInfoActions";
-import { deleteAdminCategory,putAdminCategory} from "../../../Controllers/actions/adminActions";
+import { adminSetCategCount, deleteAdminCategory,putAdminCategory} from "../../../Controllers/actions/adminActions";
 import Swal from 'sweetalert2';
 
 function CategoryDashboard({token}){
@@ -82,6 +82,11 @@ function CategoryDashboard({token}){
       {/* Barra de Edicion - Busqueda */}
       <BasicForm component={"categories"}/>
       {/* Listado de Categorias */}
+      <div className="col-1-5@xl col-1-5@lg padd-md normalize">
+          <button
+          className="padd-md border-radius-sm font-sm action action-add-post"
+          onClick={(e) => dispatch(adminSetCategCount(token))}>Resetear contador de búsquedas</button>
+      </div>
       
       <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md">
         <div className="col-1-8@xl col-1-8@lg col-1-5@md padd-md">
