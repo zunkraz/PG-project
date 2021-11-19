@@ -87,7 +87,7 @@ export default function SchedulerCancel ({userId}){
                 <div className="col-3-8@xl col-2-6@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
                     {/* <label htmlFor="month" className="mx-2">Mes:</label> */}
                     <select id="days" onChange={selectDay} className="uk-select border-radius-sm normalize">
-                        <option disabled selected> Seleccione un día </option>
+                        <option readOnly> Seleccione un día </option>
                         <option value="Todos"> Todos </option>
                         {days.map(d=>{
                             return <option value={d} key={days.indexOf(d)}>{d}</option>
@@ -97,7 +97,7 @@ export default function SchedulerCancel ({userId}){
                 <div className="col-3-8@xl col-2-6@lg col-1-3@md col-1-1@sm col-1-1@xs padd-md">
                     {/* <label htmlFor="month" className="mx-2">Mes:</label> */}
                     <select id="month" onChange={selectMonth} className="uk-select border-radius-sm normalize">
-                        <option disabled selected>Seleccione un mes</option>
+                        <option readOnly>Seleccione un mes</option>
                         <option value="Todos">Todos</option>
                         {
                             months.map(m=>{
