@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom';
 import { addToCart } from '../../../Controllers/actions/cartActions';
 import Swal from 'sweetalert2';
 import { useJitsi } from 'react-jutsu';
-import { setAvailability } from '../../../ApiReq/schedule';
 
 export default function Schedules({id, login, name, lastname, category, cost}) {
     const dispatch = useDispatch();
@@ -50,7 +49,6 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
             professionalId:id,
             customerId:customerId
         }))
-        setAvailability(e.target.id,false,token);
         return Swal.fire({
             title: '¡Reserva hecha!',
             text: 'En tu carrito podrás abonar tu reserva',
