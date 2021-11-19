@@ -78,7 +78,7 @@ function BasicForm({component}){
           </label>
         </div>
         
-        <div className="col-1-5@xl col-1-5@lg padd-md normalize">
+        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"name"}>
             Nombre
           </label>
@@ -93,7 +93,7 @@ function BasicForm({component}){
           />
         </div>
         
-        <div className="col-1-5@xl col-1-5@lg padd-md normalize">
+        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"searchCount"}>
             Cantidad de búsquedas
           </label>
@@ -110,7 +110,7 @@ function BasicForm({component}){
           />
         </div>
         
-        <div className="col-1-5@xl col-1-5@lg padd-md normalize">
+        <div className="col-1-5@xl col-1-4@lg padd-md normalize">
           <label className="wrapper padd-md-b padd-md-lr font-sm" htmlFor={"img"}>
             URL imagen
           </label>
@@ -124,8 +124,8 @@ function BasicForm({component}){
           />
         </div>
         
-        <div className="col-1-5@xl col-1-5@lg padd-md normalize position-relative">
-          <div className="uk-position-bottom padd-md">
+        <div className="col-1-5@xl col-1-4@lg padd-md normalize position-relative">
+          <div className={`${window.innerWidth > 960 ? 'uk-position-bottom padd-md' : 'mrg-lg-t'}`}>
             <input
               type="submit"
               className="padd-md border-radius-sm font-sm action action-add-post"
@@ -154,12 +154,12 @@ function BasicForm({component}){
   if (component==='countries') return (
     <div className="col-1-1@xl col-1-1@lg col-1-1@md col-1-1@sm col-1-1@xs padd-md" data-uk-height-match=".normalize">
       <form autoComplete="off" onSubmit={(ev)=>handleSubmitCountry(ev)}>
-        <div className="col-1-8@xl col-1-8@lg padd-md">
+        <div className="col-1-8@xl col-1-8@lg col-1-4@md col-1-1@sm col-1-1@xs padd-md">
           <label className="font-lg font-main text-bold normalize flex-center-left" htmlFor={"name"}>
             Agregar País:
           </label>
         </div>
-        <div className="col-6-8@xl col-2-4@lg padd-md">
+        <div className="col-6-8@xl col-6-8@lg col-2-4@md col-1-1@sm col-1-1@xs padd-md">
           <input
             className="uk-input border-radius-sm font-sm normalize"
             name="name"
@@ -170,7 +170,7 @@ function BasicForm({component}){
             placeholder="Escriba aquí el nombre del país que desea agregar"
           />
         </div>
-        <div className="col-1-8@xl col-1-8@lg padd-md">
+        <div className="col-1-8@xl col-1-8@lg col-1-4@md col-1-1@sm col-1-1@xs padd-md">
           <input
             type="submit"
             className="padd-md border-radius-sm font-sm action action-add-post normalize"

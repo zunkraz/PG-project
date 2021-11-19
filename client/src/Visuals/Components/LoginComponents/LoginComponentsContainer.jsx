@@ -272,7 +272,7 @@ function LoginComponentsContainer() {
                     justify-center rounded-lg shadow-lg	`
 
     return (
-        <div className='flex flex-col items-center justify-start mt-10 h-screen'>
+        <div className='flex flex-col items-center justify-start my-10 min-h-screen sm:w-96 md:mx-auto '>
             <PopContainer   trigger={register}
                             principalDiv={modalDiv}
                             children={<LoginCreateAccount 
