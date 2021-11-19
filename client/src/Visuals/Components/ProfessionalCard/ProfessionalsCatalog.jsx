@@ -28,7 +28,7 @@ export default function ProfesionalsCatalog(){
         )
     })
 
-    const pageCount= Math.ceil(profis.length / profPerPage)
+    const pageCount= Number(Math.ceil(Number(profis?.length / profPerPage)))
     const changePage= ({selected})=>{
         setPageNumber(selected)
     }

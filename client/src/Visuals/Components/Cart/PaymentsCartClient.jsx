@@ -1,5 +1,4 @@
 import React from 'react';
-import ComponentHeader from './../../Components/ComponentHeader';
 
 const PaymentsCartClient = ({render}) => {
     return ( 

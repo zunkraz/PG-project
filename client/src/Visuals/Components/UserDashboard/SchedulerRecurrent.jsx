@@ -64,7 +64,6 @@ export default function SchedulerRecurrent ({userId}){
         <div className="wrapper mrg-md-t" data-uk-height-match=".normalize">
         {
             days.map((d)=>{
-                {/*<div key={days.indexOf(d)} className="py-2 px-6 flex flex-col bg-t1">*/}
                 return (   
                     <div key={days.indexOf(d)} className="col-1-7@xl col-1-7@lg col-1-4@md col-1-2@sm col-1-1@xs padd-md">
                         <div className="bg-color-extra4-a20 border-color-dark-a20 border-radius-sm overflow-hidden normalize">
