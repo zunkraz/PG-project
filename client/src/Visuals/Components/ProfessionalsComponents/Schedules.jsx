@@ -5,7 +5,8 @@ import { getProfSchedule } from '../../../Controllers/actions/professionalsActio
 import {Link} from 'react-router-dom';
 import { addToCart } from '../../../Controllers/actions/cartActions';
 import Swal from 'sweetalert2';
-import { setAvailability } from '../../../ApiReq/schedule';
+
+
 
 export default function Schedules({id, login, name, lastname, category, cost}) {
     
@@ -38,7 +39,6 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
             professionalId:id,
             customerId:customerId
         }))
-        setAvailability(e.target.id,false,token);
         return Swal.fire({
             title: '¡Reserva hecha!',
             text: 'En tu carrito podrás abonar tu reserva',

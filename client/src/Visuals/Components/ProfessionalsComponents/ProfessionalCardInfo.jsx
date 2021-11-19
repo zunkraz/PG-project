@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { FcCheckmark, FcCancel } from "react-icons/fc";
-import Schedule from '../Schedule/Schedule';
 
 
 function ProfessionalCardInfo({biography, professionalData, schedule}) {
