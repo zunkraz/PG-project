@@ -8,7 +8,7 @@ import ComponentHeader from './../Components/ComponentHeader';
 
 const componentHeaderData = {
     title: "Crea tu Cuenta",
-    subtitle: "Quisque eget mauris eget nisi consectetur lobortis at eu massa.",
+    subtitle: "Completa los siguientes campos con tu información para continuar.",
     bg: null,// Si esta propiedad se envia null, se asigna un fondo aleatorio.
 }
 
