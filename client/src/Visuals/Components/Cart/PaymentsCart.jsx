@@ -14,12 +14,12 @@ const PaymentsCart =  () => {
   const [render, setRender] = useState([])
   const [clientRender, setClientRender] = useState([])
 
+
   useEffect( () => {
     window.scrollTo(0, 0)
     if(isProfessional){
       getCartInfo(customerId,true,token)
       .then(data => {
-        console.log(data);
         setRender(data)});
         getCartInfo(customerId,false,token)
         .then(data => setClientRender(data));
@@ -27,6 +27,7 @@ const PaymentsCart =  () => {
       const payRender =   getCartInfo(customerId,false,token)
       payRender.then(data => setRender(data));
     }
+
   },[customerId, isProfessional, token]);
 
   let title;
