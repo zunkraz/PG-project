@@ -33,22 +33,25 @@ function MeetGuide() {
                                 Guía paso a paso
                             </p>
                             <p className="mrg-xl-t font-lg">
-                                Sabemos que es dificil la primera vez, así que te queremos acompañar
+                                Sabemos que es difícil la primera vez, así que te queremos acompañar
                             </p>
                             <p className="mrg-xl-t">
                                 Antes de comenzar, recuerda estar logueado con tu cuenta de Google en <a href ="https://meet.google.com/" 
                                 target="_blank" rel="noreferrer">Meet</a>
                             </p>
                             <p className="mrg-xl-t">
-                                Ahora sigue las siguientes imagenes paso a paso!
+                                Ahora sigue las siguientes imágenes paso a paso!
                             </p> 
                             <ol className="mrg-xl-t">
-                                <li><img src='' alt='paso uno'/></li>
-                                <li><img src='' alt='paso dos'/></li>
-                                <li><img src='' alt='paso tres'/></li>
-                                <li><img src='' alt='paso cuatro'/></li>
-                                <li><img src='' alt='paso cinco'/></li>
-                                <li><img src='' alt='paso seis'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908742338313060443/unknown.png' className='w-3/5' alt='paso uno'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908742404402724944/unknown.png' className='w-3/5' alt='paso dos'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908742701174902844/unknown.png' className='w-3/5' alt='paso tres'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908742900454686801/unknown.png' className='w-3/5' alt='paso cuatro'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908743036681465886/unknown.png' className='w-3/5' alt='paso cinco'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908743133670567976/unknown.png' className='w-3/5' alt='paso seis'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908743369939890236/unknown.png' className='w-3/5' alt='paso seis'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908743540622897192/unknown.png' className='w-3/5' alt='paso seis'/></li>
+                                <li><img src='https://cdn.discordapp.com/attachments/890961467648647208/908743948485423124/unknown.png' className='w-3/5' alt='paso seis'/></li>
                             </ol>
                             <p className="mrg-xl-t">
                                 Esperamos que no resultara muy tedioso

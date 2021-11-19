@@ -53,7 +53,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 'Cuenta Bancaria': userData.bankAccount,
                 'Precio por hora': `USD $ ${userData.cost}`,
                 '   ' : '',
-                pais : userData.country.name,
+                pais : userData.country?userData.country.name:'',
                 estado : userData.state,
                 ciudad : userData.city,
             }
@@ -277,7 +277,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
             <div className="mrg-lg-t">
                 <button 
                     name='personalInfo' 
-                    className={`padd-md-tb padd-lg-lr font-main ${userInfo === 'personalInfo' ? 'user-dashboard-info-tab-active' : 'user-dashboard-info-tab-inactive'}`} 
+                    className={`focus:outline-none padd-md-tb padd-lg-lr font-main ${userInfo === 'personalInfo' ? 'user-dashboard-info-tab-active' : 'user-dashboard-info-tab-inactive'}`} 
                     onClick={changeUserState}>
                     Personal
                 </button>
@@ -285,7 +285,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     isProf && 
                     <button 
                         name='professionalInfo'
-                        className={`mrg-lg-l padd-md-tb padd-lg-lr font-main ${userInfo === 'professionalInfo' ? 'user-dashboard-info-tab-active' : 'user-dashboard-info-tab-inactive'}`} 
+                        className={`focus:outline-none mrg-lg-l padd-md-tb padd-lg-lr font-main ${userInfo === 'professionalInfo' ? 'user-dashboard-info-tab-active' : 'user-dashboard-info-tab-inactive'}`} 
                         onClick={changeUserState}>
                         Profesional
                     </button>
@@ -350,19 +350,19 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                                 )
                     })
                 }
-                <div className='flex justify-around'>
+                <div className='flex md:flex-row justify-around flex-col'>
                     {!userData.googleAccount && <button
-                        className="width-30 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                        className="w-full mrg-xl-t mx-1 padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2 font-lg"
                         onClick={editData}
                         >Editar Información <span className='ml-6'><FaMarker/></span>
                     </button>}
                     {!userData.googleAccount && <button
-                        className="width-30 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                        className="w-full mrg-xl-t mx-1 padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2 font-lg"
                         onClick={editPass}
                         >Cambiar Contraseña<span className='ml-6'><FaMarker/></span>
                     </button>}
                     {userData.isProfessional && <button
-                        className="width-30 mrg-xl-t padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-4 font-lg"
+                        className="w-full mrg-xl-t mx-1 padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2 font-lg"
                         onClick={editOffer}
                         >Presentación Profesional<span className='ml-6'><FaMarker/></span>
                     </button>}

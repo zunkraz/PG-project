@@ -8,9 +8,10 @@ import Swal from 'sweetalert2';
 import { useJitsi } from 'react-jutsu';
 
 export default function Schedules({id, login, name, lastname, category, cost}) {
+    
     const dispatch = useDispatch();
     const token = useSelector(state => state.sessionReducer.status.token);
-
+    
     useEffect(() => {
         dispatch(getProfSchedule(id, token))
     },[]);
@@ -21,16 +22,17 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
     const carrito= useSelector(state=>state.sessionReducer.cart)
     const customerId= useSelector(state=>state.sessionReducer.status.id)
     
-    const jitsiConfig = {
-        roomName: `Latam Exponential-${id}`,
-        displayName: `${name} ${lastname}`,
-        password: 'latam-exp',
-        subject: 'fan',
-        parentNode: 'jitsi-container',
-        onMeetingEnd: () => alert('Meeting has ended'),
-    };
 
-    const { error, jitsi } = useJitsi(jitsiConfig);
+    // const jitsiConfig = {
+    //     roomName: `Latam Exponential-${id}`,
+    //     displayName: `${name} ${lastname}`,
+    //     password: 'latam-exp',
+    //     subject: 'fan',
+    //     parentNode: 'jitsi-container',
+    //     onMeetingEnd: () => alert('Meeting has ended'),
+    // };
+    // // eslint-disable-next-line
+    // const { error, jitsi } = useJitsi(jitsiConfig);
 
     const price = cost?cost:0.01;
 
@@ -41,7 +43,6 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
             appointment:{
             date:e.target.name,
             sessions:1,
-            meetingLink: jitsi._url || error,
             },
             price:price,
             id:e.target.id,
@@ -58,6 +59,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
         })
     };
     const dateJoin= (date)=>{
+        console.log(date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time+" hs")
         return date.dayName+", "+date.dayNumber+" de "+date.month+" "+date.year+" "+date.time+" hs"
     }
 
@@ -126,7 +128,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
                             {dateJoin(elem.date)}  { carrito.find(e=>e.id===elem._id) ||  load.find(e=>e===elem._id)? 
                                 <p className="w-full py-2 text-center">En carrito</p> 
                                         : 
-                                <button id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="padd-sm mt-1 border-radius-sm font-sm action action-add-post w-full">Contratar</button>
+                                <button disabled={id===customerId} id={elem._id} name={dateJoin(elem.date)} onClick={handleClick} className="padd-sm mt-1 border-radius-sm font-sm action action-add-post w-full">Contratar</button>
                             
                             }
                         </div>
@@ -145,7 +147,7 @@ export default function Schedules({id, login, name, lastname, category, cost}) {
         : <p className="py-4">Sin turnos disponibles</p>
         }
         </ul>
-        <div className='hidden' id={jitsiConfig.parentNode} />
+        {/* <div className='hidden' id={jitsiConfig.parentNode} /> */}
     </div>
     )
 };

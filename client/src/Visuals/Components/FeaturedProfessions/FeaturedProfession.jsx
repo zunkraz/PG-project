@@ -31,7 +31,7 @@ const filterByCategory = (e) => {
   
 return (
   <div className="col-1-4@xl col-1-4@lg col-1-2@md col-1-2@sm col-1-1@xs padd-lg">
-    <div className="border-color-dark-a20 border-radius-sm overflow-hidden shadow-lg"
+    <div className="border-color-dark-a20 border-radius-sm overflow-hidden shadow-lg cursor-pointer"
     onClick={() => filterByCategory(profession.name)}
     >
       <ImageComponent key={profession._id} img={profession.img} ratio={"ratio-3-2"}/>

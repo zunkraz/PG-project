@@ -27,7 +27,6 @@ const verifedCart = () => {
          order.forEach(e => {
             getSchedulesByOnlyId(e.id,token)
             .then( r => {
-                    console.log(e,r)
                     if(!r.availability){
                         dispatch(removeFromCart(r._id))
                     }
@@ -83,7 +82,6 @@ const createOrder =  (data,actions) => {
             price: e.price,
             id: e.id,
             professionalId: e.professionalId,
-            meetingLink: e.appointment.meetingLink
         }
     })
     postCartInfo(objInfo,token)

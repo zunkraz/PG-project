@@ -42,13 +42,13 @@ export default function Review() {
                 <ComponentHeader data={componentHeaderData} />
                 <div className="wrapper padd-xl-tb">
                     <section className="flex-center">
-                        <div className="col-1-2@xl col-1-2@lg col-2-3@md col-1-1@sm col-1-1@xs height-40vh flex-center">
+                        <div className="col-1-2@xl col-1-2@lg col-3-4@md col-1-1@sm col-1-1@xs">
                             {!review ? (
-                                <div>
-                                    <div className="font-lg text-bold text-center">
-                                        Es importante para nosotros conocer tu opinión sobre la plataforma
-                                    </div>
-                                    <div className="">
+                                <div className="height-40vh flex-center">
+                                    <div>
+                                        <div className="font-lg text-bold text-center">
+                                            Es importante para nosotros conocer tu opinión sobre la plataforma
+                                        </div>
                                         <button onClick={changePopUp} className="width-100 mrg-xl-t padd-md border-radius-sm action action-user-dashboard-success">
                                             Añadir opinión
                                         </button>
@@ -59,7 +59,7 @@ export default function Review() {
                                     <div className="font-lg text-bold text-center">
                                         Tu opinión:
                                     </div>
-                                    <div className="position-relative width-100 mrg-xl-t padd-lg bg-color-extra4-a20 border-radius-sm border-color-dark-a20 height-25vh overflow-y-auto scroll">
+                                    <div className={`position-relative width-100 mrg-xl-t padd-lg bg-color-extra4-a20 border-radius-sm border-color-dark-a20 overflow-y-auto scroll ${window.innerWidth >= 960 ? 'height-25vh' : 'height-50vh'}`}>
                                         {review.text}
                                         <div className="position-bottom-right padd-md">
                                             <span 

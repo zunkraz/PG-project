@@ -27,7 +27,7 @@ function AdminPanel(){
   const {token} = userOnPage;
 
   useEffect(()=>{
-    if(btoa(userOnPage.username)==='c2Njb2NvZ2FzdG9u') Swal.fire({
+    if((userOnPage.username)==='scoccogaston') Swal.fire({
       title: atob('SG9sYSBHYXN0824h'),
       width: 260,
       confirmButtonText: '👻',
@@ -59,10 +59,10 @@ function AdminPanel(){
     Reportes:buttonNonSelected
   };
   const [buttons,setButtons] = useState({...buttonsOff,Usuarios:buttonSelected});
-  console.log(buttons[0]);
+
   function handleShown(e){
     if(e.target.type === 'submit') {
-      setButtons({...buttonsOff,[e.target.innerText]:buttonSelected});
+      buttons && setButtons({...buttonsOff,[e.target.innerText]:buttonSelected});
       setShownData(e.target.innerText);
     }
     else {

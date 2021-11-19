@@ -20,7 +20,8 @@ const initialState = {
         error: false
     },
     cart: [],
-    appointments: []
+    appointments: [],
+    feedbacks: []
     //status: {},
 }
 
@@ -99,6 +100,11 @@ export default function sessionReducer(state=initialState, {type,payload}){
             }
             return {
                 ...state
+            }
+        case 'GET_FEEDS':
+            return{
+                ...state,
+                feedbacks:payload
             }
         default: 
         return {...state}
