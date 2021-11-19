@@ -11,12 +11,17 @@ const PaymentsCart =  () => {
   const order= useSelector(state=>state.sessionReducer.status)
   const {isProfessional} = order;
   const [render, setRender] = useState([])
+  const [clientRender, setClientRender] = useState([])
     
  useEffect( () => {
   window.scrollTo(0, 0)
    if(isProfessional){
-    const payRender =   getCartInfo(customerId,true,token)
-    payRender.then(data => setRender(data));
+    getCartInfo(customerId,true,token)
+    .then(data => {
+      console.log(data);
+      setRender(data)});
+      getCartInfo(customerId,false,token)
+      .then(data => setClientRender(data));
    }else{
     const payRender =   getCartInfo(customerId,false,token)
     payRender.then(data => setRender(data));
@@ -28,13 +33,20 @@ const PaymentsCart =  () => {
       {
         !isProfessional 
         ? 
-        <PaymentsCartClient 
+       <div>
+          <PaymentsCartClient 
             render={render}
-        />
+          />
+       </div>
         :
-        <PaymentsCartPro 
-          render={render}
-        />
+        <div>
+          <PaymentsCartClient 
+            render={clientRender}
+          />
+          <PaymentsCartPro 
+            render={render}
+          />
+        </div>
       }
      
     </div>

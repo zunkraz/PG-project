@@ -1,7 +1,8 @@
 const User = require('./../../models/User')
 
 module.exports = async (info) => {
-    const {customerId,professionalId,numberOfSessions,description,meetingLink,dates} = info
+    console.log(info)
+    const {customerId,professionalId,numberOfSessions,description,dates} = info
 
     let custom = await User.findById(customerId)
     let prof = await User.findById(professionalId)
@@ -20,7 +21,6 @@ module.exports = async (info) => {
             email:profEmail
         },
         numberOfSessions,
-        meetingLink: meetingLink[0].replace(' ','%20'),
         description,
         date: dates[0].datefull
     }

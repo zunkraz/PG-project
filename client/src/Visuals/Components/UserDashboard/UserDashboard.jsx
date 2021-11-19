@@ -62,7 +62,9 @@ function UserDashboard({userData, userId, token}) {
                                 {userData.isProfessional && 
                                     <PersonalDashboardContainer user={userData}/>
                                 }
+
                                 {userData.isProfessional &&
+
                                     <Link to={`/${userData.username}/horarios`} >
                                         <button
                                             className={lateralBtn}

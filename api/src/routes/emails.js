@@ -63,12 +63,10 @@ router.post("/newAppointment", (req, res, next) => {
 
       dataCustom = dataCustom
         .replace(/{description}/gi, r.description)
-        .replace(/{meetingLink}/gi, r.meetingLink)
         .replace(/{numberOfSessions}/gi, r.numberOfSessions)
         .replace(/{date}/gi, r.date);
 
       dataProf = dataProf
-        .replace(/{meetingLink}/gi, r.meetingLink)
         .replace(/{customUsername}/gi, r.custom.username)
         .replace(/{numberOfSessions}/gi, r.numberOfSessions)
         .replace(/{date}/gi, r.date);
