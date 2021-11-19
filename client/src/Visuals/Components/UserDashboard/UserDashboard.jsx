@@ -104,7 +104,7 @@ function UserDashboard({userData, userId, token}) {
                         {/* Container: Schedule */}
                         <div className='col-1-5@xl col-2-4@lg col-1-1@md col-1-1@sm col-1-1@xs padd-lg bg-t5-'>
                             <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
-                                <PersonalTaskComponent isProfessional={userData.isProfessional} personalName={`${userData.name} ${userData.lastname}`}/>
+                                <PersonalTaskComponent isProfessional={userData.isProfessional} userId={userId} personalName={`${userData.name} ${userData.lastname}`}/>
                             </div>
                         </div>
                         {userData.isProfessional && 

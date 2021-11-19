@@ -3,12 +3,13 @@ import PopBtns from './PopBtns'
 import { BiLike, BiDislike } from "react-icons/bi";
 import Textarea from "@material-tailwind/react/Textarea";
 import { BsFillEmojiAngryFill, BsFillEmojiFrownFill, BsFillEmojiNeutralFill, BsFillEmojiSmileFill, BsFillEmojiLaughingFill } from "react-icons/bs";
+import { useDispatch, useSelector } from 'react-redux';
 
 function CreateReview(props) {
-
     const [rating, setRating] = useState(3)
     const [textarea, setTextarea] = useState('')
     const [limitChar, setLimitChar] = useState(100-textarea.length)
+
 
     useEffect(() => {
         setLimitChar(100 - textarea.length)
@@ -41,6 +42,10 @@ function CreateReview(props) {
                 setRating(3)
                 break;
         }
+    }
+
+    const handleSuccess=()=>{
+        props.onSuccess({text:textarea, score:rating})
     }
 
     const handleText=(e)=>{
@@ -120,6 +125,7 @@ function CreateReview(props) {
             </div>
             <div className='flex items-center justify-center'>
                 <PopBtns 
+                    onSuccess={handleSuccess}
                     onCancel={props.onCancel}/>
             </div>
         </div>

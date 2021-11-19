@@ -21,7 +21,7 @@ const initialState = {
     },
     cart: [],
     appointments: [],
-    feedbacks: []
+    feedbacks: [],
     //status: {},
 }
 
@@ -106,6 +106,7 @@ export default function sessionReducer(state=initialState, {type,payload}){
                 ...state,
                 feedbacks:payload
             }
+            
         default: 
         return {...state}
     }

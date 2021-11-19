@@ -1,44 +1,37 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Loading from '../../Components/Loading'
 import QuickInfo from './QuickInfo'
 import Schedules from './Schedules'
 import Opinions from './Opinions'
 import FullInfo from './FullInfo'
+import { getFeeds } from '../../../Controllers/actions/userActions'
 
 
 // import ProfessionalCardComponent from './ProfessionalCardComponent'
 // import ProfessionalCardData from './ProfessionalCardData'
 // import ProfessionalOpinionsComponents from './ProfessionalOpinionsComponents'
 
-export default function ProfessionalContainer({username, login}) {
+export default function ProfessionalContainer({username}) {
+    const dispatch = useDispatch()
     
     const profData= useSelector(state=> state.professionalReducer.profDetail)
-
     const session = useSelector(state => state.sessionReducer.status.token)
+    const feedbacks = useSelector(state => state.sessionReducer.feedbacks)
     const divClass = 'flex justify-center items-center h-screen w-screen'
     const imgClass= 'w-96 h-96'
 
+    useEffect(() => {
+        window.scroll(0,0)
+        profData._id && dispatch(getFeeds('', profData._id))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [profData])
+
+
+    console.log(feedbacks) 
+
     if(username===profData.username) {
-
-
-const test = [{
-                score: 4,
-                text: "Excelente atención, es un gran arquitecto. Cuenta buenos chistes.",
-                customerId: {name:'Armando', lastname:'cabezas'},
-                _id: "6195ed21e75cdff47a806b7b"
-            },
-            {
-                score: 4,
-                text: "Excelente atención, es un gran arquitecto. Cuenta buenos chistes.",
-                customerId: {name:'Armando', lastname:'cabezas'},
-                _id: "6195ed21e75cdff47a806b7b"
-            }
-        ]
-
-
-
 
     return (
         <React.Fragment>
@@ -111,7 +104,7 @@ const test = [{
                         <div className='bg-color-light border-color-dark-a20 border-radius-sm box-shadow-xs normalize'>
                             {
                                 profData.isProfessional &&
-                                <Opinions opinions={test}/>
+                                <Opinions opinions={feedbacks}/>
                             }
                         </div>
                     </div>

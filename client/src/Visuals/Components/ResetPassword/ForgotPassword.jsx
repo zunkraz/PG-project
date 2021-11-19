@@ -8,11 +8,14 @@ import Button from "@material-tailwind/react/Button";
 import ComponentHeader from "../ComponentHeader";
 import passwordGenerator from "./passwordGenerator";
 import Swal from "sweetalert2";
+import { checkMail } from "../../../Tools/regexTest";
+
 
 function ForgotPassword() {
   const dispatch = useDispatch();
   const usernames = useSelector((state) => state.userReducer.users);
   const emails = usernames?.map(u=>u.email);
+  const [mailCheck, setMailCheck] = useState(false)
 
   const [inputs, setInputs] = useState({
     mail1: "",
@@ -32,8 +35,17 @@ function ForgotPassword() {
     setError(test[0] !== test[1]);
   }
 
-  function submit(e) {
+  const checkRegex=(mail)=>{
+    if(checkMail.test(mail)){
+      setMailCheck(true)
+    }
+    if(!checkMail.test(mail)){
+      setMailCheck(false)
+    }
+  }
 
+  function submit(e) {
+    checkRegex(e.target.value)
     e.preventDefault();
     if (inputs.mail1 && inputs.mail2 && !error) {
         if(emails.includes(inputs.mail1)){
@@ -58,8 +70,8 @@ function ForgotPassword() {
     <div className="w-full flex flex-col justify-start items-center">
       <ComponentHeader
         data={{
-          title: "Resetea tu contraseña",
-          subtitle: "Sigue los pases descritos para recuperar tu cuenta",
+          title: "Restablecer tu contraseña",
+          subtitle: "Sigue los pasos descritos para recuperar tu cuenta",
           bg: "https://images.pexels.com/photos/776615/pexels-photo-776615.jpeg?auto=compress&cs=tinysrgb&dpr=2&&w=1920",
         }}
       />
@@ -77,7 +89,7 @@ function ForgotPassword() {
             <div className="my-4">
               <Input
                 type="text"
-                color="red"
+                color={'gray'}
                 size="Regular"
                 outline={true}
                 placeholder="Correo electrónico"
@@ -92,7 +104,7 @@ function ForgotPassword() {
             <div className="my-4">
               <Input
                 type="text"
-                color="red"
+                color={error?"red":'green'}
                 size="Regular"
                 outline={true}
                 placeholder="Confirmación de correo"
@@ -114,7 +126,7 @@ function ForgotPassword() {
               ripple="light"
               onClick={submit}
             >
-              Resetear contraseña
+              Restablecer contraseña
             </Button>
           </div>
         </form>
