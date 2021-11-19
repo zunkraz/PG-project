@@ -60,7 +60,6 @@ function PersonalTaskComponent({isProfessional, userId, personalName}) {
                                             }
                                             >Conectarse</a>
                                         </div>
-                                    
                                 </div>
                             )})}
                             {feedbacks.filter(item=>item.professionalId._id===elem.professionalId._id).length===0 ?
