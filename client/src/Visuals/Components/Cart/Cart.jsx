@@ -102,7 +102,7 @@ const createOrder =  (data,actions) => {
 }
   
     
-   const elements= order.map((o,i)=><li key={i} className="mb-2" key={o._id}>
+   const elements= order.map((o,i)=><li key={i} className="mb-2">
         <CartElement 
         name={o.name}
         date={o.appointment.date}

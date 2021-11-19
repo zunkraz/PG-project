@@ -8,7 +8,6 @@ export const addToCart = (appointment) => {
           }
     }
 
-}
 
 export const removeFromCart = (code) => {
         return {
