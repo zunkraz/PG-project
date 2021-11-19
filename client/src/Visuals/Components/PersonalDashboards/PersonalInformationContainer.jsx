@@ -352,17 +352,17 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 }
                 <div className='flex md:flex-row justify-around flex-col'>
                     {!userData.googleAccount && <button
-                        className="w-full mrg-xl-t mx-1 padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2 font-lg"
+                        className="w-full mrg-xl-t mx-1 padd-sm-tb border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2"
                         onClick={editData}
                         >Editar Información <span className='ml-6'><FaMarker/></span>
                     </button>}
                     {!userData.googleAccount && <button
-                        className="w-full mrg-xl-t mx-1 padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2 font-lg"
+                        className="w-full mrg-xl-t mx-1 padd-sm-tb border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2"
                         onClick={editPass}
                         >Cambiar Contraseña<span className='ml-6'><FaMarker/></span>
                     </button>}
                     {userData.isProfessional && <button
-                        className="w-full mrg-xl-t mx-1 padd-sm-tb font-sm- border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2 font-lg"
+                        className="w-full mrg-xl-t mx-1 padd-sm-tb border-radius-sm action action-user-dashboard-edit flex items-center justify-center p-2"
                         onClick={editOffer}
                         >Presentación Profesional<span className='ml-6'><FaMarker/></span>
                     </button>}
