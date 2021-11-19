@@ -1,4 +1,6 @@
-import React, {useEffect} from 'react'
+// import React, {useEffect} from 'react'
+import React from 'react'
+
 import {useSelector} from 'react-redux'
 
 const FiltersFields = ({data,handleChange,setError, error}) => {
@@ -29,17 +31,17 @@ const countries = useSelector(state => state.constantInfoReducer.countries)
 
 
 
-useEffect(() => {
-   if(Number(data.min) < 0 || Number(data.max) < 0){
-     setError(true)
-   }else{
-       if(Number(data.min) > Number(data.max)){
-        setError(true)
-       }else{
-           setError(false)
-       }
-   }
-})
+// useEffect(() => {
+//    if(Number(data.min) < 0 || Number(data.max) < 0){
+//      setError(true)
+//    }else{
+//        if(Number(data.min) > Number(data.max)){
+//         setError(true)
+//        }else{
+//            setError(false)
+//        }
+//    }
+// })
 //<div className=' flex justify-center flex-col space-y-2.5 text-center'>
     return ( 
     <div className='wrapper'>
@@ -83,7 +85,7 @@ useEffect(() => {
         <div className='padd-lg-b text-center font-color-light font-md font-main'>
        
        
-          <div>
+          {/* <div>
             <input
                  
                 type="number" 
@@ -102,7 +104,7 @@ useEffect(() => {
                 onChange={handleChange}
                 className='uk-input mrg-lg-t border-radius-sm font-main'
             />
-          </div>
+          </div> */}
         {error && <h3 className="padd-sm-b border-bottom-color-main">Los montos no son válidos</h3>}
         </div>
        
