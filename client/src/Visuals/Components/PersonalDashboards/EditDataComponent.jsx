@@ -82,7 +82,7 @@ function EditDataComponent(props) {
                                     inputClass={inputClass}
                                     onChange={props.onChange}
                             />
-                        <EditInputComponent
+                        {/* <EditInputComponent
                                     key='Link - Google Meet'
                                     label='Link - Google Meet'
                                     inputName='meetingUrl'
@@ -91,7 +91,7 @@ function EditDataComponent(props) {
                                     labelClass={labelClass}
                                     inputClass={inputClass}
                                     onChange={props.onChange}
-                            />
+                            /> */}
                         <EditInputComponent
                                     key='Cuenta Bancaria'
                                     label='Cuenta Bancaria'

@@ -73,3 +73,9 @@ export function getFeedbacks(customerId, professionalId, token){
         .then(r=>r.data)
         .catch(r=>r.response.data)
 }
+
+export function postFeedbacks(feedback, token){
+    return axios.post(`${BASIC_URL}/feedback`, feedback, {headers: {jwt: token}, withCredentials: true})
+    .then(r=>r.data)
+    .catch(r=>r.response.data)
+}

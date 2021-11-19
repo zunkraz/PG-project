@@ -1,6 +1,6 @@
 
 import { CREATE_USER, GET_USERS, PUT_USER, SET_PROFESSIONAL } from "../../constants";
-import { createUser, getUsers, updateUserData,getAppointmentsUser, getFeedbacks } from "../../ApiReq/users";
+import { createUser, getUsers, updateUserData,getAppointmentsUser, getFeedbacks, postFeedbacks } from "../../ApiReq/users";
 
 
 export const createUserAction = (user) => {
@@ -57,6 +57,15 @@ export function getFeeds(customerId, professionalId, token){
     }
 }
 
+export function postFeed(feedback, token){
+    return async function(dispatch){
+        const data = await postFeedbacks( feedback, token);
+        return dispatch({
+            type: 'POST_FEEDBACK',
+            payload:data
+        })
+    }
+}
 //post tips
 
 

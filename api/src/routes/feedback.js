@@ -1,28 +1,14 @@
 const {Router} = require("express");
 const router = Router();
 const {loginAuth} = require('../controllers/auth/roleAuth');
+const { getFeedbacks } = require('../controllers/index.js');
 // const { } = require('../controllers/index.js');
 const Feedback = require ('../models/Feedback');
 
 //GET ALL FEEDBACKS
 router.get('/',(req,res,next)=>{
   let {customerId,professionalId} = req.query;
-  if(customerId && professionalId) Feedback.find({customerId, professionalId})
-    .populate('customerId', 'id username name lastname')
-    .populate('professionalId', 'id username name lastname')
-    .then(result => res.json(result))
-    .catch(err => next(err));
-  if(customerId) Feedback.find({customerId}) .populate('customerId', 'id username name lastname')
-    .populate('professionalId', 'id username name lastname')
-    .then(result => res.json(result))
-    .catch(err => next(err));
-  if(professionalId) Feedback.find({professionalId}) .populate('customerId', 'id username name lastname')
-    .populate('professionalId', 'id username name lastname')
-    .then(result => res.json(result))
-    .catch(err => next(err));
-  else Feedback.find()
-    .populate('customerId', 'id username name lastname')
-    .populate('professionalId', 'id username name lastname')
+  getFeedbacks(customerId, professionalId)
     .then(result => res.json(result))
     .catch(err => next(err));
 });
