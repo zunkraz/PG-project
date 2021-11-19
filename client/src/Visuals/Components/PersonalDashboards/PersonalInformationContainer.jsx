@@ -49,7 +49,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                 titulo : userData.title,
                 universidad: userData.institute,
                 '  ':'',
-                'Link - Google Meet': userData.meetingUrl,
+                //'Link - Google Meet': userData.meetingUrl,
                 'Cuenta Bancaria': userData.bankAccount,
                 'Precio por hora': `USD $ ${userData.cost}`,
                 '   ' : '',
@@ -73,7 +73,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         img: userData.img,
         title : userData.title,
         institute: userData.institute,
-        meetingUrl: userData.meetingUrl,
+        //meetingUrl: userData.meetingUrl,
         bankAccount: userData.bankAccount,
         state : userData.state,
         city : userData.city,
@@ -124,12 +124,12 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
                     institute: e.target.value
                 })
                 break;
-            case 'meetingUrl':
-                setpostProfData({
-                    ...postProfData,
-                    meetingUrl: e.target.value
-                })
-                break;
+            // case 'meetingUrl':
+            //     setpostProfData({
+            //         ...postProfData,
+            //         meetingUrl: e.target.value
+            //     })
+            //     break;
             case 'bankAccount':
                 setpostProfData({
                     ...postProfData,
@@ -221,45 +221,45 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         setPopOffer(!popOffer)
     }
 
-    const [meetAlert, setMeetAlert] = useState(true)
-    const goAlert= async()=>{
-            if(userData.isProfessional && !userData.meetingUrl){
-            const setMeet = await Swal.fire({
-                title: 'No olvides setear tu meet !',
-                icon: 'warning',
-                showDenyButton: true,
-                showCancelButton: false,
-                confirmButtonText: 'Ahora',
-                confirmButtonColor: '#5ac18e',
-                denyButtonText: `Luego`,
-                denyButtonColor: '#d36363'
-            })
+    // const [meetAlert, setMeetAlert] = useState(true)
+    // const goAlert= async()=>{
+    //         if(userData.isProfessional && !userData.meetingUrl){
+    //         const setMeet = await Swal.fire({
+    //             title: 'No olvides setear tu meet !',
+    //             icon: 'warning',
+    //             showDenyButton: true,
+    //             showCancelButton: false,
+    //             confirmButtonText: 'Ahora',
+    //             confirmButtonColor: '#5ac18e',
+    //             denyButtonText: `Luego`,
+    //             denyButtonColor: '#d36363'
+    //         })
             
-            if(setMeet.isConfirmed){
-                const url = await Swal.fire({
-                    input: 'url',
-                    inputLabel: 'Ingresa tu link profesional de Google Meet',
-                    html:'<a href ="/guia-meet" target="_blank">Guia sobre Google Meet</a>',
-                    inputPlaceholder: 'Enter the URL',
-                    showCloseButton: true,
-                })
-                if (!url.dismiss==='close') {
-                    Swal.fire(`Entered URL: ${url}`)
-                    }
-                if(url.value){
-                    dispatch(putUser(userData.username, {meetingUrl:url.value, token}))
-                    setMeetAlert(false)
-                }
-            }
-            if(setMeet.isDenied){
-                setMeetAlert(false)
-            }
+    //         if(setMeet.isConfirmed){
+    //             const url = await Swal.fire({
+    //                 input: 'url',
+    //                 inputLabel: 'Ingresa tu link profesional de Google Meet',
+    //                 html:'<a href ="/guia-meet" target="_blank">Guia sobre Google Meet</a>',
+    //                 inputPlaceholder: 'Enter the URL',
+    //                 showCloseButton: true,
+    //             })
+    //             if (!url.dismiss==='close') {
+    //                 Swal.fire(`Entered URL: ${url}`)
+    //                 }
+    //             if(url.value){
+    //                 dispatch(putUser(userData.username, {meetingUrl:url.value, token}))
+    //                 setMeetAlert(false)
+    //             }
+    //         }
+    //         if(setMeet.isDenied){
+    //             setMeetAlert(false)
+    //         }
             
             
-        }
-    }
+    //     }
+    // }
 
-    meetAlert && setTimeout(goAlert,2500)
+    // meetAlert && setTimeout(goAlert,2500)
 
     /////////////// CLASS ///////////////
 
