@@ -214,9 +214,9 @@ function LoginComponentsContainer() {
         }
         if(checked){
             try{
-                const endUN = googleData.email.indexOf('@')
+                const endUN = googleData.email?.indexOf('@')
                 createUser({
-                    username:googleData.email.slice(0, endUN),
+                    username:googleData.email?.slice(0, endUN),
                     name: googleData.givenName,
                     lastname: googleData.familyName,
                     password:googleData.googleId,
