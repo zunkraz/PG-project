@@ -12,9 +12,11 @@ const PaymentsCartPro = ({render}) => {
     let totalProfitMob  = 0;
     return ( 
         <React.Fragment>
-            <ComponentHeader data={componentHeaderData} />
             <div className={`wrapper padd-lg-lr ${window.innerWidth >= 960 ? 'padd-2x-tb' : 'padd-lg-tb'}`}>
                 <section>
+                    <div className="padd-lg text-bold font-xl font-main">
+                        Sesiones Vendidas
+                    </div>
                     <div className="element-xl-lg-md">
                         <table className="shadow-lg table-auto bills">
                             <thead>
@@ -66,7 +68,13 @@ const PaymentsCartPro = ({render}) => {
                                     return Render
                                     })
                                 :
-                                <h1>No hay Facturas que mostrar</h1>
+                                <tr>
+                                    <td colSpan="6">
+                                        <div className="wrapper bg-color-extra4-a20 padd-xl text-bold font-lg border-radius-sm flex-center">
+                                            No hay Facturas para mostrar.
+                                        </div>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>
