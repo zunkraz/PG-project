@@ -300,6 +300,7 @@ function LoginComponentsContainer() {
                                     />
             }
             <br/>
+            <br/>
             <GoogleLogin
                         clientId={GOOGLE_ID}
                         buttonText="Iniciar Sesion"
