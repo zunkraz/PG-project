@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { loadScript } from './loadScript';
 import Swal from 'sweetalert2'
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
+import {updateSessionCount} from "../../../Controllers/actions/userActions";
+import {useSelector} from "react-redux";
 
 const Meet = ({match}) => {
   const { roomName, displayName } = match.params
   const [jitsi, setJitsi] = useState({});
   const history = useHistory();
+  const userOnPage = useSelector(state=>state.sessionReducer.status);
 
   const initialize = async () => {
     await loadScript("https://meet.jit.si/external_api.js", true);
@@ -20,6 +23,9 @@ const Meet = ({match}) => {
       title: 'Nos vemos pronto!',
       showConfirmButton: false,
       timer: 1500
+    }).then(()=>{
+      let profId = roomName.slice(18);
+      updateSessionCount(profId,userOnPage.token);
     })
   }
     

@@ -4,7 +4,7 @@ const ProfInvoice = require('../../models/ProfInvoice');
 module.exports = (userId,as) =>{
   if (as === 'prof') {
     return ProfInvoice.find({professionalId: userId}).populate('customerId','username').populate('schedules','date'); } //:userId?as=prof
-  else return ClientInvoice.find({customerId:userId});   //:userId?as=client o sin query
+  else return ClientInvoice.find({customerId:userId}).populate('schedules','date');   //:userId?as=client o sin query
 }
 
 // IGNORAR COMENTARIOS  (son ayuda memoria que voy a borrar)

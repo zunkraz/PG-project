@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import { FaMarker } from "react-icons/fa";
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import PopContainer from '../PopContainer';
 import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
@@ -40,7 +40,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         cumpleaños : userData.birthdate,
         'Miembro desde' : userData.memberSince,
     }
-
+console.log(userData)
     const getValue=(data)=>{
         if(data){
             return{
