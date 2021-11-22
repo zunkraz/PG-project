@@ -40,7 +40,7 @@ function PersonalInformationContainer({userData, changeUserState, userInfo, isPr
         cumpleaños : userData.birthdate,
         'Miembro desde' : userData.memberSince,
     }
-console.log(userData)
+
     const getValue=(data)=>{
         if(data){
             return{
