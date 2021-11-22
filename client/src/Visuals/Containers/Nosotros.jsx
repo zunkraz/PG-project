@@ -49,7 +49,7 @@ function Nosotros() {
                 <TeamCard
                         img='https://avatars.githubusercontent.com/u/69180670?v=4'
                         title={<p className='font-main'>Sabrina Noel Vettorelo</p>}
-                        text='Full Stack Developer | Biomedical Engineer'
+                        text='Full Stack Developer | Biomedical Engineer | PhD Electrochemistry'
                         name='sabrina'
                         onClick={handleRedirects}
                     />
