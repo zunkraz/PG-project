@@ -53,7 +53,7 @@ function ReportDashboard({token}){
                 <div className="text-bold">Motivo:</div>
                 <span>
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-${color[t.reason]}-400 text-gray-800`}>
-                  { Object.values(allReasons)[index] }
+                 { allReasons[t.reason] }
                 </span>
                   </span>
               </div>

@@ -13,8 +13,8 @@ export default function QuickInfo({data}) {
         <div>
             <div className='flex justify-center padd-md-b font-main text-bold font-xl border-bottom-color-main'>
                 <span className='flex items-center justify-center font-xl w-full'
-                    ><FaRegMoneyBillAlt className='text-green-500 w-10 mr-2'/
-                        >{`  ${data.cost}`}<p className='text-green-500 font-normal ml-2'>USD</p> 
+                    ><FaRegMoneyBillAlt className='text-green-500 w-10 mr-2'
+                  />{`  ${data.cost}`}<p className='text-green-500 font-normal ml-2'>USD</p>
                 </span>
             </div>
             <div className="mrg-lg-t border-radius-sm overflow-hidden">

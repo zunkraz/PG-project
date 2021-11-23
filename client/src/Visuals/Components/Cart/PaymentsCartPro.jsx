@@ -55,7 +55,7 @@ const PaymentsCartPro = ({render}) => {
                                             {e.availableDate.slice(0,10)}
                                         </td>
                                         <td align="center" className="padd-lg text-center">
-                                            $ {e.profit}
+                                            $ {Math.round(e.profit*100)/100}
                                         </td>
                                         <td align="center" className="padd-lg text-center text-green-500">
                                             Disponible
@@ -81,7 +81,7 @@ const PaymentsCartPro = ({render}) => {
                             {/*<div className='grid grid-cols-2 mt-8 pb-8 shadow-xl w-11/12'>*/}
                             <div className='col-3-4@xl col-2-3@lg col-2-3@md'>
                                 <div className='text-green-500 font-bold text-3xl'>
-                                    Monto disponible: $ {totalProfitPC}
+                                    Monto disponible: $ {Math.round(totalProfitPC*100)/100}
                                 </div>
                             </div>
                             <div className='col-1-4@xl col-1-3@lg col-1-3@md'>
@@ -117,7 +117,7 @@ const PaymentsCartPro = ({render}) => {
                                                 </div>
                                                 <div className="mrg-md-t flex-bar">
                                                     <div className="text-bold">Costo Total:</div>
-                                                    <span>$ {e.profit}</span>
+                                                    <span>$ {Math.round(e.profit*100)/100}</span>
                                                 </div>
                                                 <div className="mrg-md-t flex-bar">
                                                     <div className="text-bold">Estado:</div>
@@ -136,7 +136,7 @@ const PaymentsCartPro = ({render}) => {
                             {/*<div className='grid grid-cols-2 mt-8 pb-8 shadow-xl w-11/12'>*/}
                             <div className='col-1-1@sm col-1-1@xs'>
                                 <div className='text-center text-green-500 font-bold font-xl'>
-                                    Monto disponible: $ {totalProfitMob}
+                                    Monto disponible: $ {Math.round(totalProfitMob*100)/100}
                                 </div>
                             </div>
                             <div className='mrg-xl-t col-1-1@sm col-1-1@xs'>

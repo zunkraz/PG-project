@@ -1,6 +1,7 @@
 
 import { CREATE_USER, GET_USERS, PUT_USER, SET_PROFESSIONAL } from "../../constants";
 import { createUser, getUsers, updateUserData,getAppointmentsUser, getFeedbacks, postFeedbacks } from "../../ApiReq/users";
+import {updateSession} from "../../ApiReq/professionals";
 
 
 export const createUserAction = (user) => {
@@ -67,5 +68,12 @@ export function postFeed(feedback, token){
     }
 }
 //post tips
+export function updateSessionCount(profId,token){
+    const response = updateSession(profId,token);
+    return {
+        type: 'UPDATE_SESSION',
+        payload : response
+    };
+};
 
 

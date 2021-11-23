@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import { FaMarker } from "react-icons/fa";
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import PopContainer from '../PopContainer';
 import EditDataComponent from './EditDataComponent';
 import ShowData from './ShowData';
